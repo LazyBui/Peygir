@@ -4,5 +4,7 @@
 		Accepted,
 		Closed,
 		Completed,
+		InProgress,
+		Blocked,
 	}
 }

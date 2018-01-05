@@ -106,7 +106,9 @@
 			resources.GetString("stateComboBox.Items"),
 			resources.GetString("stateComboBox.Items1"),
 			resources.GetString("stateComboBox.Items2"),
-			resources.GetString("stateComboBox.Items3")});
+			resources.GetString("stateComboBox.Items3"),
+			resources.GetString("stateComboBox.Items4"),
+			resources.GetString("stateComboBox.Items5")});
 			resources.ApplyResources(this.stateComboBox, "stateComboBox");
 			this.stateComboBox.Name = "stateComboBox";
 			// 

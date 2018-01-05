@@ -125,6 +125,14 @@ namespace Peygir.Presentation.UserControls {
 						ticketState = Resources.String_Completed;
 						break;
 
+					case TicketState.InProgress:
+						ticketState = Resources.String_InProgress;
+						break;
+
+					case TicketState.Blocked:
+						ticketState = Resources.String_Blocked;
+						break;
+
 					default:
 						ticketState = string.Empty;
 						break;

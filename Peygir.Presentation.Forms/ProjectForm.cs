@@ -94,6 +94,12 @@ namespace Peygir.Presentation.Forms {
 				case TicketState.Completed:
 					return Resources.String_Completed;
 
+				case TicketState.InProgress:
+					return Resources.String_InProgress;
+
+				case TicketState.Blocked:
+					return Resources.String_Blocked;
+
 				default:
 					return ticketState.ToString();
 			}

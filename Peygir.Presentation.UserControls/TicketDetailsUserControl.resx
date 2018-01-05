@@ -278,6 +278,12 @@
   <data name="stateComboBox.Items3" xml:space="preserve">
     <value>Completed</value>
   </data>
+  <data name="stateComboBox.Items4" xml:space="preserve">
+    <value>In Progress</value>
+  </data>
+  <data name="stateComboBox.Items5" xml:space="preserve">
+    <value>Blocked</value>
+  </data>
   <data name="stateComboBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>347, 30</value>
   </data>
