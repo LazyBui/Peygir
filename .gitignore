@@ -2,3 +2,4 @@
 bin/
 obj/
 Setup/Output/
+*.csproj.user
