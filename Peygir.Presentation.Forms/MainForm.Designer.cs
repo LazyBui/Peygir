@@ -96,140 +96,140 @@
 			// 
 			// menuStrip1
 			// 
-			resources.ApplyResources(this.menuStrip1, "menuStrip1");
 			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-			this.fileToolStripMenuItem,
-			this.toolsToolStripMenuItem,
-			this.helpToolStripMenuItem,
-			this.languageToolStripMenuItem});
+            this.fileToolStripMenuItem,
+            this.toolsToolStripMenuItem,
+            this.helpToolStripMenuItem,
+            this.languageToolStripMenuItem});
+			resources.ApplyResources(this.menuStrip1, "menuStrip1");
 			this.menuStrip1.Name = "menuStrip1";
 			// 
 			// fileToolStripMenuItem
 			// 
-			resources.ApplyResources(this.fileToolStripMenuItem, "fileToolStripMenuItem");
 			this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-			this.newDatabaseToolStripMenuItem,
-			this.openDatabaseToolStripMenuItem,
-			this.saveDatabaseAsToolStripMenuItem,
-			this.closeDatabaseToolStripMenuItem,
-			this.toolStripSeparator2,
-			this.exitToolStripMenuItem});
+            this.newDatabaseToolStripMenuItem,
+            this.openDatabaseToolStripMenuItem,
+            this.saveDatabaseAsToolStripMenuItem,
+            this.closeDatabaseToolStripMenuItem,
+            this.toolStripSeparator2,
+            this.exitToolStripMenuItem});
 			this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+			resources.ApplyResources(this.fileToolStripMenuItem, "fileToolStripMenuItem");
 			// 
 			// newDatabaseToolStripMenuItem
 			// 
-			resources.ApplyResources(this.newDatabaseToolStripMenuItem, "newDatabaseToolStripMenuItem");
 			this.newDatabaseToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_New;
 			this.newDatabaseToolStripMenuItem.Name = "newDatabaseToolStripMenuItem";
+			resources.ApplyResources(this.newDatabaseToolStripMenuItem, "newDatabaseToolStripMenuItem");
 			this.newDatabaseToolStripMenuItem.Click += new System.EventHandler(this.newDatabaseToolStripMenuItem_Click);
 			// 
 			// openDatabaseToolStripMenuItem
 			// 
-			resources.ApplyResources(this.openDatabaseToolStripMenuItem, "openDatabaseToolStripMenuItem");
 			this.openDatabaseToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Open;
 			this.openDatabaseToolStripMenuItem.Name = "openDatabaseToolStripMenuItem";
+			resources.ApplyResources(this.openDatabaseToolStripMenuItem, "openDatabaseToolStripMenuItem");
 			this.openDatabaseToolStripMenuItem.Click += new System.EventHandler(this.openDatabaseToolStripMenuItem_Click);
 			// 
 			// saveDatabaseAsToolStripMenuItem
 			// 
-			resources.ApplyResources(this.saveDatabaseAsToolStripMenuItem, "saveDatabaseAsToolStripMenuItem");
 			this.saveDatabaseAsToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_SaveAs;
 			this.saveDatabaseAsToolStripMenuItem.Name = "saveDatabaseAsToolStripMenuItem";
+			resources.ApplyResources(this.saveDatabaseAsToolStripMenuItem, "saveDatabaseAsToolStripMenuItem");
 			this.saveDatabaseAsToolStripMenuItem.Click += new System.EventHandler(this.saveDatabaseAsToolStripMenuItem_Click);
 			// 
 			// closeDatabaseToolStripMenuItem
 			// 
-			resources.ApplyResources(this.closeDatabaseToolStripMenuItem, "closeDatabaseToolStripMenuItem");
 			this.closeDatabaseToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Close;
 			this.closeDatabaseToolStripMenuItem.Name = "closeDatabaseToolStripMenuItem";
+			resources.ApplyResources(this.closeDatabaseToolStripMenuItem, "closeDatabaseToolStripMenuItem");
 			this.closeDatabaseToolStripMenuItem.Click += new System.EventHandler(this.closeDatabaseToolStripMenuItem_Click);
 			// 
 			// toolStripSeparator2
 			// 
-			resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
 			this.toolStripSeparator2.Name = "toolStripSeparator2";
+			resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
 			// 
 			// exitToolStripMenuItem
 			// 
-			resources.ApplyResources(this.exitToolStripMenuItem, "exitToolStripMenuItem");
 			this.exitToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Exit;
 			this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+			resources.ApplyResources(this.exitToolStripMenuItem, "exitToolStripMenuItem");
 			this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
 			// 
 			// toolsToolStripMenuItem
 			// 
-			resources.ApplyResources(this.toolsToolStripMenuItem, "toolsToolStripMenuItem");
 			this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-			this.optionsToolStripMenuItem});
+            this.optionsToolStripMenuItem});
 			this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
+			resources.ApplyResources(this.toolsToolStripMenuItem, "toolsToolStripMenuItem");
 			// 
 			// optionsToolStripMenuItem
 			// 
-			resources.ApplyResources(this.optionsToolStripMenuItem, "optionsToolStripMenuItem");
 			this.optionsToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Options;
 			this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
+			resources.ApplyResources(this.optionsToolStripMenuItem, "optionsToolStripMenuItem");
 			this.optionsToolStripMenuItem.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
 			// 
 			// helpToolStripMenuItem
 			// 
-			resources.ApplyResources(this.helpToolStripMenuItem, "helpToolStripMenuItem");
 			this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-			this.viewHelpToolStripMenuItem,
-			this.toolStripSeparator1,
-			this.aboutToolStripMenuItem});
+            this.viewHelpToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.aboutToolStripMenuItem});
 			this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+			resources.ApplyResources(this.helpToolStripMenuItem, "helpToolStripMenuItem");
 			// 
 			// viewHelpToolStripMenuItem
 			// 
-			resources.ApplyResources(this.viewHelpToolStripMenuItem, "viewHelpToolStripMenuItem");
 			this.viewHelpToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Help;
 			this.viewHelpToolStripMenuItem.Name = "viewHelpToolStripMenuItem";
+			resources.ApplyResources(this.viewHelpToolStripMenuItem, "viewHelpToolStripMenuItem");
 			this.viewHelpToolStripMenuItem.Click += new System.EventHandler(this.viewHelpToolStripMenuItem_Click);
 			// 
 			// toolStripSeparator1
 			// 
-			resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
 			this.toolStripSeparator1.Name = "toolStripSeparator1";
+			resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
 			// 
 			// aboutToolStripMenuItem
 			// 
-			resources.ApplyResources(this.aboutToolStripMenuItem, "aboutToolStripMenuItem");
 			this.aboutToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Peygir;
 			this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+			resources.ApplyResources(this.aboutToolStripMenuItem, "aboutToolStripMenuItem");
 			this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
 			// 
 			// languageToolStripMenuItem
 			// 
-			resources.ApplyResources(this.languageToolStripMenuItem, "languageToolStripMenuItem");
 			this.languageToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
 			this.languageToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-			this.englishToolStripMenuItem,
-			this.persianToolStripMenuItem});
+            this.englishToolStripMenuItem,
+            this.persianToolStripMenuItem});
 			this.languageToolStripMenuItem.Name = "languageToolStripMenuItem";
+			resources.ApplyResources(this.languageToolStripMenuItem, "languageToolStripMenuItem");
 			// 
 			// englishToolStripMenuItem
 			// 
-			resources.ApplyResources(this.englishToolStripMenuItem, "englishToolStripMenuItem");
 			this.englishToolStripMenuItem.Name = "englishToolStripMenuItem";
+			resources.ApplyResources(this.englishToolStripMenuItem, "englishToolStripMenuItem");
 			this.englishToolStripMenuItem.Click += new System.EventHandler(this.englishToolStripMenuItem_Click);
 			// 
 			// persianToolStripMenuItem
 			// 
-			resources.ApplyResources(this.persianToolStripMenuItem, "persianToolStripMenuItem");
 			this.persianToolStripMenuItem.Name = "persianToolStripMenuItem";
+			resources.ApplyResources(this.persianToolStripMenuItem, "persianToolStripMenuItem");
 			this.persianToolStripMenuItem.Click += new System.EventHandler(this.persianToolStripMenuItem_Click);
 			// 
 			// statusStrip1
 			// 
-			resources.ApplyResources(this.statusStrip1, "statusStrip1");
 			this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-			this.databaseToolStripStatusLabel});
+            this.databaseToolStripStatusLabel});
+			resources.ApplyResources(this.statusStrip1, "statusStrip1");
 			this.statusStrip1.Name = "statusStrip1";
 			// 
 			// databaseToolStripStatusLabel
 			// 
-			resources.ApplyResources(this.databaseToolStripStatusLabel, "databaseToolStripStatusLabel");
 			this.databaseToolStripStatusLabel.Name = "databaseToolStripStatusLabel";
+			resources.ApplyResources(this.databaseToolStripStatusLabel, "databaseToolStripStatusLabel");
 			// 
 			// openFileDialog
 			// 

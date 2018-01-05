@@ -74,8 +74,8 @@
 			// 
 			// projectInfoTabPage
 			// 
-			resources.ApplyResources(this.projectInfoTabPage, "projectInfoTabPage");
 			this.projectInfoTabPage.Controls.Add(this.groupBox2);
+			resources.ApplyResources(this.projectInfoTabPage, "projectInfoTabPage");
 			this.projectInfoTabPage.Name = "projectInfoTabPage";
 			this.projectInfoTabPage.UseVisualStyleBackColor = true;
 			// 
@@ -106,8 +106,8 @@
 			// 
 			// milestonesTabPage
 			// 
-			resources.ApplyResources(this.milestonesTabPage, "milestonesTabPage");
 			this.milestonesTabPage.Controls.Add(this.groupBox3);
+			resources.ApplyResources(this.milestonesTabPage, "milestonesTabPage");
 			this.milestonesTabPage.Name = "milestonesTabPage";
 			this.milestonesTabPage.UseVisualStyleBackColor = true;
 			// 
@@ -161,8 +161,8 @@
 			// 
 			// ticketsTabPage
 			// 
-			resources.ApplyResources(this.ticketsTabPage, "ticketsTabPage");
 			this.ticketsTabPage.Controls.Add(this.groupBox4);
+			resources.ApplyResources(this.ticketsTabPage, "ticketsTabPage");
 			this.ticketsTabPage.Name = "ticketsTabPage";
 			this.ticketsTabPage.UseVisualStyleBackColor = true;
 			// 

@@ -67,9 +67,9 @@
 			// 
 			// milestoneDetailsUserControl1
 			// 
-			resources.ApplyResources(this.milestoneDetailsUserControl1, "milestoneDetailsUserControl1");
 			this.milestoneDetailsUserControl1.Description = "";
 			this.milestoneDetailsUserControl1.DisplayOrder = 0;
+			resources.ApplyResources(this.milestoneDetailsUserControl1, "milestoneDetailsUserControl1");
 			this.milestoneDetailsUserControl1.MilestoneName = "";
 			this.milestoneDetailsUserControl1.Name = "milestoneDetailsUserControl1";
 			this.milestoneDetailsUserControl1.ReadOnly = false;

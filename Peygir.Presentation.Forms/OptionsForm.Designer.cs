@@ -41,11 +41,11 @@
 			// 
 			// groupBox1
 			// 
-			resources.ApplyResources(this.groupBox1, "groupBox1");
 			this.groupBox1.Controls.Add(this.label3);
 			this.groupBox1.Controls.Add(this.textBox2);
 			this.groupBox1.Controls.Add(this.formatDateTimePanel);
 			this.groupBox1.Controls.Add(this.formatDateTimeCheckBox);
+			resources.ApplyResources(this.groupBox1, "groupBox1");
 			this.groupBox1.Name = "groupBox1";
 			this.groupBox1.TabStop = false;
 			// 
@@ -62,11 +62,11 @@
 			// 
 			// formatDateTimePanel
 			// 
-			resources.ApplyResources(this.formatDateTimePanel, "formatDateTimePanel");
 			this.formatDateTimePanel.Controls.Add(this.label1);
 			this.formatDateTimePanel.Controls.Add(this.label2);
 			this.formatDateTimePanel.Controls.Add(this.dateTimePatternTextBox);
 			this.formatDateTimePanel.Controls.Add(this.calendarComboBox);
+			resources.ApplyResources(this.formatDateTimePanel, "formatDateTimePanel");
 			this.formatDateTimePanel.Name = "formatDateTimePanel";
 			// 
 			// label1
@@ -86,24 +86,24 @@
 			// 
 			// calendarComboBox
 			// 
-			resources.ApplyResources(this.calendarComboBox, "calendarComboBox");
 			this.calendarComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.calendarComboBox.FormattingEnabled = true;
 			this.calendarComboBox.Items.AddRange(new object[] {
-			resources.GetString("calendarComboBox.Items"),
-			resources.GetString("calendarComboBox.Items1"),
-			resources.GetString("calendarComboBox.Items2"),
-			resources.GetString("calendarComboBox.Items3"),
-			resources.GetString("calendarComboBox.Items4"),
-			resources.GetString("calendarComboBox.Items5"),
-			resources.GetString("calendarComboBox.Items6"),
-			resources.GetString("calendarComboBox.Items7"),
-			resources.GetString("calendarComboBox.Items8"),
-			resources.GetString("calendarComboBox.Items9"),
-			resources.GetString("calendarComboBox.Items10"),
-			resources.GetString("calendarComboBox.Items11"),
-			resources.GetString("calendarComboBox.Items12"),
-			resources.GetString("calendarComboBox.Items13")});
+            resources.GetString("calendarComboBox.Items"),
+            resources.GetString("calendarComboBox.Items1"),
+            resources.GetString("calendarComboBox.Items2"),
+            resources.GetString("calendarComboBox.Items3"),
+            resources.GetString("calendarComboBox.Items4"),
+            resources.GetString("calendarComboBox.Items5"),
+            resources.GetString("calendarComboBox.Items6"),
+            resources.GetString("calendarComboBox.Items7"),
+            resources.GetString("calendarComboBox.Items8"),
+            resources.GetString("calendarComboBox.Items9"),
+            resources.GetString("calendarComboBox.Items10"),
+            resources.GetString("calendarComboBox.Items11"),
+            resources.GetString("calendarComboBox.Items12"),
+            resources.GetString("calendarComboBox.Items13")});
+			resources.ApplyResources(this.calendarComboBox, "calendarComboBox");
 			this.calendarComboBox.Name = "calendarComboBox";
 			// 
 			// formatDateTimeCheckBox

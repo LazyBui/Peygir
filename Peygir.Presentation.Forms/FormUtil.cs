@@ -1,5 +1,4 @@
-﻿using System.Globalization;
-using Peygir.Logic;
+﻿using Peygir.Logic;
 using Peygir.Presentation.Forms.Properties;
 
 namespace Peygir.Presentation.Forms {
