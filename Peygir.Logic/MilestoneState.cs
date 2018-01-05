@@ -1,9 +1,7 @@
-﻿namespace Peygir.Logic
-{
-    public enum MilestoneState
-    {
-        Active,
-        Completed,
-        Cancelled
-    }
+﻿namespace Peygir.Logic {
+	public enum MilestoneState {
+		Active,
+		Completed,
+		Cancelled,
+	}
 }

@@ -1,99 +1,78 @@
-﻿using Peygir.Logic;
-using Peygir.Presentation.Forms.Properties;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading;
+﻿using System;
 using System.Windows.Forms;
+using Peygir.Logic;
+using Peygir.Presentation.Forms.Properties;
 
-namespace Peygir.Presentation.Forms
-{
-    public partial class TicketHistoryForm : Form
-    {
-        public Ticket Ticket { get; private set; }
+namespace Peygir.Presentation.Forms {
+	public partial class TicketHistoryForm : Form {
+		public Ticket Ticket { get; private set; }
 
-        public TicketHistoryForm(Ticket ticket)
-        {
-            if (ticket == null)
-            {
-                throw new ArgumentNullException("ticket");
-            }
+		public TicketHistoryForm(Ticket ticket) {
+			if (ticket == null) {
+				throw new ArgumentNullException("ticket");
+			}
 
-            Ticket = ticket;
+			Ticket = ticket;
 
-            InitializeComponent();
+			InitializeComponent();
 
-            if (Settings.Default.FormatDateTime)
-            {
-                try
-                {
-                    DateTimeFormatter dateTimeFormatter = new DateTimeFormatter
-                    (
-                        Settings.Default.DateTimePattern,
-                        Settings.Default.Calendar
-                    );
+			if (Settings.Default.FormatDateTime) {
+				try {
+					DateTimeFormatter dateTimeFormatter = new DateTimeFormatter
+					(
+						Settings.Default.DateTimePattern,
+						Settings.Default.Calendar
+					);
 
-                    ticketHistoryListUserControl.DateTimeFormatter = dateTimeFormatter;
-                    ticketHistoryDetailsUserControl.DateTimeFormatter = dateTimeFormatter;
-                }
-                catch (Exception)
-                {
-                    // Nothing.
-                }
-            }
+					ticketHistoryListUserControl.DateTimeFormatter = dateTimeFormatter;
+					ticketHistoryDetailsUserControl.DateTimeFormatter = dateTimeFormatter;
+				}
+				catch (Exception) {
+					// Nothing.
+				}
+			}
 
-            ticketHistoryListUserControl.TicketHistoryListView.SelectedIndexChanged += TicketHistoryListView_SelectedIndexChanged;
+			ticketHistoryListUserControl.TicketHistoryListView.SelectedIndexChanged += TicketHistoryListView_SelectedIndexChanged;
 
-            ShowTicketHistory();
+			ShowTicketHistory();
 
-            // Select last history.
-            if (ticketHistoryListUserControl.TicketHistoryListView.Items.Count > 0)
-            {
-                ticketHistoryListUserControl.TicketHistoryListView.SelectedIndices.Clear();
-                ticketHistoryListUserControl.TicketHistoryListView.SelectedIndices.Add(0);
-            }
-        }
+			// Select last history.
+			if (ticketHistoryListUserControl.TicketHistoryListView.Items.Count > 0) {
+				ticketHistoryListUserControl.TicketHistoryListView.SelectedIndices.Clear();
+				ticketHistoryListUserControl.TicketHistoryListView.SelectedIndices.Add(0);
+			}
+		}
 
-        private void ShowTicketHistory()
-        {
-            TicketHistory[] history = Ticket.GetHistory();
+		private void ShowTicketHistory() {
+			TicketHistory[] history = Ticket.GetHistory();
 
-            ticketHistoryListUserControl.ShowTicketHistory(history);
+			ticketHistoryListUserControl.ShowTicketHistory(history);
 
-            ShowTicketHistoryDetails();
+			ShowTicketHistoryDetails();
 
-            return;
-        }
+			return;
+		}
 
-        private void ShowTicketHistoryDetails()
-        {
-            ticketHistoryDetailsUserControl.Clear();
+		private void ShowTicketHistoryDetails() {
+			ticketHistoryDetailsUserControl.Clear();
 
-            if (ticketHistoryListUserControl.TicketHistoryListView.SelectedItems.Count == 1)
-            {
-                TicketHistory history = (TicketHistory)ticketHistoryListUserControl.TicketHistoryListView.SelectedItems[0].Tag;
+			if (ticketHistoryListUserControl.TicketHistoryListView.SelectedItems.Count == 1) {
+				TicketHistory history = (TicketHistory)ticketHistoryListUserControl.TicketHistoryListView.SelectedItems[0].Tag;
 
-                ticketHistoryDetailsUserControl.ShowTicketHistory(history);
+				ticketHistoryDetailsUserControl.ShowTicketHistory(history);
 
-                groupBox.Enabled = true;
-            }
-            else
-            {
-                groupBox.Enabled = false;
-            }
+				groupBox.Enabled = true;
+			}
+			else {
+				groupBox.Enabled = false;
+			}
 
-            return;
-        }
+			return;
+		}
 
-        private void TicketHistoryListView_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ShowTicketHistoryDetails();
-            return;
-        }
-    }
+		private void TicketHistoryListView_SelectedIndexChanged(object sender, EventArgs e) {
+			ShowTicketHistoryDetails();
+			return;
+		}
+	}
 }
