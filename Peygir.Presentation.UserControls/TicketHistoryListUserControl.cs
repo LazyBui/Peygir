@@ -8,15 +8,16 @@ namespace Peygir.Presentation.UserControls {
 			get { return ticketHistoryListView; }
 		}
 
-		public DateTimeFormatter DateTimeFormatter { get; set; }
-
 		public TicketHistoryListUserControl() {
 			InitializeComponent();
 		}
 
-		public void ShowTicketHistory(TicketHistory[] ticketHistory) {
+		public void ShowTicketHistory(TicketHistory[] ticketHistory, DateTimeFormatter formatter) {
 			if (ticketHistory == null) {
 				throw new ArgumentNullException(nameof(ticketHistory));
+			}
+			if (formatter == null) {
+				throw new ArgumentNullException(nameof(formatter));
 			}
 
 			ticketHistoryListView.BeginUpdate();
@@ -25,12 +26,7 @@ namespace Peygir.Presentation.UserControls {
 			foreach (var th in ticketHistory) {
 				ListViewItem lvi = new ListViewItem();
 
-				if (DateTimeFormatter != null) {
-					lvi.Text = DateTimeFormatter.Format(th.Timestamp);
-				}
-				else {
-					lvi.Text = string.Format("{0}", th.Timestamp);
-				}
+				lvi.Text = formatter.Format(th.Timestamp);
 				lvi.Tag = th;
 
 				ticketHistoryListView.Items.Add(lvi);

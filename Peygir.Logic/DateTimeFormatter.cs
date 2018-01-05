@@ -6,8 +6,16 @@ using System.Threading;
 namespace Peygir.Logic {
 	public class DateTimeFormatter {
 		public string DateTimePattern { get; private set; }
-
 		public Calendar Calendar { get; private set; }
+
+		/// <summary>
+		/// Formats <see cref="DateTime" /> values with ToString.
+		/// </summary>
+		public static readonly DateTimeFormatter Default = new DateTimeFormatter();
+
+		private DateTimeFormatter() {
+			// Intentionally blank
+		}
 
 		public DateTimeFormatter(string dateTimePattern, Calendar calendar)
 			: this(
@@ -98,6 +106,9 @@ namespace Peygir.Logic {
 
 		public string Format(DateTime dateTime) {
 			dateTime = dateTime.ToLocalTime();
+			if (object.ReferenceEquals(this, Default)) {
+				return dateTime.ToString();
+			}
 
 			// Format   Description
 			// --------------------------------------------------------------------------------

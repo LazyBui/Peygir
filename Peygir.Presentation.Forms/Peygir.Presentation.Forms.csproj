@@ -59,6 +59,7 @@
     <Compile Include="AttachmentsForm.designer.cs">
       <DependentUpon>AttachmentsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormUtil.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

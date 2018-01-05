@@ -16,22 +16,6 @@ namespace Peygir.Presentation.Forms {
 
 			InitializeComponent();
 
-			if (Settings.Default.FormatDateTime) {
-				try {
-					DateTimeFormatter dateTimeFormatter = new DateTimeFormatter
-					(
-						Settings.Default.DateTimePattern,
-						Settings.Default.Calendar
-					);
-
-					ticketHistoryListUserControl.DateTimeFormatter = dateTimeFormatter;
-					ticketHistoryDetailsUserControl.DateTimeFormatter = dateTimeFormatter;
-				}
-				catch (Exception) {
-					// Nothing.
-				}
-			}
-
 			ticketHistoryListUserControl.TicketHistoryListView.SelectedIndexChanged += TicketHistoryListView_SelectedIndexChanged;
 
 			ShowTicketHistory();
@@ -46,7 +30,7 @@ namespace Peygir.Presentation.Forms {
 		private void ShowTicketHistory() {
 			TicketHistory[] history = Ticket.GetHistory();
 
-			ticketHistoryListUserControl.ShowTicketHistory(history);
+			ticketHistoryListUserControl.ShowTicketHistory(history, FormUtil.GetFormatter());
 
 			ShowTicketHistoryDetails();
 		}
@@ -57,7 +41,7 @@ namespace Peygir.Presentation.Forms {
 			if (ticketHistoryListUserControl.TicketHistoryListView.SelectedItems.Count == 1) {
 				TicketHistory history = (TicketHistory)ticketHistoryListUserControl.TicketHistoryListView.SelectedItems[0].Tag;
 
-				ticketHistoryDetailsUserControl.ShowTicketHistory(history);
+				ticketHistoryDetailsUserControl.ShowTicketHistory(history, FormUtil.GetFormatter());
 
 				groupBox.Enabled = true;
 			}

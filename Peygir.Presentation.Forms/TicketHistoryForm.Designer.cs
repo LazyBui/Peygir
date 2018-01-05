@@ -41,14 +41,12 @@
 			// ticketHistoryDetailsUserControl
 			// 
 			resources.ApplyResources(this.ticketHistoryDetailsUserControl, "ticketHistoryDetailsUserControl");
-			this.ticketHistoryDetailsUserControl.DateTimeFormatter = null;
 			this.ticketHistoryDetailsUserControl.Name = "ticketHistoryDetailsUserControl";
 			this.ticketHistoryDetailsUserControl.ReadOnly = false;
 			// 
 			// ticketHistoryListUserControl
 			// 
 			resources.ApplyResources(this.ticketHistoryListUserControl, "ticketHistoryListUserControl");
-			this.ticketHistoryListUserControl.DateTimeFormatter = null;
 			this.ticketHistoryListUserControl.Name = "ticketHistoryListUserControl";
 			// 
 			// okButton

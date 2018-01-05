@@ -14,8 +14,6 @@ namespace Peygir.Presentation.UserControls {
 			}
 		}
 
-		public DateTimeFormatter DateTimeFormatter { get; set; }
-
 		public TicketHistoryDetailsUserControl() {
 			InitializeComponent();
 
@@ -28,17 +26,15 @@ namespace Peygir.Presentation.UserControls {
 			commentTextBox.Text = string.Empty;
 		}
 
-		public void ShowTicketHistory(TicketHistory ticketHistory) {
+		public void ShowTicketHistory(TicketHistory ticketHistory, DateTimeFormatter formatter) {
 			if (ticketHistory == null) {
 				throw new ArgumentNullException(nameof(ticketHistory));
 			}
+			if (formatter == null) {
+				throw new ArgumentNullException(nameof(formatter));
+			}
 
-			if (DateTimeFormatter != null) {
-				timestampTextBox.Text = DateTimeFormatter.Format(ticketHistory.Timestamp);
-			}
-			else {
-				timestampTextBox.Text = string.Format("{0}", ticketHistory.Timestamp);
-			}
+			timestampTextBox.Text = formatter.Format(ticketHistory.Timestamp);
 			changesTextBox.Text = ticketHistory.Changes;
 			commentTextBox.Text = ticketHistory.Comment;
 		}
