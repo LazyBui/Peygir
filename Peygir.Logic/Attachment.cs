@@ -94,7 +94,7 @@ namespace Peygir.Logic {
 			get { return name; }
 			set {
 				if (value == null) {
-					throw new ArgumentNullException("value");
+					throw new ArgumentNullException();
 				}
 				name = value;
 			}
@@ -107,7 +107,7 @@ namespace Peygir.Logic {
 		public Attachment(int ticketID) {
 			if (ticketID == InvalidID) {
 				string message = Resources.String_InvalidTicketID;
-				throw new ArgumentException(message, "ticketID");
+				throw new ArgumentException(message, nameof(ticketID));
 			}
 
 			this.ticketID = ticketID;
@@ -166,7 +166,7 @@ namespace Peygir.Logic {
 
 		public void SetContents(byte[] contents) {
 			if (contents == null) {
-				throw new ArgumentNullException("contents");
+				throw new ArgumentNullException(nameof(contents));
 			}
 
 			this.contents = Convert.ToBase64String(contents);
@@ -183,7 +183,7 @@ namespace Peygir.Logic {
 
 		internal Attachment(PeygirDatabaseDataSet.AttachmentsRow row) {
 			if (row == null) {
-				throw new ArgumentNullException("row");
+				throw new ArgumentNullException(nameof(row));
 			}
 
 			ID = row.ID;
@@ -195,7 +195,7 @@ namespace Peygir.Logic {
 
 		internal Attachment(PeygirDatabaseDataSet.AttachmentsWithoutContentsRow row) {
 			if (row == null) {
-				throw new ArgumentNullException("row");
+				throw new ArgumentNullException(nameof(row));
 			}
 
 			ID = row.ID;

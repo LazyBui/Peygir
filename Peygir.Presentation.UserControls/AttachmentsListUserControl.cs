@@ -14,7 +14,7 @@ namespace Peygir.Presentation.UserControls {
 
 		public void ShowAttachments(Attachment[] attachments) {
 			if (attachments == null) {
-				throw new ArgumentNullException("attachments");
+				throw new ArgumentNullException(nameof(attachments));
 			}
 
 			attachmentsListView.BeginUpdate();

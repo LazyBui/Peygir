@@ -30,7 +30,7 @@ namespace Peygir.Presentation.UserControls {
 
 		public void ShowTicketHistory(TicketHistory ticketHistory) {
 			if (ticketHistory == null) {
-				throw new ArgumentNullException("ticketHistory");
+				throw new ArgumentNullException(nameof(ticketHistory));
 			}
 
 			if (DateTimeFormatter != null) {
@@ -45,7 +45,7 @@ namespace Peygir.Presentation.UserControls {
 
 		public void RetrieveTicketHistory(TicketHistory ticketHistory) {
 			if (ticketHistory == null) {
-				throw new ArgumentNullException("ticketHistory");
+				throw new ArgumentNullException(nameof(ticketHistory));
 			}
 
 			// Nothing.

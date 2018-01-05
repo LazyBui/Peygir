@@ -14,7 +14,7 @@ namespace Peygir.Data
         {
             if (databasePath == null)
             {
-                throw new ArgumentNullException("databasePath");
+                throw new ArgumentNullException(nameof(databasePath));
             }
 
             string newConnectionString = Settings.Default.DefaultConnectionString;

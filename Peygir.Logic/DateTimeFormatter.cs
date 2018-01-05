@@ -10,13 +10,12 @@ namespace Peygir.Logic {
 		public Calendar Calendar { get; private set; }
 
 		public DateTimeFormatter(string dateTimePattern, Calendar calendar)
-			: this
-			(
+			: this(
 				dateTimePattern,
 				calendar,
 				Thread.CurrentThread.CurrentCulture.DateTimeFormat.AMDesignator,
-				Thread.CurrentThread.CurrentCulture.DateTimeFormat.PMDesignator
-			) {
+				Thread.CurrentThread.CurrentCulture.DateTimeFormat.PMDesignator)
+		{
 			// Nothing.
 		}
 
@@ -25,13 +24,12 @@ namespace Peygir.Logic {
 		}
 
 		public DateTimeFormatter(string dateTimePattern, string calendarName)
-			: this
-			(
+			: this(
 				dateTimePattern,
 				calendarName,
 				Thread.CurrentThread.CurrentCulture.DateTimeFormat.AMDesignator,
-				Thread.CurrentThread.CurrentCulture.DateTimeFormat.PMDesignator
-			) {
+				Thread.CurrentThread.CurrentCulture.DateTimeFormat.PMDesignator)
+		{
 			// Nothing.
 		}
 
@@ -177,16 +175,16 @@ namespace Peygir.Logic {
 
 		private void Initialize(string dateTimePattern, Calendar calendar, string amDesignator, string pmDesignator) {
 			if (dateTimePattern == null) {
-				throw new ArgumentNullException("dateTimePattern");
+				throw new ArgumentNullException(nameof(dateTimePattern));
 			}
 			if (calendar == null) {
-				throw new ArgumentNullException("calendar");
+				throw new ArgumentNullException(nameof(calendar));
 			}
 			if (amDesignator == null) {
-				throw new ArgumentNullException("amDesignator");
+				throw new ArgumentNullException(nameof(amDesignator));
 			}
 			if (pmDesignator == null) {
-				throw new ArgumentNullException("pmDesignator");
+				throw new ArgumentNullException(nameof(pmDesignator));
 			}
 
 			DateTimePattern = dateTimePattern;

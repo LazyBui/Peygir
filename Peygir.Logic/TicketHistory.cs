@@ -66,7 +66,7 @@ namespace Peygir.Logic {
 			get { return changes; }
 			set {
 				if (value == null) {
-					throw new ArgumentNullException("value");
+					throw new ArgumentNullException();
 				}
 				changes = value;
 			}
@@ -76,7 +76,7 @@ namespace Peygir.Logic {
 			get { return comment; }
 			set {
 				if (value == null) {
-					throw new ArgumentNullException("value");
+					throw new ArgumentNullException();
 				}
 				comment = value;
 			}
@@ -85,7 +85,7 @@ namespace Peygir.Logic {
 		public TicketHistory(int ticketID) {
 			if (ticketID == InvalidID) {
 				string message = Resources.String_InvalidTicketID;
-				throw new ArgumentException(message, "ticketID");
+				throw new ArgumentException(message, nameof(ticketID));
 			}
 
 			this.ticketID = ticketID;
@@ -144,7 +144,7 @@ namespace Peygir.Logic {
 
 		internal TicketHistory(PeygirDatabaseDataSet.TicketsHistoryRow row) {
 			if (row == null) {
-				throw new ArgumentNullException("row");
+				throw new ArgumentNullException(nameof(row));
 			}
 
 			ID = row.ID;

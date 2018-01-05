@@ -25,7 +25,7 @@ namespace Peygir.Presentation.UserControls {
 
 		public void ShowAttachment(Attachment attachment) {
 			if (attachment == null) {
-				throw new ArgumentNullException("attachment");
+				throw new ArgumentNullException(nameof(attachment));
 			}
 
 			nameTextBox.Text = attachment.Name;
@@ -35,7 +35,7 @@ namespace Peygir.Presentation.UserControls {
 
 		public void RetrieveAttachment(Attachment attachment) {
 			if (attachment == null) {
-				throw new ArgumentNullException("attachment");
+				throw new ArgumentNullException(nameof(attachment));
 			}
 
 			attachment.Name = nameTextBox.Text;

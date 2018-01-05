@@ -41,7 +41,7 @@ namespace Peygir.Logic {
 			get { return name; }
 			set {
 				if (value == null) {
-					throw new ArgumentNullException("value");
+					throw new ArgumentNullException();
 				}
 				name = value;
 			}
@@ -51,7 +51,7 @@ namespace Peygir.Logic {
 			get { return description; }
 			set {
 				if (value == null) {
-					throw new ArgumentNullException("value");
+					throw new ArgumentNullException();
 				}
 				description = value;
 			}
@@ -167,7 +167,7 @@ namespace Peygir.Logic {
 
 		internal Project(PeygirDatabaseDataSet.ProjectsRow row) {
 			if (row == null) {
-				throw new ArgumentNullException("row");
+				throw new ArgumentNullException(nameof(row));
 			}
 
 			ID = row.ID;

@@ -37,7 +37,7 @@ namespace Peygir.Presentation.UserControls {
 
 		public void ShowProject(Project project) {
 			if (project == null) {
-				throw new ArgumentNullException("project");
+				throw new ArgumentNullException(nameof(project));
 			}
 
 			nameTextBox.Text = project.Name;
@@ -47,7 +47,7 @@ namespace Peygir.Presentation.UserControls {
 
 		public void RetrieveProject(Project project) {
 			if (project == null) {
-				throw new ArgumentNullException("project");
+				throw new ArgumentNullException(nameof(project));
 			}
 
 			project.Name = nameTextBox.Text;

@@ -46,7 +46,7 @@ namespace Peygir.Presentation.Forms {
 
 		private void ChangeLanguage(string language) {
 			if (language == null) {
-				throw new ArgumentNullException("language");
+				throw new ArgumentNullException(nameof(language));
 			}
 
 			Settings.Default.Language = language;

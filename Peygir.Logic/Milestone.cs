@@ -61,7 +61,7 @@ namespace Peygir.Logic {
 			get { return name; }
 			set {
 				if (value == null) {
-					throw new ArgumentNullException("value");
+					throw new ArgumentNullException();
 				}
 				name = value;
 			}
@@ -71,7 +71,7 @@ namespace Peygir.Logic {
 			get { return description; }
 			set {
 				if (value == null) {
-					throw new ArgumentNullException("value");
+					throw new ArgumentNullException();
 				}
 				description = value;
 			}
@@ -90,7 +90,7 @@ namespace Peygir.Logic {
 		public Milestone(int projectID) {
 			if (projectID == InvalidID) {
 				string message = Resources.String_InvalidProjectID;
-				throw new ArgumentException(message, "projectID");
+				throw new ArgumentException(message, nameof(projectID));
 			}
 
 			this.projectID = projectID;
@@ -182,7 +182,7 @@ namespace Peygir.Logic {
 
 		internal Milestone(PeygirDatabaseDataSet.MilestonesRow row) {
 			if (row == null) {
-				throw new ArgumentNullException("row");
+				throw new ArgumentNullException(nameof(row));
 			}
 
 			ID = row.ID;

@@ -16,7 +16,7 @@ namespace Peygir.Presentation.UserControls {
 
 		public void ShowTickets(Ticket[] tickets) {
 			if (tickets == null) {
-				throw new ArgumentNullException("tickets");
+				throw new ArgumentNullException(nameof(tickets));
 			}
 
 			// Cache milestones.

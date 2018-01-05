@@ -14,7 +14,7 @@ namespace Peygir.Presentation.UserControls {
 
 		public void ShowProjects(Project[] projects) {
 			if (projects == null) {
-				throw new ArgumentNullException("projects");
+				throw new ArgumentNullException(nameof(projects));
 			}
 
 			projectsListView.BeginUpdate();

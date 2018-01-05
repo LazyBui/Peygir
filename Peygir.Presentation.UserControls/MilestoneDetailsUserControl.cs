@@ -42,7 +42,7 @@ namespace Peygir.Presentation.UserControls {
 
 		public void ShowMilestone(Milestone milestone) {
 			if (milestone == null) {
-				throw new ArgumentNullException("milestone");
+				throw new ArgumentNullException(nameof(milestone));
 			}
 
 			nameTextBox.Text = milestone.Name;
@@ -53,7 +53,7 @@ namespace Peygir.Presentation.UserControls {
 
 		public void RetrieveMilestone(Milestone milestone) {
 			if (milestone == null) {
-				throw new ArgumentNullException("milestone");
+				throw new ArgumentNullException(nameof(milestone));
 			}
 
 			milestone.Name = nameTextBox.Text;

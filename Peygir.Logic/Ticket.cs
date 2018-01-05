@@ -74,7 +74,7 @@ namespace Peygir.Logic {
 			set {
 				if (value == InvalidID) {
 					string message = Resources.String_InvalidMilestoneID;
-					throw new ArgumentException(message, "value");
+					throw new ArgumentException(message);
 				}
 
 				milestoneID = value;
@@ -90,7 +90,7 @@ namespace Peygir.Logic {
 			get { return summary; }
 			set {
 				if (value == null) {
-					throw new ArgumentNullException("value");
+					throw new ArgumentNullException();
 				}
 				summary = value;
 			}
@@ -100,7 +100,7 @@ namespace Peygir.Logic {
 			get { return reportedBy; }
 			set {
 				if (value == null) {
-					throw new ArgumentNullException("value");
+					throw new ArgumentNullException();
 				}
 				reportedBy = value;
 			}
@@ -125,7 +125,7 @@ namespace Peygir.Logic {
 			get { return assignedTo; }
 			set {
 				if (value == null) {
-					throw new ArgumentNullException("value");
+					throw new ArgumentNullException();
 				}
 				assignedTo = value;
 			}
@@ -140,7 +140,7 @@ namespace Peygir.Logic {
 			get { return description; }
 			set {
 				if (value == null) {
-					throw new ArgumentNullException("value");
+					throw new ArgumentNullException();
 				}
 				description = value;
 			}
@@ -149,11 +149,11 @@ namespace Peygir.Logic {
 		public Ticket(int projectID, int milestoneID) {
 			if (projectID == InvalidID) {
 				string message = Resources.String_InvalidProjectID;
-				throw new ArgumentException(message, "projectID");
+				throw new ArgumentException(message, nameof(projectID));
 			}
 			if (milestoneID == InvalidID) {
 				string message = Resources.String_InvalidMilestoneID;
-				throw new ArgumentException(message, "milestoneID");
+				throw new ArgumentException(message, nameof(milestoneID));
 			}
 
 			this.milestoneID = milestoneID;
@@ -314,7 +314,7 @@ namespace Peygir.Logic {
 
 		internal Ticket(PeygirDatabaseDataSet.TicketsRow row) {
 			if (row == null) {
-				throw new ArgumentNullException("row");
+				throw new ArgumentNullException(nameof(row));
 			}
 
 			ID = row.ID;

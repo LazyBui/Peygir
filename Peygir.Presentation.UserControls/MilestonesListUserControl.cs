@@ -15,7 +15,7 @@ namespace Peygir.Presentation.UserControls {
 
 		public void ShowMilestones(Milestone[] milestones) {
 			if (milestones == null) {
-				throw new ArgumentNullException("milestones");
+				throw new ArgumentNullException(nameof(milestones));
 			}
 
 			milestonesListView.BeginUpdate();

@@ -16,7 +16,7 @@ namespace Peygir.Presentation.UserControls {
 
 		public void ShowTicketHistory(TicketHistory[] ticketHistory) {
 			if (ticketHistory == null) {
-				throw new ArgumentNullException("ticketHistory");
+				throw new ArgumentNullException(nameof(ticketHistory));
 			}
 
 			ticketHistoryListView.BeginUpdate();

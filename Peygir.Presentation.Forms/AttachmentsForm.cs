@@ -21,7 +21,7 @@ namespace Peygir.Presentation.Forms {
 
 		public AttachmentsForm(Ticket ticket) {
 			if (ticket == null) {
-				throw new ArgumentNullException("ticket");
+				throw new ArgumentNullException(nameof(ticket));
 			}
 
 			Ticket = ticket;

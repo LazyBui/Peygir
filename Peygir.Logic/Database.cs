@@ -71,7 +71,7 @@ namespace Peygir.Logic {
 
 		public static void CreateAndOpen(string databasePath) {
 			if (databasePath == null) {
-				throw new ArgumentNullException("databasePath");
+				throw new ArgumentNullException(nameof(databasePath));
 			}
 
 			// Close.
@@ -89,7 +89,7 @@ namespace Peygir.Logic {
 
 		public static void Open(string databasePath) {
 			if (databasePath == null) {
-				throw new ArgumentNullException("databasePath");
+				throw new ArgumentNullException(nameof(databasePath));
 			}
 
 			// Close.

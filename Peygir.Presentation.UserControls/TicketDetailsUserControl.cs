@@ -89,7 +89,7 @@ namespace Peygir.Presentation.UserControls {
 
 		public void ShowMilestones(Milestone[] milestones) {
 			if (milestones == null) {
-				throw new ArgumentNullException("milestones");
+				throw new ArgumentNullException(nameof(milestones));
 			}
 
 			milestoneComboBox.BeginUpdate();
@@ -106,7 +106,7 @@ namespace Peygir.Presentation.UserControls {
 
 		public void ShowTicket(Ticket ticket) {
 			if (ticket == null) {
-				throw new ArgumentNullException("ticket");
+				throw new ArgumentNullException(nameof(ticket));
 			}
 
 			milestoneComboBox.SelectedIndex = -1;
@@ -131,7 +131,7 @@ namespace Peygir.Presentation.UserControls {
 
 		public void RetrieveTicket(Ticket ticket) {
 			if (ticket == null) {
-				throw new ArgumentNullException("ticket");
+				throw new ArgumentNullException(nameof(ticket));
 			}
 
 			Milestone milestone = (Milestone)milestoneComboBox.SelectedItem;
