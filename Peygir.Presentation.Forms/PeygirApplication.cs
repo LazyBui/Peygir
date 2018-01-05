@@ -28,8 +28,6 @@ namespace Peygir.Presentation.Forms {
 
 			MainForm mainForm = new MainForm();
 			Application.Run(mainForm);
-
-			return;
 		}
 	}
 }

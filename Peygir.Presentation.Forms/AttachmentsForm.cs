@@ -48,8 +48,6 @@ namespace Peygir.Presentation.Forms {
 				saveButton.Enabled = false;
 				deleteButton.Enabled = true;
 			}
-
-			return;
 		}
 
 		private void ShowAttachments() {
@@ -73,8 +71,6 @@ namespace Peygir.Presentation.Forms {
 			}
 
 			UpdateButtonsEnabledProperty();
-
-			return;
 		}
 
 		private void AddAttachment() {
@@ -120,7 +116,6 @@ namespace Peygir.Presentation.Forms {
 
 				ShowAttachments();
 			}
-			return;
 		}
 
 		private void SaveAttachment() {
@@ -148,8 +143,6 @@ namespace Peygir.Presentation.Forms {
 					);
 				}
 			}
-
-			return;
 		}
 
 		private void DeleteAttachment() {
@@ -181,28 +174,22 @@ namespace Peygir.Presentation.Forms {
 				// Show attachments.
 				ShowAttachments();
 			}
-
-			return;
 		}
 
 		void AttachmentsListView_SelectedIndexChanged(object sender, EventArgs e) {
 			UpdateButtonsEnabledProperty();
-			return;
 		}
 
 		private void addButton_Click(object sender, EventArgs e) {
 			AddAttachment();
-			return;
 		}
 
 		private void saveButton_Click(object sender, EventArgs e) {
 			SaveAttachment();
-			return;
 		}
 
 		private void deleteButton_Click(object sender, EventArgs e) {
 			DeleteAttachment();
-			return;
 		}
 	}
 }

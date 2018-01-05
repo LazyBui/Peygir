@@ -21,8 +21,6 @@ namespace Peygir.Data
             newConnectionString = newConnectionString.Replace(@"{DatabasePath}", databasePath);
 
             Settings.Default["PeygirDatabaseConnectionString"] = newConnectionString;
-
-            return;
         }
     }
 }

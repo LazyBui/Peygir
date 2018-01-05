@@ -124,8 +124,6 @@ namespace Peygir.Logic {
 
 			// Find ID.
 			ID = tableAdapter.GetID(projectID, name, description, (int)state, displayOrder).Value;
-
-			return;
 		}
 
 		public override void Update() {
@@ -139,8 +137,6 @@ namespace Peygir.Logic {
 			MilestonesTableAdapter tableAdapter = Database.MilestonesTableAdapter;
 
 			tableAdapter.UpdateByID(projectID, name, description, (int)state, displayOrder, ID);
-
-			return;
 		}
 
 		public override void Delete() {
@@ -156,8 +152,6 @@ namespace Peygir.Logic {
 			tableAdapter.DeleteByID(ID);
 
 			ID = InvalidID;
-
-			return;
 		}
 
 		public Project GetProject() {

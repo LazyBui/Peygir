@@ -26,7 +26,6 @@ namespace Peygir.Presentation.UserControls {
 			timestampTextBox.Text = string.Empty;
 			changesTextBox.Text = string.Empty;
 			commentTextBox.Text = string.Empty;
-			return;
 		}
 
 		public void ShowTicketHistory(TicketHistory ticketHistory) {
@@ -42,8 +41,6 @@ namespace Peygir.Presentation.UserControls {
 			}
 			changesTextBox.Text = ticketHistory.Changes;
 			commentTextBox.Text = ticketHistory.Comment;
-
-			return;
 		}
 
 		public void RetrieveTicketHistory(TicketHistory ticketHistory) {
@@ -52,13 +49,10 @@ namespace Peygir.Presentation.UserControls {
 			}
 
 			// Nothing.
-
-			return;
 		}
 
 		private void UpdateReadOnlyState() {
 			// Nothing.
-			return;
 		}
 	}
 }

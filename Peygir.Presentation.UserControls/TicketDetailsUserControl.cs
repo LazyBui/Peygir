@@ -102,8 +102,6 @@ namespace Peygir.Presentation.UserControls {
 
 			assignedToComboBox.Items.Clear();
 			assignedToComboBox.Items.AddRange(Ticket.GetAssignees());
-
-			return;
 		}
 
 		public void ShowTicket(Ticket ticket) {
@@ -129,8 +127,6 @@ namespace Peygir.Presentation.UserControls {
 			assignedToComboBox.Text = ticket.AssignedTo;
 			priorityComboBox.SelectedIndex = (int)ticket.Priority;
 			descriptionTextBox.Text = ticket.Description;
-
-			return;
 		}
 
 		public void RetrieveTicket(Ticket ticket) {
@@ -149,8 +145,6 @@ namespace Peygir.Presentation.UserControls {
 			ticket.AssignedTo = assignedToComboBox.Text.Substring(0, Math.Min(255, assignedToComboBox.Text.Length)); // Max 255 characters.
 			ticket.Priority = (TicketPriority)priorityComboBox.SelectedIndex;
 			ticket.Description = descriptionTextBox.Text;
-
-			return;
 		}
 
 		private void UpdateReadOnlyState() {
@@ -163,8 +157,6 @@ namespace Peygir.Presentation.UserControls {
 			assignedToComboBox.Enabled = !readOnly;
 			priorityComboBox.Enabled = !readOnly;
 			descriptionTextBox.ReadOnly = readOnly;
-
-			return;
 		}
 	}
 }

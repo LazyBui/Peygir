@@ -53,8 +53,6 @@ namespace Peygir.Presentation.UserControls {
 			milestonesListView.EndUpdate();
 
 			milestonesListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
-
-			return;
 		}
 	}
 }

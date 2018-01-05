@@ -49,8 +49,6 @@ namespace Peygir.Presentation.Forms {
 			ticketHistoryListUserControl.ShowTicketHistory(history);
 
 			ShowTicketHistoryDetails();
-
-			return;
 		}
 
 		private void ShowTicketHistoryDetails() {
@@ -66,13 +64,10 @@ namespace Peygir.Presentation.Forms {
 			else {
 				groupBox.Enabled = false;
 			}
-
-			return;
 		}
 
 		private void TicketHistoryListView_SelectedIndexChanged(object sender, EventArgs e) {
 			ShowTicketHistoryDetails();
-			return;
 		}
 	}
 }

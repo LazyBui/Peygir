@@ -147,8 +147,6 @@ namespace Peygir.Presentation.UserControls {
 			ticketsListView.EndUpdate();
 
 			ticketsListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
-
-			return;
 		}
 	}
 }

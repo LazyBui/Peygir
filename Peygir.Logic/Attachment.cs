@@ -130,8 +130,6 @@ namespace Peygir.Logic {
 
 			// Find ID.
 			ID = tableAdapter.GetID(ticketID, name, size).Value;
-
-			return;
 		}
 
 		public override void Update() {
@@ -145,8 +143,6 @@ namespace Peygir.Logic {
 			AttachmentsTableAdapter tableAdapter = Database.AttachmentsTableAdapter;
 
 			tableAdapter.UpdateByID(ticketID, name, size, contents, ID);
-
-			return;
 		}
 
 		public override void Delete() {
@@ -162,8 +158,6 @@ namespace Peygir.Logic {
 			tableAdapter.DeleteByID(ID);
 
 			ID = InvalidID;
-
-			return;
 		}
 
 		public byte[] GetContents() {

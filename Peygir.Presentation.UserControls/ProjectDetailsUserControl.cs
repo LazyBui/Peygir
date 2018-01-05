@@ -43,8 +43,6 @@ namespace Peygir.Presentation.UserControls {
 			nameTextBox.Text = project.Name;
 			displayOrderNumericUpDown.Value = Math.Min(project.DisplayOrder, displayOrderNumericUpDown.Maximum);
 			descriptionTextBox.Text = project.Description;
-
-			return;
 		}
 
 		public void RetrieveProject(Project project) {
@@ -55,16 +53,12 @@ namespace Peygir.Presentation.UserControls {
 			project.Name = nameTextBox.Text;
 			project.DisplayOrder = (int)displayOrderNumericUpDown.Value;
 			project.Description = descriptionTextBox.Text;
-
-			return;
 		}
 
 		private void UpdateReadOnlyState() {
 			nameTextBox.ReadOnly = readOnly;
 			displayOrderNumericUpDown.ReadOnly = readOnly;
 			descriptionTextBox.ReadOnly = readOnly;
-
-			return;
 		}
 	}
 }

@@ -6,7 +6,6 @@ namespace Peygir {
 		[STAThread]
 		private static void Main() {
 			PeygirApplication.Run();
-			return;
 		}
 	}
 }

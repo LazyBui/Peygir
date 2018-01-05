@@ -40,8 +40,6 @@ namespace Peygir.Presentation.UserControls {
 
 			ticketHistoryListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
 			ticketHistoryListView.Columns[0].Width -= 4;
-
-			return;
 		}
 	}
 }

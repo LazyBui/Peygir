@@ -30,7 +30,6 @@ namespace Peygir.Presentation.Forms {
 
 		private void UpdateButtonsEnabledProperty() {
 			formatDateTimePanel.Enabled = formatDateTimeCheckBox.Checked;
-			return;
 		}
 
 		private void LoadSettings() {
@@ -47,8 +46,6 @@ namespace Peygir.Presentation.Forms {
 			dateTimePatternTextBox.Text = Settings.Default.DateTimePattern;
 
 			UpdateButtonsEnabledProperty();
-
-			return;
 		}
 
 		private void SaveSettings() {
@@ -64,20 +61,16 @@ namespace Peygir.Presentation.Forms {
 			Settings.Default.DateTimePattern = dateTimePatternTextBox.Text;
 
 			Settings.Default.Save();
-
-			return;
 		}
 
 		private void OptionsForm_FormClosing(object sender, FormClosingEventArgs e) {
 			if (DialogResult == System.Windows.Forms.DialogResult.OK) {
 				SaveSettings();
 			}
-			return;
 		}
 
 		private void formatDateTimeCheckBox_CheckedChanged(object sender, EventArgs e) {
 			UpdateButtonsEnabledProperty();
-			return;
 		}
 	}
 }

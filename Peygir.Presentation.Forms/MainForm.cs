@@ -42,8 +42,6 @@ namespace Peygir.Presentation.Forms {
 					persianToolStripMenuItem.Checked = true;
 					break;
 			}
-
-			return;
 		}
 
 		private void ChangeLanguage(string language) {
@@ -74,8 +72,6 @@ namespace Peygir.Presentation.Forms {
 			if (result == System.Windows.Forms.DialogResult.Yes) {
 				Application.Restart();
 			}
-
-			return;
 		}
 
 		private void UpdateControlsEnabledProperty() {
@@ -118,8 +114,6 @@ namespace Peygir.Presentation.Forms {
 				Resources.String_DatabaseX,
 				string.IsNullOrEmpty(Database.CurrentDatabasePath) ? "-" : Database.CurrentDatabasePath
 			);
-
-			return;
 		}
 
 		private void NewDatabase() {
@@ -150,7 +144,6 @@ namespace Peygir.Presentation.Forms {
 					CloseDatabase();
 				}
 			}
-			return;
 		}
 
 		private void OpenDatabase() {
@@ -180,7 +173,6 @@ namespace Peygir.Presentation.Forms {
 					CloseDatabase();
 				}
 			}
-			return;
 		}
 
 		private void SaveDatabaseAs() {
@@ -215,7 +207,6 @@ namespace Peygir.Presentation.Forms {
 					CloseDatabase();
 				}
 			}
-			return;
 		}
 
 		private void CloseDatabase() {
@@ -224,14 +215,11 @@ namespace Peygir.Presentation.Forms {
 			projectsListUserControl.ProjectsListView.Items.Clear();
 
 			UpdateControlsEnabledProperty();
-
-			return;
 		}
 
 		private void ShowOptions() {
 			OptionsForm form = new OptionsForm();
 			form.ShowDialog();
-			return;
 		}
 
 		private void ShowProjects() {
@@ -256,8 +244,6 @@ namespace Peygir.Presentation.Forms {
 			}
 
 			UpdateControlsEnabledProperty();
-
-			return;
 		}
 
 		private void AddProject() {
@@ -309,8 +295,6 @@ namespace Peygir.Presentation.Forms {
 
 				projectsListUserControl.Focus();
 			}
-
-			return;
 		}
 
 		private void EditProject() {
@@ -324,8 +308,6 @@ namespace Peygir.Presentation.Forms {
 			form.ShowDialog();
 
 			ShowProjects();
-
-			return;
 		}
 
 		private void DeleteProject() {
@@ -357,7 +339,6 @@ namespace Peygir.Presentation.Forms {
 				// Show projects.
 				ShowProjects();
 			}
-			return;
 		}
 
 		private void ShowHelp() {
@@ -376,88 +357,71 @@ namespace Peygir.Presentation.Forms {
 					FormMessageBoxOptions
 				);
 			}
-			return;
 		}
 
 		private void ShowAbout() {
 			AboutForm form = new AboutForm();
 			form.ShowDialog();
-			return;
 		}
 
 		private void newDatabaseToolStripMenuItem_Click(object sender, EventArgs e) {
 			NewDatabase();
-			return;
 		}
 
 		private void openDatabaseToolStripMenuItem_Click(object sender, EventArgs e) {
 			OpenDatabase();
-			return;
 		}
 
 		private void saveDatabaseAsToolStripMenuItem_Click(object sender, EventArgs e) {
 			SaveDatabaseAs();
-			return;
 		}
 
 		private void closeDatabaseToolStripMenuItem_Click(object sender, EventArgs e) {
 			CloseDatabase();
-			return;
 		}
 
 		private void exitToolStripMenuItem_Click(object sender, EventArgs e) {
 			Close();
-			return;
 		}
 
 		private void optionsToolStripMenuItem_Click(object sender, EventArgs e) {
 			ShowOptions();
-			return;
 		}
 
 		private void ProjectsListView_SelectedIndexChanged(object sender, EventArgs e) {
 			UpdateControlsEnabledProperty();
-			return;
 		}
 
 		private void ProjectsListView_DoubleClick(object sender, EventArgs e) {
 			EditProject();
-			return;
 		}
 
 		private void addProjectButton_Click(object sender, EventArgs e) {
 			AddProject();
-			return;
 		}
 
 		private void editProjectButton_Click(object sender, EventArgs e) {
 			EditProject();
-			return;
 		}
 
 		private void deleteProjectButton_Click(object sender, EventArgs e) {
 			DeleteProject();
-			return;
 		}
 
 		private void viewHelpToolStripMenuItem_Click(object sender, EventArgs e) {
 			ShowHelp();
-			return;
 		}
 
 		private void aboutToolStripMenuItem_Click(object sender, EventArgs e) {
 			ShowAbout();
-			return;
 		}
 
 		private void englishToolStripMenuItem_Click(object sender, EventArgs e) {
 			ChangeLanguage("en");
-			return;
 		}
 
 		private void persianToolStripMenuItem_Click(object sender, EventArgs e) {
 			ChangeLanguage("fa");
-			return;
 		}
 	}
 }

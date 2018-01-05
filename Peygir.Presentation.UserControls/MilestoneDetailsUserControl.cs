@@ -49,8 +49,6 @@ namespace Peygir.Presentation.UserControls {
 			stateComboBox.SelectedIndex = (int)milestone.State;
 			displayOrderNumericUpDown.Value = Math.Min(milestone.DisplayOrder, displayOrderNumericUpDown.Maximum);
 			descriptionTextBox.Text = milestone.Description;
-
-			return;
 		}
 
 		public void RetrieveMilestone(Milestone milestone) {
@@ -62,8 +60,6 @@ namespace Peygir.Presentation.UserControls {
 			milestone.State = (MilestoneState)stateComboBox.SelectedIndex;
 			milestone.DisplayOrder = (int)displayOrderNumericUpDown.Value;
 			milestone.Description = descriptionTextBox.Text;
-
-			return;
 		}
 
 		private void UpdateReadOnlyState() {
@@ -71,8 +67,6 @@ namespace Peygir.Presentation.UserControls {
 			stateComboBox.Enabled = !readOnly;
 			displayOrderNumericUpDown.ReadOnly = readOnly;
 			descriptionTextBox.ReadOnly = readOnly;
-
-			return;
 		}
 	}
 }

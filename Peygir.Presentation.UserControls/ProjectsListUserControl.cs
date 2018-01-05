@@ -33,8 +33,6 @@ namespace Peygir.Presentation.UserControls {
 
 			projectsListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
 			projectsListView.Columns[0].Width -= 4;
-
-			return;
 		}
 	}
 }

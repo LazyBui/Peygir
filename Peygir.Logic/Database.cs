@@ -85,8 +85,6 @@ namespace Peygir.Logic {
 
 			// Open database.
 			Open(databasePath);
-
-			return;
 		}
 
 		public static void Open(string databasePath) {
@@ -121,8 +119,6 @@ namespace Peygir.Logic {
 
 			currentDatabasePath = databasePath;
 			isOpen = true;
-
-			return;
 		}
 
 		public static void Close() {
@@ -150,8 +146,6 @@ namespace Peygir.Logic {
 
 			currentDatabasePath = null;
 			isOpen = false;
-
-			return;
 		}
 
 		public static void Flush() {
@@ -164,8 +158,6 @@ namespace Peygir.Logic {
 			// Reconnect.
 			Database.Close();
 			Database.Open(databasePath);
-
-			return;
 		}
 	}
 }

@@ -216,8 +216,6 @@ namespace Peygir.Logic {
 				(int)priority,
 				description
 			).Value;
-
-			return;
 		}
 
 		public override void Update() {
@@ -244,8 +242,6 @@ namespace Peygir.Logic {
 				description,
 				ID
 			);
-
-			return;
 		}
 
 		public override void Delete() {
@@ -261,8 +257,6 @@ namespace Peygir.Logic {
 			tableAdapter.DeleteByID(ID);
 
 			ID = InvalidID;
-
-			return;
 		}
 
 		public Milestone GetMilestone() {

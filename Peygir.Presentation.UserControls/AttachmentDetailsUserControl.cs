@@ -31,8 +31,6 @@ namespace Peygir.Presentation.UserControls {
 			nameTextBox.Text = attachment.Name;
 			sizeTextBox.Text = string.Format("{0}", attachment.Size);
 			contents = attachment.GetContents();
-
-			return;
 		}
 
 		public void RetrieveAttachment(Attachment attachment) {
@@ -42,16 +40,12 @@ namespace Peygir.Presentation.UserControls {
 
 			attachment.Name = nameTextBox.Text;
 			attachment.SetContents(contents);
-
-			return;
 		}
 
 		private byte[] contents;
 
 		private void UpdateReadOnlyState() {
 			openButton.Enabled = !readOnly;
-
-			return;
 		}
 
 		private void OpenFile() {
@@ -61,7 +55,6 @@ namespace Peygir.Presentation.UserControls {
 				contents = File.ReadAllBytes(fileName);
 				nameTextBox.Text = fileName;
 			}
-			return;
 		}
 
 		private void SaveFile() {
@@ -70,17 +63,14 @@ namespace Peygir.Presentation.UserControls {
 
 				File.WriteAllBytes(fileName, contents);
 			}
-			return;
 		}
 
 		private void openButton_Click(object sender, EventArgs e) {
 			OpenFile();
-			return;
 		}
 
 		private void saveButton_Click(object sender, EventArgs e) {
 			SaveFile();
-			return;
 		}
 	}
 }

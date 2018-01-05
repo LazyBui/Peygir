@@ -33,8 +33,6 @@ namespace Peygir.Presentation.UserControls {
 			attachmentsListView.EndUpdate();
 
 			attachmentsListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
-
-			return;
 		}
 	}
 }

@@ -161,13 +161,10 @@ namespace Peygir.Presentation.Forms {
 				showTicketAttachmentsButton.Enabled = false;
 				deleteTicketButton.Enabled = true;
 			}
-
-			return;
 		}
 
 		private void ShowProjectDetails() {
 			projectDetailsUserControl.ShowProject(Project);
-			return;
 		}
 
 		private void ChangeProjectDetails() {
@@ -201,8 +198,6 @@ namespace Peygir.Presentation.Forms {
 
 				ShowProjectDetails();
 			}
-
-			return;
 		}
 
 		private void ShowMilestones() {
@@ -228,8 +223,6 @@ namespace Peygir.Presentation.Forms {
 			UpdateButtonsEnabledProperty();
 
 			ShowTickets();
-
-			return;
 		}
 
 		private void AddMilestone() {
@@ -294,8 +287,6 @@ namespace Peygir.Presentation.Forms {
 
 				milestonesListUserControl.Focus();
 			}
-
-			return;
 		}
 
 		private void ShowMilestone() {
@@ -311,8 +302,6 @@ namespace Peygir.Presentation.Forms {
 			form.MilestoneDetailsUserControl.ReadOnly = true;
 
 			form.ShowDialog();
-
-			return;
 		}
 
 		private void EditMilestone() {
@@ -367,8 +356,6 @@ namespace Peygir.Presentation.Forms {
 				// Show milestones.
 				ShowMilestones();
 			}
-
-			return;
 		}
 
 		private void DeleteMilestone() {
@@ -400,7 +387,6 @@ namespace Peygir.Presentation.Forms {
 				// Show milestones.
 				ShowMilestones();
 			}
-			return;
 		}
 
 		private void ShowTickets() {
@@ -424,8 +410,6 @@ namespace Peygir.Presentation.Forms {
 			}
 
 			UpdateButtonsEnabledProperty();
-
-			return;
 		}
 
 		private void AddTicket() {
@@ -588,8 +572,6 @@ namespace Peygir.Presentation.Forms {
 
 				ticketsListUserControl.Focus();
 			}
-
-			return;
 		}
 
 		private void ShowTicket() {
@@ -608,8 +590,6 @@ namespace Peygir.Presentation.Forms {
 			form.TicketDetailsUserControl.ReadOnly = true;
 
 			form.ShowDialog();
-
-			return;
 		}
 
 		private void EditTicket() {
@@ -815,8 +795,6 @@ namespace Peygir.Presentation.Forms {
 				// Show tickets.
 				ShowTickets();
 			}
-
-			return;
 		}
 
 		private void ShowTicketHistory() {
@@ -829,8 +807,6 @@ namespace Peygir.Presentation.Forms {
 			TicketHistoryForm form = new TicketHistoryForm(ticket);
 
 			form.ShowDialog();
-
-			return;
 		}
 
 		private void ShowAttachments() {
@@ -843,8 +819,6 @@ namespace Peygir.Presentation.Forms {
 			AttachmentsForm form = new AttachmentsForm(ticket);
 
 			form.ShowDialog();
-
-			return;
 		}
 
 		private void DeleteTicket() {
@@ -876,82 +850,66 @@ namespace Peygir.Presentation.Forms {
 				// Show tickets.
 				ShowTickets();
 			}
-			return;
 		}
 
 		private void changeProjectDetailsButton_Click(object sender, EventArgs e) {
 			ChangeProjectDetails();
-			return;
 		}
 
 		private void MilestonesListView_SelectedIndexChanged(object sender, EventArgs e) {
 			UpdateButtonsEnabledProperty();
-			return;
 		}
 
 		private void MilestonesListView_DoubleClick(object sender, EventArgs e) {
 			ShowMilestone();
-			return;
 		}
 
 		private void addMilestoneButton_Click(object sender, EventArgs e) {
 			AddMilestone();
-			return;
 		}
 
 		private void showMilestoneButton_Click(object sender, EventArgs e) {
 			ShowMilestone();
-			return;
 		}
 
 		private void editMilestoneButton_Click(object sender, EventArgs e) {
 			EditMilestone();
-			return;
 		}
 
 		private void deleteMilestoneButton_Click(object sender, EventArgs e) {
 			DeleteMilestone();
-			return;
 		}
 
 		private void TicketsListView_SelectedIndexChanged(object sender, EventArgs e) {
 			UpdateButtonsEnabledProperty();
-			return;
 		}
 
 		private void TicketsListView_DoubleClick(object sender, EventArgs e) {
 			ShowTicket();
-			return;
 		}
 
 		private void addTicketButton_Click(object sender, EventArgs e) {
 			AddTicket();
-			return;
 		}
 
 		private void showTicketButton_Click(object sender, EventArgs e) {
 			ShowTicket();
-			return;
 		}
 
 		private void editTicketButton_Click(object sender, EventArgs e) {
 			EditTicket();
-			return;
 		}
 
 		private void showTicketHistoryButton_Click(object sender, EventArgs e) {
 			ShowTicketHistory();
-			return;
 		}
 
 		private void showTicketAttachmentsButton_Click(object sender, EventArgs e) {
 			ShowAttachments();
-			return;
 		}
 
 		private void deleteTicketButton_Click(object sender, EventArgs e) {
 			DeleteTicket();
-			return;
 		}
 	}
 }

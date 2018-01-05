@@ -38,12 +38,10 @@ namespace Peygir.Presentation.Forms {
 
 				);
 			}
-			return;
 		}
 
 		private void linkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) {
 			OpenLink();
-			return;
 		}
 	}
 }
