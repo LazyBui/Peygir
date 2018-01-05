@@ -50,37 +50,37 @@
     <Compile Include="AttachmentDetailsUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="AttachmentDetailsUserControl.designer.cs">
+    <Compile Include="AttachmentDetailsUserControl.Designer.cs">
       <DependentUpon>AttachmentDetailsUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="AttachmentsListUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="AttachmentsListUserControl.designer.cs">
+    <Compile Include="AttachmentsListUserControl.Designer.cs">
       <DependentUpon>AttachmentsListUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="MilestoneDetailsUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="MilestoneDetailsUserControl.designer.cs">
+    <Compile Include="MilestoneDetailsUserControl.Designer.cs">
       <DependentUpon>MilestoneDetailsUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="MilestonesListUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="MilestonesListUserControl.designer.cs">
+    <Compile Include="MilestonesListUserControl.Designer.cs">
       <DependentUpon>MilestonesListUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="ProjectDetailsUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ProjectDetailsUserControl.designer.cs">
+    <Compile Include="ProjectDetailsUserControl.Designer.cs">
       <DependentUpon>ProjectDetailsUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="ProjectsListUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ProjectsListUserControl.designer.cs">
+    <Compile Include="ProjectsListUserControl.Designer.cs">
       <DependentUpon>ProjectsListUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -92,25 +92,25 @@
     <Compile Include="TicketDetailsUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="TicketDetailsUserControl.designer.cs">
+    <Compile Include="TicketDetailsUserControl.Designer.cs">
       <DependentUpon>TicketDetailsUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="TicketHistoryDetailsUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="TicketHistoryDetailsUserControl.designer.cs">
+    <Compile Include="TicketHistoryDetailsUserControl.Designer.cs">
       <DependentUpon>TicketHistoryDetailsUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="TicketHistoryListUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="TicketHistoryListUserControl.designer.cs">
+    <Compile Include="TicketHistoryListUserControl.Designer.cs">
       <DependentUpon>TicketHistoryListUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="TicketsListUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="TicketsListUserControl.designer.cs">
+    <Compile Include="TicketsListUserControl.Designer.cs">
       <DependentUpon>TicketsListUserControl.cs</DependentUpon>
     </Compile>
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
