@@ -97,6 +97,8 @@ namespace Peygir.Logic {
 		}
 
 		public string Format(DateTime dateTime) {
+			dateTime = dateTime.ToLocalTime();
+
 			// Format   Description
 			// --------------------------------------------------------------------------------
 			// yyyyyy   The year in six digits. Pads with leading zeros to get six digits.
