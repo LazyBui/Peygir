@@ -7,8 +7,8 @@ namespace Peygir.Presentation.Forms {
 	partial class AboutForm : Form {
 		public MessageBoxOptions FormMessageBoxOptions {
 			get {
-				MessageBoxOptions options = (MessageBoxOptions)0;
-				if (RightToLeft == System.Windows.Forms.RightToLeft.Yes) {
+				MessageBoxOptions options = 0;
+				if (RightToLeft == RightToLeft.Yes) {
 					options = (MessageBoxOptions.RtlReading | MessageBoxOptions.RightAlign);
 				}
 				return options;
