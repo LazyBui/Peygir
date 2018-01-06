@@ -10,7 +10,7 @@ using Peygir.Presentation.UserControls;
 
 namespace Peygir.Presentation.Forms {
 	public partial class MainForm : Form {
-		private Dictionary<Project, ProjectForm> mForms = new Dictionary<Project, ProjectForm>();
+		private Dictionary<int, ProjectForm> mForms = new Dictionary<int, ProjectForm>();
 		private bool mResettingFilters = false;
 		private DateRange mCreateFilter = null;
 		private DateRange mModifyFilter = null;
@@ -552,9 +552,9 @@ namespace Peygir.Presentation.Forms {
 			for (int i = 0, end = projectsListUserControl.ProjectsListView.SelectedItems.Count; i < end; i++) {
 				var item = (Project)projectsListUserControl.ProjectsListView.SelectedItems[i].Tag;
 				ProjectForm form;
-				if (!mForms.TryGetValue(item, out form)) {
+				if (!mForms.TryGetValue(item.ID, out form)) {
 					form = new ProjectForm(item, this);
-					mForms[item] = form;
+					mForms[item.ID] = form;
 					form.ActivateTicketTab();
 					form.Show();
 				}
@@ -632,8 +632,8 @@ namespace Peygir.Presentation.Forms {
 
 		internal void CloseProjectForm(ProjectForm form) {
 			ProjectForm query;
-			if (mForms.TryGetValue(form.Project, out query)) {
-				mForms.Remove(form.Project);
+			if (mForms.TryGetValue(form.Project.ID, out query)) {
+				mForms.Remove(form.Project.ID);
 			}
 		}
 
