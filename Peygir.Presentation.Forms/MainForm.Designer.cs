@@ -234,6 +234,11 @@
 			// 
 			// databaseToolStripStatusLabel
 			// 
+			this.databaseToolStripStatusLabel.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+			this.databaseToolStripStatusLabel.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
+			this.databaseToolStripStatusLabel.Margin = new System.Windows.Forms.Padding(0, 4, 3, 0);
 			this.databaseToolStripStatusLabel.Name = "databaseToolStripStatusLabel";
 			resources.ApplyResources(this.databaseToolStripStatusLabel, "databaseToolStripStatusLabel");
 			// 
