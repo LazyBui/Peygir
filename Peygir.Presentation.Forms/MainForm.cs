@@ -358,7 +358,7 @@ namespace Peygir.Presentation.Forms {
 
 			Project[] projects = Project.GetProjects();
 
-			projectsListUserControl.ShowProjects(projects);
+			projectsListUserControl.ShowProjects(projects, FormUtil.GetFormatter());
 
 			// Reselect projects.
 			foreach (ListViewItem item in projectsListUserControl.ProjectsListView.Items) {
