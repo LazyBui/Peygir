@@ -25,10 +25,10 @@
 		private void InitializeComponent() {
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 			this.projectsGroupBox = new System.Windows.Forms.GroupBox();
+			this.editTicketsButton = new System.Windows.Forms.Button();
 			this.deleteProjectButton = new System.Windows.Forms.Button();
 			this.editProjectButton = new System.Windows.Forms.Button();
 			this.addProjectButton = new System.Windows.Forms.Button();
-			this.projectsListUserControl = new Peygir.Presentation.UserControls.ProjectsListUserControl();
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.newDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,7 +50,7 @@
 			this.databaseToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
 			this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
-			this.editTicketsButton = new System.Windows.Forms.Button();
+			this.projectsListUserControl = new Peygir.Presentation.UserControls.ProjectsListUserControl();
 			this.projectsGroupBox.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
 			this.statusStrip1.SuspendLayout();
@@ -66,6 +66,14 @@
 			this.projectsGroupBox.Controls.Add(this.projectsListUserControl);
 			this.projectsGroupBox.Name = "projectsGroupBox";
 			this.projectsGroupBox.TabStop = false;
+			// 
+			// editTicketsButton
+			// 
+			this.editTicketsButton.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Open;
+			resources.ApplyResources(this.editTicketsButton, "editTicketsButton");
+			this.editTicketsButton.Name = "editTicketsButton";
+			this.editTicketsButton.UseVisualStyleBackColor = true;
+			this.editTicketsButton.Click += new System.EventHandler(this.editTicketsButton_Click);
 			// 
 			// deleteProjectButton
 			// 
@@ -91,11 +99,6 @@
 			this.addProjectButton.UseVisualStyleBackColor = true;
 			this.addProjectButton.Click += new System.EventHandler(this.addProjectButton_Click);
 			// 
-			// projectsListUserControl
-			// 
-			resources.ApplyResources(this.projectsListUserControl, "projectsListUserControl");
-			this.projectsListUserControl.Name = "projectsListUserControl";
-			// 
 			// menuStrip1
 			// 
 			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -105,6 +108,7 @@
             this.languageToolStripMenuItem});
 			resources.ApplyResources(this.menuStrip1, "menuStrip1");
 			this.menuStrip1.Name = "menuStrip1";
+			this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
 			// 
 			// fileToolStripMenuItem
 			// 
@@ -241,13 +245,10 @@
 			// 
 			resources.ApplyResources(this.saveFileDialog, "saveFileDialog");
 			// 
-			// editTicketsButton
+			// projectsListUserControl
 			// 
-			this.editTicketsButton.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Open;
-			resources.ApplyResources(this.editTicketsButton, "editTicketsButton");
-			this.editTicketsButton.Name = "editTicketsButton";
-			this.editTicketsButton.UseVisualStyleBackColor = true;
-			this.editTicketsButton.Click += new System.EventHandler(this.editTicketsButton_Click);
+			resources.ApplyResources(this.projectsListUserControl, "projectsListUserControl");
+			this.projectsListUserControl.Name = "projectsListUserControl";
 			// 
 			// MainForm
 			// 

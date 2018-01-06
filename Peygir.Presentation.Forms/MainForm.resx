@@ -125,6 +125,9 @@
   <data name="editTicketsButton.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>TopCenter</value>
   </data>
+  <data name="editTicketsButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="editTicketsButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>422, 360</value>
   </data>
@@ -156,6 +159,9 @@
   <data name="deleteProjectButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
+  <data name="deleteProjectButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="deleteProjectButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>511, 360</value>
   </data>
@@ -186,6 +192,9 @@
   <data name="editProjectButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
+  <data name="editProjectButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="editProjectButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>333, 360</value>
   </data>
@@ -215,6 +224,9 @@
   </data>
   <data name="addProjectButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
+  </data>
+  <data name="addProjectButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="addProjectButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>244, 360</value>
@@ -259,7 +271,7 @@
     <value>projectsListUserControl</value>
   </data>
   <data name="&gt;&gt;projectsListUserControl.Type" xml:space="preserve">
-    <value>Peygir.Presentation.UserControls.ProjectsListUserControl, Peygir.Presentation.UserControls, Version=1.0.1.33915, Culture=neutral, PublicKeyToken=7bc4e639a7e2568f</value>
+    <value>Peygir.Presentation.UserControls.ProjectsListUserControl, Peygir.Presentation.UserControls, Version=1.0.1.34564, Culture=neutral, PublicKeyToken=7bc4e639a7e2568f</value>
   </data>
   <data name="&gt;&gt;projectsListUserControl.Parent" xml:space="preserve">
     <value>projectsGroupBox</value>
@@ -294,38 +306,47 @@
   <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="newDatabaseToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+N</value>
+  </data>
   <data name="newDatabaseToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>174, 22</value>
+    <value>212, 22</value>
   </data>
   <data name="newDatabaseToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;New Database...</value>
   </data>
+  <data name="openDatabaseToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+D</value>
+  </data>
   <data name="openDatabaseToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>174, 22</value>
+    <value>212, 22</value>
   </data>
   <data name="openDatabaseToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Open Database...</value>
   </data>
+  <data name="saveDatabaseAsToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+S</value>
+  </data>
   <data name="saveDatabaseAsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>174, 22</value>
+    <value>212, 22</value>
   </data>
   <data name="saveDatabaseAsToolStripMenuItem.Text" xml:space="preserve">
     <value>Save Database &amp;As...</value>
   </data>
   <data name="closeDatabaseToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>174, 22</value>
+    <value>212, 22</value>
   </data>
   <data name="closeDatabaseToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Close Database</value>
   </data>
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>171, 6</value>
+    <value>209, 6</value>
   </data>
   <data name="exitToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Alt+F4</value>
   </data>
   <data name="exitToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>174, 22</value>
+    <value>212, 22</value>
   </data>
   <data name="exitToolStripMenuItem.Text" xml:space="preserve">
     <value>E&amp;xit</value>
@@ -336,8 +357,11 @@
   <data name="fileToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;File</value>
   </data>
+  <data name="optionsToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+O</value>
+  </data>
   <data name="optionsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>123, 22</value>
+    <value>163, 22</value>
   </data>
   <data name="optionsToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Options...</value>
@@ -497,6 +521,9 @@
         AAAAAAAA//8AAIABAACAAQAAgAEAAIABAACAAQAAgAEAAIABAACAAQAAgAEAAIABAAD4AQAA+AEAAPgf
         AAD4HwAA/B8AAA==
 </value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>
