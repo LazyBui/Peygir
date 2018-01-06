@@ -37,13 +37,13 @@
 			// 
 			// stateComboBox
 			// 
-			resources.ApplyResources(this.stateComboBox, "stateComboBox");
 			this.stateComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.stateComboBox.FormattingEnabled = true;
 			this.stateComboBox.Items.AddRange(new object[] {
-			resources.GetString("stateComboBox.Items"),
-			resources.GetString("stateComboBox.Items1"),
-			resources.GetString("stateComboBox.Items2")});
+            resources.GetString("stateComboBox.Items"),
+            resources.GetString("stateComboBox.Items1"),
+            resources.GetString("stateComboBox.Items2")});
+			resources.ApplyResources(this.stateComboBox, "stateComboBox");
 			this.stateComboBox.Name = "stateComboBox";
 			// 
 			// descriptionTextBox
@@ -51,6 +51,7 @@
 			this.descriptionTextBox.AcceptsReturn = true;
 			resources.ApplyResources(this.descriptionTextBox, "descriptionTextBox");
 			this.descriptionTextBox.Name = "descriptionTextBox";
+			this.descriptionTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.descriptionTextBox_KeyDown);
 			// 
 			// label3
 			// 
@@ -61,10 +62,10 @@
 			// 
 			resources.ApplyResources(this.displayOrderNumericUpDown, "displayOrderNumericUpDown");
 			this.displayOrderNumericUpDown.Maximum = new decimal(new int[] {
-			1000000,
-			0,
-			0,
-			0});
+            1000000,
+            0,
+            0,
+            0});
 			this.displayOrderNumericUpDown.Name = "displayOrderNumericUpDown";
 			// 
 			// label2
@@ -76,6 +77,7 @@
 			// 
 			resources.ApplyResources(this.nameTextBox, "nameTextBox");
 			this.nameTextBox.Name = "nameTextBox";
+			this.nameTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.nameTextBox_KeyDown);
 			// 
 			// label4
 			// 

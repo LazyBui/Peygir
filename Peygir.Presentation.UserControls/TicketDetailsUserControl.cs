@@ -160,5 +160,25 @@ namespace Peygir.Presentation.UserControls {
 			priorityComboBox.Enabled = !readOnly;
 			descriptionTextBox.ReadOnly = readOnly;
 		}
+
+		private void descriptionTextBox_KeyDown(object sender, KeyEventArgs e) {
+			TextBoxUtil.TextBoxKeyDown(sender, e);
+		}
+
+		private void summaryTextBox_KeyDown(object sender, KeyEventArgs e) {
+			TextBoxUtil.TextBoxKeyDown(sender, e);
+		}
+
+		private void ticketNumberTextBox_KeyDown(object sender, KeyEventArgs e) {
+			TextBoxUtil.TextBoxKeyDown(sender, e);
+		}
+
+		private void createdTextBox_KeyDown(object sender, KeyEventArgs e) {
+			TextBoxUtil.TextBoxKeyDown(sender, e);
+		}
+
+		private void modifiedTextBox_KeyDown(object sender, KeyEventArgs e) {
+			TextBoxUtil.TextBoxKeyDown(sender, e);
+		}
 	}
 }

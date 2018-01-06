@@ -6,6 +6,7 @@ using System.Linq;
 using System.Windows.Forms;
 using Peygir.Logic;
 using Peygir.Presentation.Forms.Properties;
+using Peygir.Presentation.UserControls;
 
 namespace Peygir.Presentation.Forms {
 	public partial class MainForm : Form {
@@ -154,6 +155,10 @@ namespace Peygir.Presentation.Forms {
 		#endregion
 
 		#region Filter UI
+		private void projectTextBox_KeyDown(object sender, KeyEventArgs e) {
+			TextBoxUtil.TextBoxKeyDown(sender, e);
+		}
+
 		private void projectTextBox_TextChanged(object sender, EventArgs e) {
 			ShowProjects();
 		}
@@ -180,6 +185,14 @@ namespace Peygir.Presentation.Forms {
 
 		private void assignedComboBox_SelectedIndexChanged(object sender, EventArgs e) {
 			ShowProjects();
+		}
+
+		private void createdTextBox_KeyDown(object sender, KeyEventArgs e) {
+			TextBoxUtil.TextBoxKeyDown(sender, e);
+		}
+
+		private void modifiedTextBox_KeyDown(object sender, KeyEventArgs e) {
+			TextBoxUtil.TextBoxKeyDown(sender, e);
 		}
 
 		private void createdButton_Click(object sender, EventArgs e) {
@@ -427,7 +440,6 @@ namespace Peygir.Presentation.Forms {
 			}
 
 			Project[] projects = Project.GetProjects();
-			
 
 			string nameFilter = projectTextBox.Text;
 			string reporterFilter = reportersComboBox.SelectedText;
@@ -438,12 +450,15 @@ namespace Peygir.Presentation.Forms {
 			var typeFilter = FormUtil.CastBox<TicketType>(ticketTypeComboBox);
 
 			projects = projects.Where(p => {
+				bool satisfiesNameFilter = FormUtil.FilterContains(p.Name, nameFilter);
+				if (!satisfiesNameFilter)
+					return false;
+
 				var tickets = p.GetTickets();
 				if (!tickets.Any()) {
 					// If we have any filters specified, this project can't qualify with no tickets
 					// Since we're returning true if it qualifies and false if not, we need to check for the negative condition
 					return !new object[] {
-						nameFilter,
 						reporterFilter,
 						assignedFilter,
 						stateFilter,
@@ -455,10 +470,9 @@ namespace Peygir.Presentation.Forms {
 					}.Any(v => v != null);
 				}
 
-				bool satisfiesNameFilter = FormUtil.FilterContains(p.Name, nameFilter);
 				bool satisfiesCreatedFilter = FormUtil.FilterContains(tickets.Min(t => t.CreateTimestamp), mCreateFilter);
 				bool satisfiesModifiedFilter = FormUtil.FilterContains(tickets.Max(t => t.ModifyTimestamp), mModifyFilter);
-				if (!(satisfiesNameFilter && satisfiesCreatedFilter && satisfiesModifiedFilter))
+				if (!(satisfiesCreatedFilter && satisfiesModifiedFilter))
 					return false;
 
 				return tickets.Any(t => {

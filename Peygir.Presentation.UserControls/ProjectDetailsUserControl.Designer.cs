@@ -38,6 +38,7 @@
 			this.descriptionTextBox.AcceptsReturn = true;
 			resources.ApplyResources(this.descriptionTextBox, "descriptionTextBox");
 			this.descriptionTextBox.Name = "descriptionTextBox";
+			this.descriptionTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.descriptionTextBox_KeyDown);
 			// 
 			// label3
 			// 
@@ -48,10 +49,10 @@
 			// 
 			resources.ApplyResources(this.displayOrderNumericUpDown, "displayOrderNumericUpDown");
 			this.displayOrderNumericUpDown.Maximum = new decimal(new int[] {
-			1000000,
-			0,
-			0,
-			0});
+            1000000,
+            0,
+            0,
+            0});
 			this.displayOrderNumericUpDown.Name = "displayOrderNumericUpDown";
 			// 
 			// label2
@@ -63,6 +64,7 @@
 			// 
 			resources.ApplyResources(this.nameTextBox, "nameTextBox");
 			this.nameTextBox.Name = "nameTextBox";
+			this.nameTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.nameTextBox_KeyDown);
 			// 
 			// label1
 			// 

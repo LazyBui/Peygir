@@ -119,8 +119,10 @@
 			// descriptionTextBox
 			// 
 			this.descriptionTextBox.AcceptsReturn = true;
+			this.descriptionTextBox.AcceptsTab = true;
 			resources.ApplyResources(this.descriptionTextBox, "descriptionTextBox");
 			this.descriptionTextBox.Name = "descriptionTextBox";
+			this.descriptionTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.descriptionTextBox_KeyDown);
 			// 
 			// label3
 			// 
@@ -153,11 +155,13 @@
 			this.ticketNumberTextBox.Name = "ticketNumberTextBox";
 			this.ticketNumberTextBox.ReadOnly = true;
 			this.ticketNumberTextBox.TabStop = false;
+			this.ticketNumberTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ticketNumberTextBox_KeyDown);
 			// 
 			// summaryTextBox
 			// 
 			resources.ApplyResources(this.summaryTextBox, "summaryTextBox");
 			this.summaryTextBox.Name = "summaryTextBox";
+			this.summaryTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.summaryTextBox_KeyDown);
 			// 
 			// label10
 			// 
@@ -202,6 +206,7 @@
 			this.createdTextBox.Name = "createdTextBox";
 			this.createdTextBox.ReadOnly = true;
 			this.createdTextBox.TabStop = false;
+			this.createdTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.createdTextBox_KeyDown);
 			// 
 			// label11
 			// 
@@ -214,6 +219,7 @@
 			this.modifiedTextBox.Name = "modifiedTextBox";
 			this.modifiedTextBox.ReadOnly = true;
 			this.modifiedTextBox.TabStop = false;
+			this.modifiedTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.modifiedTextBox_KeyDown);
 			// 
 			// label12
 			// 

@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 
 namespace Peygir.Presentation.UserControls {
-	internal static class TextBoxUtil {
+	public static class TextBoxUtil {
 		public static void TextBoxKeyDown(object sender, KeyEventArgs e) {
 			var casted = (TextBox)sender;
 			switch (e.KeyCode) {
@@ -46,8 +46,8 @@ namespace Peygir.Presentation.UserControls {
 						// Multiline may need a bit of work
 						if (isShift) {
 							var moved = 0;
-							bool movedFromFirstLine = false;
 							bool tabIsFirstSelectionCharacter = false;
+							bool movedFirstLine = false;
 							for (var i = beginLine; i <= endLine; i++) {
 								if (i == endLine && endLinePos == selEnd)
 									break;
@@ -59,8 +59,12 @@ namespace Peygir.Presentation.UserControls {
 									// We'll have to re-add that to the final length, otherwise we'll be short one character
 									// It must be done here because we may not remove a tab at all from the first line
 									if (i == beginLine) {
-										movedFromFirstLine = true;
-										tabIsFirstSelectionCharacter = IsInlineWhitespace(line[0]);
+										movedFirstLine = true;
+
+										int difference = selBegin - beginLinePos;
+										tabIsFirstSelectionCharacter = difference >= line.Length ?
+											false :
+											IsInlineWhitespace(line[difference]);
 									}
 									if (i != beginLine || beginLinePos == selBegin)
 										moved++;
@@ -70,24 +74,20 @@ namespace Peygir.Presentation.UserControls {
 							UglyUndoHack(
 								casted,
 								string.Join(Environment.NewLine, lines),
-								movedFromFirstLine &&
-								beginLinePos != selBegin &&
-								(!tabIsFirstSelectionCharacter || moved == 0) ?
-									selBegin - 1 :
-									selBegin,
+								beginLinePos == selBegin ||
+								tabIsFirstSelectionCharacter ||
+								(moved == 0 && !movedFirstLine) ?
+									selBegin :
+									selBegin - 1,
 								selLength - moved);
 						}
 						else {
-							//bool insertToFirstLine = false;
 							for (var i = beginLine; i <= endLine; i++) {
 								if (i == endLine && endLinePos == selEnd)
 									break;
 								if (lines[i].Length == 0)
 									continue;
 								lines[i] = "\t" + lines[i];
-								// Need to do this because a tab might not be added to the first line
-								//if (i == beginLine && beginLinePos > 0)
-								//	insertToFirstLine = true;
 							}
 
 							UglyUndoHack(

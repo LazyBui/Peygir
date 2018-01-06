@@ -50,5 +50,17 @@ namespace Peygir.Presentation.UserControls {
 		private void UpdateReadOnlyState() {
 			// Nothing.
 		}
+
+		private void changesTextBox_KeyDown(object sender, KeyEventArgs e) {
+			TextBoxUtil.TextBoxKeyDown(sender, e);
+		}
+
+		private void timestampTextBox_KeyDown(object sender, KeyEventArgs e) {
+			TextBoxUtil.TextBoxKeyDown(sender, e);
+		}
+
+		private void commentTextBox_KeyDown(object sender, KeyEventArgs e) {
+			TextBoxUtil.TextBoxKeyDown(sender, e);
+		}
 	}
 }

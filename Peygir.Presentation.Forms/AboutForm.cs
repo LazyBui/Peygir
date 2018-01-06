@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Windows.Forms;
 using Peygir.Presentation.Forms.Properties;
+using Peygir.Presentation.UserControls;
 
 namespace Peygir.Presentation.Forms {
 	partial class AboutForm : Form {
@@ -42,6 +43,10 @@ namespace Peygir.Presentation.Forms {
 
 		private void linkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) {
 			OpenLink();
+		}
+
+		private void descriptionTextBox_KeyDown(object sender, KeyEventArgs e) {
+			TextBoxUtil.TextBoxKeyDown(sender, e);
 		}
 	}
 }

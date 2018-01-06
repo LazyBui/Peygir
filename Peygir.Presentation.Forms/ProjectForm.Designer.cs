@@ -30,35 +30,16 @@
 			this.projectInfoTabPage = new System.Windows.Forms.TabPage();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
 			this.changeProjectDetailsButton = new System.Windows.Forms.Button();
+			this.projectDetailsUserControl = new Peygir.Presentation.UserControls.ProjectDetailsUserControl();
 			this.milestonesTabPage = new System.Windows.Forms.TabPage();
 			this.groupBox3 = new System.Windows.Forms.GroupBox();
 			this.showMilestoneButton = new System.Windows.Forms.Button();
 			this.deleteMilestoneButton = new System.Windows.Forms.Button();
 			this.editMilestoneButton = new System.Windows.Forms.Button();
 			this.addMilestoneButton = new System.Windows.Forms.Button();
+			this.milestonesListUserControl = new Peygir.Presentation.UserControls.MilestonesListUserControl();
 			this.ticketsTabPage = new System.Windows.Forms.TabPage();
 			this.groupBox4 = new System.Windows.Forms.GroupBox();
-			this.showTicketAttachmentsButton = new System.Windows.Forms.Button();
-			this.showTicketHistoryButton = new System.Windows.Forms.Button();
-			this.deleteTicketButton = new System.Windows.Forms.Button();
-			this.editTicketButton = new System.Windows.Forms.Button();
-			this.showTicketButton = new System.Windows.Forms.Button();
-			this.addTicketButton = new System.Windows.Forms.Button();
-			this.ticketContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-			this.addTicketToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.showTicketToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.editTicketToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.showTicketHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.showTicketAttachmentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.deleteTicketToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.milestoneContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-			this.addMilestoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.showMilestoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.editMilestoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.deleteMilestoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.projectDetailsUserControl = new Peygir.Presentation.UserControls.ProjectDetailsUserControl();
-			this.milestonesListUserControl = new Peygir.Presentation.UserControls.MilestonesListUserControl();
-			this.ticketsListUserControl = new Peygir.Presentation.UserControls.TicketsListUserControl();
 			this.ticketMilestoneComboBox = new System.Windows.Forms.ComboBox();
 			this.label10 = new System.Windows.Forms.Label();
 			this.resetTicketFilterButton = new System.Windows.Forms.Button();
@@ -82,6 +63,25 @@
 			this.label2 = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
 			this.ticketStateComboBox = new System.Windows.Forms.ComboBox();
+			this.showTicketAttachmentsButton = new System.Windows.Forms.Button();
+			this.showTicketHistoryButton = new System.Windows.Forms.Button();
+			this.deleteTicketButton = new System.Windows.Forms.Button();
+			this.editTicketButton = new System.Windows.Forms.Button();
+			this.showTicketButton = new System.Windows.Forms.Button();
+			this.addTicketButton = new System.Windows.Forms.Button();
+			this.ticketsListUserControl = new Peygir.Presentation.UserControls.TicketsListUserControl();
+			this.ticketContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.addTicketToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.showTicketToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.editTicketToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.showTicketHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.deleteTicketToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.showTicketAttachmentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.milestoneContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.addMilestoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.showMilestoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.editMilestoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.deleteMilestoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.groupBox1.SuspendLayout();
 			this.tabControl.SuspendLayout();
 			this.projectInfoTabPage.SuspendLayout();
@@ -133,6 +133,15 @@
 			this.changeProjectDetailsButton.UseVisualStyleBackColor = true;
 			this.changeProjectDetailsButton.Click += new System.EventHandler(this.changeProjectDetailsButton_Click);
 			// 
+			// projectDetailsUserControl
+			// 
+			resources.ApplyResources(this.projectDetailsUserControl, "projectDetailsUserControl");
+			this.projectDetailsUserControl.Description = "";
+			this.projectDetailsUserControl.DisplayOrder = 0;
+			this.projectDetailsUserControl.Name = "projectDetailsUserControl";
+			this.projectDetailsUserControl.ProjectName = "";
+			this.projectDetailsUserControl.ReadOnly = true;
+			// 
 			// milestonesTabPage
 			// 
 			this.milestonesTabPage.Controls.Add(this.groupBox3);
@@ -183,6 +192,11 @@
 			this.addMilestoneButton.UseVisualStyleBackColor = true;
 			this.addMilestoneButton.Click += new System.EventHandler(this.addMilestoneButton_Click);
 			// 
+			// milestonesListUserControl
+			// 
+			resources.ApplyResources(this.milestonesListUserControl, "milestonesListUserControl");
+			this.milestonesListUserControl.Name = "milestonesListUserControl";
+			// 
 			// ticketsTabPage
 			// 
 			this.ticketsTabPage.Controls.Add(this.groupBox4);
@@ -226,169 +240,6 @@
 			this.groupBox4.Name = "groupBox4";
 			this.groupBox4.TabStop = false;
 			// 
-			// showTicketAttachmentsButton
-			// 
-			resources.ApplyResources(this.showTicketAttachmentsButton, "showTicketAttachmentsButton");
-			this.showTicketAttachmentsButton.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Attachment;
-			this.showTicketAttachmentsButton.Name = "showTicketAttachmentsButton";
-			this.showTicketAttachmentsButton.UseVisualStyleBackColor = true;
-			this.showTicketAttachmentsButton.Click += new System.EventHandler(this.showTicketAttachmentsButton_Click);
-			// 
-			// showTicketHistoryButton
-			// 
-			resources.ApplyResources(this.showTicketHistoryButton, "showTicketHistoryButton");
-			this.showTicketHistoryButton.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_History;
-			this.showTicketHistoryButton.Name = "showTicketHistoryButton";
-			this.showTicketHistoryButton.UseVisualStyleBackColor = true;
-			this.showTicketHistoryButton.Click += new System.EventHandler(this.showTicketHistoryButton_Click);
-			// 
-			// deleteTicketButton
-			// 
-			resources.ApplyResources(this.deleteTicketButton, "deleteTicketButton");
-			this.deleteTicketButton.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Delete;
-			this.deleteTicketButton.Name = "deleteTicketButton";
-			this.deleteTicketButton.UseVisualStyleBackColor = true;
-			this.deleteTicketButton.Click += new System.EventHandler(this.deleteTicketButton_Click);
-			// 
-			// editTicketButton
-			// 
-			resources.ApplyResources(this.editTicketButton, "editTicketButton");
-			this.editTicketButton.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Edit;
-			this.editTicketButton.Name = "editTicketButton";
-			this.editTicketButton.UseVisualStyleBackColor = true;
-			this.editTicketButton.Click += new System.EventHandler(this.editTicketButton_Click);
-			// 
-			// showTicketButton
-			// 
-			resources.ApplyResources(this.showTicketButton, "showTicketButton");
-			this.showTicketButton.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Show;
-			this.showTicketButton.Name = "showTicketButton";
-			this.showTicketButton.UseVisualStyleBackColor = true;
-			this.showTicketButton.Click += new System.EventHandler(this.showTicketButton_Click);
-			// 
-			// addTicketButton
-			// 
-			resources.ApplyResources(this.addTicketButton, "addTicketButton");
-			this.addTicketButton.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Add;
-			this.addTicketButton.Name = "addTicketButton";
-			this.addTicketButton.UseVisualStyleBackColor = true;
-			this.addTicketButton.Click += new System.EventHandler(this.addTicketButton_Click);
-			// 
-			// ticketContextMenu
-			// 
-			this.ticketContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addTicketToolStripMenuItem,
-            this.showTicketToolStripMenuItem,
-            this.editTicketToolStripMenuItem,
-            this.showTicketHistoryToolStripMenuItem,
-            this.deleteTicketToolStripMenuItem,
-            this.showTicketAttachmentsToolStripMenuItem});
-			this.ticketContextMenu.Name = "ticketContextMenu";
-			this.ticketContextMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-			resources.ApplyResources(this.ticketContextMenu, "ticketContextMenu");
-			this.ticketContextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.ticketContextMenu_Opening);
-			// 
-			// addTicketToolStripMenuItem
-			// 
-			this.addTicketToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Add;
-			this.addTicketToolStripMenuItem.Name = "addTicketToolStripMenuItem";
-			resources.ApplyResources(this.addTicketToolStripMenuItem, "addTicketToolStripMenuItem");
-			this.addTicketToolStripMenuItem.Click += new System.EventHandler(this.addTicketToolStripMenuItem_Click);
-			// 
-			// showTicketToolStripMenuItem
-			// 
-			this.showTicketToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Show;
-			this.showTicketToolStripMenuItem.Name = "showTicketToolStripMenuItem";
-			resources.ApplyResources(this.showTicketToolStripMenuItem, "showTicketToolStripMenuItem");
-			this.showTicketToolStripMenuItem.Click += new System.EventHandler(this.showTicketToolStripMenuItem_Click);
-			// 
-			// editTicketToolStripMenuItem
-			// 
-			this.editTicketToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Edit;
-			this.editTicketToolStripMenuItem.Name = "editTicketToolStripMenuItem";
-			resources.ApplyResources(this.editTicketToolStripMenuItem, "editTicketToolStripMenuItem");
-			this.editTicketToolStripMenuItem.Click += new System.EventHandler(this.editTicketToolStripMenuItem_Click);
-			// 
-			// showTicketHistoryToolStripMenuItem
-			// 
-			this.showTicketHistoryToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_History;
-			this.showTicketHistoryToolStripMenuItem.Name = "showTicketHistoryToolStripMenuItem";
-			resources.ApplyResources(this.showTicketHistoryToolStripMenuItem, "showTicketHistoryToolStripMenuItem");
-			this.showTicketHistoryToolStripMenuItem.Click += new System.EventHandler(this.showTicketHistoryToolStripMenuItem_Click);
-			// 
-			// showTicketAttachmentsToolStripMenuItem
-			// 
-			this.showTicketAttachmentsToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Attachment;
-			this.showTicketAttachmentsToolStripMenuItem.Name = "showTicketAttachmentsToolStripMenuItem";
-			resources.ApplyResources(this.showTicketAttachmentsToolStripMenuItem, "showTicketAttachmentsToolStripMenuItem");
-			this.showTicketAttachmentsToolStripMenuItem.Click += new System.EventHandler(this.showTicketAttachmentsToolStripMenuItem_Click);
-			// 
-			// deleteTicketToolStripMenuItem
-			// 
-			this.deleteTicketToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Delete;
-			this.deleteTicketToolStripMenuItem.Name = "deleteTicketToolStripMenuItem";
-			resources.ApplyResources(this.deleteTicketToolStripMenuItem, "deleteTicketToolStripMenuItem");
-			this.deleteTicketToolStripMenuItem.Click += new System.EventHandler(this.deleteTicketToolStripMenuItem_Click);
-			// 
-			// milestoneContextMenu
-			// 
-			this.milestoneContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addMilestoneToolStripMenuItem,
-            this.showMilestoneToolStripMenuItem,
-            this.editMilestoneToolStripMenuItem,
-            this.deleteMilestoneToolStripMenuItem});
-			this.milestoneContextMenu.Name = "milestoneContextMenu";
-			this.milestoneContextMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-			resources.ApplyResources(this.milestoneContextMenu, "milestoneContextMenu");
-			this.milestoneContextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.milestoneContextMenu_Opening);
-			// 
-			// addMilestoneToolStripMenuItem
-			// 
-			this.addMilestoneToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Add;
-			this.addMilestoneToolStripMenuItem.Name = "addMilestoneToolStripMenuItem";
-			resources.ApplyResources(this.addMilestoneToolStripMenuItem, "addMilestoneToolStripMenuItem");
-			this.addMilestoneToolStripMenuItem.Click += new System.EventHandler(this.addMilestoneToolStripMenuItem_Click);
-			// 
-			// showMilestoneToolStripMenuItem
-			// 
-			this.showMilestoneToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Show;
-			this.showMilestoneToolStripMenuItem.Name = "showMilestoneToolStripMenuItem";
-			resources.ApplyResources(this.showMilestoneToolStripMenuItem, "showMilestoneToolStripMenuItem");
-			this.showMilestoneToolStripMenuItem.Click += new System.EventHandler(this.showMilestoneToolStripMenuItem_Click);
-			// 
-			// editMilestoneToolStripMenuItem
-			// 
-			this.editMilestoneToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Edit;
-			this.editMilestoneToolStripMenuItem.Name = "editMilestoneToolStripMenuItem";
-			resources.ApplyResources(this.editMilestoneToolStripMenuItem, "editMilestoneToolStripMenuItem");
-			this.editMilestoneToolStripMenuItem.Click += new System.EventHandler(this.editMilestoneToolStripMenuItem_Click);
-			// 
-			// deleteMilestoneToolStripMenuItem
-			// 
-			this.deleteMilestoneToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Delete;
-			this.deleteMilestoneToolStripMenuItem.Name = "deleteMilestoneToolStripMenuItem";
-			resources.ApplyResources(this.deleteMilestoneToolStripMenuItem, "deleteMilestoneToolStripMenuItem");
-			this.deleteMilestoneToolStripMenuItem.Click += new System.EventHandler(this.deleteMilestoneToolStripMenuItem_Click);
-			// 
-			// projectDetailsUserControl
-			// 
-			resources.ApplyResources(this.projectDetailsUserControl, "projectDetailsUserControl");
-			this.projectDetailsUserControl.Description = "";
-			this.projectDetailsUserControl.DisplayOrder = 0;
-			this.projectDetailsUserControl.Name = "projectDetailsUserControl";
-			this.projectDetailsUserControl.ProjectName = "";
-			this.projectDetailsUserControl.ReadOnly = true;
-			// 
-			// milestonesListUserControl
-			// 
-			resources.ApplyResources(this.milestonesListUserControl, "milestonesListUserControl");
-			this.milestonesListUserControl.Name = "milestonesListUserControl";
-			// 
-			// ticketsListUserControl
-			// 
-			resources.ApplyResources(this.ticketsListUserControl, "ticketsListUserControl");
-			this.ticketsListUserControl.Name = "ticketsListUserControl";
-			// 
 			// ticketMilestoneComboBox
 			// 
 			this.ticketMilestoneComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -428,12 +279,14 @@
 			resources.ApplyResources(this.modifiedTextBox, "modifiedTextBox");
 			this.modifiedTextBox.Name = "modifiedTextBox";
 			this.modifiedTextBox.ReadOnly = true;
+			this.modifiedTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.modifiedTextBox_KeyDown);
 			// 
 			// createdTextBox
 			// 
 			resources.ApplyResources(this.createdTextBox, "createdTextBox");
 			this.createdTextBox.Name = "createdTextBox";
 			this.createdTextBox.ReadOnly = true;
+			this.createdTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.createdTextBox_KeyDown);
 			// 
 			// label9
 			// 
@@ -535,6 +388,7 @@
 			resources.ApplyResources(this.ticketTextBox, "ticketTextBox");
 			this.ticketTextBox.Name = "ticketTextBox";
 			this.ticketTextBox.TextChanged += new System.EventHandler(this.ticketTextBox_TextChanged);
+			this.ticketTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ticketTextBox_KeyDown);
 			// 
 			// label2
 			// 
@@ -563,6 +417,155 @@
 			resources.ApplyResources(this.ticketStateComboBox, "ticketStateComboBox");
 			this.ticketStateComboBox.Name = "ticketStateComboBox";
 			this.ticketStateComboBox.SelectedIndexChanged += new System.EventHandler(this.ticketStateComboBox_SelectedIndexChanged);
+			// 
+			// showTicketAttachmentsButton
+			// 
+			resources.ApplyResources(this.showTicketAttachmentsButton, "showTicketAttachmentsButton");
+			this.showTicketAttachmentsButton.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Attachment;
+			this.showTicketAttachmentsButton.Name = "showTicketAttachmentsButton";
+			this.showTicketAttachmentsButton.UseVisualStyleBackColor = true;
+			this.showTicketAttachmentsButton.Click += new System.EventHandler(this.showTicketAttachmentsButton_Click);
+			// 
+			// showTicketHistoryButton
+			// 
+			resources.ApplyResources(this.showTicketHistoryButton, "showTicketHistoryButton");
+			this.showTicketHistoryButton.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_History;
+			this.showTicketHistoryButton.Name = "showTicketHistoryButton";
+			this.showTicketHistoryButton.UseVisualStyleBackColor = true;
+			this.showTicketHistoryButton.Click += new System.EventHandler(this.showTicketHistoryButton_Click);
+			// 
+			// deleteTicketButton
+			// 
+			resources.ApplyResources(this.deleteTicketButton, "deleteTicketButton");
+			this.deleteTicketButton.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Delete;
+			this.deleteTicketButton.Name = "deleteTicketButton";
+			this.deleteTicketButton.UseVisualStyleBackColor = true;
+			this.deleteTicketButton.Click += new System.EventHandler(this.deleteTicketButton_Click);
+			// 
+			// editTicketButton
+			// 
+			resources.ApplyResources(this.editTicketButton, "editTicketButton");
+			this.editTicketButton.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Edit;
+			this.editTicketButton.Name = "editTicketButton";
+			this.editTicketButton.UseVisualStyleBackColor = true;
+			this.editTicketButton.Click += new System.EventHandler(this.editTicketButton_Click);
+			// 
+			// showTicketButton
+			// 
+			resources.ApplyResources(this.showTicketButton, "showTicketButton");
+			this.showTicketButton.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Show;
+			this.showTicketButton.Name = "showTicketButton";
+			this.showTicketButton.UseVisualStyleBackColor = true;
+			this.showTicketButton.Click += new System.EventHandler(this.showTicketButton_Click);
+			// 
+			// addTicketButton
+			// 
+			resources.ApplyResources(this.addTicketButton, "addTicketButton");
+			this.addTicketButton.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Add;
+			this.addTicketButton.Name = "addTicketButton";
+			this.addTicketButton.UseVisualStyleBackColor = true;
+			this.addTicketButton.Click += new System.EventHandler(this.addTicketButton_Click);
+			// 
+			// ticketsListUserControl
+			// 
+			resources.ApplyResources(this.ticketsListUserControl, "ticketsListUserControl");
+			this.ticketsListUserControl.Name = "ticketsListUserControl";
+			// 
+			// ticketContextMenu
+			// 
+			this.ticketContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addTicketToolStripMenuItem,
+            this.showTicketToolStripMenuItem,
+            this.editTicketToolStripMenuItem,
+            this.showTicketHistoryToolStripMenuItem,
+            this.deleteTicketToolStripMenuItem,
+            this.showTicketAttachmentsToolStripMenuItem});
+			this.ticketContextMenu.Name = "ticketContextMenu";
+			this.ticketContextMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+			resources.ApplyResources(this.ticketContextMenu, "ticketContextMenu");
+			this.ticketContextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.ticketContextMenu_Opening);
+			// 
+			// addTicketToolStripMenuItem
+			// 
+			this.addTicketToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Add;
+			this.addTicketToolStripMenuItem.Name = "addTicketToolStripMenuItem";
+			resources.ApplyResources(this.addTicketToolStripMenuItem, "addTicketToolStripMenuItem");
+			this.addTicketToolStripMenuItem.Click += new System.EventHandler(this.addTicketToolStripMenuItem_Click);
+			// 
+			// showTicketToolStripMenuItem
+			// 
+			this.showTicketToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Show;
+			this.showTicketToolStripMenuItem.Name = "showTicketToolStripMenuItem";
+			resources.ApplyResources(this.showTicketToolStripMenuItem, "showTicketToolStripMenuItem");
+			this.showTicketToolStripMenuItem.Click += new System.EventHandler(this.showTicketToolStripMenuItem_Click);
+			// 
+			// editTicketToolStripMenuItem
+			// 
+			this.editTicketToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Edit;
+			this.editTicketToolStripMenuItem.Name = "editTicketToolStripMenuItem";
+			resources.ApplyResources(this.editTicketToolStripMenuItem, "editTicketToolStripMenuItem");
+			this.editTicketToolStripMenuItem.Click += new System.EventHandler(this.editTicketToolStripMenuItem_Click);
+			// 
+			// showTicketHistoryToolStripMenuItem
+			// 
+			this.showTicketHistoryToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_History;
+			this.showTicketHistoryToolStripMenuItem.Name = "showTicketHistoryToolStripMenuItem";
+			resources.ApplyResources(this.showTicketHistoryToolStripMenuItem, "showTicketHistoryToolStripMenuItem");
+			this.showTicketHistoryToolStripMenuItem.Click += new System.EventHandler(this.showTicketHistoryToolStripMenuItem_Click);
+			// 
+			// deleteTicketToolStripMenuItem
+			// 
+			this.deleteTicketToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Delete;
+			this.deleteTicketToolStripMenuItem.Name = "deleteTicketToolStripMenuItem";
+			resources.ApplyResources(this.deleteTicketToolStripMenuItem, "deleteTicketToolStripMenuItem");
+			this.deleteTicketToolStripMenuItem.Click += new System.EventHandler(this.deleteTicketToolStripMenuItem_Click);
+			// 
+			// showTicketAttachmentsToolStripMenuItem
+			// 
+			this.showTicketAttachmentsToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Attachment;
+			this.showTicketAttachmentsToolStripMenuItem.Name = "showTicketAttachmentsToolStripMenuItem";
+			resources.ApplyResources(this.showTicketAttachmentsToolStripMenuItem, "showTicketAttachmentsToolStripMenuItem");
+			this.showTicketAttachmentsToolStripMenuItem.Click += new System.EventHandler(this.showTicketAttachmentsToolStripMenuItem_Click);
+			// 
+			// milestoneContextMenu
+			// 
+			this.milestoneContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addMilestoneToolStripMenuItem,
+            this.showMilestoneToolStripMenuItem,
+            this.editMilestoneToolStripMenuItem,
+            this.deleteMilestoneToolStripMenuItem});
+			this.milestoneContextMenu.Name = "milestoneContextMenu";
+			this.milestoneContextMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+			resources.ApplyResources(this.milestoneContextMenu, "milestoneContextMenu");
+			this.milestoneContextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.milestoneContextMenu_Opening);
+			// 
+			// addMilestoneToolStripMenuItem
+			// 
+			this.addMilestoneToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Add;
+			this.addMilestoneToolStripMenuItem.Name = "addMilestoneToolStripMenuItem";
+			resources.ApplyResources(this.addMilestoneToolStripMenuItem, "addMilestoneToolStripMenuItem");
+			this.addMilestoneToolStripMenuItem.Click += new System.EventHandler(this.addMilestoneToolStripMenuItem_Click);
+			// 
+			// showMilestoneToolStripMenuItem
+			// 
+			this.showMilestoneToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Show;
+			this.showMilestoneToolStripMenuItem.Name = "showMilestoneToolStripMenuItem";
+			resources.ApplyResources(this.showMilestoneToolStripMenuItem, "showMilestoneToolStripMenuItem");
+			this.showMilestoneToolStripMenuItem.Click += new System.EventHandler(this.showMilestoneToolStripMenuItem_Click);
+			// 
+			// editMilestoneToolStripMenuItem
+			// 
+			this.editMilestoneToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Edit;
+			this.editMilestoneToolStripMenuItem.Name = "editMilestoneToolStripMenuItem";
+			resources.ApplyResources(this.editMilestoneToolStripMenuItem, "editMilestoneToolStripMenuItem");
+			this.editMilestoneToolStripMenuItem.Click += new System.EventHandler(this.editMilestoneToolStripMenuItem_Click);
+			// 
+			// deleteMilestoneToolStripMenuItem
+			// 
+			this.deleteMilestoneToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Delete;
+			this.deleteMilestoneToolStripMenuItem.Name = "deleteMilestoneToolStripMenuItem";
+			resources.ApplyResources(this.deleteMilestoneToolStripMenuItem, "deleteMilestoneToolStripMenuItem");
+			this.deleteMilestoneToolStripMenuItem.Click += new System.EventHandler(this.deleteMilestoneToolStripMenuItem_Click);
 			// 
 			// ProjectForm
 			// 

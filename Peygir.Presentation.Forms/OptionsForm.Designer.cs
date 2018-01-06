@@ -59,6 +59,7 @@
 			resources.ApplyResources(this.textBox2, "textBox2");
 			this.textBox2.Name = "textBox2";
 			this.textBox2.ReadOnly = true;
+			this.textBox2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox2_KeyDown);
 			// 
 			// formatDateTimePanel
 			// 
@@ -83,6 +84,7 @@
 			// 
 			resources.ApplyResources(this.dateTimePatternTextBox, "dateTimePatternTextBox");
 			this.dateTimePatternTextBox.Name = "dateTimePatternTextBox";
+			this.dateTimePatternTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dateTimePatternTextBox_KeyDown);
 			// 
 			// calendarComboBox
 			// 

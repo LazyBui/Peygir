@@ -6,6 +6,7 @@ using System.Text;
 using System.Windows.Forms;
 using Peygir.Logic;
 using Peygir.Presentation.Forms.Properties;
+using Peygir.Presentation.UserControls;
 
 namespace Peygir.Presentation.Forms {
 	public partial class ProjectForm : Form {
@@ -218,6 +219,10 @@ namespace Peygir.Presentation.Forms {
 		#endregion
 
 		#region Ticket filter UI
+		private void ticketTextBox_KeyDown(object sender, KeyEventArgs e) {
+			TextBoxUtil.TextBoxKeyDown(sender, e);
+		}
+
 		private void ticketTextBox_TextChanged(object sender, EventArgs e) {
 			ShowTickets();
 		}
@@ -253,6 +258,14 @@ namespace Peygir.Presentation.Forms {
 		private void resetTicketFilterButton_Click(object sender, EventArgs e) {
 			ResetTicketFilters();
 			ShowTickets();
+		}
+
+		private void createdTextBox_KeyDown(object sender, KeyEventArgs e) {
+			TextBoxUtil.TextBoxKeyDown(sender, e);
+		}
+
+		private void modifiedTextBox_KeyDown(object sender, KeyEventArgs e) {
+			TextBoxUtil.TextBoxKeyDown(sender, e);
 		}
 
 		private void ticketCreatedButton_Click(object sender, EventArgs e) {

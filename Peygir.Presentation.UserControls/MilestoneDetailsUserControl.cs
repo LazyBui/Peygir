@@ -68,5 +68,13 @@ namespace Peygir.Presentation.UserControls {
 			displayOrderNumericUpDown.ReadOnly = readOnly;
 			descriptionTextBox.ReadOnly = readOnly;
 		}
+
+		private void nameTextBox_KeyDown(object sender, KeyEventArgs e) {
+			TextBoxUtil.TextBoxKeyDown(sender, e);
+		}
+
+		private void descriptionTextBox_KeyDown(object sender, KeyEventArgs e) {
+			TextBoxUtil.TextBoxKeyDown(sender, e);
+		}
 	}
 }

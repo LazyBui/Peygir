@@ -72,5 +72,13 @@ namespace Peygir.Presentation.UserControls {
 		private void saveButton_Click(object sender, EventArgs e) {
 			SaveFile();
 		}
+
+		private void nameTextBox_KeyDown(object sender, KeyEventArgs e) {
+			TextBoxUtil.TextBoxKeyDown(sender, e);
+		}
+
+		private void sizeTextBox_KeyDown(object sender, KeyEventArgs e) {
+			TextBoxUtil.TextBoxKeyDown(sender, e);
+		}
 	}
 }

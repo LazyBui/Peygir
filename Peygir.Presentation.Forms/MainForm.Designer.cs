@@ -394,12 +394,14 @@
 			resources.ApplyResources(this.modifiedTextBox, "modifiedTextBox");
 			this.modifiedTextBox.Name = "modifiedTextBox";
 			this.modifiedTextBox.ReadOnly = true;
+			this.modifiedTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.modifiedTextBox_KeyDown);
 			// 
 			// createdTextBox
 			// 
 			resources.ApplyResources(this.createdTextBox, "createdTextBox");
 			this.createdTextBox.Name = "createdTextBox";
 			this.createdTextBox.ReadOnly = true;
+			this.createdTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.createdTextBox_KeyDown);
 			// 
 			// label9
 			// 
@@ -497,6 +499,7 @@
 			resources.ApplyResources(this.projectTextBox, "projectTextBox");
 			this.projectTextBox.Name = "projectTextBox";
 			this.projectTextBox.TextChanged += new System.EventHandler(this.projectTextBox_TextChanged);
+			this.projectTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.projectTextBox_KeyDown);
 			// 
 			// label2
 			// 

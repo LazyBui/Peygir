@@ -52,6 +52,7 @@
 			this.sizeTextBox.Name = "sizeTextBox";
 			this.sizeTextBox.ReadOnly = true;
 			this.sizeTextBox.TabStop = false;
+			this.sizeTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.sizeTextBox_KeyDown);
 			// 
 			// label2
 			// 
@@ -64,6 +65,7 @@
 			this.nameTextBox.Name = "nameTextBox";
 			this.nameTextBox.ReadOnly = true;
 			this.nameTextBox.TabStop = false;
+			this.nameTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.nameTextBox_KeyDown);
 			// 
 			// label1
 			// 

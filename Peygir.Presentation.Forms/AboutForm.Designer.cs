@@ -75,6 +75,7 @@
 			this.descriptionTextBox.Name = "descriptionTextBox";
 			this.descriptionTextBox.ReadOnly = true;
 			this.descriptionTextBox.TabStop = false;
+			this.descriptionTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.descriptionTextBox_KeyDown);
 			// 
 			// okButton
 			// 

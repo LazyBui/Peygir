@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using Peygir.Presentation.Forms.Properties;
+using Peygir.Presentation.UserControls;
 
 namespace Peygir.Presentation.Forms {
 	public partial class OptionsForm : Form {
@@ -71,6 +72,14 @@ namespace Peygir.Presentation.Forms {
 
 		private void formatDateTimeCheckBox_CheckedChanged(object sender, EventArgs e) {
 			UpdateButtonsEnabledProperty();
+		}
+
+		private void textBox2_KeyDown(object sender, KeyEventArgs e) {
+			TextBoxUtil.TextBoxKeyDown(sender, e);
+		}
+
+		private void dateTimePatternTextBox_KeyDown(object sender, KeyEventArgs e) {
+			TextBoxUtil.TextBoxKeyDown(sender, e);
 		}
 	}
 }

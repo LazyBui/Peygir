@@ -37,6 +37,7 @@
 			resources.ApplyResources(this.commentTextBox, "commentTextBox");
 			this.commentTextBox.Name = "commentTextBox";
 			this.commentTextBox.ReadOnly = true;
+			this.commentTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.commentTextBox_KeyDown);
 			// 
 			// label2
 			// 
@@ -49,6 +50,7 @@
 			this.changesTextBox.Name = "changesTextBox";
 			this.changesTextBox.ReadOnly = true;
 			this.changesTextBox.TabStop = false;
+			this.changesTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.changesTextBox_KeyDown);
 			// 
 			// label3
 			// 
@@ -61,6 +63,7 @@
 			this.timestampTextBox.Name = "timestampTextBox";
 			this.timestampTextBox.ReadOnly = true;
 			this.timestampTextBox.TabStop = false;
+			this.timestampTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.timestampTextBox_KeyDown);
 			// 
 			// label1
 			// 
