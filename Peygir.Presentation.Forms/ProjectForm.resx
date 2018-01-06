@@ -124,79 +124,88 @@
   <data name="tabControl.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
-  <data name="groupBox2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
+  <data name="&gt;&gt;projectInfoTabPage.Name" xml:space="preserve">
+    <value>projectInfoTabPage</value>
   </data>
-  <data name="changeProjectDetailsButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
+  <data name="&gt;&gt;projectInfoTabPage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="changeProjectDetailsButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="&gt;&gt;projectInfoTabPage.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;projectInfoTabPage.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;milestonesTabPage.Name" xml:space="preserve">
+    <value>milestonesTabPage</value>
+  </data>
+  <data name="&gt;&gt;milestonesTabPage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;milestonesTabPage.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;milestonesTabPage.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;ticketsTabPage.Name" xml:space="preserve">
+    <value>ticketsTabPage</value>
+  </data>
+  <data name="&gt;&gt;ticketsTabPage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ticketsTabPage.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;ticketsTabPage.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="changeProjectDetailsButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>532, 370</value>
-  </data>
-  <data name="changeProjectDetailsButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 23</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="changeProjectDetailsButton.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="changeProjectDetailsButton.Text" xml:space="preserve">
-    <value>&amp;Change...</value>
-  </data>
-  <data name="changeProjectDetailsButton.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
-    <value>ImageBeforeText</value>
-  </data>
-  <data name="&gt;&gt;changeProjectDetailsButton.Name" xml:space="preserve">
-    <value>changeProjectDetailsButton</value>
-  </data>
-  <data name="&gt;&gt;changeProjectDetailsButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;changeProjectDetailsButton.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;changeProjectDetailsButton.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="projectDetailsUserControl.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
-  <data name="projectDetailsUserControl.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 19</value>
   </data>
-  <data name="projectDetailsUserControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>616, 345</value>
+  <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>648, 437</value>
   </data>
-  <data name="projectDetailsUserControl.TabIndex" type="System.Int32, mscorlib">
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;projectDetailsUserControl.Name" xml:space="preserve">
-    <value>projectDetailsUserControl</value>
+  <data name="&gt;&gt;tabControl.Name" xml:space="preserve">
+    <value>tabControl</value>
   </data>
-  <data name="&gt;&gt;projectDetailsUserControl.Type" xml:space="preserve">
-    <value>Peygir.Presentation.UserControls.ProjectDetailsUserControl, Peygir.Presentation.UserControls, Version=1.0.1.42452, Culture=neutral, PublicKeyToken=7bc4e639a7e2568f</value>
+  <data name="&gt;&gt;tabControl.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;projectDetailsUserControl.Parent" xml:space="preserve">
-    <value>groupBox2</value>
+  <data name="&gt;&gt;tabControl.Parent" xml:space="preserve">
+    <value>groupBox1</value>
   </data>
-  <data name="&gt;&gt;projectDetailsUserControl.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 6</value>
-  </data>
-  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>628, 399</value>
-  </data>
-  <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;tabControl.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="groupBox2.Text" xml:space="preserve">
-    <value>Project Info</value>
+  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
+  </data>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>660, 462</value>
+  </data>
+  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Project</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
     <value>groupBox2</value>
@@ -237,8 +246,215 @@
   <data name="&gt;&gt;projectInfoTabPage.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="groupBox2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="&gt;&gt;changeProjectDetailsButton.Name" xml:space="preserve">
+    <value>changeProjectDetailsButton</value>
+  </data>
+  <data name="&gt;&gt;changeProjectDetailsButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;changeProjectDetailsButton.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;changeProjectDetailsButton.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;projectDetailsUserControl.Name" xml:space="preserve">
+    <value>projectDetailsUserControl</value>
+  </data>
+  <data name="&gt;&gt;projectDetailsUserControl.Type" xml:space="preserve">
+    <value>Peygir.Presentation.UserControls.ProjectDetailsUserControl, Peygir.Presentation.UserControls, Version=1.0.1.43196, Culture=neutral, PublicKeyToken=7bc4e639a7e2568f</value>
+  </data>
+  <data name="&gt;&gt;projectDetailsUserControl.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;projectDetailsUserControl.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 6</value>
+  </data>
+  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>628, 399</value>
+  </data>
+  <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Project Info</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
+    <value>projectInfoTabPage</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="changeProjectDetailsButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="changeProjectDetailsButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="changeProjectDetailsButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>532, 370</value>
+  </data>
+  <data name="changeProjectDetailsButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 23</value>
+  </data>
+  <data name="changeProjectDetailsButton.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="changeProjectDetailsButton.Text" xml:space="preserve">
+    <value>&amp;Change...</value>
+  </data>
+  <data name="changeProjectDetailsButton.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
+    <value>ImageBeforeText</value>
+  </data>
+  <data name="&gt;&gt;changeProjectDetailsButton.Name" xml:space="preserve">
+    <value>changeProjectDetailsButton</value>
+  </data>
+  <data name="&gt;&gt;changeProjectDetailsButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;changeProjectDetailsButton.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;changeProjectDetailsButton.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Name" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Parent" xml:space="preserve">
+    <value>milestonesTabPage</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="milestonesTabPage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="milestonesTabPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="milestonesTabPage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>640, 411</value>
+  </data>
+  <data name="milestonesTabPage.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="milestonesTabPage.Text" xml:space="preserve">
+    <value>Milestones</value>
+  </data>
+  <data name="&gt;&gt;milestonesTabPage.Name" xml:space="preserve">
+    <value>milestonesTabPage</value>
+  </data>
+  <data name="&gt;&gt;milestonesTabPage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;milestonesTabPage.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;milestonesTabPage.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="groupBox3.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="&gt;&gt;showMilestoneButton.Name" xml:space="preserve">
+    <value>showMilestoneButton</value>
+  </data>
+  <data name="&gt;&gt;showMilestoneButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;showMilestoneButton.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;showMilestoneButton.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;deleteMilestoneButton.Name" xml:space="preserve">
+    <value>deleteMilestoneButton</value>
+  </data>
+  <data name="&gt;&gt;deleteMilestoneButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;deleteMilestoneButton.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;deleteMilestoneButton.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;editMilestoneButton.Name" xml:space="preserve">
+    <value>editMilestoneButton</value>
+  </data>
+  <data name="&gt;&gt;editMilestoneButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;editMilestoneButton.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;editMilestoneButton.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;addMilestoneButton.Name" xml:space="preserve">
+    <value>addMilestoneButton</value>
+  </data>
+  <data name="&gt;&gt;addMilestoneButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;addMilestoneButton.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;addMilestoneButton.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;milestonesListUserControl.Name" xml:space="preserve">
+    <value>milestonesListUserControl</value>
+  </data>
+  <data name="&gt;&gt;milestonesListUserControl.Type" xml:space="preserve">
+    <value>Peygir.Presentation.UserControls.MilestonesListUserControl, Peygir.Presentation.UserControls, Version=1.0.1.43196, Culture=neutral, PublicKeyToken=7bc4e639a7e2568f</value>
+  </data>
+  <data name="&gt;&gt;milestonesListUserControl.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;milestonesListUserControl.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 6</value>
+  </data>
+  <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>628, 400</value>
+  </data>
+  <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>Milestones</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Name" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Parent" xml:space="preserve">
+    <value>milestonesTabPage</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="showMilestoneButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -372,83 +588,431 @@
   <data name="&gt;&gt;addMilestoneButton.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="milestonesListUserControl.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
+  <data name="&gt;&gt;groupBox4.Name" xml:space="preserve">
+    <value>groupBox4</value>
   </data>
-  <data name="milestonesListUserControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 20</value>
-  </data>
-  <data name="milestonesListUserControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>616, 345</value>
-  </data>
-  <data name="milestonesListUserControl.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;milestonesListUserControl.Name" xml:space="preserve">
-    <value>milestonesListUserControl</value>
-  </data>
-  <data name="&gt;&gt;milestonesListUserControl.Type" xml:space="preserve">
-    <value>Peygir.Presentation.UserControls.MilestonesListUserControl, Peygir.Presentation.UserControls, Version=1.0.1.42452, Culture=neutral, PublicKeyToken=7bc4e639a7e2568f</value>
-  </data>
-  <data name="&gt;&gt;milestonesListUserControl.Parent" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="&gt;&gt;milestonesListUserControl.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 6</value>
-  </data>
-  <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>628, 400</value>
-  </data>
-  <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="groupBox3.Text" xml:space="preserve">
-    <value>Milestones</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.Name" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.Type" xml:space="preserve">
+  <data name="&gt;&gt;groupBox4.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;groupBox3.Parent" xml:space="preserve">
-    <value>milestonesTabPage</value>
+  <data name="&gt;&gt;groupBox4.Parent" xml:space="preserve">
+    <value>ticketsTabPage</value>
   </data>
-  <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="milestonesTabPage.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="ticketsTabPage.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
   </data>
-  <data name="milestonesTabPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="ticketsTabPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
-  <data name="milestonesTabPage.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="ticketsTabPage.Size" type="System.Drawing.Size, System.Drawing">
     <value>640, 411</value>
   </data>
-  <data name="milestonesTabPage.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="ticketsTabPage.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
-  <data name="milestonesTabPage.Text" xml:space="preserve">
-    <value>Milestones</value>
+  <data name="ticketsTabPage.Text" xml:space="preserve">
+    <value>Tickets</value>
   </data>
-  <data name="&gt;&gt;milestonesTabPage.Name" xml:space="preserve">
-    <value>milestonesTabPage</value>
+  <data name="&gt;&gt;ticketsTabPage.Name" xml:space="preserve">
+    <value>ticketsTabPage</value>
   </data>
-  <data name="&gt;&gt;milestonesTabPage.Type" xml:space="preserve">
+  <data name="&gt;&gt;ticketsTabPage.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;milestonesTabPage.Parent" xml:space="preserve">
+  <data name="&gt;&gt;ticketsTabPage.Parent" xml:space="preserve">
     <value>tabControl</value>
   </data>
-  <data name="&gt;&gt;milestonesTabPage.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;ticketsTabPage.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="groupBox4.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="&gt;&gt;ticketMilestoneComboBox.Name" xml:space="preserve">
+    <value>ticketMilestoneComboBox</value>
+  </data>
+  <data name="&gt;&gt;ticketMilestoneComboBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ticketMilestoneComboBox.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;ticketMilestoneComboBox.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;label10.Name" xml:space="preserve">
+    <value>label10</value>
+  </data>
+  <data name="&gt;&gt;label10.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label10.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;resetTicketFilterButton.Name" xml:space="preserve">
+    <value>resetTicketFilterButton</value>
+  </data>
+  <data name="&gt;&gt;resetTicketFilterButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;resetTicketFilterButton.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;resetTicketFilterButton.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;ticketCreatedButton.Name" xml:space="preserve">
+    <value>ticketCreatedButton</value>
+  </data>
+  <data name="&gt;&gt;ticketCreatedButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ticketCreatedButton.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;ticketCreatedButton.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;ticketModifiedButton.Name" xml:space="preserve">
+    <value>ticketModifiedButton</value>
+  </data>
+  <data name="&gt;&gt;ticketModifiedButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ticketModifiedButton.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;ticketModifiedButton.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;modifiedTextBox.Name" xml:space="preserve">
+    <value>modifiedTextBox</value>
+  </data>
+  <data name="&gt;&gt;modifiedTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;modifiedTextBox.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;modifiedTextBox.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;createdTextBox.Name" xml:space="preserve">
+    <value>createdTextBox</value>
+  </data>
+  <data name="&gt;&gt;createdTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;createdTextBox.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;createdTextBox.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;label9.Name" xml:space="preserve">
+    <value>label9</value>
+  </data>
+  <data name="&gt;&gt;label9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label9.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;label8.Name" xml:space="preserve">
+    <value>label8</value>
+  </data>
+  <data name="&gt;&gt;label8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;ticketReportersComboBox.Name" xml:space="preserve">
+    <value>ticketReportersComboBox</value>
+  </data>
+  <data name="&gt;&gt;ticketReportersComboBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ticketReportersComboBox.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;ticketReportersComboBox.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;ticketAssignedToComboBox.Name" xml:space="preserve">
+    <value>ticketAssignedToComboBox</value>
+  </data>
+  <data name="&gt;&gt;ticketAssignedToComboBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ticketAssignedToComboBox.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;ticketAssignedToComboBox.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;label7.Name" xml:space="preserve">
+    <value>label7</value>
+  </data>
+  <data name="&gt;&gt;label7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;label6.Name" xml:space="preserve">
+    <value>label6</value>
+  </data>
+  <data name="&gt;&gt;label6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;ticketTypeComboBox.Name" xml:space="preserve">
+    <value>ticketTypeComboBox</value>
+  </data>
+  <data name="&gt;&gt;ticketTypeComboBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ticketTypeComboBox.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;ticketTypeComboBox.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="&gt;&gt;ticketSeverityComboBox.Name" xml:space="preserve">
+    <value>ticketSeverityComboBox</value>
+  </data>
+  <data name="&gt;&gt;ticketSeverityComboBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ticketSeverityComboBox.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;ticketSeverityComboBox.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="&gt;&gt;ticketPriorityComboBox.Name" xml:space="preserve">
+    <value>ticketPriorityComboBox</value>
+  </data>
+  <data name="&gt;&gt;ticketPriorityComboBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ticketPriorityComboBox.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;ticketPriorityComboBox.ZOrder" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="&gt;&gt;ticketTextBox.Name" xml:space="preserve">
+    <value>ticketTextBox</value>
+  </data>
+  <data name="&gt;&gt;ticketTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ticketTextBox.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;ticketTextBox.ZOrder" xml:space="preserve">
+    <value>19</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>21</value>
+  </data>
+  <data name="&gt;&gt;ticketStateComboBox.Name" xml:space="preserve">
+    <value>ticketStateComboBox</value>
+  </data>
+  <data name="&gt;&gt;ticketStateComboBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ticketStateComboBox.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;ticketStateComboBox.ZOrder" xml:space="preserve">
+    <value>22</value>
+  </data>
+  <data name="&gt;&gt;showTicketAttachmentsButton.Name" xml:space="preserve">
+    <value>showTicketAttachmentsButton</value>
+  </data>
+  <data name="&gt;&gt;showTicketAttachmentsButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;showTicketAttachmentsButton.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;showTicketAttachmentsButton.ZOrder" xml:space="preserve">
+    <value>23</value>
+  </data>
+  <data name="&gt;&gt;showTicketHistoryButton.Name" xml:space="preserve">
+    <value>showTicketHistoryButton</value>
+  </data>
+  <data name="&gt;&gt;showTicketHistoryButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;showTicketHistoryButton.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;showTicketHistoryButton.ZOrder" xml:space="preserve">
+    <value>24</value>
+  </data>
+  <data name="&gt;&gt;deleteTicketButton.Name" xml:space="preserve">
+    <value>deleteTicketButton</value>
+  </data>
+  <data name="&gt;&gt;deleteTicketButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;deleteTicketButton.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;deleteTicketButton.ZOrder" xml:space="preserve">
+    <value>25</value>
+  </data>
+  <data name="&gt;&gt;editTicketButton.Name" xml:space="preserve">
+    <value>editTicketButton</value>
+  </data>
+  <data name="&gt;&gt;editTicketButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;editTicketButton.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;editTicketButton.ZOrder" xml:space="preserve">
+    <value>26</value>
+  </data>
+  <data name="&gt;&gt;showTicketButton.Name" xml:space="preserve">
+    <value>showTicketButton</value>
+  </data>
+  <data name="&gt;&gt;showTicketButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;showTicketButton.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;showTicketButton.ZOrder" xml:space="preserve">
+    <value>27</value>
+  </data>
+  <data name="&gt;&gt;addTicketButton.Name" xml:space="preserve">
+    <value>addTicketButton</value>
+  </data>
+  <data name="&gt;&gt;addTicketButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;addTicketButton.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;addTicketButton.ZOrder" xml:space="preserve">
+    <value>28</value>
+  </data>
+  <data name="&gt;&gt;ticketsListUserControl.Name" xml:space="preserve">
+    <value>ticketsListUserControl</value>
+  </data>
+  <data name="&gt;&gt;ticketsListUserControl.Type" xml:space="preserve">
+    <value>Peygir.Presentation.UserControls.TicketsListUserControl, Peygir.Presentation.UserControls, Version=1.0.1.43196, Culture=neutral, PublicKeyToken=7bc4e639a7e2568f</value>
+  </data>
+  <data name="&gt;&gt;ticketsListUserControl.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;ticketsListUserControl.ZOrder" xml:space="preserve">
+    <value>29</value>
+  </data>
+  <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 6</value>
+  </data>
+  <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>628, 400</value>
+  </data>
+  <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="groupBox4.Text" xml:space="preserve">
+    <value>Tickets</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.Name" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.Parent" xml:space="preserve">
+    <value>ticketsTabPage</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="ticketMilestoneComboBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>68, 99</value>
@@ -1314,167 +1878,125 @@
   <data name="&gt;&gt;addTicketButton.ZOrder" xml:space="preserve">
     <value>28</value>
   </data>
-  <data name="ticketsListUserControl.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
-  <data name="ticketsListUserControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 126</value>
-  </data>
-  <data name="ticketsListUserControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>616, 239</value>
-  </data>
-  <data name="ticketsListUserControl.TabIndex" type="System.Int32, mscorlib">
-    <value>24</value>
-  </data>
-  <data name="&gt;&gt;ticketsListUserControl.Name" xml:space="preserve">
-    <value>ticketsListUserControl</value>
-  </data>
-  <data name="&gt;&gt;ticketsListUserControl.Type" xml:space="preserve">
-    <value>Peygir.Presentation.UserControls.TicketsListUserControl, Peygir.Presentation.UserControls, Version=1.0.1.42452, Culture=neutral, PublicKeyToken=7bc4e639a7e2568f</value>
-  </data>
-  <data name="&gt;&gt;ticketsListUserControl.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;ticketsListUserControl.ZOrder" xml:space="preserve">
-    <value>29</value>
-  </data>
-  <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 6</value>
-  </data>
-  <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>628, 400</value>
-  </data>
-  <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="groupBox4.Text" xml:space="preserve">
-    <value>Tickets</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.Name" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.Parent" xml:space="preserve">
-    <value>ticketsTabPage</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="ticketsTabPage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="ticketsTabPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="ticketsTabPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>640, 411</value>
-  </data>
-  <data name="ticketsTabPage.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="ticketsTabPage.Text" xml:space="preserve">
-    <value>Tickets</value>
-  </data>
-  <data name="&gt;&gt;ticketsTabPage.Name" xml:space="preserve">
-    <value>ticketsTabPage</value>
-  </data>
-  <data name="&gt;&gt;ticketsTabPage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ticketsTabPage.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;ticketsTabPage.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 19</value>
-  </data>
-  <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>648, 437</value>
-  </data>
-  <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;tabControl.Name" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tabControl.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabControl.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;tabControl.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 12</value>
-  </data>
-  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>660, 462</value>
-  </data>
-  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>Project</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <metadata name="ticketContextMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
   <data name="addTicketToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>135, 22</value>
+    <value>162, 22</value>
   </data>
   <data name="addTicketToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Add</value>
   </data>
   <data name="showTicketToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>135, 22</value>
+    <value>162, 22</value>
   </data>
   <data name="showTicketToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Show</value>
   </data>
   <data name="editTicketToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>135, 22</value>
+    <value>162, 22</value>
   </data>
   <data name="editTicketToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Edit</value>
   </data>
   <data name="showTicketHistoryToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>135, 22</value>
+    <value>162, 22</value>
   </data>
   <data name="showTicketHistoryToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;History</value>
   </data>
   <data name="deleteTicketToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>135, 22</value>
+    <value>162, 22</value>
   </data>
   <data name="deleteTicketToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Delete</value>
   </data>
   <data name="showTicketAttachmentsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>135, 22</value>
+    <value>162, 22</value>
   </data>
   <data name="showTicketAttachmentsToolStripMenuItem.Text" xml:space="preserve">
     <value>A&amp;ttachments</value>
   </data>
+  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>159, 6</value>
+  </data>
+  <data name="stateNewToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>162, 22</value>
+  </data>
+  <data name="stateNewToolStripMenuItem.Text" xml:space="preserve">
+    <value>State: New</value>
+  </data>
+  <data name="stateAcceptedToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>162, 22</value>
+  </data>
+  <data name="stateAcceptedToolStripMenuItem.Text" xml:space="preserve">
+    <value>State: Accepted</value>
+  </data>
+  <data name="stateInProgressToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>162, 22</value>
+  </data>
+  <data name="stateInProgressToolStripMenuItem.Text" xml:space="preserve">
+    <value>State: In Progress</value>
+  </data>
+  <data name="stateBlockedToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>162, 22</value>
+  </data>
+  <data name="stateBlockedToolStripMenuItem.Text" xml:space="preserve">
+    <value>State: Blocked</value>
+  </data>
+  <data name="stateCompletedToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>162, 22</value>
+  </data>
+  <data name="stateCompletedToolStripMenuItem.Text" xml:space="preserve">
+    <value>State: Completed</value>
+  </data>
+  <data name="stateClosedToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>162, 22</value>
+  </data>
+  <data name="stateClosedToolStripMenuItem.Text" xml:space="preserve">
+    <value>State: Closed</value>
+  </data>
+  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>159, 6</value>
+  </data>
+  <data name="priorityToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>162, 22</value>
+  </data>
+  <data name="priorityToolStripMenuItem.Text" xml:space="preserve">
+    <value>Priority</value>
+  </data>
+  <data name="severityToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>162, 22</value>
+  </data>
+  <data name="severityToolStripMenuItem.Text" xml:space="preserve">
+    <value>Severity</value>
+  </data>
+  <data name="defectToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>155, 22</value>
+  </data>
+  <data name="defectToolStripMenuItem.Text" xml:space="preserve">
+    <value>Defect</value>
+  </data>
+  <data name="featureRequestToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>155, 22</value>
+  </data>
+  <data name="featureRequestToolStripMenuItem.Text" xml:space="preserve">
+    <value>Feature Request</value>
+  </data>
+  <data name="taskToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>155, 22</value>
+  </data>
+  <data name="taskToolStripMenuItem.Text" xml:space="preserve">
+    <value>Task</value>
+  </data>
+  <data name="typeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>162, 22</value>
+  </data>
+  <data name="typeToolStripMenuItem.Text" xml:space="preserve">
+    <value>Type</value>
+  </data>
   <data name="ticketContextMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>136, 136</value>
+    <value>163, 368</value>
   </data>
   <data name="&gt;&gt;ticketContextMenu.Name" xml:space="preserve">
     <value>ticketContextMenu</value>
@@ -1485,6 +2007,15 @@
   <metadata name="milestoneContextMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>161, 17</value>
   </metadata>
+  <data name="milestoneContextMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>106, 92</value>
+  </data>
+  <data name="&gt;&gt;milestoneContextMenu.Name" xml:space="preserve">
+    <value>milestoneContextMenu</value>
+  </data>
+  <data name="&gt;&gt;milestoneContextMenu.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="addMilestoneToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>105, 22</value>
   </data>
@@ -1509,14 +2040,143 @@
   <data name="deleteMilestoneToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Delete</value>
   </data>
-  <data name="milestoneContextMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>106, 92</value>
+  <data name="projectDetailsUserControl.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
   </data>
-  <data name="&gt;&gt;milestoneContextMenu.Name" xml:space="preserve">
-    <value>milestoneContextMenu</value>
+  <data name="projectDetailsUserControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 19</value>
   </data>
-  <data name="&gt;&gt;milestoneContextMenu.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="projectDetailsUserControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>616, 345</value>
+  </data>
+  <data name="projectDetailsUserControl.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;projectDetailsUserControl.Name" xml:space="preserve">
+    <value>projectDetailsUserControl</value>
+  </data>
+  <data name="&gt;&gt;projectDetailsUserControl.Type" xml:space="preserve">
+    <value>Peygir.Presentation.UserControls.ProjectDetailsUserControl, Peygir.Presentation.UserControls, Version=1.0.1.43196, Culture=neutral, PublicKeyToken=7bc4e639a7e2568f</value>
+  </data>
+  <data name="&gt;&gt;projectDetailsUserControl.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;projectDetailsUserControl.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="milestonesListUserControl.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="milestonesListUserControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 20</value>
+  </data>
+  <data name="milestonesListUserControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>616, 345</value>
+  </data>
+  <data name="milestonesListUserControl.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;milestonesListUserControl.Name" xml:space="preserve">
+    <value>milestonesListUserControl</value>
+  </data>
+  <data name="&gt;&gt;milestonesListUserControl.Type" xml:space="preserve">
+    <value>Peygir.Presentation.UserControls.MilestonesListUserControl, Peygir.Presentation.UserControls, Version=1.0.1.43196, Culture=neutral, PublicKeyToken=7bc4e639a7e2568f</value>
+  </data>
+  <data name="&gt;&gt;milestonesListUserControl.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;milestonesListUserControl.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="ticketsListUserControl.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="ticketsListUserControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 126</value>
+  </data>
+  <data name="ticketsListUserControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>616, 239</value>
+  </data>
+  <data name="ticketsListUserControl.TabIndex" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
+  <data name="&gt;&gt;ticketsListUserControl.Name" xml:space="preserve">
+    <value>ticketsListUserControl</value>
+  </data>
+  <data name="&gt;&gt;ticketsListUserControl.Type" xml:space="preserve">
+    <value>Peygir.Presentation.UserControls.TicketsListUserControl, Peygir.Presentation.UserControls, Version=1.0.1.43196, Culture=neutral, PublicKeyToken=7bc4e639a7e2568f</value>
+  </data>
+  <data name="&gt;&gt;ticketsListUserControl.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;ticketsListUserControl.ZOrder" xml:space="preserve">
+    <value>29</value>
+  </data>
+  <data name="lowestPriorityToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="lowestPriorityToolStripMenuItem.Text" xml:space="preserve">
+    <value>Lowest</value>
+  </data>
+  <data name="lowPriorityToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="lowPriorityToolStripMenuItem.Text" xml:space="preserve">
+    <value>Low</value>
+  </data>
+  <data name="normalPriorityToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="normalPriorityToolStripMenuItem.Text" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="highPriorityToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="highPriorityToolStripMenuItem.Text" xml:space="preserve">
+    <value>High</value>
+  </data>
+  <data name="highestPriorityToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="highestPriorityToolStripMenuItem.Text" xml:space="preserve">
+    <value>Highest</value>
+  </data>
+  <data name="trivialSeverityToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="trivialSeverityToolStripMenuItem.Text" xml:space="preserve">
+    <value>Trivial</value>
+  </data>
+  <data name="minorSeverityToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="minorSeverityToolStripMenuItem.Text" xml:space="preserve">
+    <value>Minor</value>
+  </data>
+  <data name="normalSeverityToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="normalSeverityToolStripMenuItem.Text" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="majorSeverityToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="majorSeverityToolStripMenuItem.Text" xml:space="preserve">
+    <value>Major</value>
+  </data>
+  <data name="criticalSeverityToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="criticalSeverityToolStripMenuItem.Text" xml:space="preserve">
+    <value>Critical</value>
+  </data>
+  <data name="blockerSeverityToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="blockerSeverityToolStripMenuItem.Text" xml:space="preserve">
+    <value>Blocker</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -1621,6 +2281,156 @@
     <value>deleteMilestoneToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;deleteMilestoneToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator1.Name" xml:space="preserve">
+    <value>toolStripSeparator1</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;stateNewToolStripMenuItem.Name" xml:space="preserve">
+    <value>stateNewToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;stateNewToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;stateAcceptedToolStripMenuItem.Name" xml:space="preserve">
+    <value>stateAcceptedToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;stateAcceptedToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;stateInProgressToolStripMenuItem.Name" xml:space="preserve">
+    <value>stateInProgressToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;stateInProgressToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;stateBlockedToolStripMenuItem.Name" xml:space="preserve">
+    <value>stateBlockedToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;stateBlockedToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;stateCompletedToolStripMenuItem.Name" xml:space="preserve">
+    <value>stateCompletedToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;stateCompletedToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;stateClosedToolStripMenuItem.Name" xml:space="preserve">
+    <value>stateClosedToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;stateClosedToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator2.Name" xml:space="preserve">
+    <value>toolStripSeparator2</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;priorityToolStripMenuItem.Name" xml:space="preserve">
+    <value>priorityToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;priorityToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;severityToolStripMenuItem.Name" xml:space="preserve">
+    <value>severityToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;severityToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;typeToolStripMenuItem.Name" xml:space="preserve">
+    <value>typeToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;typeToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lowestPriorityToolStripMenuItem.Name" xml:space="preserve">
+    <value>lowestPriorityToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;lowestPriorityToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lowPriorityToolStripMenuItem.Name" xml:space="preserve">
+    <value>lowPriorityToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;lowPriorityToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;normalPriorityToolStripMenuItem.Name" xml:space="preserve">
+    <value>normalPriorityToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;normalPriorityToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;highPriorityToolStripMenuItem.Name" xml:space="preserve">
+    <value>highPriorityToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;highPriorityToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;highestPriorityToolStripMenuItem.Name" xml:space="preserve">
+    <value>highestPriorityToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;highestPriorityToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;defectToolStripMenuItem.Name" xml:space="preserve">
+    <value>defectToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;defectToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;featureRequestToolStripMenuItem.Name" xml:space="preserve">
+    <value>featureRequestToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;featureRequestToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;taskToolStripMenuItem.Name" xml:space="preserve">
+    <value>taskToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;taskToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;trivialSeverityToolStripMenuItem.Name" xml:space="preserve">
+    <value>trivialSeverityToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;trivialSeverityToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;minorSeverityToolStripMenuItem.Name" xml:space="preserve">
+    <value>minorSeverityToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;minorSeverityToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;normalSeverityToolStripMenuItem.Name" xml:space="preserve">
+    <value>normalSeverityToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;normalSeverityToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;majorSeverityToolStripMenuItem.Name" xml:space="preserve">
+    <value>majorSeverityToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;majorSeverityToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;criticalSeverityToolStripMenuItem.Name" xml:space="preserve">
+    <value>criticalSeverityToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;criticalSeverityToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;blockerSeverityToolStripMenuItem.Name" xml:space="preserve">
+    <value>blockerSeverityToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;blockerSeverityToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

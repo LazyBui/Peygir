@@ -82,6 +82,31 @@
 			this.projectDetailsUserControl = new Peygir.Presentation.UserControls.ProjectDetailsUserControl();
 			this.milestonesListUserControl = new Peygir.Presentation.UserControls.MilestonesListUserControl();
 			this.ticketsListUserControl = new Peygir.Presentation.UserControls.TicketsListUserControl();
+			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+			this.stateNewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.stateAcceptedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.stateInProgressToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.stateBlockedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.stateCompletedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.stateClosedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+			this.priorityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.severityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.typeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.lowestPriorityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.lowPriorityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.normalPriorityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.highPriorityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.highestPriorityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.defectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.featureRequestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.taskToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.trivialSeverityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.minorSeverityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.normalSeverityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.majorSeverityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.criticalSeverityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.blockerSeverityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.groupBox1.SuspendLayout();
 			this.tabControl.SuspendLayout();
 			this.projectInfoTabPage.SuspendLayout();
@@ -462,7 +487,18 @@
             this.editTicketToolStripMenuItem,
             this.showTicketHistoryToolStripMenuItem,
             this.deleteTicketToolStripMenuItem,
-            this.showTicketAttachmentsToolStripMenuItem});
+            this.showTicketAttachmentsToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.stateNewToolStripMenuItem,
+            this.stateAcceptedToolStripMenuItem,
+            this.stateInProgressToolStripMenuItem,
+            this.stateBlockedToolStripMenuItem,
+            this.stateCompletedToolStripMenuItem,
+            this.stateClosedToolStripMenuItem,
+            this.toolStripSeparator2,
+            this.priorityToolStripMenuItem,
+            this.severityToolStripMenuItem,
+            this.typeToolStripMenuItem});
 			this.ticketContextMenu.Name = "ticketContextMenu";
 			this.ticketContextMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
 			resources.ApplyResources(this.ticketContextMenu, "ticketContextMenu");
@@ -569,6 +605,177 @@
 			resources.ApplyResources(this.ticketsListUserControl, "ticketsListUserControl");
 			this.ticketsListUserControl.Name = "ticketsListUserControl";
 			// 
+			// toolStripSeparator1
+			// 
+			this.toolStripSeparator1.Name = "toolStripSeparator1";
+			resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
+			// 
+			// stateNewToolStripMenuItem
+			// 
+			this.stateNewToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Help;
+			this.stateNewToolStripMenuItem.Name = "stateNewToolStripMenuItem";
+			resources.ApplyResources(this.stateNewToolStripMenuItem, "stateNewToolStripMenuItem");
+			this.stateNewToolStripMenuItem.Click += new System.EventHandler(this.stateNewToolStripMenuItem_Click);
+			// 
+			// stateAcceptedToolStripMenuItem
+			// 
+			this.stateAcceptedToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_New;
+			this.stateAcceptedToolStripMenuItem.Name = "stateAcceptedToolStripMenuItem";
+			resources.ApplyResources(this.stateAcceptedToolStripMenuItem, "stateAcceptedToolStripMenuItem");
+			this.stateAcceptedToolStripMenuItem.Click += new System.EventHandler(this.stateAcceptedToolStripMenuItem_Click);
+			// 
+			// stateInProgressToolStripMenuItem
+			// 
+			this.stateInProgressToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_SaveAs;
+			this.stateInProgressToolStripMenuItem.Name = "stateInProgressToolStripMenuItem";
+			resources.ApplyResources(this.stateInProgressToolStripMenuItem, "stateInProgressToolStripMenuItem");
+			this.stateInProgressToolStripMenuItem.Click += new System.EventHandler(this.stateInProgressToolStripMenuItem_Click);
+			// 
+			// stateBlockedToolStripMenuItem
+			// 
+			this.stateBlockedToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Cancel;
+			this.stateBlockedToolStripMenuItem.Name = "stateBlockedToolStripMenuItem";
+			resources.ApplyResources(this.stateBlockedToolStripMenuItem, "stateBlockedToolStripMenuItem");
+			this.stateBlockedToolStripMenuItem.Click += new System.EventHandler(this.stateBlockedToolStripMenuItem_Click);
+			// 
+			// stateCompletedToolStripMenuItem
+			// 
+			this.stateCompletedToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_OK;
+			this.stateCompletedToolStripMenuItem.Name = "stateCompletedToolStripMenuItem";
+			resources.ApplyResources(this.stateCompletedToolStripMenuItem, "stateCompletedToolStripMenuItem");
+			this.stateCompletedToolStripMenuItem.Click += new System.EventHandler(this.stateCompletedToolStripMenuItem_Click);
+			// 
+			// stateClosedToolStripMenuItem
+			// 
+			this.stateClosedToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Exit;
+			this.stateClosedToolStripMenuItem.Name = "stateClosedToolStripMenuItem";
+			resources.ApplyResources(this.stateClosedToolStripMenuItem, "stateClosedToolStripMenuItem");
+			this.stateClosedToolStripMenuItem.Click += new System.EventHandler(this.stateClosedToolStripMenuItem_Click);
+			// 
+			// toolStripSeparator2
+			// 
+			this.toolStripSeparator2.Name = "toolStripSeparator2";
+			resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
+			// 
+			// priorityToolStripMenuItem
+			// 
+			this.priorityToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lowestPriorityToolStripMenuItem,
+            this.lowPriorityToolStripMenuItem,
+            this.normalPriorityToolStripMenuItem,
+            this.highPriorityToolStripMenuItem,
+            this.highestPriorityToolStripMenuItem});
+			this.priorityToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Open;
+			this.priorityToolStripMenuItem.Name = "priorityToolStripMenuItem";
+			resources.ApplyResources(this.priorityToolStripMenuItem, "priorityToolStripMenuItem");
+			// 
+			// severityToolStripMenuItem
+			// 
+			this.severityToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.trivialSeverityToolStripMenuItem,
+            this.minorSeverityToolStripMenuItem,
+            this.normalSeverityToolStripMenuItem,
+            this.majorSeverityToolStripMenuItem,
+            this.criticalSeverityToolStripMenuItem,
+            this.blockerSeverityToolStripMenuItem});
+			this.severityToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Peygir;
+			this.severityToolStripMenuItem.Name = "severityToolStripMenuItem";
+			resources.ApplyResources(this.severityToolStripMenuItem, "severityToolStripMenuItem");
+			// 
+			// typeToolStripMenuItem
+			// 
+			this.typeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.defectToolStripMenuItem,
+            this.featureRequestToolStripMenuItem,
+            this.taskToolStripMenuItem});
+			this.typeToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Options;
+			this.typeToolStripMenuItem.Name = "typeToolStripMenuItem";
+			resources.ApplyResources(this.typeToolStripMenuItem, "typeToolStripMenuItem");
+			// 
+			// lowestPriorityToolStripMenuItem
+			// 
+			this.lowestPriorityToolStripMenuItem.Name = "lowestPriorityToolStripMenuItem";
+			resources.ApplyResources(this.lowestPriorityToolStripMenuItem, "lowestPriorityToolStripMenuItem");
+			this.lowestPriorityToolStripMenuItem.Click += new System.EventHandler(this.lowestPriorityToolStripMenuItem_Click);
+			// 
+			// lowPriorityToolStripMenuItem
+			// 
+			this.lowPriorityToolStripMenuItem.Name = "lowPriorityToolStripMenuItem";
+			resources.ApplyResources(this.lowPriorityToolStripMenuItem, "lowPriorityToolStripMenuItem");
+			this.lowPriorityToolStripMenuItem.Click += new System.EventHandler(this.lowPriorityToolStripMenuItem_Click);
+			// 
+			// normalPriorityToolStripMenuItem
+			// 
+			this.normalPriorityToolStripMenuItem.Name = "normalPriorityToolStripMenuItem";
+			resources.ApplyResources(this.normalPriorityToolStripMenuItem, "normalPriorityToolStripMenuItem");
+			this.normalPriorityToolStripMenuItem.Click += new System.EventHandler(this.normalPriorityToolStripMenuItem_Click);
+			// 
+			// highPriorityToolStripMenuItem
+			// 
+			this.highPriorityToolStripMenuItem.Name = "highPriorityToolStripMenuItem";
+			resources.ApplyResources(this.highPriorityToolStripMenuItem, "highPriorityToolStripMenuItem");
+			this.highPriorityToolStripMenuItem.Click += new System.EventHandler(this.highPriorityToolStripMenuItem_Click);
+			// 
+			// highestPriorityToolStripMenuItem
+			// 
+			this.highestPriorityToolStripMenuItem.Name = "highestPriorityToolStripMenuItem";
+			resources.ApplyResources(this.highestPriorityToolStripMenuItem, "highestPriorityToolStripMenuItem");
+			this.highestPriorityToolStripMenuItem.Click += new System.EventHandler(this.highestPriorityToolStripMenuItem_Click);
+			// 
+			// defectToolStripMenuItem
+			// 
+			this.defectToolStripMenuItem.Name = "defectToolStripMenuItem";
+			resources.ApplyResources(this.defectToolStripMenuItem, "defectToolStripMenuItem");
+			this.defectToolStripMenuItem.Click += new System.EventHandler(this.defectToolStripMenuItem_Click);
+			// 
+			// featureRequestToolStripMenuItem
+			// 
+			this.featureRequestToolStripMenuItem.Name = "featureRequestToolStripMenuItem";
+			resources.ApplyResources(this.featureRequestToolStripMenuItem, "featureRequestToolStripMenuItem");
+			this.featureRequestToolStripMenuItem.Click += new System.EventHandler(this.featureRequestToolStripMenuItem_Click);
+			// 
+			// taskToolStripMenuItem
+			// 
+			this.taskToolStripMenuItem.Name = "taskToolStripMenuItem";
+			resources.ApplyResources(this.taskToolStripMenuItem, "taskToolStripMenuItem");
+			this.taskToolStripMenuItem.Click += new System.EventHandler(this.taskToolStripMenuItem_Click);
+			// 
+			// trivialSeverityToolStripMenuItem
+			// 
+			this.trivialSeverityToolStripMenuItem.Name = "trivialSeverityToolStripMenuItem";
+			resources.ApplyResources(this.trivialSeverityToolStripMenuItem, "trivialSeverityToolStripMenuItem");
+			this.trivialSeverityToolStripMenuItem.Click += new System.EventHandler(this.trivialSeverityToolStripMenuItem_Click);
+			// 
+			// minorSeverityToolStripMenuItem
+			// 
+			this.minorSeverityToolStripMenuItem.Name = "minorSeverityToolStripMenuItem";
+			resources.ApplyResources(this.minorSeverityToolStripMenuItem, "minorSeverityToolStripMenuItem");
+			this.minorSeverityToolStripMenuItem.Click += new System.EventHandler(this.minorSeverityToolStripMenuItem_Click);
+			// 
+			// normalSeverityToolStripMenuItem
+			// 
+			this.normalSeverityToolStripMenuItem.Name = "normalSeverityToolStripMenuItem";
+			resources.ApplyResources(this.normalSeverityToolStripMenuItem, "normalSeverityToolStripMenuItem");
+			this.normalSeverityToolStripMenuItem.Click += new System.EventHandler(this.normalSeverityToolStripMenuItem_Click);
+			// 
+			// majorSeverityToolStripMenuItem
+			// 
+			this.majorSeverityToolStripMenuItem.Name = "majorSeverityToolStripMenuItem";
+			resources.ApplyResources(this.majorSeverityToolStripMenuItem, "majorSeverityToolStripMenuItem");
+			this.majorSeverityToolStripMenuItem.Click += new System.EventHandler(this.majorSeverityToolStripMenuItem_Click);
+			// 
+			// criticalSeverityToolStripMenuItem
+			// 
+			this.criticalSeverityToolStripMenuItem.Name = "criticalSeverityToolStripMenuItem";
+			resources.ApplyResources(this.criticalSeverityToolStripMenuItem, "criticalSeverityToolStripMenuItem");
+			this.criticalSeverityToolStripMenuItem.Click += new System.EventHandler(this.criticalSeverityToolStripMenuItem_Click);
+			// 
+			// blockerSeverityToolStripMenuItem
+			// 
+			this.blockerSeverityToolStripMenuItem.Name = "blockerSeverityToolStripMenuItem";
+			resources.ApplyResources(this.blockerSeverityToolStripMenuItem, "blockerSeverityToolStripMenuItem");
+			this.blockerSeverityToolStripMenuItem.Click += new System.EventHandler(this.blockerSeverityToolStripMenuItem_Click);
+			// 
 			// ProjectForm
 			// 
 			resources.ApplyResources(this, "$this");
@@ -653,5 +860,30 @@
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.ComboBox ticketStateComboBox;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+		private System.Windows.Forms.ToolStripMenuItem stateNewToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem stateAcceptedToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem stateInProgressToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem stateBlockedToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem stateCompletedToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem stateClosedToolStripMenuItem;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+		private System.Windows.Forms.ToolStripMenuItem priorityToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem lowestPriorityToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem lowPriorityToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem normalPriorityToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem highPriorityToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem highestPriorityToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem severityToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem typeToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem trivialSeverityToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem minorSeverityToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem normalSeverityToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem majorSeverityToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem criticalSeverityToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem blockerSeverityToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem defectToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem featureRequestToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem taskToolStripMenuItem;
 	}
 }

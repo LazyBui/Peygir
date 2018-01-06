@@ -214,8 +214,95 @@ namespace Peygir.Presentation.Forms {
 		private void showTicketAttachmentsToolStripMenuItem_Click(object sender, EventArgs e) {
 			ShowAttachments();
 		}
+
+		#region Ticket state
+		private void stateNewToolStripMenuItem_Click(object sender, EventArgs e) {
+			SetTicketState(TicketState.New);
+		}
+
+		private void stateAcceptedToolStripMenuItem_Click(object sender, EventArgs e) {
+			SetTicketState(TicketState.Accepted);
+		}
+
+		private void stateInProgressToolStripMenuItem_Click(object sender, EventArgs e) {
+			SetTicketState(TicketState.InProgress);
+		}
+
+		private void stateBlockedToolStripMenuItem_Click(object sender, EventArgs e) {
+			SetTicketState(TicketState.Blocked);
+		}
+
+		private void stateCompletedToolStripMenuItem_Click(object sender, EventArgs e) {
+			SetTicketState(TicketState.Completed);
+		}
+
+		private void stateClosedToolStripMenuItem_Click(object sender, EventArgs e) {
+			SetTicketState(TicketState.Closed);
+		}
 		#endregion
 
+		#region Ticket priority
+		private void lowestPriorityToolStripMenuItem_Click(object sender, EventArgs e) {
+			SetTicketPriority(TicketPriority.Lowest);
+		}
+
+		private void lowPriorityToolStripMenuItem_Click(object sender, EventArgs e) {
+			SetTicketPriority(TicketPriority.Low);
+		}
+
+		private void normalPriorityToolStripMenuItem_Click(object sender, EventArgs e) {
+			SetTicketPriority(TicketPriority.Normal);
+		}
+
+		private void highPriorityToolStripMenuItem_Click(object sender, EventArgs e) {
+			SetTicketPriority(TicketPriority.High);
+		}
+
+		private void highestPriorityToolStripMenuItem_Click(object sender, EventArgs e) {
+			SetTicketPriority(TicketPriority.Highest);
+		}
+		#endregion
+
+		#region Ticket severity
+		private void trivialSeverityToolStripMenuItem_Click(object sender, EventArgs e) {
+			SetTicketSeverity(TicketSeverity.Trivial);
+		}
+
+		private void minorSeverityToolStripMenuItem_Click(object sender, EventArgs e) {
+			SetTicketSeverity(TicketSeverity.Minor);
+		}
+
+		private void normalSeverityToolStripMenuItem_Click(object sender, EventArgs e) {
+			SetTicketSeverity(TicketSeverity.Normal);
+		}
+
+		private void majorSeverityToolStripMenuItem_Click(object sender, EventArgs e) {
+			SetTicketSeverity(TicketSeverity.Major);
+		}
+
+		private void criticalSeverityToolStripMenuItem_Click(object sender, EventArgs e) {
+			SetTicketSeverity(TicketSeverity.Critical);
+		}
+
+		private void blockerSeverityToolStripMenuItem_Click(object sender, EventArgs e) {
+			SetTicketSeverity(TicketSeverity.Blocker);
+		}
+		#endregion
+
+		#region Ticket type
+		private void defectToolStripMenuItem_Click(object sender, EventArgs e) {
+			SetTicketType(TicketType.Defect);
+		}
+
+		private void featureRequestToolStripMenuItem_Click(object sender, EventArgs e) {
+			SetTicketType(TicketType.FeatureRequest);
+		}
+
+		private void taskToolStripMenuItem_Click(object sender, EventArgs e) {
+			SetTicketType(TicketType.Task);
+		}
+		#endregion
+		#endregion
 		#endregion
 
 		#region Ticket filter UI
@@ -665,6 +752,174 @@ namespace Peygir.Presentation.Forms {
 			}
 		}
 
+		private void SetTicketState(TicketState state) {
+			for (int i = 0, end = ticketsListUserControl.TicketsListView.SelectedItems.Count; i < end; i++) {
+				Ticket ticket = (Ticket)ticketsListUserControl.TicketsListView.SelectedItems[i].Tag;
+				SetTicketState(ticket, state);
+			}
+		}
+
+		private void SetTicketState(Ticket ticket, TicketState state) {
+			// Changes.
+			StringBuilder changesStringBuilder = new StringBuilder();
+			// State.
+			if (ticket.State != state) {
+				changesStringBuilder.AppendFormat(
+					Resources.String_StateChangesFromXToY,
+					TranslateTicketState(ticket.State),
+					TranslateTicketState(state));
+				changesStringBuilder.AppendLine();
+			}
+			else {
+				return;
+			}
+
+			ticket.State = state;
+			// Update tickets.
+			ticket.Update();
+
+			// Create ticket history entry.
+			string changes = changesStringBuilder.ToString();
+			if (!string.IsNullOrEmpty(changes)) {
+				TicketHistory ticketHistory = ticket.NewHistory(changes);
+				ticketHistory.Add();
+			}
+
+			// Flush.
+			Database.Flush();
+
+			// Show tickets.
+			ShowTickets();
+
+			UpdateTicket(true);
+		}
+
+		private void SetTicketPriority(TicketPriority priority) {
+			for (int i = 0, end = ticketsListUserControl.TicketsListView.SelectedItems.Count; i < end; i++) {
+				Ticket ticket = (Ticket)ticketsListUserControl.TicketsListView.SelectedItems[i].Tag;
+				SetTicketPriority(ticket, priority);
+			}
+		}
+
+		private void SetTicketPriority(Ticket ticket, TicketPriority priority) {
+			// Changes.
+			StringBuilder changesStringBuilder = new StringBuilder();
+			// Priority.
+			if (ticket.Priority != priority) {
+				changesStringBuilder.AppendFormat(
+					Resources.String_PriorityChangesFromXToY,
+					TranslateTicketPriority(ticket.Priority),
+					TranslateTicketPriority(priority));
+				changesStringBuilder.AppendLine();
+			}
+			else {
+				return;
+			}
+
+			ticket.Priority = priority;
+			// Update tickets.
+			ticket.Update();
+
+			// Create ticket history entry.
+			string changes = changesStringBuilder.ToString();
+			if (!string.IsNullOrEmpty(changes)) {
+				TicketHistory ticketHistory = ticket.NewHistory(changes);
+				ticketHistory.Add();
+			}
+
+			// Flush.
+			Database.Flush();
+
+			// Show tickets.
+			ShowTickets();
+
+			UpdateTicket(true);
+		}
+
+		private void SetTicketSeverity(TicketSeverity severity) {
+			for (int i = 0, end = ticketsListUserControl.TicketsListView.SelectedItems.Count; i < end; i++) {
+				Ticket ticket = (Ticket)ticketsListUserControl.TicketsListView.SelectedItems[i].Tag;
+				SetTicketSeverity(ticket, severity);
+			}
+		}
+
+		private void SetTicketSeverity(Ticket ticket, TicketSeverity severity) {
+			// Changes.
+			StringBuilder changesStringBuilder = new StringBuilder();
+			// Severity.
+			if (ticket.Severity != severity) {
+				changesStringBuilder.AppendFormat(
+					Resources.String_SeverityChangesFromXToY,
+					TranslateTicketSeverity(ticket.Severity),
+					TranslateTicketSeverity(severity));
+				changesStringBuilder.AppendLine();
+			}
+			else {
+				return;
+			}
+
+			ticket.Severity = severity;
+			// Update tickets.
+			ticket.Update();
+
+			// Create ticket history entry.
+			string changes = changesStringBuilder.ToString();
+			if (!string.IsNullOrEmpty(changes)) {
+				TicketHistory ticketHistory = ticket.NewHistory(changes);
+				ticketHistory.Add();
+			}
+
+			// Flush.
+			Database.Flush();
+
+			// Show tickets.
+			ShowTickets();
+
+			UpdateTicket(true);
+		}
+
+		private void SetTicketType(TicketType type) {
+			for (int i = 0, end = ticketsListUserControl.TicketsListView.SelectedItems.Count; i < end; i++) {
+				Ticket ticket = (Ticket)ticketsListUserControl.TicketsListView.SelectedItems[i].Tag;
+				SetTicketType(ticket, type);
+			}
+		}
+
+		private void SetTicketType(Ticket ticket, TicketType type) {
+			// Changes.
+			StringBuilder changesStringBuilder = new StringBuilder();
+			// Type.
+			if (ticket.Type != type) {
+				changesStringBuilder.AppendFormat(
+					Resources.String_TypeChangesFromXToY,
+					TranslateTicketType(ticket.Type),
+					TranslateTicketType(type));
+				changesStringBuilder.AppendLine();
+			}
+			else {
+				return;
+			}
+
+			ticket.Type = type;
+			// Update tickets.
+			ticket.Update();
+
+			// Create ticket history entry.
+			string changes = changesStringBuilder.ToString();
+			if (!string.IsNullOrEmpty(changes)) {
+				TicketHistory ticketHistory = ticket.NewHistory(changes);
+				ticketHistory.Add();
+			}
+
+			// Flush.
+			Database.Flush();
+
+			// Show tickets.
+			ShowTickets();
+
+			UpdateTicket(true);
+		}
+
 		private void ShowTickets() {
 			if (mResettingTicketFilters) return;
 
@@ -1009,32 +1264,26 @@ namespace Peygir.Presentation.Forms {
 				}
 				// Type.
 				if (ticket.Type != form.TicketDetailsUserControl.Type) {
-					changesStringBuilder.AppendFormat
-					(
+					changesStringBuilder.AppendFormat(
 						Resources.String_TypeChangesFromXToY,
 						TranslateTicketType(ticket.Type),
-						TranslateTicketType(form.TicketDetailsUserControl.Type)
-					);
+						TranslateTicketType(form.TicketDetailsUserControl.Type));
 					changesStringBuilder.AppendLine();
 				}
 				// Severity.
 				if (ticket.Severity != form.TicketDetailsUserControl.Severity) {
-					changesStringBuilder.AppendFormat
-					(
+					changesStringBuilder.AppendFormat(
 						Resources.String_SeverityChangesFromXToY,
 						TranslateTicketSeverity(ticket.Severity),
-						TranslateTicketSeverity(form.TicketDetailsUserControl.Severity)
-					);
+						TranslateTicketSeverity(form.TicketDetailsUserControl.Severity));
 					changesStringBuilder.AppendLine();
 				}
 				// State.
 				if (ticket.State != form.TicketDetailsUserControl.State) {
-					changesStringBuilder.AppendFormat
-					(
+					changesStringBuilder.AppendFormat(
 						Resources.String_StateChangesFromXToY,
 						TranslateTicketState(ticket.State),
-						TranslateTicketState(form.TicketDetailsUserControl.State)
-					);
+						TranslateTicketState(form.TicketDetailsUserControl.State));
 					changesStringBuilder.AppendLine();
 				}
 				// AssignedTo.
@@ -1044,12 +1293,10 @@ namespace Peygir.Presentation.Forms {
 				}
 				// Priority.
 				if (ticket.Priority != form.TicketDetailsUserControl.Priority) {
-					changesStringBuilder.AppendFormat
-					(
+					changesStringBuilder.AppendFormat(
 						Resources.String_PriorityChangesFromXToY,
 						TranslateTicketPriority(ticket.Priority),
-						TranslateTicketPriority(form.TicketDetailsUserControl.Priority)
-					);
+						TranslateTicketPriority(form.TicketDetailsUserControl.Priority));
 					changesStringBuilder.AppendLine();
 				}
 				// Description.
