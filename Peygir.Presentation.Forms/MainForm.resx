@@ -121,6 +121,9 @@
   <data name="projectsGroupBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
+  <data name="editTicketsButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="editTicketsButton.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>TopCenter</value>
@@ -271,7 +274,7 @@
     <value>projectsListUserControl</value>
   </data>
   <data name="&gt;&gt;projectsListUserControl.Type" xml:space="preserve">
-    <value>Peygir.Presentation.UserControls.ProjectsListUserControl, Peygir.Presentation.UserControls, Version=1.0.1.37485, Culture=neutral, PublicKeyToken=7bc4e639a7e2568f</value>
+    <value>Peygir.Presentation.UserControls.ProjectsListUserControl, Peygir.Presentation.UserControls, Version=1.0.1.37687, Culture=neutral, PublicKeyToken=7bc4e639a7e2568f</value>
   </data>
   <data name="&gt;&gt;projectsListUserControl.Parent" xml:space="preserve">
     <value>projectsGroupBox</value>

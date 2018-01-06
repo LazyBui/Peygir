@@ -30,7 +30,6 @@
 			this.deleteProjectButton = new System.Windows.Forms.Button();
 			this.editProjectButton = new System.Windows.Forms.Button();
 			this.addProjectButton = new System.Windows.Forms.Button();
-			this.projectsListUserControl = new Peygir.Presentation.UserControls.ProjectsListUserControl();
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.newDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,6 +58,7 @@
 			this.deleteProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.openTicketsToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.totalTicketsToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+			this.projectsListUserControl = new Peygir.Presentation.UserControls.ProjectsListUserControl();
 			this.projectsGroupBox.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
 			this.statusStrip1.SuspendLayout();
@@ -78,8 +78,8 @@
 			// 
 			// editTicketsButton
 			// 
-			this.editTicketsButton.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Open;
 			resources.ApplyResources(this.editTicketsButton, "editTicketsButton");
+			this.editTicketsButton.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Open;
 			this.editTicketsButton.Name = "editTicketsButton";
 			this.editTicketsButton.UseVisualStyleBackColor = true;
 			this.editTicketsButton.Click += new System.EventHandler(this.editTicketsButton_Click);
@@ -107,11 +107,6 @@
 			this.addProjectButton.Name = "addProjectButton";
 			this.addProjectButton.UseVisualStyleBackColor = true;
 			this.addProjectButton.Click += new System.EventHandler(this.addProjectButton_Click);
-			// 
-			// projectsListUserControl
-			// 
-			resources.ApplyResources(this.projectsListUserControl, "projectsListUserControl");
-			this.projectsListUserControl.Name = "projectsListUserControl";
 			// 
 			// menuStrip1
 			// 
@@ -325,6 +320,11 @@
 			this.totalTicketsToolStripStatusLabel.Margin = new System.Windows.Forms.Padding(0, 4, 3, 0);
 			this.totalTicketsToolStripStatusLabel.Name = "totalTicketsToolStripStatusLabel";
 			resources.ApplyResources(this.totalTicketsToolStripStatusLabel, "totalTicketsToolStripStatusLabel");
+			// 
+			// projectsListUserControl
+			// 
+			resources.ApplyResources(this.projectsListUserControl, "projectsListUserControl");
+			this.projectsListUserControl.Name = "projectsListUserControl";
 			// 
 			// MainForm
 			// 
