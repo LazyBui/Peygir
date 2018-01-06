@@ -23,6 +23,7 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
+			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProjectForm));
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.tabControl = new System.Windows.Forms.TabControl();
@@ -46,6 +47,13 @@
 			this.showTicketButton = new System.Windows.Forms.Button();
 			this.addTicketButton = new System.Windows.Forms.Button();
 			this.ticketsListUserControl = new Peygir.Presentation.UserControls.TicketsListUserControl();
+			this.ticketContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.addTicketToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.showTicketToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.editTicketToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.showTicketHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.showTicketAttachmentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.deleteTicketToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.groupBox1.SuspendLayout();
 			this.tabControl.SuspendLayout();
 			this.projectInfoTabPage.SuspendLayout();
@@ -54,6 +62,7 @@
 			this.groupBox3.SuspendLayout();
 			this.ticketsTabPage.SuspendLayout();
 			this.groupBox4.SuspendLayout();
+			this.ticketContextMenu.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// groupBox1
@@ -232,6 +241,62 @@
 			resources.ApplyResources(this.ticketsListUserControl, "ticketsListUserControl");
 			this.ticketsListUserControl.Name = "ticketsListUserControl";
 			// 
+			// ticketContextMenu
+			// 
+			this.ticketContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addTicketToolStripMenuItem,
+            this.showTicketToolStripMenuItem,
+            this.editTicketToolStripMenuItem,
+            this.showTicketHistoryToolStripMenuItem,
+            this.deleteTicketToolStripMenuItem,
+            this.showTicketAttachmentsToolStripMenuItem});
+			this.ticketContextMenu.Name = "ticketContextMenu";
+			this.ticketContextMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+			resources.ApplyResources(this.ticketContextMenu, "ticketContextMenu");
+			this.ticketContextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.ticketContextMenu_Opening);
+			// 
+			// addTicketToolStripMenuItem
+			// 
+			this.addTicketToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Add;
+			this.addTicketToolStripMenuItem.Name = "addTicketToolStripMenuItem";
+			resources.ApplyResources(this.addTicketToolStripMenuItem, "addTicketToolStripMenuItem");
+			this.addTicketToolStripMenuItem.Click += new System.EventHandler(this.addTicketToolStripMenuItem_Click);
+			// 
+			// showTicketToolStripMenuItem
+			// 
+			this.showTicketToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Show;
+			this.showTicketToolStripMenuItem.Name = "showTicketToolStripMenuItem";
+			resources.ApplyResources(this.showTicketToolStripMenuItem, "showTicketToolStripMenuItem");
+			this.showTicketToolStripMenuItem.Click += new System.EventHandler(this.showTicketToolStripMenuItem_Click);
+			// 
+			// editTicketToolStripMenuItem
+			// 
+			this.editTicketToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Edit;
+			this.editTicketToolStripMenuItem.Name = "editTicketToolStripMenuItem";
+			resources.ApplyResources(this.editTicketToolStripMenuItem, "editTicketToolStripMenuItem");
+			this.editTicketToolStripMenuItem.Click += new System.EventHandler(this.editTicketToolStripMenuItem_Click);
+			// 
+			// showTicketHistoryToolStripMenuItem
+			// 
+			this.showTicketHistoryToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_History;
+			this.showTicketHistoryToolStripMenuItem.Name = "showTicketHistoryToolStripMenuItem";
+			resources.ApplyResources(this.showTicketHistoryToolStripMenuItem, "showTicketHistoryToolStripMenuItem");
+			this.showTicketHistoryToolStripMenuItem.Click += new System.EventHandler(this.showTicketHistoryToolStripMenuItem_Click);
+			// 
+			// showTicketAttachmentsToolStripMenuItem
+			// 
+			this.showTicketAttachmentsToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Attachment;
+			this.showTicketAttachmentsToolStripMenuItem.Name = "showTicketAttachmentsToolStripMenuItem";
+			resources.ApplyResources(this.showTicketAttachmentsToolStripMenuItem, "showTicketAttachmentsToolStripMenuItem");
+			this.showTicketAttachmentsToolStripMenuItem.Click += new System.EventHandler(this.showTicketAttachmentsToolStripMenuItem_Click);
+			// 
+			// deleteTicketToolStripMenuItem
+			// 
+			this.deleteTicketToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Delete;
+			this.deleteTicketToolStripMenuItem.Name = "deleteTicketToolStripMenuItem";
+			resources.ApplyResources(this.deleteTicketToolStripMenuItem, "deleteTicketToolStripMenuItem");
+			this.deleteTicketToolStripMenuItem.Click += new System.EventHandler(this.deleteTicketToolStripMenuItem_Click);
+			// 
 			// ProjectForm
 			// 
 			resources.ApplyResources(this, "$this");
@@ -249,6 +314,7 @@
 			this.groupBox3.ResumeLayout(false);
 			this.ticketsTabPage.ResumeLayout(false);
 			this.groupBox4.ResumeLayout(false);
+			this.ticketContextMenu.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -277,5 +343,12 @@
 		private System.Windows.Forms.Button showTicketButton;
 		private System.Windows.Forms.Button showTicketHistoryButton;
 		private System.Windows.Forms.Button showTicketAttachmentsButton;
+		private System.Windows.Forms.ContextMenuStrip ticketContextMenu;
+		private System.Windows.Forms.ToolStripMenuItem addTicketToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem showTicketToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem editTicketToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem showTicketHistoryToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem showTicketAttachmentsToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem deleteTicketToolStripMenuItem;
 	}
 }

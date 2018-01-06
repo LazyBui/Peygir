@@ -33,6 +33,7 @@ namespace Peygir.Presentation.Forms {
 
 			ticketsListUserControl.TicketsListView.SelectedIndexChanged += TicketsListView_SelectedIndexChanged;
 			ticketsListUserControl.TicketsListView.DoubleClick += TicketsListView_DoubleClick;
+			ticketsListUserControl.TicketsListView.ContextMenuStrip = ticketContextMenu;
 
 			ShowProjectDetails();
 			ShowMilestones();
@@ -154,22 +155,22 @@ namespace Peygir.Presentation.Forms {
 				showTicketButton.Enabled = false;
 				editTicketButton.Enabled = false;
 				showTicketHistoryButton.Enabled = false;
-				showTicketAttachmentsButton.Enabled = false;
 				deleteTicketButton.Enabled = false;
+				showTicketAttachmentsButton.Enabled = false;
 			}
 			else if (selectedTicketsCount == 1) {
 				showTicketButton.Enabled = true;
 				editTicketButton.Enabled = true;
 				showTicketHistoryButton.Enabled = true;
-				showTicketAttachmentsButton.Enabled = true;
 				deleteTicketButton.Enabled = true;
+				showTicketAttachmentsButton.Enabled = true;
 			}
 			else {
 				showTicketButton.Enabled = false;
 				editTicketButton.Enabled = false;
 				showTicketHistoryButton.Enabled = false;
-				showTicketAttachmentsButton.Enabled = false;
 				deleteTicketButton.Enabled = true;
+				showTicketAttachmentsButton.Enabled = false;
 			}
 		}
 
@@ -895,9 +896,11 @@ namespace Peygir.Presentation.Forms {
 		}
 
 		private void TicketsListView_DoubleClick(object sender, EventArgs e) {
-			ShowTicket();
+			EditTicket();
 		}
 
+		#region Ticket modification UI
+		#region Buttons
 		private void addTicketButton_Click(object sender, EventArgs e) {
 			AddTicket();
 		}
@@ -914,12 +917,65 @@ namespace Peygir.Presentation.Forms {
 			ShowTicketHistory();
 		}
 
-		private void showTicketAttachmentsButton_Click(object sender, EventArgs e) {
-			ShowAttachments();
-		}
-
 		private void deleteTicketButton_Click(object sender, EventArgs e) {
 			DeleteTicket();
 		}
+
+		private void showTicketAttachmentsButton_Click(object sender, EventArgs e) {
+			ShowAttachments();
+		}
+		#endregion
+
+		#region Context menu
+		private void ticketContextMenu_Opening(object sender, System.ComponentModel.CancelEventArgs e) {
+			int selectedTicketsCount = ticketsListUserControl.TicketsListView.SelectedItems.Count;
+			if (selectedTicketsCount == 0) {
+				showTicketToolStripMenuItem.Enabled = false;
+				editTicketToolStripMenuItem.Enabled = false;
+				showTicketHistoryToolStripMenuItem.Enabled = false;
+				deleteTicketToolStripMenuItem.Enabled = false;
+				showTicketAttachmentsToolStripMenuItem.Enabled = false;
+			}
+			else if (selectedTicketsCount == 1) {
+				showTicketToolStripMenuItem.Enabled = true;
+				editTicketToolStripMenuItem.Enabled = true;
+				showTicketHistoryToolStripMenuItem.Enabled = true;
+				deleteTicketToolStripMenuItem.Enabled = true;
+				showTicketAttachmentsToolStripMenuItem.Enabled = true;
+			}
+			else {
+				showTicketToolStripMenuItem.Enabled = false;
+				editTicketToolStripMenuItem.Enabled = false;
+				showTicketHistoryToolStripMenuItem.Enabled = false;
+				deleteTicketToolStripMenuItem.Enabled = true;
+				showTicketAttachmentsToolStripMenuItem.Enabled = false;
+			}
+		}
+
+		private void addTicketToolStripMenuItem_Click(object sender, EventArgs e) {
+			AddTicket();
+		}
+
+		private void showTicketToolStripMenuItem_Click(object sender, EventArgs e) {
+			ShowTicket();
+		}
+
+		private void editTicketToolStripMenuItem_Click(object sender, EventArgs e) {
+			EditTicket();
+		}
+
+		private void showTicketHistoryToolStripMenuItem_Click(object sender, EventArgs e) {
+			ShowTicketHistory();
+		}
+
+		private void deleteTicketToolStripMenuItem_Click(object sender, EventArgs e) {
+			DeleteTicket();
+		}
+
+		private void showTicketAttachmentsToolStripMenuItem_Click(object sender, EventArgs e) {
+			ShowAttachments();
+		}
+		#endregion
+		#endregion
 	}
 }
