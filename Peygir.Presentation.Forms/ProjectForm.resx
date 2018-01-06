@@ -124,88 +124,79 @@
   <data name="tabControl.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
-  <data name="&gt;&gt;projectInfoTabPage.Name" xml:space="preserve">
-    <value>projectInfoTabPage</value>
+  <data name="groupBox2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
   </data>
-  <data name="&gt;&gt;projectInfoTabPage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="changeProjectDetailsButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
   </data>
-  <data name="&gt;&gt;projectInfoTabPage.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;projectInfoTabPage.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;milestonesTabPage.Name" xml:space="preserve">
-    <value>milestonesTabPage</value>
-  </data>
-  <data name="&gt;&gt;milestonesTabPage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;milestonesTabPage.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;milestonesTabPage.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;ticketsTabPage.Name" xml:space="preserve">
-    <value>ticketsTabPage</value>
-  </data>
-  <data name="&gt;&gt;ticketsTabPage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ticketsTabPage.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;ticketsTabPage.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="changeProjectDetailsButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 19</value>
+  <data name="changeProjectDetailsButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>532, 370</value>
   </data>
-  <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>648, 437</value>
+  <data name="changeProjectDetailsButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 23</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
+  <data name="changeProjectDetailsButton.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="changeProjectDetailsButton.Text" xml:space="preserve">
+    <value>&amp;Change...</value>
+  </data>
+  <data name="changeProjectDetailsButton.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
+    <value>ImageBeforeText</value>
+  </data>
+  <data name="&gt;&gt;changeProjectDetailsButton.Name" xml:space="preserve">
+    <value>changeProjectDetailsButton</value>
+  </data>
+  <data name="&gt;&gt;changeProjectDetailsButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;changeProjectDetailsButton.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;changeProjectDetailsButton.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;tabControl.Name" xml:space="preserve">
-    <value>tabControl</value>
+  <data name="projectDetailsUserControl.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
   </data>
-  <data name="&gt;&gt;tabControl.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="projectDetailsUserControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 19</value>
   </data>
-  <data name="&gt;&gt;tabControl.Parent" xml:space="preserve">
-    <value>groupBox1</value>
+  <data name="projectDetailsUserControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>616, 345</value>
   </data>
-  <data name="&gt;&gt;tabControl.ZOrder" xml:space="preserve">
+  <data name="projectDetailsUserControl.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 12</value>
+  <data name="&gt;&gt;projectDetailsUserControl.Name" xml:space="preserve">
+    <value>projectDetailsUserControl</value>
   </data>
-  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>660, 462</value>
+  <data name="&gt;&gt;projectDetailsUserControl.Type" xml:space="preserve">
+    <value>Peygir.Presentation.UserControls.ProjectDetailsUserControl, Peygir.Presentation.UserControls, Version=1.0.1.37825, Culture=neutral, PublicKeyToken=7bc4e639a7e2568f</value>
   </data>
-  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;projectDetailsUserControl.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;projectDetailsUserControl.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 6</value>
+  </data>
+  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>628, 399</value>
+  </data>
+  <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>Project</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Project Info</value>
   </data>
   <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
     <value>groupBox2</value>
@@ -246,239 +237,14 @@
   <data name="&gt;&gt;projectInfoTabPage.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="groupBox2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
-  <data name="&gt;&gt;changeProjectDetailsButton.Name" xml:space="preserve">
-    <value>changeProjectDetailsButton</value>
-  </data>
-  <data name="&gt;&gt;changeProjectDetailsButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;changeProjectDetailsButton.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;changeProjectDetailsButton.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;projectDetailsUserControl.Name" xml:space="preserve">
-    <value>projectDetailsUserControl</value>
-  </data>
-  <data name="&gt;&gt;projectDetailsUserControl.Type" xml:space="preserve">
-    <value>Peygir.Presentation.UserControls.ProjectDetailsUserControl, Peygir.Presentation.UserControls, Version=1.0.1.35003, Culture=neutral, PublicKeyToken=7bc4e639a7e2568f</value>
-  </data>
-  <data name="&gt;&gt;projectDetailsUserControl.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;projectDetailsUserControl.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 6</value>
-  </data>
-  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>628, 399</value>
-  </data>
-  <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="groupBox2.Text" xml:space="preserve">
-    <value>Project Info</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
-    <value>projectInfoTabPage</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="changeProjectDetailsButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
-  </data>
-  <data name="changeProjectDetailsButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>532, 370</value>
-  </data>
-  <data name="changeProjectDetailsButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 23</value>
-  </data>
-  <data name="changeProjectDetailsButton.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="changeProjectDetailsButton.Text" xml:space="preserve">
-    <value>&amp;Change...</value>
-  </data>
-  <data name="changeProjectDetailsButton.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
-    <value>ImageBeforeText</value>
-  </data>
-  <data name="&gt;&gt;changeProjectDetailsButton.Name" xml:space="preserve">
-    <value>changeProjectDetailsButton</value>
-  </data>
-  <data name="&gt;&gt;changeProjectDetailsButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;changeProjectDetailsButton.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;changeProjectDetailsButton.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="projectDetailsUserControl.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
-  <data name="projectDetailsUserControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 19</value>
-  </data>
-  <data name="projectDetailsUserControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>616, 345</value>
-  </data>
-  <data name="projectDetailsUserControl.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;projectDetailsUserControl.Name" xml:space="preserve">
-    <value>projectDetailsUserControl</value>
-  </data>
-  <data name="&gt;&gt;projectDetailsUserControl.Type" xml:space="preserve">
-    <value>Peygir.Presentation.UserControls.ProjectDetailsUserControl, Peygir.Presentation.UserControls, Version=1.0.1.35003, Culture=neutral, PublicKeyToken=7bc4e639a7e2568f</value>
-  </data>
-  <data name="&gt;&gt;projectDetailsUserControl.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;projectDetailsUserControl.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.Name" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.Parent" xml:space="preserve">
-    <value>milestonesTabPage</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="milestonesTabPage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="milestonesTabPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="milestonesTabPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>640, 411</value>
-  </data>
-  <data name="milestonesTabPage.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="milestonesTabPage.Text" xml:space="preserve">
-    <value>Milestones</value>
-  </data>
-  <data name="&gt;&gt;milestonesTabPage.Name" xml:space="preserve">
-    <value>milestonesTabPage</value>
-  </data>
-  <data name="&gt;&gt;milestonesTabPage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;milestonesTabPage.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;milestonesTabPage.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="groupBox3.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
-  <data name="&gt;&gt;showMilestoneButton.Name" xml:space="preserve">
-    <value>showMilestoneButton</value>
-  </data>
-  <data name="&gt;&gt;showMilestoneButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;showMilestoneButton.Parent" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="&gt;&gt;showMilestoneButton.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;deleteMilestoneButton.Name" xml:space="preserve">
-    <value>deleteMilestoneButton</value>
-  </data>
-  <data name="&gt;&gt;deleteMilestoneButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;deleteMilestoneButton.Parent" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="&gt;&gt;deleteMilestoneButton.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;editMilestoneButton.Name" xml:space="preserve">
-    <value>editMilestoneButton</value>
-  </data>
-  <data name="&gt;&gt;editMilestoneButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;editMilestoneButton.Parent" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="&gt;&gt;editMilestoneButton.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;addMilestoneButton.Name" xml:space="preserve">
-    <value>addMilestoneButton</value>
-  </data>
-  <data name="&gt;&gt;addMilestoneButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;addMilestoneButton.Parent" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="&gt;&gt;addMilestoneButton.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;milestonesListUserControl.Name" xml:space="preserve">
-    <value>milestonesListUserControl</value>
-  </data>
-  <data name="&gt;&gt;milestonesListUserControl.Type" xml:space="preserve">
-    <value>Peygir.Presentation.UserControls.MilestonesListUserControl, Peygir.Presentation.UserControls, Version=1.0.1.35003, Culture=neutral, PublicKeyToken=7bc4e639a7e2568f</value>
-  </data>
-  <data name="&gt;&gt;milestonesListUserControl.Parent" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="&gt;&gt;milestonesListUserControl.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 6</value>
-  </data>
-  <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>628, 400</value>
-  </data>
-  <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="groupBox3.Text" xml:space="preserve">
-    <value>Milestones</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.Name" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.Parent" xml:space="preserve">
-    <value>milestonesTabPage</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="showMilestoneButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
+  </data>
+  <data name="showMilestoneButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="showMilestoneButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>361, 371</value>
@@ -510,6 +276,9 @@
   <data name="deleteMilestoneButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
+  <data name="deleteMilestoneButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="deleteMilestoneButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>539, 371</value>
   </data>
@@ -540,6 +309,9 @@
   <data name="editMilestoneButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
+  <data name="editMilestoneButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="editMilestoneButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>450, 371</value>
   </data>
@@ -569,6 +341,9 @@
   </data>
   <data name="addMilestoneButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
+  </data>
+  <data name="addMilestoneButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="addMilestoneButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>272, 371</value>
@@ -613,7 +388,7 @@
     <value>milestonesListUserControl</value>
   </data>
   <data name="&gt;&gt;milestonesListUserControl.Type" xml:space="preserve">
-    <value>Peygir.Presentation.UserControls.MilestonesListUserControl, Peygir.Presentation.UserControls, Version=1.0.1.35003, Culture=neutral, PublicKeyToken=7bc4e639a7e2568f</value>
+    <value>Peygir.Presentation.UserControls.MilestonesListUserControl, Peygir.Presentation.UserControls, Version=1.0.1.37825, Culture=neutral, PublicKeyToken=7bc4e639a7e2568f</value>
   </data>
   <data name="&gt;&gt;milestonesListUserControl.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -621,161 +396,68 @@
   <data name="&gt;&gt;milestonesListUserControl.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="&gt;&gt;groupBox4.Name" xml:space="preserve">
-    <value>groupBox4</value>
+  <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 6</value>
   </data>
-  <data name="&gt;&gt;groupBox4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>628, 400</value>
   </data>
-  <data name="&gt;&gt;groupBox4.Parent" xml:space="preserve">
-    <value>ticketsTabPage</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
+  <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="ticketsTabPage.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>Milestones</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Name" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Parent" xml:space="preserve">
+    <value>milestonesTabPage</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="milestonesTabPage.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
   </data>
-  <data name="ticketsTabPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="milestonesTabPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
-  <data name="ticketsTabPage.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="milestonesTabPage.Size" type="System.Drawing.Size, System.Drawing">
     <value>640, 411</value>
   </data>
-  <data name="ticketsTabPage.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="milestonesTabPage.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
-  <data name="ticketsTabPage.Text" xml:space="preserve">
-    <value>Tickets</value>
+  <data name="milestonesTabPage.Text" xml:space="preserve">
+    <value>Milestones</value>
   </data>
-  <data name="&gt;&gt;ticketsTabPage.Name" xml:space="preserve">
-    <value>ticketsTabPage</value>
+  <data name="&gt;&gt;milestonesTabPage.Name" xml:space="preserve">
+    <value>milestonesTabPage</value>
   </data>
-  <data name="&gt;&gt;ticketsTabPage.Type" xml:space="preserve">
+  <data name="&gt;&gt;milestonesTabPage.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ticketsTabPage.Parent" xml:space="preserve">
+  <data name="&gt;&gt;milestonesTabPage.Parent" xml:space="preserve">
     <value>tabControl</value>
   </data>
-  <data name="&gt;&gt;ticketsTabPage.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="&gt;&gt;milestonesTabPage.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="groupBox4.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
-  </data>
-  <data name="&gt;&gt;showTicketAttachmentsButton.Name" xml:space="preserve">
-    <value>showTicketAttachmentsButton</value>
-  </data>
-  <data name="&gt;&gt;showTicketAttachmentsButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;showTicketAttachmentsButton.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;showTicketAttachmentsButton.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;showTicketHistoryButton.Name" xml:space="preserve">
-    <value>showTicketHistoryButton</value>
-  </data>
-  <data name="&gt;&gt;showTicketHistoryButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;showTicketHistoryButton.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;showTicketHistoryButton.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;deleteTicketButton.Name" xml:space="preserve">
-    <value>deleteTicketButton</value>
-  </data>
-  <data name="&gt;&gt;deleteTicketButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;deleteTicketButton.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;deleteTicketButton.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;editTicketButton.Name" xml:space="preserve">
-    <value>editTicketButton</value>
-  </data>
-  <data name="&gt;&gt;editTicketButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;editTicketButton.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;editTicketButton.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;showTicketButton.Name" xml:space="preserve">
-    <value>showTicketButton</value>
-  </data>
-  <data name="&gt;&gt;showTicketButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;showTicketButton.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;showTicketButton.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;addTicketButton.Name" xml:space="preserve">
-    <value>addTicketButton</value>
-  </data>
-  <data name="&gt;&gt;addTicketButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;addTicketButton.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;addTicketButton.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;ticketsListUserControl.Name" xml:space="preserve">
-    <value>ticketsListUserControl</value>
-  </data>
-  <data name="&gt;&gt;ticketsListUserControl.Type" xml:space="preserve">
-    <value>Peygir.Presentation.UserControls.TicketsListUserControl, Peygir.Presentation.UserControls, Version=1.0.1.35003, Culture=neutral, PublicKeyToken=7bc4e639a7e2568f</value>
-  </data>
-  <data name="&gt;&gt;ticketsListUserControl.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;ticketsListUserControl.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 6</value>
-  </data>
-  <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>628, 400</value>
-  </data>
-  <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="groupBox4.Text" xml:space="preserve">
-    <value>Tickets</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.Name" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.Parent" xml:space="preserve">
-    <value>ticketsTabPage</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="showTicketAttachmentsButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
   <data name="showTicketAttachmentsButton.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>TopCenter</value>
+  </data>
+  <data name="showTicketAttachmentsButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="showTicketAttachmentsButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>512, 371</value>
@@ -807,6 +489,9 @@
   <data name="showTicketHistoryButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
+  <data name="showTicketHistoryButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="showTicketHistoryButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>317, 371</value>
   </data>
@@ -836,6 +521,9 @@
   </data>
   <data name="deleteTicketButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
+  </data>
+  <data name="deleteTicketButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="deleteTicketButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>406, 371</value>
@@ -867,6 +555,9 @@
   <data name="editTicketButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
+  <data name="editTicketButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="editTicketButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>230, 371</value>
   </data>
@@ -897,6 +588,9 @@
   <data name="showTicketButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
+  <data name="showTicketButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="showTicketButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>141, 371</value>
   </data>
@@ -926,6 +620,9 @@
   </data>
   <data name="addTicketButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
+  </data>
+  <data name="addTicketButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="addTicketButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>52, 371</value>
@@ -970,7 +667,7 @@
     <value>ticketsListUserControl</value>
   </data>
   <data name="&gt;&gt;ticketsListUserControl.Type" xml:space="preserve">
-    <value>Peygir.Presentation.UserControls.TicketsListUserControl, Peygir.Presentation.UserControls, Version=1.0.1.35003, Culture=neutral, PublicKeyToken=7bc4e639a7e2568f</value>
+    <value>Peygir.Presentation.UserControls.TicketsListUserControl, Peygir.Presentation.UserControls, Version=1.0.1.37825, Culture=neutral, PublicKeyToken=7bc4e639a7e2568f</value>
   </data>
   <data name="&gt;&gt;ticketsListUserControl.Parent" xml:space="preserve">
     <value>groupBox4</value>
@@ -978,18 +675,105 @@
   <data name="&gt;&gt;ticketsListUserControl.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
+  <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 6</value>
+  </data>
+  <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>628, 400</value>
+  </data>
+  <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="groupBox4.Text" xml:space="preserve">
+    <value>Tickets</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.Name" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.Parent" xml:space="preserve">
+    <value>ticketsTabPage</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="ticketsTabPage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="ticketsTabPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="ticketsTabPage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>640, 411</value>
+  </data>
+  <data name="ticketsTabPage.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="ticketsTabPage.Text" xml:space="preserve">
+    <value>Tickets</value>
+  </data>
+  <data name="&gt;&gt;ticketsTabPage.Name" xml:space="preserve">
+    <value>ticketsTabPage</value>
+  </data>
+  <data name="&gt;&gt;ticketsTabPage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ticketsTabPage.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;ticketsTabPage.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 19</value>
+  </data>
+  <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>648, 437</value>
+  </data>
+  <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tabControl.Name" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabControl.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabControl.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;tabControl.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
+  </data>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>660, 462</value>
+  </data>
+  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Project</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <metadata name="ticketContextMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <data name="ticketContextMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>136, 136</value>
-  </data>
-  <data name="&gt;&gt;ticketContextMenu.Name" xml:space="preserve">
-    <value>ticketContextMenu</value>
-  </data>
-  <data name="&gt;&gt;ticketContextMenu.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="addTicketToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>135, 22</value>
   </data>
@@ -1014,47 +798,56 @@
   <data name="showTicketHistoryToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;History</value>
   </data>
-  <data name="showTicketAttachmentsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>135, 22</value>
-  </data>
-  <data name="showTicketAttachmentsToolStripMenuItem.Text" xml:space="preserve">
-    <value>A&amp;ttachments</value>
-  </data>
   <data name="deleteTicketToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>135, 22</value>
   </data>
   <data name="deleteTicketToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Delete</value>
   </data>
+  <data name="showTicketAttachmentsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>135, 22</value>
+  </data>
+  <data name="showTicketAttachmentsToolStripMenuItem.Text" xml:space="preserve">
+    <value>A&amp;ttachments</value>
+  </data>
+  <data name="ticketContextMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>136, 136</value>
+  </data>
+  <data name="&gt;&gt;ticketContextMenu.Name" xml:space="preserve">
+    <value>ticketContextMenu</value>
+  </data>
+  <data name="&gt;&gt;ticketContextMenu.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <metadata name="milestoneContextMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>161, 17</value>
   </metadata>
   <data name="addMilestoneToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>105, 22</value>
   </data>
   <data name="addMilestoneToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Add</value>
   </data>
   <data name="showMilestoneToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>105, 22</value>
   </data>
   <data name="showMilestoneToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Show</value>
   </data>
   <data name="editMilestoneToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>105, 22</value>
   </data>
   <data name="editMilestoneToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Edit</value>
   </data>
   <data name="deleteMilestoneToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>105, 22</value>
   </data>
   <data name="deleteMilestoneToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Delete</value>
   </data>
   <data name="milestoneContextMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>153, 114</value>
+    <value>106, 92</value>
   </data>
   <data name="&gt;&gt;milestoneContextMenu.Name" xml:space="preserve">
     <value>milestoneContextMenu</value>
@@ -1097,6 +890,9 @@
         AAAAAAAA//8AAIABAACAAQAAgAEAAIABAACAAQAAgAEAAIABAACAAQAAgAEAAIABAAD4AQAA+AEAAPgf
         AAD4HwAA/B8AAA==
 </value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>

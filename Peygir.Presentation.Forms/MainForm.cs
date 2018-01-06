@@ -9,6 +9,8 @@ using Peygir.Presentation.Forms.Properties;
 
 namespace Peygir.Presentation.Forms {
 	public partial class MainForm : Form {
+		private Dictionary<Project, ProjectForm> mForms = new Dictionary<Project, ProjectForm>();
+
 		public MessageBoxOptions FormMessageBoxOptions {
 			get {
 				MessageBoxOptions options = 0;
@@ -117,19 +119,12 @@ namespace Peygir.Presentation.Forms {
 				editTicketsToolStripMenuItem.Enabled = false;
 				deleteProjectToolStripMenuItem.Enabled = false;
 			}
-			else if (selectedProjectsCount == 1) {
+			else {
 				addProjectToolStripMenuItem.Enabled = true;
 				editProjectToolStripMenuItem.Enabled = true;
 				editTicketsToolStripMenuItem.Enabled = true;
 				deleteProjectToolStripMenuItem.Enabled = true;
 			}
-			else {
-				addProjectToolStripMenuItem.Enabled = true;
-				editProjectToolStripMenuItem.Enabled = false;
-				editTicketsToolStripMenuItem.Enabled = false;
-				deleteProjectToolStripMenuItem.Enabled = true;
-			}
-
 		}
 
 		private void addProjectToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -219,16 +214,10 @@ namespace Peygir.Presentation.Forms {
 					editTicketsButton.Enabled = false;
 					deleteProjectButton.Enabled = false;
 				}
-				else if (selectedProjectsCount == 1) {
+				else {
 					addProjectButton.Enabled = true;
 					editProjectButton.Enabled = true;
 					editTicketsButton.Enabled = true;
-					deleteProjectButton.Enabled = true;
-				}
-				else {
-					addProjectButton.Enabled = true;
-					editProjectButton.Enabled = false;
-					editTicketsButton.Enabled = false;
 					deleteProjectButton.Enabled = true;
 				}
 
@@ -244,99 +233,95 @@ namespace Peygir.Presentation.Forms {
 
 		private void NewDatabase() {
 			saveFileDialog.FileName = string.Empty;
-			if (saveFileDialog.ShowDialog() == DialogResult.OK) {
-				try {
-					CloseDatabase();
+			if (saveFileDialog.ShowDialog() != DialogResult.OK) return;
 
-					string databasePath = saveFileDialog.FileName;
+			try {
+				CloseDatabase();
 
-					Environment.CurrentDirectory = Application.StartupPath;
-					Database.CreateAndOpen(databasePath);
+				string databasePath = saveFileDialog.FileName;
 
-					ShowProjects();
-				}
-				catch (Exception exception) {
-					MessageBox.Show
-					(
-						exception.Message,
-						Resources.String_Error,
-						MessageBoxButtons.OK,
-						MessageBoxIcon.Error,
-						MessageBoxDefaultButton.Button1,
-						FormMessageBoxOptions
+				Environment.CurrentDirectory = Application.StartupPath;
+				Database.CreateAndOpen(databasePath);
 
-					);
+				ShowProjects();
+			}
+			catch (Exception exception) {
+				MessageBox.Show(
+					exception.Message,
+					Resources.String_Error,
+					MessageBoxButtons.OK,
+					MessageBoxIcon.Error,
+					MessageBoxDefaultButton.Button1,
+					FormMessageBoxOptions);
 
-					CloseDatabase();
-				}
+				CloseDatabase();
 			}
 		}
 
 		private void OpenDatabase() {
 			openFileDialog.FileName = string.Empty;
-			if (openFileDialog.ShowDialog() == DialogResult.OK) {
-				try {
+			if (openFileDialog.ShowDialog() != DialogResult.OK) return;
+			try {
+				if (Database.IsOpen)
 					CloseDatabase();
 
-					string databasePath = openFileDialog.FileName;
+				string databasePath = openFileDialog.FileName;
 
-					Environment.CurrentDirectory = Application.StartupPath;
-					Database.Open(databasePath);
+				Environment.CurrentDirectory = Application.StartupPath;
+				Database.Open(databasePath);
 
-					ShowProjects();
-				}
-				catch (Exception exception) {
-					MessageBox.Show
-					(
-						exception.Message,
-						Resources.String_Error,
-						MessageBoxButtons.OK,
-						MessageBoxIcon.Error,
-						MessageBoxDefaultButton.Button1,
-						FormMessageBoxOptions
-					);
+				ShowProjects();
+			}
+			catch (Exception exception) {
+				MessageBox.Show(
+					exception.Message,
+					Resources.String_Error,
+					MessageBoxButtons.OK,
+					MessageBoxIcon.Error,
+					MessageBoxDefaultButton.Button1,
+					FormMessageBoxOptions);
 
-					CloseDatabase();
-				}
+				CloseDatabase();
 			}
 		}
 
 		private void SaveDatabaseAs() {
 			string currentDatabasePath = Database.CurrentDatabasePath;
-
 			saveFileDialog.FileName = currentDatabasePath;
-			if (saveFileDialog.ShowDialog() == DialogResult.OK) {
-				try {
-					CloseDatabase();
+			if (saveFileDialog.ShowDialog() != DialogResult.OK) return;
+			try {
+				Database.Close();
 
-					string newDatabasePath = saveFileDialog.FileName;
+				string newDatabasePath = saveFileDialog.FileName;
 
-					// Copy.
-					File.Copy(currentDatabasePath, newDatabasePath, true);
+				// Copy.
+				File.Copy(currentDatabasePath, newDatabasePath, true);
 
-					Environment.CurrentDirectory = Application.StartupPath;
-					Database.Open(newDatabasePath);
+				Environment.CurrentDirectory = Application.StartupPath;
+				Database.Open(newDatabasePath);
 
-					ShowProjects();
-				}
-				catch (Exception exception) {
-					MessageBox.Show
-					(
-						exception.Message,
-						Resources.String_Error,
-						MessageBoxButtons.OK,
-						MessageBoxIcon.Error,
-						MessageBoxDefaultButton.Button1,
-						FormMessageBoxOptions
-					);
+				ShowProjects();
+			}
+			catch (Exception exception) {
+				MessageBox.Show(
+					exception.Message,
+					Resources.String_Error,
+					MessageBoxButtons.OK,
+					MessageBoxIcon.Error,
+					MessageBoxDefaultButton.Button1,
+					FormMessageBoxOptions);
 
-					CloseDatabase();
-				}
+				CloseDatabase();
 			}
 		}
 
 		private void CloseDatabase() {
 			Database.Close();
+
+			// ToArray to copy the forms so we can mutate the dictionary
+			foreach (var form in mForms.ToArray()) {
+				form.Value.Close();
+			}
 
 			projectsListUserControl.ProjectsListView.Items.Clear();
 
@@ -350,6 +335,11 @@ namespace Peygir.Presentation.Forms {
 
 				// Might change date formatting, update display
 				ShowProjects();
+
+				// If there are any open forms, go through them and let them know as well
+				foreach (var child in mForms) {
+					child.Value.UpdateSettings();
+				}
 			}
 		}
 
@@ -432,17 +422,22 @@ namespace Peygir.Presentation.Forms {
 		}
 
 		private void EditProject(bool ticketTab = false) {
-			if (projectsListUserControl.ProjectsListView.SelectedItems.Count != 1) {
-				return;
+			for (int i = 0, end = projectsListUserControl.ProjectsListView.SelectedItems.Count; i < end; i++) {
+				var item = (Project)projectsListUserControl.ProjectsListView.SelectedItems[i].Tag;
+				ProjectForm form;
+				if (!mForms.TryGetValue(item, out form)) {
+					form = new ProjectForm(item, this);
+					mForms[item] = form;
+					form.Show();
+				}
+				else {
+					form.Activate();
+				}
+
+				if (ticketTab) {
+					form.ActivateTicketTab();
+				}
 			}
-
-			var project = (Project)projectsListUserControl.ProjectsListView.SelectedItems[0].Tag;
-
-			var form = new ProjectForm(project);
-			if (ticketTab) form.ActivateTicketTab();
-			form.ShowDialog();
-
-			ShowProjects();
 		}
 
 		private void DeleteProject() {
@@ -497,6 +492,17 @@ namespace Peygir.Presentation.Forms {
 		private void ShowAbout() {
 			AboutForm form = new AboutForm();
 			form.ShowDialog();
+		}
+
+		internal void CloseProjectForm(ProjectForm form) {
+			ProjectForm query;
+			if (mForms.TryGetValue(form.Project, out query)) {
+				mForms.Remove(form.Project);
+			}
+		}
+
+		internal void UpdateTicketOrProject() {
+			ShowProjects();
 		}
 		#endregion
 	}

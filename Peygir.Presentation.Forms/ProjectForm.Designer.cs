@@ -30,14 +30,12 @@
 			this.projectInfoTabPage = new System.Windows.Forms.TabPage();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
 			this.changeProjectDetailsButton = new System.Windows.Forms.Button();
-			this.projectDetailsUserControl = new Peygir.Presentation.UserControls.ProjectDetailsUserControl();
 			this.milestonesTabPage = new System.Windows.Forms.TabPage();
 			this.groupBox3 = new System.Windows.Forms.GroupBox();
 			this.showMilestoneButton = new System.Windows.Forms.Button();
 			this.deleteMilestoneButton = new System.Windows.Forms.Button();
 			this.editMilestoneButton = new System.Windows.Forms.Button();
 			this.addMilestoneButton = new System.Windows.Forms.Button();
-			this.milestonesListUserControl = new Peygir.Presentation.UserControls.MilestonesListUserControl();
 			this.ticketsTabPage = new System.Windows.Forms.TabPage();
 			this.groupBox4 = new System.Windows.Forms.GroupBox();
 			this.showTicketAttachmentsButton = new System.Windows.Forms.Button();
@@ -46,7 +44,6 @@
 			this.editTicketButton = new System.Windows.Forms.Button();
 			this.showTicketButton = new System.Windows.Forms.Button();
 			this.addTicketButton = new System.Windows.Forms.Button();
-			this.ticketsListUserControl = new Peygir.Presentation.UserControls.TicketsListUserControl();
 			this.ticketContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.addTicketToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.showTicketToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,6 +56,9 @@
 			this.showMilestoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.editMilestoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.deleteMilestoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.projectDetailsUserControl = new Peygir.Presentation.UserControls.ProjectDetailsUserControl();
+			this.milestonesListUserControl = new Peygir.Presentation.UserControls.MilestonesListUserControl();
+			this.ticketsListUserControl = new Peygir.Presentation.UserControls.TicketsListUserControl();
 			this.groupBox1.SuspendLayout();
 			this.tabControl.SuspendLayout();
 			this.projectInfoTabPage.SuspendLayout();
@@ -110,15 +110,6 @@
 			this.changeProjectDetailsButton.UseVisualStyleBackColor = true;
 			this.changeProjectDetailsButton.Click += new System.EventHandler(this.changeProjectDetailsButton_Click);
 			// 
-			// projectDetailsUserControl
-			// 
-			resources.ApplyResources(this.projectDetailsUserControl, "projectDetailsUserControl");
-			this.projectDetailsUserControl.Description = "";
-			this.projectDetailsUserControl.DisplayOrder = 0;
-			this.projectDetailsUserControl.Name = "projectDetailsUserControl";
-			this.projectDetailsUserControl.ProjectName = "";
-			this.projectDetailsUserControl.ReadOnly = true;
-			// 
 			// milestonesTabPage
 			// 
 			this.milestonesTabPage.Controls.Add(this.groupBox3);
@@ -168,11 +159,6 @@
 			this.addMilestoneButton.Name = "addMilestoneButton";
 			this.addMilestoneButton.UseVisualStyleBackColor = true;
 			this.addMilestoneButton.Click += new System.EventHandler(this.addMilestoneButton_Click);
-			// 
-			// milestonesListUserControl
-			// 
-			resources.ApplyResources(this.milestonesListUserControl, "milestonesListUserControl");
-			this.milestonesListUserControl.Name = "milestonesListUserControl";
 			// 
 			// ticketsTabPage
 			// 
@@ -241,11 +227,6 @@
 			this.addTicketButton.Name = "addTicketButton";
 			this.addTicketButton.UseVisualStyleBackColor = true;
 			this.addTicketButton.Click += new System.EventHandler(this.addTicketButton_Click);
-			// 
-			// ticketsListUserControl
-			// 
-			resources.ApplyResources(this.ticketsListUserControl, "ticketsListUserControl");
-			this.ticketsListUserControl.Name = "ticketsListUserControl";
 			// 
 			// ticketContextMenu
 			// 
@@ -343,6 +324,25 @@
 			resources.ApplyResources(this.deleteMilestoneToolStripMenuItem, "deleteMilestoneToolStripMenuItem");
 			this.deleteMilestoneToolStripMenuItem.Click += new System.EventHandler(this.deleteMilestoneToolStripMenuItem_Click);
 			// 
+			// projectDetailsUserControl
+			// 
+			resources.ApplyResources(this.projectDetailsUserControl, "projectDetailsUserControl");
+			this.projectDetailsUserControl.Description = "";
+			this.projectDetailsUserControl.DisplayOrder = 0;
+			this.projectDetailsUserControl.Name = "projectDetailsUserControl";
+			this.projectDetailsUserControl.ProjectName = "";
+			this.projectDetailsUserControl.ReadOnly = true;
+			// 
+			// milestonesListUserControl
+			// 
+			resources.ApplyResources(this.milestonesListUserControl, "milestonesListUserControl");
+			this.milestonesListUserControl.Name = "milestonesListUserControl";
+			// 
+			// ticketsListUserControl
+			// 
+			resources.ApplyResources(this.ticketsListUserControl, "ticketsListUserControl");
+			this.ticketsListUserControl.Name = "ticketsListUserControl";
+			// 
 			// ProjectForm
 			// 
 			resources.ApplyResources(this, "$this");
@@ -352,6 +352,7 @@
 			this.MinimizeBox = false;
 			this.Name = "ProjectForm";
 			this.ShowInTaskbar = false;
+			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ProjectForm_FormClosed);
 			this.groupBox1.ResumeLayout(false);
 			this.tabControl.ResumeLayout(false);
 			this.projectInfoTabPage.ResumeLayout(false);
