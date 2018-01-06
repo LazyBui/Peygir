@@ -123,7 +123,7 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 81</value>
+    <value>6, 82</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
     <value>89, 13</value>
@@ -147,7 +147,7 @@
     <value>1</value>
   </data>
   <data name="textBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 97</value>
+    <value>6, 98</value>
   </data>
   <data name="textBox2.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -194,75 +194,6 @@ s	The second.</value>
   </data>
   <data name="&gt;&gt;textBox2.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
-  </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>formatDateTimePanel</value>
-  </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;label2.Name" xml:space="preserve">
-    <value>label2</value>
-  </data>
-  <data name="&gt;&gt;label2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
-    <value>formatDateTimePanel</value>
-  </data>
-  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;dateTimePatternTextBox.Name" xml:space="preserve">
-    <value>dateTimePatternTextBox</value>
-  </data>
-  <data name="&gt;&gt;dateTimePatternTextBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dateTimePatternTextBox.Parent" xml:space="preserve">
-    <value>formatDateTimePanel</value>
-  </data>
-  <data name="&gt;&gt;dateTimePatternTextBox.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;calendarComboBox.Name" xml:space="preserve">
-    <value>calendarComboBox</value>
-  </data>
-  <data name="&gt;&gt;calendarComboBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;calendarComboBox.Parent" xml:space="preserve">
-    <value>formatDateTimePanel</value>
-  </data>
-  <data name="&gt;&gt;calendarComboBox.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="formatDateTimePanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 22</value>
-  </data>
-  <data name="formatDateTimePanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>298, 56</value>
-  </data>
-  <data name="formatDateTimePanel.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;formatDateTimePanel.Name" xml:space="preserve">
-    <value>formatDateTimePanel</value>
-  </data>
-  <data name="&gt;&gt;formatDateTimePanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;formatDateTimePanel.Parent" xml:space="preserve">
-    <value>tabPageDateTime</value>
-  </data>
-  <data name="&gt;&gt;formatDateTimePanel.ZOrder" xml:space="preserve">
-    <value>2</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -402,11 +333,32 @@ s	The second.</value>
   <data name="&gt;&gt;calendarComboBox.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="formatDateTimePanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 23</value>
+  </data>
+  <data name="formatDateTimePanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>298, 56</value>
+  </data>
+  <data name="formatDateTimePanel.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;formatDateTimePanel.Name" xml:space="preserve">
+    <value>formatDateTimePanel</value>
+  </data>
+  <data name="&gt;&gt;formatDateTimePanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;formatDateTimePanel.Parent" xml:space="preserve">
+    <value>tabPageDateTime</value>
+  </data>
+  <data name="&gt;&gt;formatDateTimePanel.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <data name="formatDateTimeCheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="formatDateTimeCheckBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 3</value>
+    <value>6, 4</value>
   </data>
   <data name="formatDateTimeCheckBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>129, 17</value>
@@ -433,7 +385,7 @@ s	The second.</value>
     <value>Bottom, Right</value>
   </data>
   <data name="cancelButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>255, 326</value>
+    <value>255, 331</value>
   </data>
   <data name="cancelButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -463,7 +415,7 @@ s	The second.</value>
     <value>Bottom, Right</value>
   </data>
   <data name="okButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>174, 326</value>
+    <value>174, 331</value>
   </data>
   <data name="okButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -496,7 +448,7 @@ s	The second.</value>
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPageDateTime.Size" type="System.Drawing.Size, System.Drawing">
-    <value>310, 282</value>
+    <value>310, 289</value>
   </data>
   <data name="tabPageDateTime.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -793,10 +745,10 @@ s	The second.</value>
     <value>1</value>
   </data>
   <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 12</value>
+    <value>12, 10</value>
   </data>
   <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>318, 308</value>
+    <value>318, 315</value>
   </data>
   <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -820,7 +772,7 @@ s	The second.</value>
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>342, 361</value>
+    <value>342, 366</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8.25pt</value>
