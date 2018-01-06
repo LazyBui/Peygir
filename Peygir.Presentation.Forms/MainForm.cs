@@ -344,8 +344,13 @@ namespace Peygir.Presentation.Forms {
 		}
 
 		private void ShowOptions() {
-			OptionsForm form = new OptionsForm();
-			form.ShowDialog();
+			using (var form = new OptionsForm()) {
+				if (form.ShowDialog() != DialogResult.OK) return;
+				if (!Database.IsOpen) return;
+
+				// Might change date formatting, update display
+				ShowProjects();
+			}
 		}
 
 		private void ShowProjects() {
