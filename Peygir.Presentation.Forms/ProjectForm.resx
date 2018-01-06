@@ -178,7 +178,7 @@
     <value>projectDetailsUserControl</value>
   </data>
   <data name="&gt;&gt;projectDetailsUserControl.Type" xml:space="preserve">
-    <value>Peygir.Presentation.UserControls.ProjectDetailsUserControl, Peygir.Presentation.UserControls, Version=1.0.1.41147, Culture=neutral, PublicKeyToken=7bc4e639a7e2568f</value>
+    <value>Peygir.Presentation.UserControls.ProjectDetailsUserControl, Peygir.Presentation.UserControls, Version=1.0.1.42399, Culture=neutral, PublicKeyToken=7bc4e639a7e2568f</value>
   </data>
   <data name="&gt;&gt;projectDetailsUserControl.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -388,7 +388,7 @@
     <value>milestonesListUserControl</value>
   </data>
   <data name="&gt;&gt;milestonesListUserControl.Type" xml:space="preserve">
-    <value>Peygir.Presentation.UserControls.MilestonesListUserControl, Peygir.Presentation.UserControls, Version=1.0.1.41147, Culture=neutral, PublicKeyToken=7bc4e639a7e2568f</value>
+    <value>Peygir.Presentation.UserControls.MilestonesListUserControl, Peygir.Presentation.UserControls, Version=1.0.1.42399, Culture=neutral, PublicKeyToken=7bc4e639a7e2568f</value>
   </data>
   <data name="&gt;&gt;milestonesListUserControl.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -540,9 +540,6 @@
   <data name="ticketCreatedButton.TabIndex" type="System.Int32, mscorlib">
     <value>57</value>
   </data>
-  <data name="ticketCreatedButton.Text" xml:space="preserve">
-    <value>+</value>
-  </data>
   <data name="&gt;&gt;ticketCreatedButton.Name" xml:space="preserve">
     <value>ticketCreatedButton</value>
   </data>
@@ -566,9 +563,6 @@
   </data>
   <data name="ticketModifiedButton.TabIndex" type="System.Int32, mscorlib">
     <value>56</value>
-  </data>
-  <data name="ticketModifiedButton.Text" xml:space="preserve">
-    <value>+</value>
   </data>
   <data name="&gt;&gt;ticketModifiedButton.Name" xml:space="preserve">
     <value>ticketModifiedButton</value>
@@ -1336,7 +1330,7 @@
     <value>ticketsListUserControl</value>
   </data>
   <data name="&gt;&gt;ticketsListUserControl.Type" xml:space="preserve">
-    <value>Peygir.Presentation.UserControls.TicketsListUserControl, Peygir.Presentation.UserControls, Version=1.0.1.41147, Culture=neutral, PublicKeyToken=7bc4e639a7e2568f</value>
+    <value>Peygir.Presentation.UserControls.TicketsListUserControl, Peygir.Presentation.UserControls, Version=1.0.1.42399, Culture=neutral, PublicKeyToken=7bc4e639a7e2568f</value>
   </data>
   <data name="&gt;&gt;ticketsListUserControl.Parent" xml:space="preserve">
     <value>groupBox4</value>

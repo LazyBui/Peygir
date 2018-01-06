@@ -377,6 +377,7 @@
 			// 
 			// createdButton
 			// 
+			this.createdButton.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Options;
 			resources.ApplyResources(this.createdButton, "createdButton");
 			this.createdButton.Name = "createdButton";
 			this.createdButton.UseVisualStyleBackColor = true;
@@ -384,6 +385,7 @@
 			// 
 			// modifiedButton
 			// 
+			this.modifiedButton.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Options;
 			resources.ApplyResources(this.modifiedButton, "modifiedButton");
 			this.modifiedButton.Name = "modifiedButton";
 			this.modifiedButton.UseVisualStyleBackColor = true;

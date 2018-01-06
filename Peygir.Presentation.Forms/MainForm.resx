@@ -258,9 +258,6 @@
   <data name="createdButton.TabIndex" type="System.Int32, mscorlib">
     <value>43</value>
   </data>
-  <data name="createdButton.Text" xml:space="preserve">
-    <value>+</value>
-  </data>
   <data name="&gt;&gt;createdButton.Name" xml:space="preserve">
     <value>createdButton</value>
   </data>
@@ -317,9 +314,6 @@
   </data>
   <data name="modifiedButton.TabIndex" type="System.Int32, mscorlib">
     <value>42</value>
-  </data>
-  <data name="modifiedButton.Text" xml:space="preserve">
-    <value>+</value>
   </data>
   <data name="&gt;&gt;modifiedButton.Name" xml:space="preserve">
     <value>modifiedButton</value>
