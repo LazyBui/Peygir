@@ -23,6 +23,7 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
+			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AttachmentsForm));
 			this.addButton = new System.Windows.Forms.Button();
 			this.saveButton = new System.Windows.Forms.Button();
@@ -31,6 +32,11 @@
 			this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
 			this.okButton = new System.Windows.Forms.Button();
 			this.attachmentsListUserControl = new Peygir.Presentation.UserControls.AttachmentsListUserControl();
+			this.attachmentsContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.addAttachmentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.saveAttachmentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.deleteAttachmentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.attachmentsContextMenu.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// addButton
@@ -78,6 +84,38 @@
 			resources.ApplyResources(this.attachmentsListUserControl, "attachmentsListUserControl");
 			this.attachmentsListUserControl.Name = "attachmentsListUserControl";
 			// 
+			// attachmentsContextMenu
+			// 
+			this.attachmentsContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addAttachmentToolStripMenuItem,
+            this.saveAttachmentToolStripMenuItem,
+            this.deleteAttachmentToolStripMenuItem});
+			this.attachmentsContextMenu.Name = "attachmentsContextMenu";
+			this.attachmentsContextMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+			resources.ApplyResources(this.attachmentsContextMenu, "attachmentsContextMenu");
+			this.attachmentsContextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.attachmentsContextMenu_Opening);
+			// 
+			// addAttachmentToolStripMenuItem
+			// 
+			this.addAttachmentToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Add;
+			this.addAttachmentToolStripMenuItem.Name = "addAttachmentToolStripMenuItem";
+			resources.ApplyResources(this.addAttachmentToolStripMenuItem, "addAttachmentToolStripMenuItem");
+			this.addAttachmentToolStripMenuItem.Click += new System.EventHandler(this.addAttachmentToolStripMenuItem_Click);
+			// 
+			// saveAttachmentToolStripMenuItem
+			// 
+			this.saveAttachmentToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Save;
+			this.saveAttachmentToolStripMenuItem.Name = "saveAttachmentToolStripMenuItem";
+			resources.ApplyResources(this.saveAttachmentToolStripMenuItem, "saveAttachmentToolStripMenuItem");
+			this.saveAttachmentToolStripMenuItem.Click += new System.EventHandler(this.saveAttachmentToolStripMenuItem_Click);
+			// 
+			// deleteAttachmentToolStripMenuItem
+			// 
+			this.deleteAttachmentToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Delete;
+			this.deleteAttachmentToolStripMenuItem.Name = "deleteAttachmentToolStripMenuItem";
+			resources.ApplyResources(this.deleteAttachmentToolStripMenuItem, "deleteAttachmentToolStripMenuItem");
+			this.deleteAttachmentToolStripMenuItem.Click += new System.EventHandler(this.deleteAttachmentToolStripMenuItem_Click);
+			// 
 			// AttachmentsForm
 			// 
 			this.AcceptButton = this.okButton;
@@ -93,6 +131,7 @@
 			this.MinimizeBox = false;
 			this.Name = "AttachmentsForm";
 			this.ShowInTaskbar = false;
+			this.attachmentsContextMenu.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -106,5 +145,9 @@
 		private System.Windows.Forms.OpenFileDialog openFileDialog;
 		private System.Windows.Forms.SaveFileDialog saveFileDialog;
 		private System.Windows.Forms.Button okButton;
+		private System.Windows.Forms.ContextMenuStrip attachmentsContextMenu;
+		private System.Windows.Forms.ToolStripMenuItem addAttachmentToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem saveAttachmentToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem deleteAttachmentToolStripMenuItem;
 	}
 }

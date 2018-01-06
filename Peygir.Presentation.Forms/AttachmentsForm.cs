@@ -11,8 +11,8 @@ namespace Peygir.Presentation.Forms {
 
 		public MessageBoxOptions FormMessageBoxOptions {
 			get {
-				MessageBoxOptions options = (MessageBoxOptions)0;
-				if (RightToLeft == System.Windows.Forms.RightToLeft.Yes) {
+				MessageBoxOptions options = 0;
+				if (RightToLeft == RightToLeft.Yes) {
 					options = (MessageBoxOptions.RtlReading | MessageBoxOptions.RightAlign);
 				}
 				return options;
@@ -29,13 +29,63 @@ namespace Peygir.Presentation.Forms {
 			InitializeComponent();
 
 			attachmentsListUserControl.AttachmentsListView.SelectedIndexChanged += AttachmentsListView_SelectedIndexChanged;
+			attachmentsListUserControl.ContextMenuStrip = attachmentsContextMenu;
 
 			ShowAttachments();
 		}
 
+		void AttachmentsListView_SelectedIndexChanged(object sender, EventArgs e) {
+			UpdateButtonsEnabledProperty();
+		}
+
+		#region Attachment modification UI
+		#region Buttons
+		private void addButton_Click(object sender, EventArgs e) {
+			AddAttachment();
+		}
+
+		private void saveButton_Click(object sender, EventArgs e) {
+			SaveAttachment();
+		}
+
+		private void deleteButton_Click(object sender, EventArgs e) {
+			DeleteAttachment();
+		}
+		#endregion
+
+		#region Context menu
+		private void attachmentsContextMenu_Opening(object sender, System.ComponentModel.CancelEventArgs e) {
+			int count = attachmentsListUserControl.AttachmentsListView.SelectedItems.Count;
+			if (count == 0) {
+				saveAttachmentToolStripMenuItem.Enabled = false;
+				deleteAttachmentToolStripMenuItem.Enabled = false;
+			}
+			else if (count == 1) {
+				saveAttachmentToolStripMenuItem.Enabled = true;
+				deleteAttachmentToolStripMenuItem.Enabled = true;
+			}
+			else {
+				saveAttachmentToolStripMenuItem.Enabled = false;
+				deleteAttachmentToolStripMenuItem.Enabled = true;
+			}
+		}
+		private void addAttachmentToolStripMenuItem_Click(object sender, EventArgs e) {
+			AddAttachment();
+		}
+
+		private void saveAttachmentToolStripMenuItem_Click(object sender, EventArgs e) {
+			SaveAttachment();
+		}
+
+		private void deleteAttachmentToolStripMenuItem_Click(object sender, EventArgs e) {
+			DeleteAttachment();
+		}
+		#endregion
+		#endregion
+
+		#region Utility functions
 		private void UpdateButtonsEnabledProperty() {
 			int count = attachmentsListUserControl.AttachmentsListView.SelectedItems.Count;
-
 			if (count == 0) {
 				saveButton.Enabled = false;
 				deleteButton.Enabled = false;
@@ -175,21 +225,6 @@ namespace Peygir.Presentation.Forms {
 				ShowAttachments();
 			}
 		}
-
-		void AttachmentsListView_SelectedIndexChanged(object sender, EventArgs e) {
-			UpdateButtonsEnabledProperty();
-		}
-
-		private void addButton_Click(object sender, EventArgs e) {
-			AddAttachment();
-		}
-
-		private void saveButton_Click(object sender, EventArgs e) {
-			SaveAttachment();
-		}
-
-		private void deleteButton_Click(object sender, EventArgs e) {
-			DeleteAttachment();
-		}
+		#endregion
 	}
 }
