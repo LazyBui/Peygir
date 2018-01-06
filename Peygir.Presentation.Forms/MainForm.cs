@@ -190,7 +190,7 @@ namespace Peygir.Presentation.Forms {
 			);
 
 			// Restart.
-			if (result == System.Windows.Forms.DialogResult.Yes) {
+			if (result == DialogResult.Yes) {
 				Application.Restart();
 			}
 		}
@@ -243,7 +243,7 @@ namespace Peygir.Presentation.Forms {
 
 		private void NewDatabase() {
 			saveFileDialog.FileName = string.Empty;
-			if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
+			if (saveFileDialog.ShowDialog() == DialogResult.OK) {
 				try {
 					CloseDatabase();
 
@@ -273,7 +273,7 @@ namespace Peygir.Presentation.Forms {
 
 		private void OpenDatabase() {
 			openFileDialog.FileName = string.Empty;
-			if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
+			if (openFileDialog.ShowDialog() == DialogResult.OK) {
 				try {
 					CloseDatabase();
 
@@ -304,7 +304,7 @@ namespace Peygir.Presentation.Forms {
 			string currentDatabasePath = Database.CurrentDatabasePath;
 
 			saveFileDialog.FileName = currentDatabasePath;
-			if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
+			if (saveFileDialog.ShowDialog() == DialogResult.OK) {
 				try {
 					CloseDatabase();
 
@@ -377,7 +377,7 @@ namespace Peygir.Presentation.Forms {
 			form.ProjectDetailsUserControl.ShowProject(project);
 
 			Again:
-			if (form.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
+			if (form.ShowDialog() == DialogResult.OK) {
 				// Check name.
 				if (string.IsNullOrWhiteSpace(form.ProjectDetailsUserControl.ProjectName)) {
 					MessageBox.Show
@@ -449,7 +449,7 @@ namespace Peygir.Presentation.Forms {
 					FormMessageBoxOptions
 				);
 
-				if (result != System.Windows.Forms.DialogResult.Yes) {
+				if (result != DialogResult.Yes) {
 					return;
 				}
 

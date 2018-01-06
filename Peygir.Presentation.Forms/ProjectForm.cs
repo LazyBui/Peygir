@@ -39,6 +39,8 @@ namespace Peygir.Presentation.Forms {
 			ShowProjectDetails();
 			ShowMilestones();
 			ShowTickets();
+
+			Text = "Project - " + project.Name;
 		}
 
 		private void MilestonesListView_SelectedIndexChanged(object sender, EventArgs e) {
@@ -251,7 +253,7 @@ namespace Peygir.Presentation.Forms {
 			form.ProjectDetailsUserControl.ShowProject(Project);
 
 			Again:
-			if (form.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
+			if (form.ShowDialog() == DialogResult.OK) {
 				// Check name.
 				if (string.IsNullOrWhiteSpace(form.ProjectDetailsUserControl.ProjectName)) {
 					MessageBox.Show
@@ -311,7 +313,7 @@ namespace Peygir.Presentation.Forms {
 			form.MilestoneDetailsUserControl.State = MilestoneState.Active;
 
 			Again:
-			if (form.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
+			if (form.ShowDialog() == DialogResult.OK) {
 				// Check name.
 				if (string.IsNullOrWhiteSpace(form.MilestoneDetailsUserControl.MilestoneName)) {
 					MessageBox.Show
@@ -395,7 +397,7 @@ namespace Peygir.Presentation.Forms {
 			form.MilestoneDetailsUserControl.ShowMilestone(milestone);
 
 			Again:
-			if (form.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
+			if (form.ShowDialog() == DialogResult.OK) {
 				// Check name.
 				if (string.IsNullOrWhiteSpace(form.MilestoneDetailsUserControl.MilestoneName)) {
 					MessageBox.Show
@@ -450,7 +452,7 @@ namespace Peygir.Presentation.Forms {
 					FormMessageBoxOptions
 				);
 
-				if (result != System.Windows.Forms.DialogResult.Yes) {
+				if (result != DialogResult.Yes) {
 					return;
 				}
 
@@ -597,7 +599,7 @@ namespace Peygir.Presentation.Forms {
 				return;
 			}
 
-			TicketDetailsForm form = new TicketDetailsForm();
+			var form = new TicketDetailsForm(Project, null);
 
 			form.TicketDetailsUserControl.ShowMilestones(milestones);
 
@@ -607,7 +609,7 @@ namespace Peygir.Presentation.Forms {
 			form.TicketDetailsUserControl.Priority = TicketPriority.Normal;
 
 			Again:
-			if (form.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
+			if (form.ShowDialog() == DialogResult.OK) {
 				// Check milestone.
 				if (form.TicketDetailsUserControl.Milestone == null) {
 					MessageBox.Show
@@ -750,7 +752,7 @@ namespace Peygir.Presentation.Forms {
 
 			Ticket ticket = (Ticket)ticketsListUserControl.TicketsListView.SelectedItems[0].Tag;
 
-			TicketDetailsForm form = new TicketDetailsForm();
+			var form = new TicketDetailsForm(Project, ticket);
 
 			Milestone[] milestones = Project.GetMilestones();
 			form.TicketDetailsUserControl.ShowMilestones(milestones);
@@ -768,7 +770,7 @@ namespace Peygir.Presentation.Forms {
 
 			Ticket ticket = (Ticket)ticketsListUserControl.TicketsListView.SelectedItems[0].Tag;
 
-			TicketDetailsForm form = new TicketDetailsForm();
+			var form = new TicketDetailsForm(Project, ticket);
 
 			Milestone[] milestones = Project.GetMilestones();
 			form.TicketDetailsUserControl.ShowMilestones(milestones);
@@ -776,7 +778,7 @@ namespace Peygir.Presentation.Forms {
 			form.TicketDetailsUserControl.ShowTicket(ticket);
 
 			Again:
-			if (form.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
+			if (form.ShowDialog() == DialogResult.OK) {
 				// Check milestone.
 				if (form.TicketDetailsUserControl.Milestone == null) {
 					MessageBox.Show

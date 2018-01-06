@@ -125,7 +125,7 @@ namespace Peygir.Presentation.Forms {
 
 		private void AddAttachment() {
 			try {
-				if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
+				if (openFileDialog.ShowDialog() == DialogResult.OK) {
 					string fileName = openFileDialog.FileName;
 					FileInfo fi = new FileInfo(fileName);
 
@@ -174,7 +174,7 @@ namespace Peygir.Presentation.Forms {
 					Attachment attachmentWithoutContents = (Attachment)attachmentsListUserControl.AttachmentsListView.SelectedItems[0].Tag;
 
 					saveFileDialog.FileName = attachmentWithoutContents.Name;
-					if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
+					if (saveFileDialog.ShowDialog() == DialogResult.OK) {
 						string fileName = saveFileDialog.FileName;
 						Attachment attachment = Attachment.GetAttachment(attachmentWithoutContents.ID);
 
@@ -208,7 +208,7 @@ namespace Peygir.Presentation.Forms {
 					FormMessageBoxOptions
 				);
 
-				if (result != System.Windows.Forms.DialogResult.Yes) {
+				if (result != DialogResult.Yes) {
 					return;
 				}
 

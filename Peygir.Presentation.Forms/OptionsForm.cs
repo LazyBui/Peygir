@@ -64,7 +64,7 @@ namespace Peygir.Presentation.Forms {
 		}
 
 		private void OptionsForm_FormClosing(object sender, FormClosingEventArgs e) {
-			if (DialogResult == System.Windows.Forms.DialogResult.OK) {
+			if (DialogResult == DialogResult.OK) {
 				SaveSettings();
 			}
 		}
