@@ -566,14 +566,12 @@ namespace Peygir.Presentation.Forms {
 				if (!mForms.TryGetValue(item, out form)) {
 					form = new ProjectForm(item, this);
 					mForms[item] = form;
+					form.ActivateTicketTab();
 					form.Show();
 				}
 				else {
-					form.Activate();
-				}
-
-				if (ticketTab) {
 					form.ActivateTicketTab();
+					form.Activate();
 				}
 			}
 		}
