@@ -30,6 +30,7 @@ namespace Peygir.Presentation.Forms {
 
 			milestonesListUserControl.MilestonesListView.SelectedIndexChanged += MilestonesListView_SelectedIndexChanged;
 			milestonesListUserControl.MilestonesListView.DoubleClick += MilestonesListView_DoubleClick;
+			milestonesListUserControl.MilestonesListView.ContextMenuStrip = milestoneContextMenu;
 
 			ticketsListUserControl.TicketsListView.SelectedIndexChanged += TicketsListView_SelectedIndexChanged;
 			ticketsListUserControl.TicketsListView.DoubleClick += TicketsListView_DoubleClick;
@@ -40,98 +41,164 @@ namespace Peygir.Presentation.Forms {
 			ShowTickets();
 		}
 
-		internal void ActivateTicketTab() {
-			tabControl.SelectedTab = ticketsTabPage;
+		private void MilestonesListView_SelectedIndexChanged(object sender, EventArgs e) {
+			UpdateButtonsEnabledProperty();
 		}
 
-		private string TranslateTicketType(TicketType ticketType) {
-			switch (ticketType) {
-				case TicketType.Defect:
-					return Resources.String_Defect;
+		private void MilestonesListView_DoubleClick(object sender, EventArgs e) {
+			ShowMilestone();
+		}
 
-				case TicketType.FeatureRequest:
-					return Resources.String_FeatureRequest;
+		private void TicketsListView_SelectedIndexChanged(object sender, EventArgs e) {
+			UpdateButtonsEnabledProperty();
+		}
 
-				case TicketType.Task:
-					return Resources.String_Task;
+		private void TicketsListView_DoubleClick(object sender, EventArgs e) {
+			EditTicket();
+		}
 
-				default:
-					return ticketType.ToString();
+		private void changeProjectDetailsButton_Click(object sender, EventArgs e) {
+			ChangeProjectDetails();
+		}
+
+		#region Milestone modification UI
+		#region Buttons
+		private void addMilestoneButton_Click(object sender, EventArgs e) {
+			AddMilestone();
+		}
+
+		private void showMilestoneButton_Click(object sender, EventArgs e) {
+			ShowMilestone();
+		}
+
+		private void editMilestoneButton_Click(object sender, EventArgs e) {
+			EditMilestone();
+		}
+
+		private void deleteMilestoneButton_Click(object sender, EventArgs e) {
+			DeleteMilestone();
+		}
+		#endregion
+
+		#region Context menu
+		private void milestoneContextMenu_Opening(object sender, System.ComponentModel.CancelEventArgs e) {
+			int selectedMilestonesCount = milestonesListUserControl.MilestonesListView.SelectedItems.Count;
+			if (selectedMilestonesCount == 0) {
+				showMilestoneToolStripMenuItem.Enabled = false;
+				editMilestoneToolStripMenuItem.Enabled = false;
+				deleteMilestoneToolStripMenuItem.Enabled = false;
+			}
+			else if (selectedMilestonesCount == 1) {
+				showMilestoneToolStripMenuItem.Enabled = true;
+				editMilestoneToolStripMenuItem.Enabled = true;
+				deleteMilestoneToolStripMenuItem.Enabled = true;
+			}
+			else {
+				showMilestoneToolStripMenuItem.Enabled = false;
+				editMilestoneToolStripMenuItem.Enabled = false;
+				deleteMilestoneToolStripMenuItem.Enabled = true;
 			}
 		}
 
-		private string TranslateTicketSeverity(TicketSeverity ticketSeverity) {
-			switch (ticketSeverity) {
-				case TicketSeverity.Blocker:
-					return Resources.String_Blocker;
+		private void addMilestoneToolStripMenuItem_Click(object sender, EventArgs e) {
+			AddMilestone();
+		}
 
-				case TicketSeverity.Critical:
-					return Resources.String_Critical;
+		private void showMilestoneToolStripMenuItem_Click(object sender, EventArgs e) {
+			ShowMilestone();
+		}
 
-				case TicketSeverity.Major:
-					return Resources.String_Major;
+		private void editMilestoneToolStripMenuItem_Click(object sender, EventArgs e) {
+			EditMilestone();
+		}
 
-				case TicketSeverity.Normal:
-					return Resources.String_Normal;
+		private void deleteMilestoneToolStripMenuItem_Click(object sender, EventArgs e) {
+			DeleteMilestone();
+		}
+		#endregion
+		#endregion
 
-				case TicketSeverity.Minor:
-					return Resources.String_Minor;
+		#region Ticket modification UI
+		#region Buttons
+		private void addTicketButton_Click(object sender, EventArgs e) {
+			AddTicket();
+		}
 
-				case TicketSeverity.Trivial:
-					return Resources.String_Trivial;
+		private void showTicketButton_Click(object sender, EventArgs e) {
+			ShowTicket();
+		}
 
-				default:
-					return ticketSeverity.ToString();
+		private void editTicketButton_Click(object sender, EventArgs e) {
+			EditTicket();
+		}
+
+		private void showTicketHistoryButton_Click(object sender, EventArgs e) {
+			ShowTicketHistory();
+		}
+
+		private void deleteTicketButton_Click(object sender, EventArgs e) {
+			DeleteTicket();
+		}
+
+		private void showTicketAttachmentsButton_Click(object sender, EventArgs e) {
+			ShowAttachments();
+		}
+		#endregion
+
+		#region Context menu
+		private void ticketContextMenu_Opening(object sender, System.ComponentModel.CancelEventArgs e) {
+			int selectedTicketsCount = ticketsListUserControl.TicketsListView.SelectedItems.Count;
+			if (selectedTicketsCount == 0) {
+				showTicketToolStripMenuItem.Enabled = false;
+				editTicketToolStripMenuItem.Enabled = false;
+				showTicketHistoryToolStripMenuItem.Enabled = false;
+				deleteTicketToolStripMenuItem.Enabled = false;
+				showTicketAttachmentsToolStripMenuItem.Enabled = false;
+			}
+			else if (selectedTicketsCount == 1) {
+				showTicketToolStripMenuItem.Enabled = true;
+				editTicketToolStripMenuItem.Enabled = true;
+				showTicketHistoryToolStripMenuItem.Enabled = true;
+				deleteTicketToolStripMenuItem.Enabled = true;
+				showTicketAttachmentsToolStripMenuItem.Enabled = true;
+			}
+			else {
+				showTicketToolStripMenuItem.Enabled = false;
+				editTicketToolStripMenuItem.Enabled = false;
+				showTicketHistoryToolStripMenuItem.Enabled = false;
+				deleteTicketToolStripMenuItem.Enabled = true;
+				showTicketAttachmentsToolStripMenuItem.Enabled = false;
 			}
 		}
 
-		private string TranslateTicketState(TicketState ticketState) {
-			switch (ticketState) {
-				case TicketState.New:
-					return Resources.String_New;
-
-				case TicketState.Accepted:
-					return Resources.String_Accepted;
-
-				case TicketState.Closed:
-					return Resources.String_Closed;
-
-				case TicketState.Completed:
-					return Resources.String_Completed;
-
-				case TicketState.InProgress:
-					return Resources.String_InProgress;
-
-				case TicketState.Blocked:
-					return Resources.String_Blocked;
-
-				default:
-					return ticketState.ToString();
-			}
+		private void addTicketToolStripMenuItem_Click(object sender, EventArgs e) {
+			AddTicket();
 		}
 
-		private string TranslateTicketPriority(TicketPriority ticketPriority) {
-			switch (ticketPriority) {
-				case TicketPriority.Lowest:
-					return Resources.String_Lowest;
-
-				case TicketPriority.Low:
-					return Resources.String_Low;
-
-				case TicketPriority.Normal:
-					return Resources.String_Normal;
-
-				case TicketPriority.High:
-					return Resources.String_High;
-
-				case TicketPriority.Highest:
-					return Resources.String_Highest;
-
-				default:
-					return ticketPriority.ToString();
-			}
+		private void showTicketToolStripMenuItem_Click(object sender, EventArgs e) {
+			ShowTicket();
 		}
 
+		private void editTicketToolStripMenuItem_Click(object sender, EventArgs e) {
+			EditTicket();
+		}
+
+		private void showTicketHistoryToolStripMenuItem_Click(object sender, EventArgs e) {
+			ShowTicketHistory();
+		}
+
+		private void deleteTicketToolStripMenuItem_Click(object sender, EventArgs e) {
+			DeleteTicket();
+		}
+
+		private void showTicketAttachmentsToolStripMenuItem_Click(object sender, EventArgs e) {
+			ShowAttachments();
+		}
+		#endregion
+
+		#endregion
+
+		#region Utility functions
 		private void UpdateButtonsEnabledProperty() {
 			int selectedMilestonesCount = milestonesListUserControl.MilestonesListView.SelectedItems.Count;
 			if (selectedMilestonesCount == 0) {
@@ -211,6 +278,7 @@ namespace Peygir.Presentation.Forms {
 			}
 		}
 
+		#region Milestone
 		private void ShowMilestones() {
 			// Save selected milestones.
 			List<int> selectedMilestones = new List<int>();
@@ -397,6 +465,96 @@ namespace Peygir.Presentation.Forms {
 
 				// Show milestones.
 				ShowMilestones();
+			}
+		}
+		#endregion
+
+		#region Ticket
+		private string TranslateTicketType(TicketType ticketType) {
+			switch (ticketType) {
+				case TicketType.Defect:
+					return Resources.String_Defect;
+
+				case TicketType.FeatureRequest:
+					return Resources.String_FeatureRequest;
+
+				case TicketType.Task:
+					return Resources.String_Task;
+
+				default:
+					return ticketType.ToString();
+			}
+		}
+
+		private string TranslateTicketSeverity(TicketSeverity ticketSeverity) {
+			switch (ticketSeverity) {
+				case TicketSeverity.Blocker:
+					return Resources.String_Blocker;
+
+				case TicketSeverity.Critical:
+					return Resources.String_Critical;
+
+				case TicketSeverity.Major:
+					return Resources.String_Major;
+
+				case TicketSeverity.Normal:
+					return Resources.String_Normal;
+
+				case TicketSeverity.Minor:
+					return Resources.String_Minor;
+
+				case TicketSeverity.Trivial:
+					return Resources.String_Trivial;
+
+				default:
+					return ticketSeverity.ToString();
+			}
+		}
+
+		private string TranslateTicketState(TicketState ticketState) {
+			switch (ticketState) {
+				case TicketState.New:
+					return Resources.String_New;
+
+				case TicketState.Accepted:
+					return Resources.String_Accepted;
+
+				case TicketState.Closed:
+					return Resources.String_Closed;
+
+				case TicketState.Completed:
+					return Resources.String_Completed;
+
+				case TicketState.InProgress:
+					return Resources.String_InProgress;
+
+				case TicketState.Blocked:
+					return Resources.String_Blocked;
+
+				default:
+					return ticketState.ToString();
+			}
+		}
+
+		private string TranslateTicketPriority(TicketPriority ticketPriority) {
+			switch (ticketPriority) {
+				case TicketPriority.Lowest:
+					return Resources.String_Lowest;
+
+				case TicketPriority.Low:
+					return Resources.String_Low;
+
+				case TicketPriority.Normal:
+					return Resources.String_Normal;
+
+				case TicketPriority.High:
+					return Resources.String_High;
+
+				case TicketPriority.Highest:
+					return Resources.String_Highest;
+
+				default:
+					return ticketPriority.ToString();
 			}
 		}
 
@@ -845,7 +1003,7 @@ namespace Peygir.Presentation.Forms {
 					FormMessageBoxOptions
 				);
 
-				if (result != System.Windows.Forms.DialogResult.Yes) {
+				if (result != DialogResult.Yes) {
 					return;
 				}
 
@@ -862,120 +1020,11 @@ namespace Peygir.Presentation.Forms {
 				ShowTickets();
 			}
 		}
-
-		private void changeProjectDetailsButton_Click(object sender, EventArgs e) {
-			ChangeProjectDetails();
-		}
-
-		private void MilestonesListView_SelectedIndexChanged(object sender, EventArgs e) {
-			UpdateButtonsEnabledProperty();
-		}
-
-		private void MilestonesListView_DoubleClick(object sender, EventArgs e) {
-			ShowMilestone();
-		}
-
-		private void addMilestoneButton_Click(object sender, EventArgs e) {
-			AddMilestone();
-		}
-
-		private void showMilestoneButton_Click(object sender, EventArgs e) {
-			ShowMilestone();
-		}
-
-		private void editMilestoneButton_Click(object sender, EventArgs e) {
-			EditMilestone();
-		}
-
-		private void deleteMilestoneButton_Click(object sender, EventArgs e) {
-			DeleteMilestone();
-		}
-
-		private void TicketsListView_SelectedIndexChanged(object sender, EventArgs e) {
-			UpdateButtonsEnabledProperty();
-		}
-
-		private void TicketsListView_DoubleClick(object sender, EventArgs e) {
-			EditTicket();
-		}
-
-		#region Ticket modification UI
-		#region Buttons
-		private void addTicketButton_Click(object sender, EventArgs e) {
-			AddTicket();
-		}
-
-		private void showTicketButton_Click(object sender, EventArgs e) {
-			ShowTicket();
-		}
-
-		private void editTicketButton_Click(object sender, EventArgs e) {
-			EditTicket();
-		}
-
-		private void showTicketHistoryButton_Click(object sender, EventArgs e) {
-			ShowTicketHistory();
-		}
-
-		private void deleteTicketButton_Click(object sender, EventArgs e) {
-			DeleteTicket();
-		}
-
-		private void showTicketAttachmentsButton_Click(object sender, EventArgs e) {
-			ShowAttachments();
-		}
 		#endregion
 
-		#region Context menu
-		private void ticketContextMenu_Opening(object sender, System.ComponentModel.CancelEventArgs e) {
-			int selectedTicketsCount = ticketsListUserControl.TicketsListView.SelectedItems.Count;
-			if (selectedTicketsCount == 0) {
-				showTicketToolStripMenuItem.Enabled = false;
-				editTicketToolStripMenuItem.Enabled = false;
-				showTicketHistoryToolStripMenuItem.Enabled = false;
-				deleteTicketToolStripMenuItem.Enabled = false;
-				showTicketAttachmentsToolStripMenuItem.Enabled = false;
-			}
-			else if (selectedTicketsCount == 1) {
-				showTicketToolStripMenuItem.Enabled = true;
-				editTicketToolStripMenuItem.Enabled = true;
-				showTicketHistoryToolStripMenuItem.Enabled = true;
-				deleteTicketToolStripMenuItem.Enabled = true;
-				showTicketAttachmentsToolStripMenuItem.Enabled = true;
-			}
-			else {
-				showTicketToolStripMenuItem.Enabled = false;
-				editTicketToolStripMenuItem.Enabled = false;
-				showTicketHistoryToolStripMenuItem.Enabled = false;
-				deleteTicketToolStripMenuItem.Enabled = true;
-				showTicketAttachmentsToolStripMenuItem.Enabled = false;
-			}
+		internal void ActivateTicketTab() {
+			tabControl.SelectedTab = ticketsTabPage;
 		}
-
-		private void addTicketToolStripMenuItem_Click(object sender, EventArgs e) {
-			AddTicket();
-		}
-
-		private void showTicketToolStripMenuItem_Click(object sender, EventArgs e) {
-			ShowTicket();
-		}
-
-		private void editTicketToolStripMenuItem_Click(object sender, EventArgs e) {
-			EditTicket();
-		}
-
-		private void showTicketHistoryToolStripMenuItem_Click(object sender, EventArgs e) {
-			ShowTicketHistory();
-		}
-
-		private void deleteTicketToolStripMenuItem_Click(object sender, EventArgs e) {
-			DeleteTicket();
-		}
-
-		private void showTicketAttachmentsToolStripMenuItem_Click(object sender, EventArgs e) {
-			ShowAttachments();
-		}
-		#endregion
 		#endregion
 	}
 }

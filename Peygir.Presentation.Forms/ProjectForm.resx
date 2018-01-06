@@ -205,7 +205,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
     <value>groupBox2</value>
@@ -481,10 +481,10 @@
     <value>Bottom, Right</value>
   </data>
   <data name="showMilestoneButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>340, 371</value>
+    <value>361, 371</value>
   </data>
   <data name="showMilestoneButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 23</value>
+    <value>83, 23</value>
   </data>
   <data name="showMilestoneButton.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -511,10 +511,10 @@
     <value>Bottom, Right</value>
   </data>
   <data name="deleteMilestoneButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>532, 371</value>
+    <value>539, 371</value>
   </data>
   <data name="deleteMilestoneButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 23</value>
+    <value>83, 23</value>
   </data>
   <data name="deleteMilestoneButton.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -541,10 +541,10 @@
     <value>Bottom, Right</value>
   </data>
   <data name="editMilestoneButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>436, 371</value>
+    <value>450, 371</value>
   </data>
   <data name="editMilestoneButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 23</value>
+    <value>83, 23</value>
   </data>
   <data name="editMilestoneButton.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -571,10 +571,10 @@
     <value>Bottom, Right</value>
   </data>
   <data name="addMilestoneButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>244, 371</value>
+    <value>272, 371</value>
   </data>
   <data name="addMilestoneButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 23</value>
+    <value>83, 23</value>
   </data>
   <data name="addMilestoneButton.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -808,7 +808,7 @@
     <value>Bottom, Right</value>
   </data>
   <data name="showTicketHistoryButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>271, 371</value>
+    <value>317, 371</value>
   </data>
   <data name="showTicketHistoryButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>83, 23</value>
@@ -838,7 +838,7 @@
     <value>Bottom, Right</value>
   </data>
   <data name="deleteTicketButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>360, 371</value>
+    <value>406, 371</value>
   </data>
   <data name="deleteTicketButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>83, 23</value>
@@ -868,7 +868,7 @@
     <value>Bottom, Right</value>
   </data>
   <data name="editTicketButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>184, 371</value>
+    <value>230, 371</value>
   </data>
   <data name="editTicketButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>83, 23</value>
@@ -898,7 +898,7 @@
     <value>Bottom, Right</value>
   </data>
   <data name="showTicketButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>95, 371</value>
+    <value>141, 371</value>
   </data>
   <data name="showTicketButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>83, 23</value>
@@ -928,7 +928,7 @@
     <value>Bottom, Right</value>
   </data>
   <data name="addTicketButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 371</value>
+    <value>52, 371</value>
   </data>
   <data name="addTicketButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>83, 23</value>
@@ -981,49 +981,85 @@
   <metadata name="ticketContextMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <data name="addTicketToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
-  </data>
-  <data name="addTicketToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Add</value>
-  </data>
-  <data name="showTicketToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
-  </data>
-  <data name="showTicketToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Show</value>
-  </data>
-  <data name="editTicketToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
-  </data>
-  <data name="editTicketToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Edit</value>
-  </data>
-  <data name="showTicketHistoryToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
-  </data>
-  <data name="showTicketHistoryToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;History</value>
-  </data>
-  <data name="deleteTicketToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
-  </data>
-  <data name="deleteTicketToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Delete</value>
-  </data>
-  <data name="showTicketAttachmentsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
-  </data>
-  <data name="showTicketAttachmentsToolStripMenuItem.Text" xml:space="preserve">
-    <value>A&amp;ttachments</value>
-  </data>
   <data name="ticketContextMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>153, 158</value>
+    <value>136, 136</value>
   </data>
   <data name="&gt;&gt;ticketContextMenu.Name" xml:space="preserve">
     <value>ticketContextMenu</value>
   </data>
   <data name="&gt;&gt;ticketContextMenu.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="addTicketToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>135, 22</value>
+  </data>
+  <data name="addTicketToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Add</value>
+  </data>
+  <data name="showTicketToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>135, 22</value>
+  </data>
+  <data name="showTicketToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Show</value>
+  </data>
+  <data name="editTicketToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>135, 22</value>
+  </data>
+  <data name="editTicketToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Edit</value>
+  </data>
+  <data name="showTicketHistoryToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>135, 22</value>
+  </data>
+  <data name="showTicketHistoryToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;History</value>
+  </data>
+  <data name="showTicketAttachmentsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>135, 22</value>
+  </data>
+  <data name="showTicketAttachmentsToolStripMenuItem.Text" xml:space="preserve">
+    <value>A&amp;ttachments</value>
+  </data>
+  <data name="deleteTicketToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>135, 22</value>
+  </data>
+  <data name="deleteTicketToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Delete</value>
+  </data>
+  <metadata name="milestoneContextMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>161, 17</value>
+  </metadata>
+  <data name="addMilestoneToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="addMilestoneToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Add</value>
+  </data>
+  <data name="showMilestoneToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="showMilestoneToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Show</value>
+  </data>
+  <data name="editMilestoneToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="editMilestoneToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Edit</value>
+  </data>
+  <data name="deleteMilestoneToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="deleteMilestoneToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Delete</value>
+  </data>
+  <data name="milestoneContextMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>153, 114</value>
+  </data>
+  <data name="&gt;&gt;milestoneContextMenu.Name" xml:space="preserve">
+    <value>milestoneContextMenu</value>
+  </data>
+  <data name="&gt;&gt;milestoneContextMenu.Type" xml:space="preserve">
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -1102,6 +1138,30 @@
     <value>deleteTicketToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;deleteTicketToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;addMilestoneToolStripMenuItem.Name" xml:space="preserve">
+    <value>addMilestoneToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;addMilestoneToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;showMilestoneToolStripMenuItem.Name" xml:space="preserve">
+    <value>showMilestoneToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;showMilestoneToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;editMilestoneToolStripMenuItem.Name" xml:space="preserve">
+    <value>editMilestoneToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;editMilestoneToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;deleteMilestoneToolStripMenuItem.Name" xml:space="preserve">
+    <value>deleteMilestoneToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;deleteMilestoneToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

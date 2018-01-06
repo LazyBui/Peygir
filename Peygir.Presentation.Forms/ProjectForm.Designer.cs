@@ -54,6 +54,11 @@
 			this.showTicketHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.showTicketAttachmentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.deleteTicketToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.milestoneContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.addMilestoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.showMilestoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.editMilestoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.deleteMilestoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.groupBox1.SuspendLayout();
 			this.tabControl.SuspendLayout();
 			this.projectInfoTabPage.SuspendLayout();
@@ -63,6 +68,7 @@
 			this.ticketsTabPage.SuspendLayout();
 			this.groupBox4.SuspendLayout();
 			this.ticketContextMenu.SuspendLayout();
+			this.milestoneContextMenu.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// groupBox1
@@ -297,6 +303,46 @@
 			resources.ApplyResources(this.deleteTicketToolStripMenuItem, "deleteTicketToolStripMenuItem");
 			this.deleteTicketToolStripMenuItem.Click += new System.EventHandler(this.deleteTicketToolStripMenuItem_Click);
 			// 
+			// milestoneContextMenu
+			// 
+			this.milestoneContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addMilestoneToolStripMenuItem,
+            this.showMilestoneToolStripMenuItem,
+            this.editMilestoneToolStripMenuItem,
+            this.deleteMilestoneToolStripMenuItem});
+			this.milestoneContextMenu.Name = "milestoneContextMenu";
+			this.milestoneContextMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+			resources.ApplyResources(this.milestoneContextMenu, "milestoneContextMenu");
+			this.milestoneContextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.milestoneContextMenu_Opening);
+			// 
+			// addMilestoneToolStripMenuItem
+			// 
+			this.addMilestoneToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Add;
+			this.addMilestoneToolStripMenuItem.Name = "addMilestoneToolStripMenuItem";
+			resources.ApplyResources(this.addMilestoneToolStripMenuItem, "addMilestoneToolStripMenuItem");
+			this.addMilestoneToolStripMenuItem.Click += new System.EventHandler(this.addMilestoneToolStripMenuItem_Click);
+			// 
+			// showMilestoneToolStripMenuItem
+			// 
+			this.showMilestoneToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Show;
+			this.showMilestoneToolStripMenuItem.Name = "showMilestoneToolStripMenuItem";
+			resources.ApplyResources(this.showMilestoneToolStripMenuItem, "showMilestoneToolStripMenuItem");
+			this.showMilestoneToolStripMenuItem.Click += new System.EventHandler(this.showMilestoneToolStripMenuItem_Click);
+			// 
+			// editMilestoneToolStripMenuItem
+			// 
+			this.editMilestoneToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Edit;
+			this.editMilestoneToolStripMenuItem.Name = "editMilestoneToolStripMenuItem";
+			resources.ApplyResources(this.editMilestoneToolStripMenuItem, "editMilestoneToolStripMenuItem");
+			this.editMilestoneToolStripMenuItem.Click += new System.EventHandler(this.editMilestoneToolStripMenuItem_Click);
+			// 
+			// deleteMilestoneToolStripMenuItem
+			// 
+			this.deleteMilestoneToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Delete;
+			this.deleteMilestoneToolStripMenuItem.Name = "deleteMilestoneToolStripMenuItem";
+			resources.ApplyResources(this.deleteMilestoneToolStripMenuItem, "deleteMilestoneToolStripMenuItem");
+			this.deleteMilestoneToolStripMenuItem.Click += new System.EventHandler(this.deleteMilestoneToolStripMenuItem_Click);
+			// 
 			// ProjectForm
 			// 
 			resources.ApplyResources(this, "$this");
@@ -315,6 +361,7 @@
 			this.ticketsTabPage.ResumeLayout(false);
 			this.groupBox4.ResumeLayout(false);
 			this.ticketContextMenu.ResumeLayout(false);
+			this.milestoneContextMenu.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -350,5 +397,10 @@
 		private System.Windows.Forms.ToolStripMenuItem showTicketHistoryToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem showTicketAttachmentsToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem deleteTicketToolStripMenuItem;
+		private System.Windows.Forms.ContextMenuStrip milestoneContextMenu;
+		private System.Windows.Forms.ToolStripMenuItem addMilestoneToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem showMilestoneToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem editMilestoneToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem deleteMilestoneToolStripMenuItem;
 	}
 }
