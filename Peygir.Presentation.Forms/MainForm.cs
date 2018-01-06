@@ -457,6 +457,9 @@ namespace Peygir.Presentation.Forms {
 			var priorityFilter = FormUtil.CastBox<TicketPriority>(ticketPriorityComboBox);
 			var typeFilter = FormUtil.CastBox<TicketType>(ticketTypeComboBox);
 
+			if (string.IsNullOrEmpty(reporterFilter)) reporterFilter = null;
+			if (string.IsNullOrEmpty(assignedFilter)) assignedFilter = null;
+
 			projects = projects.Where(p => {
 				bool satisfiesNameFilter = FormUtil.FilterContains(p.Name, nameFilter);
 				if (!satisfiesNameFilter)
