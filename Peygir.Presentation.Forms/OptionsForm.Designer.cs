@@ -24,7 +24,6 @@
 		/// </summary>
 		private void InitializeComponent() {
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OptionsForm));
-			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.label3 = new System.Windows.Forms.Label();
 			this.textBox2 = new System.Windows.Forms.TextBox();
 			this.formatDateTimePanel = new System.Windows.Forms.Panel();
@@ -35,19 +34,24 @@
 			this.formatDateTimeCheckBox = new System.Windows.Forms.CheckBox();
 			this.cancelButton = new System.Windows.Forms.Button();
 			this.okButton = new System.Windows.Forms.Button();
-			this.groupBox1.SuspendLayout();
+			this.tabControl1 = new System.Windows.Forms.TabControl();
+			this.tabPageDateTime = new System.Windows.Forms.TabPage();
+			this.tabPageText = new System.Windows.Forms.TabPage();
+			this.label4 = new System.Windows.Forms.Label();
+			this.label5 = new System.Windows.Forms.Label();
+			this.sansSerifTextBox = new System.Windows.Forms.TextBox();
+			this.sansSerifButton = new System.Windows.Forms.Button();
+			this.monospaceButton = new System.Windows.Forms.Button();
+			this.monospaceTextBox = new System.Windows.Forms.TextBox();
+			this.wordWrapCheckBox = new System.Windows.Forms.CheckBox();
+			this.label6 = new System.Windows.Forms.Label();
+			this.sansSerifRadioButton = new System.Windows.Forms.RadioButton();
+			this.monospaceRadioButton = new System.Windows.Forms.RadioButton();
 			this.formatDateTimePanel.SuspendLayout();
+			this.tabControl1.SuspendLayout();
+			this.tabPageDateTime.SuspendLayout();
+			this.tabPageText.SuspendLayout();
 			this.SuspendLayout();
-			// 
-			// groupBox1
-			// 
-			this.groupBox1.Controls.Add(this.label3);
-			this.groupBox1.Controls.Add(this.textBox2);
-			this.groupBox1.Controls.Add(this.formatDateTimePanel);
-			this.groupBox1.Controls.Add(this.formatDateTimeCheckBox);
-			resources.ApplyResources(this.groupBox1, "groupBox1");
-			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.TabStop = false;
 			// 
 			// label3
 			// 
@@ -131,32 +135,130 @@
 			this.okButton.Name = "okButton";
 			this.okButton.UseVisualStyleBackColor = true;
 			// 
+			// tabControl1
+			// 
+			this.tabControl1.Controls.Add(this.tabPageDateTime);
+			this.tabControl1.Controls.Add(this.tabPageText);
+			resources.ApplyResources(this.tabControl1, "tabControl1");
+			this.tabControl1.Name = "tabControl1";
+			this.tabControl1.SelectedIndex = 0;
+			// 
+			// tabPageDateTime
+			// 
+			this.tabPageDateTime.Controls.Add(this.textBox2);
+			this.tabPageDateTime.Controls.Add(this.label3);
+			this.tabPageDateTime.Controls.Add(this.formatDateTimePanel);
+			this.tabPageDateTime.Controls.Add(this.formatDateTimeCheckBox);
+			resources.ApplyResources(this.tabPageDateTime, "tabPageDateTime");
+			this.tabPageDateTime.Name = "tabPageDateTime";
+			this.tabPageDateTime.UseVisualStyleBackColor = true;
+			// 
+			// tabPageText
+			// 
+			this.tabPageText.Controls.Add(this.monospaceRadioButton);
+			this.tabPageText.Controls.Add(this.sansSerifRadioButton);
+			this.tabPageText.Controls.Add(this.label6);
+			this.tabPageText.Controls.Add(this.wordWrapCheckBox);
+			this.tabPageText.Controls.Add(this.monospaceButton);
+			this.tabPageText.Controls.Add(this.monospaceTextBox);
+			this.tabPageText.Controls.Add(this.sansSerifButton);
+			this.tabPageText.Controls.Add(this.sansSerifTextBox);
+			this.tabPageText.Controls.Add(this.label5);
+			this.tabPageText.Controls.Add(this.label4);
+			resources.ApplyResources(this.tabPageText, "tabPageText");
+			this.tabPageText.Name = "tabPageText";
+			this.tabPageText.UseVisualStyleBackColor = true;
+			// 
+			// label4
+			// 
+			resources.ApplyResources(this.label4, "label4");
+			this.label4.Name = "label4";
+			// 
+			// label5
+			// 
+			resources.ApplyResources(this.label5, "label5");
+			this.label5.Name = "label5";
+			// 
+			// sansSerifTextBox
+			// 
+			resources.ApplyResources(this.sansSerifTextBox, "sansSerifTextBox");
+			this.sansSerifTextBox.Name = "sansSerifTextBox";
+			this.sansSerifTextBox.ReadOnly = true;
+			// 
+			// sansSerifButton
+			// 
+			this.sansSerifButton.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Options;
+			resources.ApplyResources(this.sansSerifButton, "sansSerifButton");
+			this.sansSerifButton.Name = "sansSerifButton";
+			this.sansSerifButton.UseVisualStyleBackColor = true;
+			this.sansSerifButton.Click += new System.EventHandler(this.sansSerifButton_Click);
+			// 
+			// monospaceButton
+			// 
+			this.monospaceButton.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Options;
+			resources.ApplyResources(this.monospaceButton, "monospaceButton");
+			this.monospaceButton.Name = "monospaceButton";
+			this.monospaceButton.UseVisualStyleBackColor = true;
+			this.monospaceButton.Click += new System.EventHandler(this.monospaceButton_Click);
+			// 
+			// monospaceTextBox
+			// 
+			resources.ApplyResources(this.monospaceTextBox, "monospaceTextBox");
+			this.monospaceTextBox.Name = "monospaceTextBox";
+			this.monospaceTextBox.ReadOnly = true;
+			// 
+			// wordWrapCheckBox
+			// 
+			resources.ApplyResources(this.wordWrapCheckBox, "wordWrapCheckBox");
+			this.wordWrapCheckBox.Name = "wordWrapCheckBox";
+			this.wordWrapCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// label6
+			// 
+			resources.ApplyResources(this.label6, "label6");
+			this.label6.Name = "label6";
+			// 
+			// sansSerifRadioButton
+			// 
+			resources.ApplyResources(this.sansSerifRadioButton, "sansSerifRadioButton");
+			this.sansSerifRadioButton.Name = "sansSerifRadioButton";
+			this.sansSerifRadioButton.TabStop = true;
+			this.sansSerifRadioButton.UseVisualStyleBackColor = true;
+			// 
+			// monospaceRadioButton
+			// 
+			resources.ApplyResources(this.monospaceRadioButton, "monospaceRadioButton");
+			this.monospaceRadioButton.Name = "monospaceRadioButton";
+			this.monospaceRadioButton.TabStop = true;
+			this.monospaceRadioButton.UseVisualStyleBackColor = true;
+			// 
 			// OptionsForm
 			// 
 			this.AcceptButton = this.okButton;
 			resources.ApplyResources(this, "$this");
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.CancelButton = this.cancelButton;
+			this.Controls.Add(this.tabControl1);
 			this.Controls.Add(this.cancelButton);
 			this.Controls.Add(this.okButton);
-			this.Controls.Add(this.groupBox1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "OptionsForm";
 			this.ShowInTaskbar = false;
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OptionsForm_FormClosing);
-			this.groupBox1.ResumeLayout(false);
-			this.groupBox1.PerformLayout();
 			this.formatDateTimePanel.ResumeLayout(false);
 			this.formatDateTimePanel.PerformLayout();
+			this.tabControl1.ResumeLayout(false);
+			this.tabPageDateTime.ResumeLayout(false);
+			this.tabPageDateTime.PerformLayout();
+			this.tabPageText.ResumeLayout(false);
+			this.tabPageText.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
 
 		#endregion
-
-		private System.Windows.Forms.GroupBox groupBox1;
 		private System.Windows.Forms.CheckBox formatDateTimeCheckBox;
 		private System.Windows.Forms.ComboBox calendarComboBox;
 		private System.Windows.Forms.Label label1;
@@ -167,5 +269,18 @@
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Button cancelButton;
 		private System.Windows.Forms.Button okButton;
+		private System.Windows.Forms.TabControl tabControl1;
+		private System.Windows.Forms.TabPage tabPageDateTime;
+		private System.Windows.Forms.TabPage tabPageText;
+		private System.Windows.Forms.TextBox sansSerifTextBox;
+		private System.Windows.Forms.Label label5;
+		private System.Windows.Forms.Label label4;
+		private System.Windows.Forms.Button sansSerifButton;
+		private System.Windows.Forms.Button monospaceButton;
+		private System.Windows.Forms.TextBox monospaceTextBox;
+		private System.Windows.Forms.RadioButton monospaceRadioButton;
+		private System.Windows.Forms.RadioButton sansSerifRadioButton;
+		private System.Windows.Forms.Label label6;
+		private System.Windows.Forms.CheckBox wordWrapCheckBox;
 	}
 }

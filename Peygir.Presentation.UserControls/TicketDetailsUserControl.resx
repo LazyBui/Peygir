@@ -802,13 +802,13 @@
     <value>True</value>
   </data>
   <data name="sansSerifButton.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 9.75pt</value>
+    <value>Tahoma, 9.75pt, style=Bold</value>
   </data>
   <data name="sansSerifButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 271</value>
   </data>
   <data name="sansSerifButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>26, 26</value>
+    <value>28, 26</value>
   </data>
   <data name="sansSerifButton.TabIndex" type="System.Int32, mscorlib">
     <value>25</value>
@@ -838,7 +838,7 @@
     <value>True</value>
   </data>
   <data name="monospaceButton.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Courier New, 9.75pt</value>
+    <value>Courier New, 9.75pt, style=Bold</value>
   </data>
   <data name="monospaceButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -877,13 +877,13 @@
     <value>4, 255</value>
   </data>
   <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>28, 13</value>
+    <value>58, 13</value>
   </data>
   <data name="label13.TabIndex" type="System.Int32, mscorlib">
     <value>27</value>
   </data>
   <data name="label13.Text" xml:space="preserve">
-    <value>Font</value>
+    <value>Font Type:</value>
   </data>
   <data name="&gt;&gt;label13.Name" xml:space="preserve">
     <value>label13</value>

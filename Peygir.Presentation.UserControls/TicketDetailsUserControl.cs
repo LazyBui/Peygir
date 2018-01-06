@@ -6,8 +6,8 @@ using Peygir.Logic;
 namespace Peygir.Presentation.UserControls {
 	public partial class TicketDetailsUserControl : UserControl {
 		private bool readOnly;
-		private static readonly Font SansSerif = new Font("Tahoma", 8.5f, GraphicsUnit.Point);
-		private static readonly Font Monospace = new Font("Courier New", 9f, GraphicsUnit.Point);
+		private Font mSansSerif;
+		private Font mMonospace;
 
 		public bool ReadOnly {
 			get { return readOnly; }
@@ -107,10 +107,10 @@ namespace Peygir.Presentation.UserControls {
 			assignedToComboBox.Items.AddRange(Ticket.GetAssignees());
 		}
 
-		public void ShowTicket(Ticket ticket, DateTimeFormatter formatter) {
-			if (ticket == null) {
-				throw new ArgumentNullException(nameof(ticket));
-			}
+		public void ShowTicket(Ticket ticket, DateTimeFormatter formatter, FontContext context) {
+			if (ticket == null) throw new ArgumentNullException(nameof(ticket));
+			if (formatter == null) throw new ArgumentNullException(nameof(formatter));
+			if (context == null) throw new ArgumentNullException(nameof(context));
 
 			milestoneComboBox.SelectedIndex = -1;
 			for (int i = 0; i < milestoneComboBox.Items.Count; i++) {
@@ -132,6 +132,21 @@ namespace Peygir.Presentation.UserControls {
 			descriptionTextBox.Text = ticket.Description;
 			createdTextBox.Text = formatter.Format(ticket.CreateTimestamp);
 			modifiedTextBox.Text = formatter.Format(ticket.ModifyTimestamp);
+
+			mSansSerif = context.SansSerif;
+			mMonospace = context.Monospace;
+			if (context.UseSansSerif) {
+				descriptionTextBox.Font = mSansSerif;
+			}
+			else {
+				monospaceButton.Checked = true;
+				descriptionTextBox.Font = mMonospace;
+			}
+
+			if (!context.WordWrap) {
+				wordWrapCheckBox.Checked = false;
+				descriptionTextBox.WordWrap = false;
+			}
 		}
 
 		public void RetrieveTicket(Ticket ticket) {
@@ -186,12 +201,12 @@ namespace Peygir.Presentation.UserControls {
 
 		private void sansSerifButton_CheckedChanged(object sender, EventArgs e) {
 			if (!sansSerifButton.Checked) return;
-			descriptionTextBox.Font = SansSerif;
+			descriptionTextBox.Font = mSansSerif;
 		}
 
 		private void monospaceButton_CheckedChanged(object sender, EventArgs e) {
 			if (!monospaceButton.Checked) return;
-			descriptionTextBox.Font = Monospace;
+			descriptionTextBox.Font = mMonospace;
 		}
 
 		private void wordWrapCheckBox_CheckedChanged(object sender, EventArgs e) {

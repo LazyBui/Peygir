@@ -89,6 +89,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="FontContext.cs" />
     <Compile Include="TextBoxUtil.cs" />
     <Compile Include="TicketDetailsUserControl.cs">
       <SubType>UserControl</SubType>

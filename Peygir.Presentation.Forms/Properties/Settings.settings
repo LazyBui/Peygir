@@ -20,5 +20,29 @@
     <Setting Name="Language" Type="System.String" Scope="User">
       <Value Profile="(Default)">en</Value>
     </Setting>
+    <Setting Name="SansSerifFont" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Tahoma</Value>
+    </Setting>
+    <Setting Name="SansSerifFontSize" Type="System.Single" Scope="User">
+      <Value Profile="(Default)">8.25</Value>
+    </Setting>
+    <Setting Name="MonospaceFont" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Courier New</Value>
+    </Setting>
+    <Setting Name="MonospaceFontSize" Type="System.Single" Scope="User">
+      <Value Profile="(Default)">9</Value>
+    </Setting>
+    <Setting Name="WordWrapDefault" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="UseSansSerifDefault" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="MonospaceFontStyle" Type="System.Drawing.FontStyle" Scope="User">
+      <Value Profile="(Default)">Regular</Value>
+    </Setting>
+    <Setting Name="SansSerifFontStyle" Type="System.Drawing.FontStyle" Scope="User">
+      <Value Profile="(Default)">Regular</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

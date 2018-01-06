@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 using Peygir.Logic;
 using Peygir.Presentation.Forms.Properties;
+using Peygir.Presentation.UserControls;
 
 namespace Peygir.Presentation.Forms {
 	internal static class FormUtil {
@@ -55,6 +57,23 @@ namespace Peygir.Presentation.Forms {
 					Settings.Default.Calendar);
 			}
 			return DateTimeFormatter.Default;
+		}
+
+		public static FontContext GetFontContext() {
+			// It's important to return a new instance each time because the settings might mutate
+			return new FontContext(
+				new Font(
+					Settings.Default.SansSerifFont,
+					Settings.Default.SansSerifFontSize,
+					Settings.Default.SansSerifFontStyle,
+					GraphicsUnit.Point),
+				new Font(
+					Settings.Default.MonospaceFont,
+					Settings.Default.MonospaceFontSize,
+					Settings.Default.MonospaceFontStyle,
+					GraphicsUnit.Point),
+				Settings.Default.UseSansSerifDefault,
+				Settings.Default.WordWrapDefault);
 		}
 	}
 }

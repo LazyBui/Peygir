@@ -235,6 +235,7 @@
 			resources.ApplyResources(this.sansSerifButton, "sansSerifButton");
 			this.sansSerifButton.Checked = true;
 			this.sansSerifButton.Name = "sansSerifButton";
+			this.sansSerifButton.TabStop = true;
 			this.sansSerifButton.UseVisualStyleBackColor = true;
 			this.sansSerifButton.CheckedChanged += new System.EventHandler(this.sansSerifButton_CheckedChanged);
 			// 
