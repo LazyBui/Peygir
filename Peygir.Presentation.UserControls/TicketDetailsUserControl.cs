@@ -104,7 +104,7 @@ namespace Peygir.Presentation.UserControls {
 			assignedToComboBox.Items.AddRange(Ticket.GetAssignees());
 		}
 
-		public void ShowTicket(Ticket ticket) {
+		public void ShowTicket(Ticket ticket, DateTimeFormatter formatter) {
 			if (ticket == null) {
 				throw new ArgumentNullException(nameof(ticket));
 			}
@@ -127,6 +127,8 @@ namespace Peygir.Presentation.UserControls {
 			assignedToComboBox.Text = ticket.AssignedTo;
 			priorityComboBox.SelectedIndex = (int)ticket.Priority;
 			descriptionTextBox.Text = ticket.Description;
+			createdTextBox.Text = formatter.Format(ticket.CreateTimestamp);
+			modifiedTextBox.Text = formatter.Format(ticket.ModifyTimestamp);
 		}
 
 		public void RetrieveTicket(Ticket ticket) {

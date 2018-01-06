@@ -45,6 +45,10 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.reportedByComboBox = new System.Windows.Forms.ComboBox();
 			this.assignedToComboBox = new System.Windows.Forms.ComboBox();
+			this.createdTextBox = new System.Windows.Forms.TextBox();
+			this.label11 = new System.Windows.Forms.Label();
+			this.modifiedTextBox = new System.Windows.Forms.TextBox();
+			this.label12 = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// groupBox1
@@ -65,11 +69,11 @@
 			this.priorityComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.priorityComboBox.FormattingEnabled = true;
 			this.priorityComboBox.Items.AddRange(new object[] {
-			resources.GetString("priorityComboBox.Items"),
-			resources.GetString("priorityComboBox.Items1"),
-			resources.GetString("priorityComboBox.Items2"),
-			resources.GetString("priorityComboBox.Items3"),
-			resources.GetString("priorityComboBox.Items4")});
+            resources.GetString("priorityComboBox.Items"),
+            resources.GetString("priorityComboBox.Items1"),
+            resources.GetString("priorityComboBox.Items2"),
+            resources.GetString("priorityComboBox.Items3"),
+            resources.GetString("priorityComboBox.Items4")});
 			resources.ApplyResources(this.priorityComboBox, "priorityComboBox");
 			this.priorityComboBox.Name = "priorityComboBox";
 			// 
@@ -78,9 +82,9 @@
 			this.typeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.typeComboBox.FormattingEnabled = true;
 			this.typeComboBox.Items.AddRange(new object[] {
-			resources.GetString("typeComboBox.Items"),
-			resources.GetString("typeComboBox.Items1"),
-			resources.GetString("typeComboBox.Items2")});
+            resources.GetString("typeComboBox.Items"),
+            resources.GetString("typeComboBox.Items1"),
+            resources.GetString("typeComboBox.Items2")});
 			resources.ApplyResources(this.typeComboBox, "typeComboBox");
 			this.typeComboBox.Name = "typeComboBox";
 			// 
@@ -89,12 +93,12 @@
 			this.severityComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.severityComboBox.FormattingEnabled = true;
 			this.severityComboBox.Items.AddRange(new object[] {
-			resources.GetString("severityComboBox.Items"),
-			resources.GetString("severityComboBox.Items1"),
-			resources.GetString("severityComboBox.Items2"),
-			resources.GetString("severityComboBox.Items3"),
-			resources.GetString("severityComboBox.Items4"),
-			resources.GetString("severityComboBox.Items5")});
+            resources.GetString("severityComboBox.Items"),
+            resources.GetString("severityComboBox.Items1"),
+            resources.GetString("severityComboBox.Items2"),
+            resources.GetString("severityComboBox.Items3"),
+            resources.GetString("severityComboBox.Items4"),
+            resources.GetString("severityComboBox.Items5")});
 			resources.ApplyResources(this.severityComboBox, "severityComboBox");
 			this.severityComboBox.Name = "severityComboBox";
 			// 
@@ -103,12 +107,12 @@
 			this.stateComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.stateComboBox.FormattingEnabled = true;
 			this.stateComboBox.Items.AddRange(new object[] {
-			resources.GetString("stateComboBox.Items"),
-			resources.GetString("stateComboBox.Items1"),
-			resources.GetString("stateComboBox.Items2"),
-			resources.GetString("stateComboBox.Items3"),
-			resources.GetString("stateComboBox.Items4"),
-			resources.GetString("stateComboBox.Items5")});
+            resources.GetString("stateComboBox.Items"),
+            resources.GetString("stateComboBox.Items1"),
+            resources.GetString("stateComboBox.Items2"),
+            resources.GetString("stateComboBox.Items3"),
+            resources.GetString("stateComboBox.Items4"),
+            resources.GetString("stateComboBox.Items5")});
 			resources.ApplyResources(this.stateComboBox, "stateComboBox");
 			this.stateComboBox.Name = "stateComboBox";
 			// 
@@ -192,10 +196,38 @@
 			resources.ApplyResources(this.assignedToComboBox, "assignedToComboBox");
 			this.assignedToComboBox.Name = "assignedToComboBox";
 			// 
+			// createdTextBox
+			// 
+			resources.ApplyResources(this.createdTextBox, "createdTextBox");
+			this.createdTextBox.Name = "createdTextBox";
+			this.createdTextBox.ReadOnly = true;
+			this.createdTextBox.TabStop = false;
+			// 
+			// label11
+			// 
+			resources.ApplyResources(this.label11, "label11");
+			this.label11.Name = "label11";
+			// 
+			// modifiedTextBox
+			// 
+			resources.ApplyResources(this.modifiedTextBox, "modifiedTextBox");
+			this.modifiedTextBox.Name = "modifiedTextBox";
+			this.modifiedTextBox.ReadOnly = true;
+			this.modifiedTextBox.TabStop = false;
+			// 
+			// label12
+			// 
+			resources.ApplyResources(this.label12, "label12");
+			this.label12.Name = "label12";
+			// 
 			// TicketDetailsUserControl
 			// 
 			resources.ApplyResources(this, "$this");
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.Controls.Add(this.modifiedTextBox);
+			this.Controls.Add(this.label12);
+			this.Controls.Add(this.createdTextBox);
+			this.Controls.Add(this.label11);
 			this.Controls.Add(this.assignedToComboBox);
 			this.Controls.Add(this.reportedByComboBox);
 			this.Controls.Add(this.groupBox1);
@@ -246,5 +278,9 @@
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.ComboBox reportedByComboBox;
 		private System.Windows.Forms.ComboBox assignedToComboBox;
+		private System.Windows.Forms.TextBox createdTextBox;
+		private System.Windows.Forms.Label label11;
+		private System.Windows.Forms.TextBox modifiedTextBox;
+		private System.Windows.Forms.Label label12;
 	}
 }

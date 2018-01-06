@@ -758,7 +758,7 @@ namespace Peygir.Presentation.Forms {
 			Milestone[] milestones = Project.GetMilestones();
 			form.TicketDetailsUserControl.ShowMilestones(milestones);
 
-			form.TicketDetailsUserControl.ShowTicket(ticket);
+			form.TicketDetailsUserControl.ShowTicket(ticket, FormUtil.GetFormatter());
 			form.TicketDetailsUserControl.ReadOnly = true;
 
 			form.ShowDialog();
@@ -776,7 +776,7 @@ namespace Peygir.Presentation.Forms {
 			Milestone[] milestones = Project.GetMilestones();
 			form.TicketDetailsUserControl.ShowMilestones(milestones);
 
-			form.TicketDetailsUserControl.ShowTicket(ticket);
+			form.TicketDetailsUserControl.ShowTicket(ticket, FormUtil.GetFormatter());
 
 			Again:
 			if (form.ShowDialog() == DialogResult.OK) {
