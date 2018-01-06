@@ -961,6 +961,8 @@ namespace Peygir.Presentation.Forms {
 				form.TicketDetailsUserControl.Milestone = milestones.First();
 			}
 
+			form.TicketDetailsUserControl.InitializeNewTicket(FormUtil.GetFontContext());
+
 			Again:
 			if (form.ShowDialog() == DialogResult.OK) {
 				// Check milestone.

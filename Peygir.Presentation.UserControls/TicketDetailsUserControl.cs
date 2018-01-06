@@ -133,6 +133,15 @@ namespace Peygir.Presentation.UserControls {
 			createdTextBox.Text = formatter.Format(ticket.CreateTimestamp);
 			modifiedTextBox.Text = formatter.Format(ticket.ModifyTimestamp);
 
+			InitializeFontContext(context);
+		}
+
+		public void InitializeNewTicket(FontContext context) {
+			if (context == null) throw new ArgumentNullException(nameof(context));
+			InitializeFontContext(context);
+		}
+
+		private void InitializeFontContext(FontContext context) {
 			mSansSerif = context.SansSerif;
 			mMonospace = context.Monospace;
 			if (context.UseSansSerif) {
