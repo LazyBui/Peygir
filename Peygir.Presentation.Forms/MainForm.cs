@@ -51,7 +51,7 @@ namespace Peygir.Presentation.Forms {
 			EditProject(ticketTab: true);
 		}
 
-		private void MainForm_Resize(object sender, EventArgs e) {
+		private void MainForm_ResizeEnd(object sender, EventArgs e) {
 			// Resize columns
 			ShowProjects();
 		}

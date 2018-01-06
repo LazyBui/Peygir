@@ -26,10 +26,32 @@
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 			this.projectsGroupBox = new System.Windows.Forms.GroupBox();
+			this.label5 = new System.Windows.Forms.Label();
+			this.resetFilterButton = new System.Windows.Forms.Button();
+			this.label1 = new System.Windows.Forms.Label();
 			this.editTicketsButton = new System.Windows.Forms.Button();
+			this.createdButton = new System.Windows.Forms.Button();
 			this.deleteProjectButton = new System.Windows.Forms.Button();
+			this.modifiedButton = new System.Windows.Forms.Button();
 			this.editProjectButton = new System.Windows.Forms.Button();
+			this.modifiedTextBox = new System.Windows.Forms.TextBox();
 			this.addProjectButton = new System.Windows.Forms.Button();
+			this.createdTextBox = new System.Windows.Forms.TextBox();
+			this.projectsListUserControl = new Peygir.Presentation.UserControls.ProjectsListUserControl();
+			this.label9 = new System.Windows.Forms.Label();
+			this.projectTextBox = new System.Windows.Forms.TextBox();
+			this.label8 = new System.Windows.Forms.Label();
+			this.ticketStateComboBox = new System.Windows.Forms.ComboBox();
+			this.reportersComboBox = new System.Windows.Forms.ComboBox();
+			this.label2 = new System.Windows.Forms.Label();
+			this.assignedToComboBox = new System.Windows.Forms.ComboBox();
+			this.ticketPriorityComboBox = new System.Windows.Forms.ComboBox();
+			this.label7 = new System.Windows.Forms.Label();
+			this.label3 = new System.Windows.Forms.Label();
+			this.label6 = new System.Windows.Forms.Label();
+			this.ticketSeverityComboBox = new System.Windows.Forms.ComboBox();
+			this.ticketTypeComboBox = new System.Windows.Forms.ComboBox();
+			this.label4 = new System.Windows.Forms.Label();
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.newDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,6 +71,8 @@
 			this.persianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.statusStrip1 = new System.Windows.Forms.StatusStrip();
 			this.databaseToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+			this.openTicketsToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+			this.totalTicketsToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
 			this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
 			this.projectContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -56,30 +80,6 @@
 			this.editProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.editTicketsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.deleteProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.openTicketsToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-			this.totalTicketsToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-			this.projectsListUserControl = new Peygir.Presentation.UserControls.ProjectsListUserControl();
-			this.resetFilterButton = new System.Windows.Forms.Button();
-			this.createdButton = new System.Windows.Forms.Button();
-			this.modifiedButton = new System.Windows.Forms.Button();
-			this.modifiedTextBox = new System.Windows.Forms.TextBox();
-			this.createdTextBox = new System.Windows.Forms.TextBox();
-			this.label9 = new System.Windows.Forms.Label();
-			this.label8 = new System.Windows.Forms.Label();
-			this.reportersComboBox = new System.Windows.Forms.ComboBox();
-			this.assignedToComboBox = new System.Windows.Forms.ComboBox();
-			this.label7 = new System.Windows.Forms.Label();
-			this.label6 = new System.Windows.Forms.Label();
-			this.ticketTypeComboBox = new System.Windows.Forms.ComboBox();
-			this.label4 = new System.Windows.Forms.Label();
-			this.ticketSeverityComboBox = new System.Windows.Forms.ComboBox();
-			this.label3 = new System.Windows.Forms.Label();
-			this.ticketPriorityComboBox = new System.Windows.Forms.ComboBox();
-			this.projectTextBox = new System.Windows.Forms.TextBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.ticketStateComboBox = new System.Windows.Forms.ComboBox();
-			this.label5 = new System.Windows.Forms.Label();
-			this.label1 = new System.Windows.Forms.Label();
 			this.projectsGroupBox.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
 			this.statusStrip1.SuspendLayout();
@@ -118,6 +118,23 @@
 			this.projectsGroupBox.Name = "projectsGroupBox";
 			this.projectsGroupBox.TabStop = false;
 			// 
+			// label5
+			// 
+			resources.ApplyResources(this.label5, "label5");
+			this.label5.Name = "label5";
+			// 
+			// resetFilterButton
+			// 
+			resources.ApplyResources(this.resetFilterButton, "resetFilterButton");
+			this.resetFilterButton.Name = "resetFilterButton";
+			this.resetFilterButton.UseVisualStyleBackColor = true;
+			this.resetFilterButton.Click += new System.EventHandler(this.resetFilterButton_Click);
+			// 
+			// label1
+			// 
+			resources.ApplyResources(this.label1, "label1");
+			this.label1.Name = "label1";
+			// 
 			// editTicketsButton
 			// 
 			resources.ApplyResources(this.editTicketsButton, "editTicketsButton");
@@ -125,6 +142,14 @@
 			this.editTicketsButton.Name = "editTicketsButton";
 			this.editTicketsButton.UseVisualStyleBackColor = true;
 			this.editTicketsButton.Click += new System.EventHandler(this.editTicketsButton_Click);
+			// 
+			// createdButton
+			// 
+			this.createdButton.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Options;
+			resources.ApplyResources(this.createdButton, "createdButton");
+			this.createdButton.Name = "createdButton";
+			this.createdButton.UseVisualStyleBackColor = true;
+			this.createdButton.Click += new System.EventHandler(this.createdButton_Click);
 			// 
 			// deleteProjectButton
 			// 
@@ -134,6 +159,14 @@
 			this.deleteProjectButton.UseVisualStyleBackColor = true;
 			this.deleteProjectButton.Click += new System.EventHandler(this.deleteProjectButton_Click);
 			// 
+			// modifiedButton
+			// 
+			this.modifiedButton.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Options;
+			resources.ApplyResources(this.modifiedButton, "modifiedButton");
+			this.modifiedButton.Name = "modifiedButton";
+			this.modifiedButton.UseVisualStyleBackColor = true;
+			this.modifiedButton.Click += new System.EventHandler(this.modifiedButton_Click);
+			// 
 			// editProjectButton
 			// 
 			resources.ApplyResources(this.editProjectButton, "editProjectButton");
@@ -142,6 +175,13 @@
 			this.editProjectButton.UseVisualStyleBackColor = true;
 			this.editProjectButton.Click += new System.EventHandler(this.editProjectButton_Click);
 			// 
+			// modifiedTextBox
+			// 
+			resources.ApplyResources(this.modifiedTextBox, "modifiedTextBox");
+			this.modifiedTextBox.Name = "modifiedTextBox";
+			this.modifiedTextBox.ReadOnly = true;
+			this.modifiedTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.modifiedTextBox_KeyDown);
+			// 
 			// addProjectButton
 			// 
 			resources.ApplyResources(this.addProjectButton, "addProjectButton");
@@ -149,6 +189,139 @@
 			this.addProjectButton.Name = "addProjectButton";
 			this.addProjectButton.UseVisualStyleBackColor = true;
 			this.addProjectButton.Click += new System.EventHandler(this.addProjectButton_Click);
+			// 
+			// createdTextBox
+			// 
+			resources.ApplyResources(this.createdTextBox, "createdTextBox");
+			this.createdTextBox.Name = "createdTextBox";
+			this.createdTextBox.ReadOnly = true;
+			this.createdTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.createdTextBox_KeyDown);
+			// 
+			// projectsListUserControl
+			// 
+			resources.ApplyResources(this.projectsListUserControl, "projectsListUserControl");
+			this.projectsListUserControl.Name = "projectsListUserControl";
+			// 
+			// label9
+			// 
+			resources.ApplyResources(this.label9, "label9");
+			this.label9.Name = "label9";
+			this.label9.Click += new System.EventHandler(this.modifiedButton_Click);
+			// 
+			// projectTextBox
+			// 
+			resources.ApplyResources(this.projectTextBox, "projectTextBox");
+			this.projectTextBox.Name = "projectTextBox";
+			this.projectTextBox.TextChanged += new System.EventHandler(this.projectTextBox_TextChanged);
+			this.projectTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.projectTextBox_KeyDown);
+			// 
+			// label8
+			// 
+			resources.ApplyResources(this.label8, "label8");
+			this.label8.Name = "label8";
+			// 
+			// ticketStateComboBox
+			// 
+			this.ticketStateComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.ticketStateComboBox.FormattingEnabled = true;
+			this.ticketStateComboBox.Items.AddRange(new object[] {
+            resources.GetString("ticketStateComboBox.Items"),
+            resources.GetString("ticketStateComboBox.Items1"),
+            resources.GetString("ticketStateComboBox.Items2"),
+            resources.GetString("ticketStateComboBox.Items3"),
+            resources.GetString("ticketStateComboBox.Items4"),
+            resources.GetString("ticketStateComboBox.Items5"),
+            resources.GetString("ticketStateComboBox.Items6"),
+            resources.GetString("ticketStateComboBox.Items7"),
+            resources.GetString("ticketStateComboBox.Items8")});
+			resources.ApplyResources(this.ticketStateComboBox, "ticketStateComboBox");
+			this.ticketStateComboBox.Name = "ticketStateComboBox";
+			this.ticketStateComboBox.SelectedIndexChanged += new System.EventHandler(this.ticketStateComboBox_SelectedIndexChanged);
+			// 
+			// reportersComboBox
+			// 
+			this.reportersComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.reportersComboBox.FormattingEnabled = true;
+			resources.ApplyResources(this.reportersComboBox, "reportersComboBox");
+			this.reportersComboBox.Name = "reportersComboBox";
+			this.reportersComboBox.SelectedIndexChanged += new System.EventHandler(this.reporterComboBox_SelectedIndexChanged);
+			// 
+			// label2
+			// 
+			resources.ApplyResources(this.label2, "label2");
+			this.label2.Name = "label2";
+			// 
+			// assignedToComboBox
+			// 
+			this.assignedToComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.assignedToComboBox.FormattingEnabled = true;
+			resources.ApplyResources(this.assignedToComboBox, "assignedToComboBox");
+			this.assignedToComboBox.Name = "assignedToComboBox";
+			this.assignedToComboBox.SelectedIndexChanged += new System.EventHandler(this.assignedComboBox_SelectedIndexChanged);
+			// 
+			// ticketPriorityComboBox
+			// 
+			this.ticketPriorityComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.ticketPriorityComboBox.FormattingEnabled = true;
+			this.ticketPriorityComboBox.Items.AddRange(new object[] {
+            resources.GetString("ticketPriorityComboBox.Items"),
+            resources.GetString("ticketPriorityComboBox.Items1"),
+            resources.GetString("ticketPriorityComboBox.Items2"),
+            resources.GetString("ticketPriorityComboBox.Items3"),
+            resources.GetString("ticketPriorityComboBox.Items4"),
+            resources.GetString("ticketPriorityComboBox.Items5")});
+			resources.ApplyResources(this.ticketPriorityComboBox, "ticketPriorityComboBox");
+			this.ticketPriorityComboBox.Name = "ticketPriorityComboBox";
+			this.ticketPriorityComboBox.SelectedIndexChanged += new System.EventHandler(this.ticketPriorityComboBox_SelectedIndexChanged);
+			// 
+			// label7
+			// 
+			resources.ApplyResources(this.label7, "label7");
+			this.label7.Name = "label7";
+			// 
+			// label3
+			// 
+			resources.ApplyResources(this.label3, "label3");
+			this.label3.Name = "label3";
+			// 
+			// label6
+			// 
+			resources.ApplyResources(this.label6, "label6");
+			this.label6.Name = "label6";
+			// 
+			// ticketSeverityComboBox
+			// 
+			this.ticketSeverityComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.ticketSeverityComboBox.FormattingEnabled = true;
+			this.ticketSeverityComboBox.Items.AddRange(new object[] {
+            resources.GetString("ticketSeverityComboBox.Items"),
+            resources.GetString("ticketSeverityComboBox.Items1"),
+            resources.GetString("ticketSeverityComboBox.Items2"),
+            resources.GetString("ticketSeverityComboBox.Items3"),
+            resources.GetString("ticketSeverityComboBox.Items4"),
+            resources.GetString("ticketSeverityComboBox.Items5"),
+            resources.GetString("ticketSeverityComboBox.Items6")});
+			resources.ApplyResources(this.ticketSeverityComboBox, "ticketSeverityComboBox");
+			this.ticketSeverityComboBox.Name = "ticketSeverityComboBox";
+			this.ticketSeverityComboBox.SelectedIndexChanged += new System.EventHandler(this.ticketSeverityComboBox_SelectedIndexChanged);
+			// 
+			// ticketTypeComboBox
+			// 
+			this.ticketTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.ticketTypeComboBox.FormattingEnabled = true;
+			this.ticketTypeComboBox.Items.AddRange(new object[] {
+            resources.GetString("ticketTypeComboBox.Items"),
+            resources.GetString("ticketTypeComboBox.Items1"),
+            resources.GetString("ticketTypeComboBox.Items2"),
+            resources.GetString("ticketTypeComboBox.Items3")});
+			resources.ApplyResources(this.ticketTypeComboBox, "ticketTypeComboBox");
+			this.ticketTypeComboBox.Name = "ticketTypeComboBox";
+			this.ticketTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.ticketTypeComboBox_SelectedIndexChanged);
+			// 
+			// label4
+			// 
+			resources.ApplyResources(this.label4, "label4");
+			this.label4.Name = "label4";
 			// 
 			// menuStrip1
 			// 
@@ -295,6 +468,26 @@
 			this.databaseToolStripStatusLabel.Name = "databaseToolStripStatusLabel";
 			resources.ApplyResources(this.databaseToolStripStatusLabel, "databaseToolStripStatusLabel");
 			// 
+			// openTicketsToolStripStatusLabel
+			// 
+			this.openTicketsToolStripStatusLabel.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+			this.openTicketsToolStripStatusLabel.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
+			this.openTicketsToolStripStatusLabel.Margin = new System.Windows.Forms.Padding(0, 4, 3, 0);
+			this.openTicketsToolStripStatusLabel.Name = "openTicketsToolStripStatusLabel";
+			resources.ApplyResources(this.openTicketsToolStripStatusLabel, "openTicketsToolStripStatusLabel");
+			// 
+			// totalTicketsToolStripStatusLabel
+			// 
+			this.totalTicketsToolStripStatusLabel.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+			this.totalTicketsToolStripStatusLabel.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
+			this.totalTicketsToolStripStatusLabel.Margin = new System.Windows.Forms.Padding(0, 4, 3, 0);
+			this.totalTicketsToolStripStatusLabel.Name = "totalTicketsToolStripStatusLabel";
+			resources.ApplyResources(this.totalTicketsToolStripStatusLabel, "totalTicketsToolStripStatusLabel");
+			// 
 			// openFileDialog
 			// 
 			resources.ApplyResources(this.openFileDialog, "openFileDialog");
@@ -343,199 +536,6 @@
 			resources.ApplyResources(this.deleteProjectToolStripMenuItem, "deleteProjectToolStripMenuItem");
 			this.deleteProjectToolStripMenuItem.Click += new System.EventHandler(this.deleteProjectToolStripMenuItem_Click);
 			// 
-			// openTicketsToolStripStatusLabel
-			// 
-			this.openTicketsToolStripStatusLabel.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
-			this.openTicketsToolStripStatusLabel.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
-			this.openTicketsToolStripStatusLabel.Margin = new System.Windows.Forms.Padding(0, 4, 3, 0);
-			this.openTicketsToolStripStatusLabel.Name = "openTicketsToolStripStatusLabel";
-			resources.ApplyResources(this.openTicketsToolStripStatusLabel, "openTicketsToolStripStatusLabel");
-			// 
-			// totalTicketsToolStripStatusLabel
-			// 
-			this.totalTicketsToolStripStatusLabel.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
-			this.totalTicketsToolStripStatusLabel.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
-			this.totalTicketsToolStripStatusLabel.Margin = new System.Windows.Forms.Padding(0, 4, 3, 0);
-			this.totalTicketsToolStripStatusLabel.Name = "totalTicketsToolStripStatusLabel";
-			resources.ApplyResources(this.totalTicketsToolStripStatusLabel, "totalTicketsToolStripStatusLabel");
-			// 
-			// projectsListUserControl
-			// 
-			resources.ApplyResources(this.projectsListUserControl, "projectsListUserControl");
-			this.projectsListUserControl.Name = "projectsListUserControl";
-			// 
-			// resetFilterButton
-			// 
-			resources.ApplyResources(this.resetFilterButton, "resetFilterButton");
-			this.resetFilterButton.Name = "resetFilterButton";
-			this.resetFilterButton.UseVisualStyleBackColor = true;
-			this.resetFilterButton.Click += new System.EventHandler(this.resetFilterButton_Click);
-			// 
-			// createdButton
-			// 
-			this.createdButton.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Options;
-			resources.ApplyResources(this.createdButton, "createdButton");
-			this.createdButton.Name = "createdButton";
-			this.createdButton.UseVisualStyleBackColor = true;
-			this.createdButton.Click += new System.EventHandler(this.createdButton_Click);
-			// 
-			// modifiedButton
-			// 
-			this.modifiedButton.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Options;
-			resources.ApplyResources(this.modifiedButton, "modifiedButton");
-			this.modifiedButton.Name = "modifiedButton";
-			this.modifiedButton.UseVisualStyleBackColor = true;
-			this.modifiedButton.Click += new System.EventHandler(this.modifiedButton_Click);
-			// 
-			// modifiedTextBox
-			// 
-			resources.ApplyResources(this.modifiedTextBox, "modifiedTextBox");
-			this.modifiedTextBox.Name = "modifiedTextBox";
-			this.modifiedTextBox.ReadOnly = true;
-			this.modifiedTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.modifiedTextBox_KeyDown);
-			// 
-			// createdTextBox
-			// 
-			resources.ApplyResources(this.createdTextBox, "createdTextBox");
-			this.createdTextBox.Name = "createdTextBox";
-			this.createdTextBox.ReadOnly = true;
-			this.createdTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.createdTextBox_KeyDown);
-			// 
-			// label9
-			// 
-			resources.ApplyResources(this.label9, "label9");
-			this.label9.Name = "label9";
-			this.label9.Click += new System.EventHandler(this.modifiedButton_Click);
-			// 
-			// label8
-			// 
-			resources.ApplyResources(this.label8, "label8");
-			this.label8.Name = "label8";
-			// 
-			// reportersComboBox
-			// 
-			this.reportersComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.reportersComboBox.FormattingEnabled = true;
-			resources.ApplyResources(this.reportersComboBox, "reportersComboBox");
-			this.reportersComboBox.Name = "reportersComboBox";
-			this.reportersComboBox.SelectedIndexChanged += new System.EventHandler(this.reporterComboBox_SelectedIndexChanged);
-			// 
-			// assignedToComboBox
-			// 
-			this.assignedToComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.assignedToComboBox.FormattingEnabled = true;
-			resources.ApplyResources(this.assignedToComboBox, "assignedToComboBox");
-			this.assignedToComboBox.Name = "assignedToComboBox";
-			this.assignedToComboBox.SelectedIndexChanged += new System.EventHandler(this.assignedComboBox_SelectedIndexChanged);
-			// 
-			// label7
-			// 
-			resources.ApplyResources(this.label7, "label7");
-			this.label7.Name = "label7";
-			// 
-			// label6
-			// 
-			resources.ApplyResources(this.label6, "label6");
-			this.label6.Name = "label6";
-			// 
-			// ticketTypeComboBox
-			// 
-			this.ticketTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.ticketTypeComboBox.FormattingEnabled = true;
-			this.ticketTypeComboBox.Items.AddRange(new object[] {
-            resources.GetString("ticketTypeComboBox.Items"),
-            resources.GetString("ticketTypeComboBox.Items1"),
-            resources.GetString("ticketTypeComboBox.Items2"),
-            resources.GetString("ticketTypeComboBox.Items3")});
-			resources.ApplyResources(this.ticketTypeComboBox, "ticketTypeComboBox");
-			this.ticketTypeComboBox.Name = "ticketTypeComboBox";
-			this.ticketTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.ticketTypeComboBox_SelectedIndexChanged);
-			// 
-			// label4
-			// 
-			resources.ApplyResources(this.label4, "label4");
-			this.label4.Name = "label4";
-			// 
-			// ticketSeverityComboBox
-			// 
-			this.ticketSeverityComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.ticketSeverityComboBox.FormattingEnabled = true;
-			this.ticketSeverityComboBox.Items.AddRange(new object[] {
-            resources.GetString("ticketSeverityComboBox.Items"),
-            resources.GetString("ticketSeverityComboBox.Items1"),
-            resources.GetString("ticketSeverityComboBox.Items2"),
-            resources.GetString("ticketSeverityComboBox.Items3"),
-            resources.GetString("ticketSeverityComboBox.Items4"),
-            resources.GetString("ticketSeverityComboBox.Items5"),
-            resources.GetString("ticketSeverityComboBox.Items6")});
-			resources.ApplyResources(this.ticketSeverityComboBox, "ticketSeverityComboBox");
-			this.ticketSeverityComboBox.Name = "ticketSeverityComboBox";
-			this.ticketSeverityComboBox.SelectedIndexChanged += new System.EventHandler(this.ticketSeverityComboBox_SelectedIndexChanged);
-			// 
-			// label3
-			// 
-			resources.ApplyResources(this.label3, "label3");
-			this.label3.Name = "label3";
-			// 
-			// ticketPriorityComboBox
-			// 
-			this.ticketPriorityComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.ticketPriorityComboBox.FormattingEnabled = true;
-			this.ticketPriorityComboBox.Items.AddRange(new object[] {
-            resources.GetString("ticketPriorityComboBox.Items"),
-            resources.GetString("ticketPriorityComboBox.Items1"),
-            resources.GetString("ticketPriorityComboBox.Items2"),
-            resources.GetString("ticketPriorityComboBox.Items3"),
-            resources.GetString("ticketPriorityComboBox.Items4"),
-            resources.GetString("ticketPriorityComboBox.Items5")});
-			resources.ApplyResources(this.ticketPriorityComboBox, "ticketPriorityComboBox");
-			this.ticketPriorityComboBox.Name = "ticketPriorityComboBox";
-			this.ticketPriorityComboBox.SelectedIndexChanged += new System.EventHandler(this.ticketPriorityComboBox_SelectedIndexChanged);
-			// 
-			// projectTextBox
-			// 
-			resources.ApplyResources(this.projectTextBox, "projectTextBox");
-			this.projectTextBox.Name = "projectTextBox";
-			this.projectTextBox.TextChanged += new System.EventHandler(this.projectTextBox_TextChanged);
-			this.projectTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.projectTextBox_KeyDown);
-			// 
-			// label2
-			// 
-			resources.ApplyResources(this.label2, "label2");
-			this.label2.Name = "label2";
-			// 
-			// ticketStateComboBox
-			// 
-			this.ticketStateComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.ticketStateComboBox.FormattingEnabled = true;
-			this.ticketStateComboBox.Items.AddRange(new object[] {
-            resources.GetString("ticketStateComboBox.Items"),
-            resources.GetString("ticketStateComboBox.Items1"),
-            resources.GetString("ticketStateComboBox.Items2"),
-            resources.GetString("ticketStateComboBox.Items3"),
-            resources.GetString("ticketStateComboBox.Items4"),
-            resources.GetString("ticketStateComboBox.Items5"),
-            resources.GetString("ticketStateComboBox.Items6"),
-            resources.GetString("ticketStateComboBox.Items7"),
-            resources.GetString("ticketStateComboBox.Items8")});
-			resources.ApplyResources(this.ticketStateComboBox, "ticketStateComboBox");
-			this.ticketStateComboBox.Name = "ticketStateComboBox";
-			this.ticketStateComboBox.SelectedIndexChanged += new System.EventHandler(this.ticketStateComboBox_SelectedIndexChanged);
-			// 
-			// label5
-			// 
-			resources.ApplyResources(this.label5, "label5");
-			this.label5.Name = "label5";
-			// 
-			// label1
-			// 
-			resources.ApplyResources(this.label1, "label1");
-			this.label1.Name = "label1";
-			// 
 			// MainForm
 			// 
 			resources.ApplyResources(this, "$this");
@@ -545,7 +545,7 @@
 			this.Controls.Add(this.menuStrip1);
 			this.MainMenuStrip = this.menuStrip1;
 			this.Name = "MainForm";
-			this.Resize += new System.EventHandler(this.MainForm_Resize);
+			this.ResizeEnd += new System.EventHandler(this.MainForm_ResizeEnd);
 			this.projectsGroupBox.ResumeLayout(false);
 			this.projectsGroupBox.PerformLayout();
 			this.menuStrip1.ResumeLayout(false);
