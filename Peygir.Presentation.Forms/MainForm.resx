@@ -271,7 +271,7 @@
     <value>projectsListUserControl</value>
   </data>
   <data name="&gt;&gt;projectsListUserControl.Type" xml:space="preserve">
-    <value>Peygir.Presentation.UserControls.ProjectsListUserControl, Peygir.Presentation.UserControls, Version=1.0.1.35003, Culture=neutral, PublicKeyToken=7bc4e639a7e2568f</value>
+    <value>Peygir.Presentation.UserControls.ProjectsListUserControl, Peygir.Presentation.UserControls, Version=1.0.1.37485, Culture=neutral, PublicKeyToken=7bc4e639a7e2568f</value>
   </data>
   <data name="&gt;&gt;projectsListUserControl.Parent" xml:space="preserve">
     <value>projectsGroupBox</value>
@@ -444,6 +444,18 @@
   <data name="databaseToolStripStatusLabel.Text" xml:space="preserve">
     <value>Database: -</value>
   </data>
+  <data name="openTicketsToolStripStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>86, 18</value>
+  </data>
+  <data name="openTicketsToolStripStatusLabel.Text" xml:space="preserve">
+    <value>Open Tickets: 0</value>
+  </data>
+  <data name="totalTicketsToolStripStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 18</value>
+  </data>
+  <data name="totalTicketsToolStripStatusLabel.Text" xml:space="preserve">
+    <value>Total Tickets: 0</value>
+  </data>
   <data name="statusStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 419</value>
   </data>
@@ -557,9 +569,6 @@
         AAAAAAAA//8AAIABAACAAQAAgAEAAIABAACAAQAAgAEAAIABAACAAQAAgAEAAIABAAD4AQAA+AEAAPgf
         AAD4HwAA/B8AAA==
 </value>
-  </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>
@@ -704,6 +713,18 @@
   </data>
   <data name="&gt;&gt;deleteProjectToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;openTicketsToolStripStatusLabel.Name" xml:space="preserve">
+    <value>openTicketsToolStripStatusLabel</value>
+  </data>
+  <data name="&gt;&gt;openTicketsToolStripStatusLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;totalTicketsToolStripStatusLabel.Name" xml:space="preserve">
+    <value>totalTicketsToolStripStatusLabel</value>
+  </data>
+  <data name="&gt;&gt;totalTicketsToolStripStatusLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>

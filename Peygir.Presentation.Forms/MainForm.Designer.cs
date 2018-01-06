@@ -30,6 +30,7 @@
 			this.deleteProjectButton = new System.Windows.Forms.Button();
 			this.editProjectButton = new System.Windows.Forms.Button();
 			this.addProjectButton = new System.Windows.Forms.Button();
+			this.projectsListUserControl = new Peygir.Presentation.UserControls.ProjectsListUserControl();
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.newDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -56,7 +57,8 @@
 			this.editProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.editTicketsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.deleteProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.projectsListUserControl = new Peygir.Presentation.UserControls.ProjectsListUserControl();
+			this.openTicketsToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+			this.totalTicketsToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.projectsGroupBox.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
 			this.statusStrip1.SuspendLayout();
@@ -105,6 +107,11 @@
 			this.addProjectButton.Name = "addProjectButton";
 			this.addProjectButton.UseVisualStyleBackColor = true;
 			this.addProjectButton.Click += new System.EventHandler(this.addProjectButton_Click);
+			// 
+			// projectsListUserControl
+			// 
+			resources.ApplyResources(this.projectsListUserControl, "projectsListUserControl");
+			this.projectsListUserControl.Name = "projectsListUserControl";
 			// 
 			// menuStrip1
 			// 
@@ -235,7 +242,9 @@
 			// statusStrip1
 			// 
 			this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.databaseToolStripStatusLabel});
+            this.databaseToolStripStatusLabel,
+            this.openTicketsToolStripStatusLabel,
+            this.totalTicketsToolStripStatusLabel});
 			resources.ApplyResources(this.statusStrip1, "statusStrip1");
 			this.statusStrip1.Name = "statusStrip1";
 			// 
@@ -297,10 +306,25 @@
 			resources.ApplyResources(this.deleteProjectToolStripMenuItem, "deleteProjectToolStripMenuItem");
 			this.deleteProjectToolStripMenuItem.Click += new System.EventHandler(this.deleteProjectToolStripMenuItem_Click);
 			// 
-			// projectsListUserControl
+			// openTicketsToolStripStatusLabel
 			// 
-			resources.ApplyResources(this.projectsListUserControl, "projectsListUserControl");
-			this.projectsListUserControl.Name = "projectsListUserControl";
+			this.openTicketsToolStripStatusLabel.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+			this.openTicketsToolStripStatusLabel.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
+			this.openTicketsToolStripStatusLabel.Margin = new System.Windows.Forms.Padding(0, 4, 3, 0);
+			this.openTicketsToolStripStatusLabel.Name = "openTicketsToolStripStatusLabel";
+			resources.ApplyResources(this.openTicketsToolStripStatusLabel, "openTicketsToolStripStatusLabel");
+			// 
+			// totalTicketsToolStripStatusLabel
+			// 
+			this.totalTicketsToolStripStatusLabel.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+			this.totalTicketsToolStripStatusLabel.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
+			this.totalTicketsToolStripStatusLabel.Margin = new System.Windows.Forms.Padding(0, 4, 3, 0);
+			this.totalTicketsToolStripStatusLabel.Name = "totalTicketsToolStripStatusLabel";
+			resources.ApplyResources(this.totalTicketsToolStripStatusLabel, "totalTicketsToolStripStatusLabel");
 			// 
 			// MainForm
 			// 
@@ -356,5 +380,7 @@
 		private System.Windows.Forms.ToolStripMenuItem editProjectToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem editTicketsToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem deleteProjectToolStripMenuItem;
+		private System.Windows.Forms.ToolStripStatusLabel openTicketsToolStripStatusLabel;
+		private System.Windows.Forms.ToolStripStatusLabel totalTicketsToolStripStatusLabel;
 	}
 }

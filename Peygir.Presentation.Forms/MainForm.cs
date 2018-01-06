@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using Peygir.Logic;
 using Peygir.Presentation.Forms.Properties;
@@ -369,6 +370,9 @@ namespace Peygir.Presentation.Forms {
 			}
 
 			UpdateControlsEnabledProperty();
+
+			openTicketsToolStripStatusLabel.Text = "Open Tickets: " + projects.Sum(p => p.GetTickets().Count(t => t.State.IsOpen()));
+			totalTicketsToolStripStatusLabel.Text = "Total Tickets: " + projects.Sum(p => p.GetTickets().Length);
 		}
 
 		private void AddProject() {
