@@ -30,6 +30,7 @@ namespace Peygir.Presentation.Forms {
 
 			projectsListUserControl.ProjectsListView.SelectedIndexChanged += ProjectsListView_SelectedIndexChanged;
 			projectsListUserControl.ProjectsListView.DoubleClick += ProjectsListView_DoubleClick;
+			projectsListUserControl.ProjectsListView.KeyDown += ProjectsListView_KeyDown;
 			projectsListUserControl.ProjectsListView.ContextMenuStrip = projectContextMenu;
 
 			ShowCurrentLanguage();
@@ -42,6 +43,11 @@ namespace Peygir.Presentation.Forms {
 		}
 
 		private void ProjectsListView_DoubleClick(object sender, EventArgs e) {
+			EditProject(ticketTab: true);
+		}
+
+		private void ProjectsListView_KeyDown(object sender, KeyEventArgs e) {
+			if (e.KeyCode != Keys.Enter) return;
 			EditProject(ticketTab: true);
 		}
 
@@ -324,7 +330,8 @@ namespace Peygir.Presentation.Forms {
 				Environment.CurrentDirectory = Application.StartupPath;
 				Database.CreateAndOpen(databasePath);
 
-				ShowProjects();
+				// This is required to clear out the assigned to/reporter combos
+				UpdateTicketOrProject();
 			}
 			catch (Exception exception) {
 				MessageBox.Show(
@@ -351,7 +358,8 @@ namespace Peygir.Presentation.Forms {
 				Environment.CurrentDirectory = Application.StartupPath;
 				Database.Open(databasePath);
 
-				ShowProjects();
+				// This is required to update the assigned to/reporter combos
+				UpdateTicketOrProject();
 			}
 			catch (Exception exception) {
 				MessageBox.Show(
