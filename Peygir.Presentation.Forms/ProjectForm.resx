@@ -178,7 +178,7 @@
     <value>projectDetailsUserControl</value>
   </data>
   <data name="&gt;&gt;projectDetailsUserControl.Type" xml:space="preserve">
-    <value>Peygir.Presentation.UserControls.ProjectDetailsUserControl, Peygir.Presentation.UserControls, Version=1.0.1.42399, Culture=neutral, PublicKeyToken=7bc4e639a7e2568f</value>
+    <value>Peygir.Presentation.UserControls.ProjectDetailsUserControl, Peygir.Presentation.UserControls, Version=1.0.1.42452, Culture=neutral, PublicKeyToken=7bc4e639a7e2568f</value>
   </data>
   <data name="&gt;&gt;projectDetailsUserControl.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -388,7 +388,7 @@
     <value>milestonesListUserControl</value>
   </data>
   <data name="&gt;&gt;milestonesListUserControl.Type" xml:space="preserve">
-    <value>Peygir.Presentation.UserControls.MilestonesListUserControl, Peygir.Presentation.UserControls, Version=1.0.1.42399, Culture=neutral, PublicKeyToken=7bc4e639a7e2568f</value>
+    <value>Peygir.Presentation.UserControls.MilestonesListUserControl, Peygir.Presentation.UserControls, Version=1.0.1.42452, Culture=neutral, PublicKeyToken=7bc4e639a7e2568f</value>
   </data>
   <data name="&gt;&gt;milestonesListUserControl.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -457,7 +457,7 @@
     <value>171, 21</value>
   </data>
   <data name="ticketMilestoneComboBox.TabIndex" type="System.Int32, mscorlib">
-    <value>60</value>
+    <value>22</value>
   </data>
   <data name="&gt;&gt;ticketMilestoneComboBox.Name" xml:space="preserve">
     <value>ticketMilestoneComboBox</value>
@@ -484,7 +484,7 @@
     <value>56, 13</value>
   </data>
   <data name="label10.TabIndex" type="System.Int32, mscorlib">
-    <value>59</value>
+    <value>21</value>
   </data>
   <data name="label10.Text" xml:space="preserve">
     <value>Milestone:</value>
@@ -511,7 +511,7 @@
     <value>75, 23</value>
   </data>
   <data name="resetTicketFilterButton.TabIndex" type="System.Int32, mscorlib">
-    <value>58</value>
+    <value>23</value>
   </data>
   <data name="resetTicketFilterButton.Text" xml:space="preserve">
     <value>Reset</value>
@@ -538,7 +538,7 @@
     <value>21, 21</value>
   </data>
   <data name="ticketCreatedButton.TabIndex" type="System.Int32, mscorlib">
-    <value>57</value>
+    <value>9</value>
   </data>
   <data name="&gt;&gt;ticketCreatedButton.Name" xml:space="preserve">
     <value>ticketCreatedButton</value>
@@ -562,7 +562,7 @@
     <value>21, 21</value>
   </data>
   <data name="ticketModifiedButton.TabIndex" type="System.Int32, mscorlib">
-    <value>56</value>
+    <value>16</value>
   </data>
   <data name="&gt;&gt;ticketModifiedButton.Name" xml:space="preserve">
     <value>ticketModifiedButton</value>
@@ -583,7 +583,7 @@
     <value>144, 21</value>
   </data>
   <data name="modifiedTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>55</value>
+    <value>15</value>
   </data>
   <data name="&gt;&gt;modifiedTextBox.Name" xml:space="preserve">
     <value>modifiedTextBox</value>
@@ -604,7 +604,7 @@
     <value>144, 21</value>
   </data>
   <data name="createdTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>54</value>
+    <value>8</value>
   </data>
   <data name="&gt;&gt;createdTextBox.Name" xml:space="preserve">
     <value>createdTextBox</value>
@@ -631,7 +631,7 @@
     <value>51, 13</value>
   </data>
   <data name="label9.TabIndex" type="System.Int32, mscorlib">
-    <value>53</value>
+    <value>14</value>
   </data>
   <data name="label9.Text" xml:space="preserve">
     <value>Modified:</value>
@@ -661,7 +661,7 @@
     <value>50, 13</value>
   </data>
   <data name="label8.TabIndex" type="System.Int32, mscorlib">
-    <value>52</value>
+    <value>7</value>
   </data>
   <data name="label8.Text" xml:space="preserve">
     <value>Created:</value>
@@ -685,7 +685,7 @@
     <value>106, 21</value>
   </data>
   <data name="ticketReportersComboBox.TabIndex" type="System.Int32, mscorlib">
-    <value>51</value>
+    <value>18</value>
   </data>
   <data name="&gt;&gt;ticketReportersComboBox.Name" xml:space="preserve">
     <value>ticketReportersComboBox</value>
@@ -706,7 +706,7 @@
     <value>106, 21</value>
   </data>
   <data name="ticketAssignedToComboBox.TabIndex" type="System.Int32, mscorlib">
-    <value>50</value>
+    <value>11</value>
   </data>
   <data name="&gt;&gt;ticketAssignedToComboBox.Name" xml:space="preserve">
     <value>ticketAssignedToComboBox</value>
@@ -733,7 +733,7 @@
     <value>69, 13</value>
   </data>
   <data name="label7.TabIndex" type="System.Int32, mscorlib">
-    <value>49</value>
+    <value>10</value>
   </data>
   <data name="label7.Text" xml:space="preserve">
     <value>Assigned To:</value>
@@ -763,7 +763,7 @@
     <value>54, 13</value>
   </data>
   <data name="label6.TabIndex" type="System.Int32, mscorlib">
-    <value>48</value>
+    <value>17</value>
   </data>
   <data name="label6.Text" xml:space="preserve">
     <value>Reporter:</value>
@@ -793,7 +793,7 @@
     <value>66, 13</value>
   </data>
   <data name="label5.TabIndex" type="System.Int32, mscorlib">
-    <value>47</value>
+    <value>3</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
     <value>Ticket Type:</value>
@@ -829,7 +829,7 @@
     <value>106, 21</value>
   </data>
   <data name="ticketTypeComboBox.TabIndex" type="System.Int32, mscorlib">
-    <value>46</value>
+    <value>4</value>
   </data>
   <data name="&gt;&gt;ticketTypeComboBox.Name" xml:space="preserve">
     <value>ticketTypeComboBox</value>
@@ -856,7 +856,7 @@
     <value>82, 13</value>
   </data>
   <data name="label4.TabIndex" type="System.Int32, mscorlib">
-    <value>45</value>
+    <value>19</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
     <value>Ticket Severity:</value>
@@ -901,7 +901,7 @@
     <value>106, 21</value>
   </data>
   <data name="ticketSeverityComboBox.TabIndex" type="System.Int32, mscorlib">
-    <value>44</value>
+    <value>20</value>
   </data>
   <data name="&gt;&gt;ticketSeverityComboBox.Name" xml:space="preserve">
     <value>ticketSeverityComboBox</value>
@@ -928,7 +928,7 @@
     <value>76, 13</value>
   </data>
   <data name="label3.TabIndex" type="System.Int32, mscorlib">
-    <value>43</value>
+    <value>12</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
     <value>Ticket Priority:</value>
@@ -970,7 +970,7 @@
     <value>106, 21</value>
   </data>
   <data name="ticketPriorityComboBox.TabIndex" type="System.Int32, mscorlib">
-    <value>42</value>
+    <value>13</value>
   </data>
   <data name="&gt;&gt;ticketPriorityComboBox.Name" xml:space="preserve">
     <value>ticketPriorityComboBox</value>
@@ -991,7 +991,7 @@
     <value>171, 21</value>
   </data>
   <data name="ticketTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>41</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;ticketTextBox.Name" xml:space="preserve">
     <value>ticketTextBox</value>
@@ -1018,7 +1018,7 @@
     <value>55, 13</value>
   </data>
   <data name="label2.TabIndex" type="System.Int32, mscorlib">
-    <value>40</value>
+    <value>1</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>Summary:</value>
@@ -1048,7 +1048,7 @@
     <value>68, 13</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
-    <value>39</value>
+    <value>5</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Ticket State:</value>
@@ -1099,7 +1099,7 @@
     <value>106, 21</value>
   </data>
   <data name="ticketStateComboBox.TabIndex" type="System.Int32, mscorlib">
-    <value>38</value>
+    <value>6</value>
   </data>
   <data name="&gt;&gt;ticketStateComboBox.Name" xml:space="preserve">
     <value>ticketStateComboBox</value>
@@ -1129,7 +1129,7 @@
     <value>110, 23</value>
   </data>
   <data name="showTicketAttachmentsButton.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+    <value>30</value>
   </data>
   <data name="showTicketAttachmentsButton.Text" xml:space="preserve">
     <value>A&amp;ttachments...</value>
@@ -1162,7 +1162,7 @@
     <value>83, 23</value>
   </data>
   <data name="showTicketHistoryButton.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>28</value>
   </data>
   <data name="showTicketHistoryButton.Text" xml:space="preserve">
     <value>&amp;History...</value>
@@ -1195,7 +1195,7 @@
     <value>83, 23</value>
   </data>
   <data name="deleteTicketButton.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+    <value>29</value>
   </data>
   <data name="deleteTicketButton.Text" xml:space="preserve">
     <value>&amp;Delete...</value>
@@ -1228,7 +1228,7 @@
     <value>83, 23</value>
   </data>
   <data name="editTicketButton.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>27</value>
   </data>
   <data name="editTicketButton.Text" xml:space="preserve">
     <value>&amp;Edit...</value>
@@ -1261,7 +1261,7 @@
     <value>83, 23</value>
   </data>
   <data name="showTicketButton.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>26</value>
   </data>
   <data name="showTicketButton.Text" xml:space="preserve">
     <value>&amp;Show...</value>
@@ -1294,7 +1294,7 @@
     <value>83, 23</value>
   </data>
   <data name="addTicketButton.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>25</value>
   </data>
   <data name="addTicketButton.Text" xml:space="preserve">
     <value>&amp;Add...</value>
@@ -1324,13 +1324,13 @@
     <value>616, 239</value>
   </data>
   <data name="ticketsListUserControl.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>24</value>
   </data>
   <data name="&gt;&gt;ticketsListUserControl.Name" xml:space="preserve">
     <value>ticketsListUserControl</value>
   </data>
   <data name="&gt;&gt;ticketsListUserControl.Type" xml:space="preserve">
-    <value>Peygir.Presentation.UserControls.TicketsListUserControl, Peygir.Presentation.UserControls, Version=1.0.1.42399, Culture=neutral, PublicKeyToken=7bc4e639a7e2568f</value>
+    <value>Peygir.Presentation.UserControls.TicketsListUserControl, Peygir.Presentation.UserControls, Version=1.0.1.42452, Culture=neutral, PublicKeyToken=7bc4e639a7e2568f</value>
   </data>
   <data name="&gt;&gt;ticketsListUserControl.Parent" xml:space="preserve">
     <value>groupBox4</value>
@@ -1553,6 +1553,9 @@
         AAAAAAAA//8AAIABAACAAQAAgAEAAIABAACAAQAAgAEAAIABAACAAQAAgAEAAIABAAD4AQAA+AEAAPgf
         AAD4HwAA/B8AAA==
 </value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>
