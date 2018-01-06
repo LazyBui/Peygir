@@ -128,18 +128,10 @@ namespace Peygir.Presentation.Forms {
 		#region Context menu
 		private void projectContextMenu_Opening(object sender, System.ComponentModel.CancelEventArgs e) {
 			int selectedProjectsCount = projectsListUserControl.ProjectsListView.SelectedItems.Count;
-			if (selectedProjectsCount == 0) {
-				addProjectToolStripMenuItem.Enabled = true;
-				editProjectToolStripMenuItem.Enabled = false;
-				editTicketsToolStripMenuItem.Enabled = false;
-				deleteProjectToolStripMenuItem.Enabled = false;
-			}
-			else {
-				addProjectToolStripMenuItem.Enabled = true;
-				editProjectToolStripMenuItem.Enabled = true;
-				editTicketsToolStripMenuItem.Enabled = true;
-				deleteProjectToolStripMenuItem.Enabled = true;
-			}
+			addProjectToolStripMenuItem.Enabled = true;
+			editProjectToolStripMenuItem.Enabled = selectedProjectsCount > 0;
+			editTicketsToolStripMenuItem.Enabled = selectedProjectsCount > 0;
+			deleteProjectToolStripMenuItem.Enabled = selectedProjectsCount > 0;
 		}
 
 		private void addProjectToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -279,43 +271,29 @@ namespace Peygir.Presentation.Forms {
 		}
 
 		private void UpdateControlsEnabledProperty() {
-			if (string.IsNullOrEmpty(Database.CurrentDatabasePath)) {
-				saveDatabaseAsToolStripMenuItem.Enabled = false;
-				closeDatabaseToolStripMenuItem.Enabled = false;
-
+			bool hasDatabase = !string.IsNullOrEmpty(Database.CurrentDatabasePath);
+			saveDatabaseAsToolStripMenuItem.Enabled = hasDatabase;
+			closeDatabaseToolStripMenuItem.Enabled = hasDatabase;
+			if (!hasDatabase) {
 				addProjectButton.Enabled = false;
 				editProjectButton.Enabled = false;
 				editTicketsButton.Enabled = false;
 				deleteProjectButton.Enabled = false;
-
 				projectsGroupBox.Enabled = false;
+				return;
 			}
-			else {
-				saveDatabaseAsToolStripMenuItem.Enabled = true;
-				closeDatabaseToolStripMenuItem.Enabled = true;
+			int selectedProjectsCount = projectsListUserControl.ProjectsListView.SelectedItems.Count;
+			addProjectButton.Enabled = true;
+			editProjectButton.Enabled = selectedProjectsCount > 0;
+			editTicketsButton.Enabled = selectedProjectsCount > 0;
+			deleteProjectButton.Enabled = selectedProjectsCount > 0;
+			projectsGroupBox.Enabled = true;
 
-				int selectedProjectsCount = projectsListUserControl.ProjectsListView.SelectedItems.Count;
-				if (selectedProjectsCount == 0) {
-					addProjectButton.Enabled = true;
-					editProjectButton.Enabled = false;
-					editTicketsButton.Enabled = false;
-					deleteProjectButton.Enabled = false;
-				}
-				else {
-					addProjectButton.Enabled = true;
-					editProjectButton.Enabled = true;
-					editTicketsButton.Enabled = true;
-					deleteProjectButton.Enabled = true;
-				}
-
-				projectsGroupBox.Enabled = true;
-			}
-
-			databaseToolStripStatusLabel.Text = string.Format
-			(
+			databaseToolStripStatusLabel.Text = string.Format(
 				Resources.String_DatabaseX,
-				string.IsNullOrEmpty(Database.CurrentDatabasePath) ? "-" : Database.CurrentDatabasePath
-			);
+				string.IsNullOrEmpty(Database.CurrentDatabasePath) ?
+					"N/A" :
+					Database.CurrentDatabasePath);
 		}
 
 		private void NewDatabase() {

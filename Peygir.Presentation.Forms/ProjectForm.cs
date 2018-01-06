@@ -103,21 +103,9 @@ namespace Peygir.Presentation.Forms {
 		#region Context menu
 		private void milestoneContextMenu_Opening(object sender, System.ComponentModel.CancelEventArgs e) {
 			int selectedMilestonesCount = milestonesListUserControl.MilestonesListView.SelectedItems.Count;
-			if (selectedMilestonesCount == 0) {
-				showMilestoneToolStripMenuItem.Enabled = false;
-				editMilestoneToolStripMenuItem.Enabled = false;
-				deleteMilestoneToolStripMenuItem.Enabled = false;
-			}
-			else if (selectedMilestonesCount == 1) {
-				showMilestoneToolStripMenuItem.Enabled = true;
-				editMilestoneToolStripMenuItem.Enabled = true;
-				deleteMilestoneToolStripMenuItem.Enabled = true;
-			}
-			else {
-				showMilestoneToolStripMenuItem.Enabled = false;
-				editMilestoneToolStripMenuItem.Enabled = false;
-				deleteMilestoneToolStripMenuItem.Enabled = true;
-			}
+			showMilestoneToolStripMenuItem.Enabled = selectedMilestonesCount == 1;
+			editMilestoneToolStripMenuItem.Enabled = selectedMilestonesCount == 1;
+			deleteMilestoneToolStripMenuItem.Enabled = selectedMilestonesCount > 0;
 		}
 
 		private void addMilestoneToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -168,27 +156,12 @@ namespace Peygir.Presentation.Forms {
 		#region Context menu
 		private void ticketContextMenu_Opening(object sender, System.ComponentModel.CancelEventArgs e) {
 			int selectedTicketsCount = ticketsListUserControl.TicketsListView.SelectedItems.Count;
-			if (selectedTicketsCount == 0) {
-				showTicketToolStripMenuItem.Enabled = false;
-				editTicketToolStripMenuItem.Enabled = false;
-				showTicketHistoryToolStripMenuItem.Enabled = false;
-				deleteTicketToolStripMenuItem.Enabled = false;
-				showTicketAttachmentsToolStripMenuItem.Enabled = false;
-			}
-			else if (selectedTicketsCount == 1) {
-				showTicketToolStripMenuItem.Enabled = true;
-				editTicketToolStripMenuItem.Enabled = true;
-				showTicketHistoryToolStripMenuItem.Enabled = true;
-				deleteTicketToolStripMenuItem.Enabled = true;
-				showTicketAttachmentsToolStripMenuItem.Enabled = true;
-			}
-			else {
-				showTicketToolStripMenuItem.Enabled = false;
-				editTicketToolStripMenuItem.Enabled = false;
-				showTicketHistoryToolStripMenuItem.Enabled = false;
-				deleteTicketToolStripMenuItem.Enabled = true;
-				showTicketAttachmentsToolStripMenuItem.Enabled = false;
-			}
+			showTicketToolStripMenuItem.Enabled = selectedTicketsCount == 1;
+			editTicketToolStripMenuItem.Enabled = selectedTicketsCount == 1;
+			showTicketHistoryToolStripMenuItem.Enabled = selectedTicketsCount == 1;
+			deleteTicketToolStripMenuItem.Enabled = selectedTicketsCount > 0;
+			showTicketAttachmentsToolStripMenuItem.Enabled = selectedTicketsCount == 1;
+
 		}
 
 		private void addTicketToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -394,44 +367,27 @@ namespace Peygir.Presentation.Forms {
 		#region Utility functions
 		private void UpdateButtonsEnabledProperty() {
 			int selectedMilestonesCount = milestonesListUserControl.MilestonesListView.SelectedItems.Count;
-			if (selectedMilestonesCount == 0) {
-				showMilestoneButton.Enabled = false;
-				editMilestoneButton.Enabled = false;
-				deleteMilestoneButton.Enabled = false;
-			}
-			else if (selectedMilestonesCount == 1) {
-				showMilestoneButton.Enabled = true;
-				editMilestoneButton.Enabled = true;
-				deleteMilestoneButton.Enabled = true;
-			}
-			else {
-				showMilestoneButton.Enabled = false;
-				editMilestoneButton.Enabled = false;
-				deleteMilestoneButton.Enabled = true;
-			}
+			showMilestoneButton.Enabled = selectedMilestonesCount == 1;
+			editMilestoneButton.Enabled = selectedMilestonesCount == 1;
+			deleteMilestoneButton.Enabled = selectedMilestonesCount > 0;
 
 			int selectedTicketsCount = ticketsListUserControl.TicketsListView.SelectedItems.Count;
-			if (selectedTicketsCount == 0) {
-				showTicketButton.Enabled = false;
-				editTicketButton.Enabled = false;
-				showTicketHistoryButton.Enabled = false;
-				deleteTicketButton.Enabled = false;
-				showTicketAttachmentsButton.Enabled = false;
-			}
-			else if (selectedTicketsCount == 1) {
-				showTicketButton.Enabled = true;
-				editTicketButton.Enabled = true;
-				showTicketHistoryButton.Enabled = true;
-				deleteTicketButton.Enabled = true;
-				showTicketAttachmentsButton.Enabled = true;
-			}
-			else {
-				showTicketButton.Enabled = false;
-				editTicketButton.Enabled = false;
-				showTicketHistoryButton.Enabled = false;
-				deleteTicketButton.Enabled = true;
-				showTicketAttachmentsButton.Enabled = false;
-			}
+			showTicketButton.Enabled = selectedTicketsCount == 1;
+			editTicketButton.Enabled = selectedTicketsCount == 1;
+			showTicketHistoryButton.Enabled = selectedTicketsCount == 1;
+			deleteTicketButton.Enabled = selectedTicketsCount > 0;
+			showTicketAttachmentsButton.Enabled = selectedTicketsCount == 1;
+
+			stateNewToolStripMenuItem.Enabled = selectedTicketsCount > 0;
+			stateAcceptedToolStripMenuItem.Enabled = selectedTicketsCount > 0;
+			stateInProgressToolStripMenuItem.Enabled = selectedTicketsCount > 0;
+			stateBlockedToolStripMenuItem.Enabled = selectedTicketsCount > 0;
+			stateCompletedToolStripMenuItem.Enabled = selectedTicketsCount > 0;
+			stateClosedToolStripMenuItem.Enabled = selectedTicketsCount > 0;
+
+			priorityToolStripMenuItem.Enabled = selectedTicketsCount > 0;
+			severityToolStripMenuItem.Enabled = selectedTicketsCount > 0;
+			typeToolStripMenuItem.Enabled = selectedTicketsCount > 0;
 		}
 
 		private void ShowProjectDetails() {

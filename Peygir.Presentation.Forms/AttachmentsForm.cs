@@ -56,18 +56,8 @@ namespace Peygir.Presentation.Forms {
 		#region Context menu
 		private void attachmentsContextMenu_Opening(object sender, System.ComponentModel.CancelEventArgs e) {
 			int count = attachmentsListUserControl.AttachmentsListView.SelectedItems.Count;
-			if (count == 0) {
-				saveAttachmentToolStripMenuItem.Enabled = false;
-				deleteAttachmentToolStripMenuItem.Enabled = false;
-			}
-			else if (count == 1) {
-				saveAttachmentToolStripMenuItem.Enabled = true;
-				deleteAttachmentToolStripMenuItem.Enabled = true;
-			}
-			else {
-				saveAttachmentToolStripMenuItem.Enabled = false;
-				deleteAttachmentToolStripMenuItem.Enabled = true;
-			}
+			saveAttachmentToolStripMenuItem.Enabled = count == 1;
+			deleteAttachmentToolStripMenuItem.Enabled = count > 0;
 		}
 		private void addAttachmentToolStripMenuItem_Click(object sender, EventArgs e) {
 			AddAttachment();
@@ -86,18 +76,8 @@ namespace Peygir.Presentation.Forms {
 		#region Utility functions
 		private void UpdateButtonsEnabledProperty() {
 			int count = attachmentsListUserControl.AttachmentsListView.SelectedItems.Count;
-			if (count == 0) {
-				saveButton.Enabled = false;
-				deleteButton.Enabled = false;
-			}
-			else if (count == 1) {
-				saveButton.Enabled = true;
-				deleteButton.Enabled = true;
-			}
-			else {
-				saveButton.Enabled = false;
-				deleteButton.Enabled = true;
-			}
+			saveButton.Enabled = count == 1;
+			deleteButton.Enabled = count > 0;
 		}
 
 		private void ShowAttachments() {
