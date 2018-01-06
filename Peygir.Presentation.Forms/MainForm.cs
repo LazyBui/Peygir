@@ -456,7 +456,9 @@ namespace Peygir.Presentation.Forms {
 				}
 
 				bool satisfiesNameFilter = FormUtil.FilterContains(p.Name, nameFilter);
-				if (!satisfiesNameFilter)
+				bool satisfiesCreatedFilter = FormUtil.FilterContains(tickets.Min(t => t.CreateTimestamp), mCreateFilter);
+				bool satisfiesModifiedFilter = FormUtil.FilterContains(tickets.Max(t => t.ModifyTimestamp), mModifyFilter);
+				if (!(satisfiesNameFilter && satisfiesCreatedFilter && satisfiesModifiedFilter))
 					return false;
 
 				return tickets.Any(t => {
@@ -466,8 +468,6 @@ namespace Peygir.Presentation.Forms {
 					bool satisfiesSeverityFilter = FormUtil.FilterEnum(t.Severity, severityFilter);
 					bool satisfiesPriorityFilter = FormUtil.FilterEnum(t.Priority, priorityFilter);
 					bool satisfiesTypeFilter = FormUtil.FilterEnum(t.Type, typeFilter);
-					bool satisfiesCreatedFilter = FormUtil.FilterContains(t.CreateTimestamp, mCreateFilter);
-					bool satisfiesModifiedFilter = FormUtil.FilterContains(t.ModifyTimestamp, mModifyFilter);
 
 					return
 						satisfiesReporterFilter &&
@@ -475,9 +475,7 @@ namespace Peygir.Presentation.Forms {
 						satisfiesStateFilter &&
 						satisfiesSeverityFilter &&
 						satisfiesPriorityFilter &&
-						satisfiesTypeFilter &&
-						satisfiesCreatedFilter &&
-						satisfiesModifiedFilter;
+						satisfiesTypeFilter;
 				});
 			}).ToArray();
 
