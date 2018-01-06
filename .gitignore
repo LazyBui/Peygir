@@ -1,5 +1,6 @@
 .vs/
 bin/
 obj/
+packages/
 Setup/Output/
 *.csproj.user
