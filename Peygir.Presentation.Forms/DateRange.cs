@@ -14,7 +14,6 @@ namespace Peygir.Presentation.Forms {
 			HighBound = high != null ?
 				high.Value.ToUniversalTime() :
 				null as DateTime?;
-			;
 		}
 
 		public DateRange(bool hasLow, DateTime low, bool hasHigh, DateTime high) {
@@ -24,54 +23,45 @@ namespace Peygir.Presentation.Forms {
 			HighBound = hasHigh ?
 				high.ToUniversalTime() :
 				null as DateTime?;
-			;
 		}
 
 		public DateRange WithLowBound(DateTime? low) {
-			if (low == null && HighBound == null)
-				return null;
+			if (low == null && HighBound == null) return null;
 			return new DateRange(low, HighBound);
 		}
 
 		public DateRange WithLowBound(bool hasLow, DateTime low) {
-			if (!hasLow && HighBound == null)
-				return null;
+			if (!hasLow && HighBound == null) return null;
 			return new DateRange(low, HighBound);
 		}
 
 		public DateRange WithHighBound(DateTime? high) {
-			if (LowBound == null && high == null)
-				return null;
+			if (LowBound == null && high == null) return null;
 			return new DateRange(LowBound, high);
 		}
 
 		public DateRange WithHighBound(bool hasHigh, DateTime high) {
-			if (LowBound == null && !hasHigh)
-				return null;
+			if (LowBound == null && !hasHigh) return null;
 			return new DateRange(LowBound, high);
 		}
 
 		internal static DateRange Normalize(DateTime? low, DateTime? high) {
-			if (low == null && high == null)
-				return null;
+			if (low == null && high == null) return null;
 			return new DateRange(low, high);
 		}
 
 		internal static DateRange Normalize(bool hasLow, DateTime low, bool hasHigh, DateTime high) {
-			if (!hasLow && !hasHigh)
-				return null;
+			if (!hasLow && !hasHigh) return null;
 			return new DateRange(hasLow, low, hasHigh, high);
 		}
 
 		internal static DateRange Normalize(bool hasLow, DateTime low, DateTime? high) {
-			if (!hasLow && high == null)
-				return null;
+			if (!hasLow && high == null) return null;
 			return new DateRange(hasLow ? low : null as DateTime?, high);
 		}
 
 		internal static DateRange Normalize(DateTime? low, bool hasHigh, DateTime high) {
-			if (low == null && !hasHigh)
-				return null;
+			if (low == null && !hasHigh) return null;
 			return new DateRange(low, hasHigh ? high : null as DateTime?);
 		}
 
@@ -82,12 +72,9 @@ namespace Peygir.Presentation.Forms {
 		}
 
 		public string ToString(DateTimeFormatter formatter) {
-			if (LowBound == null && HighBound == null)
-				return null;
-			if (LowBound == null)
-				return "* - " + formatter.Format(HighBound.Value);
-			if (HighBound == null)
-				return formatter.Format(LowBound.Value) + " - *";
+			if (LowBound == null && HighBound == null) return null;
+			if (LowBound == null) return "* - " + formatter.Format(HighBound.Value);
+			if (HighBound == null) return formatter.Format(LowBound.Value) + " - *";
 			return formatter.Format(LowBound.Value) + " - " + formatter.Format(HighBound.Value);
 		}
 

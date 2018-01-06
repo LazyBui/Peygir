@@ -10,6 +10,9 @@ using Peygir.Presentation.Forms.Properties;
 namespace Peygir.Presentation.Forms {
 	public partial class MainForm : Form {
 		private Dictionary<Project, ProjectForm> mForms = new Dictionary<Project, ProjectForm>();
+		private bool mResettingFilters = false;
+		private DateRange mCreateFilter = null;
+		private DateRange mModifyFilter = null;
 
 		public MessageBoxOptions FormMessageBoxOptions {
 			get {
@@ -145,6 +148,69 @@ namespace Peygir.Presentation.Forms {
 		#endregion
 		#endregion
 
+		#region Filter UI
+		private void projectTextBox_TextChanged(object sender, EventArgs e) {
+			ShowProjects();
+		}
+
+		private void ticketStateComboBox_SelectedIndexChanged(object sender, EventArgs e) {
+			ShowProjects();
+		}
+
+		private void ticketPriorityComboBox_SelectedIndexChanged(object sender, EventArgs e) {
+			ShowProjects();
+		}
+
+		private void ticketSeverityComboBox_SelectedIndexChanged(object sender, EventArgs e) {
+			ShowProjects();
+		}
+
+		private void ticketTypeComboBox_SelectedIndexChanged(object sender, EventArgs e) {
+			ShowProjects();
+		}
+
+		private void reporterComboBox_SelectedIndexChanged(object sender, EventArgs e) {
+			ShowProjects();
+		}
+
+		private void assignedComboBox_SelectedIndexChanged(object sender, EventArgs e) {
+			ShowProjects();
+		}
+
+		private void createdButton_Click(object sender, EventArgs e) {
+			using (var form = new DateRangeForm(mCreateFilter, "Created")) {
+				var result = form.ShowDialog();
+				if (result == DialogResult.Cancel)
+					return;
+
+				mCreateFilter = result == DialogResult.No ?
+					null :
+					form.Range;
+				FormUtil.FormatDateFilter(createdTextBox, mCreateFilter);
+				ShowProjects();
+			}
+		}
+
+		private void modifiedButton_Click(object sender, EventArgs e) {
+			using (var form = new DateRangeForm(mModifyFilter, "Modified")) {
+				var result = form.ShowDialog();
+				if (result == DialogResult.Cancel)
+					return;
+
+				mModifyFilter = result == DialogResult.No ?
+					null :
+					form.Range;
+				FormUtil.FormatDateFilter(modifiedTextBox, mModifyFilter);
+				ShowProjects();
+			}
+		}
+
+		private void resetFilterButton_Click(object sender, EventArgs e) {
+			ResetFilters();
+			ShowProjects();
+		}
+		#endregion
+
 		#region Utility functions
 		private void ShowCurrentLanguage() {
 			englishToolStripMenuItem.Checked = false;
@@ -176,14 +242,11 @@ namespace Peygir.Presentation.Forms {
 				+ Environment.NewLine
 				+ "Do you want to restart the application now?";
 
-			DialogResult result =
-			MessageBox.Show
-			(
+			DialogResult result = MessageBox.Show(
 				message,
 				"Peygir",
 				MessageBoxButtons.YesNo,
-				MessageBoxIcon.Question
-			);
+				MessageBoxIcon.Question);
 
 			// Restart.
 			if (result == DialogResult.Yes) {
@@ -317,6 +380,7 @@ namespace Peygir.Presentation.Forms {
 
 		private void CloseDatabase() {
 			Database.Close();
+			ResetFilters();
 
 			// ToArray to copy the forms so we can mutate the dictionary
 			foreach (var form in mForms.ToArray()) {
@@ -336,6 +400,10 @@ namespace Peygir.Presentation.Forms {
 				// Might change date formatting, update display
 				ShowProjects();
 
+				// Update filter boxes
+				FormUtil.FormatDateFilter(createdTextBox, mCreateFilter);
+				FormUtil.FormatDateFilter(modifiedTextBox, mModifyFilter);
+
 				// If there are any open forms, go through them and let them know as well
 				foreach (var child in mForms) {
 					child.Value.UpdateSettings();
@@ -344,6 +412,8 @@ namespace Peygir.Presentation.Forms {
 		}
 
 		private void ShowProjects() {
+			if (mResettingFilters) return;
+
 			// Save selected projects.
 			List<int> selectedProjects = new List<int>();
 			foreach (ListViewItem item in projectsListUserControl.ProjectsListView.SelectedItems) {
@@ -352,6 +422,59 @@ namespace Peygir.Presentation.Forms {
 			}
 
 			Project[] projects = Project.GetProjects();
+			
+
+			string nameFilter = projectTextBox.Text;
+			string reporterFilter = reportersComboBox.SelectedText;
+			string assignedFilter = assignedToComboBox.SelectedText;
+			var stateFilter = FormUtil.CastBox<MetaTicketState>(ticketStateComboBox);
+			var severityFilter = FormUtil.CastBox<TicketSeverity>(ticketSeverityComboBox);
+			var priorityFilter = FormUtil.CastBox<TicketPriority>(ticketPriorityComboBox);
+			var typeFilter = FormUtil.CastBox<TicketType>(ticketTypeComboBox);
+
+			projects = projects.Where(p => {
+				var tickets = p.GetTickets();
+				if (!tickets.Any()) {
+					// If we have any filters specified, this project can't qualify with no tickets
+					// Since we're returning true if it qualifies and false if not, we need to check for the negative condition
+					return !new object[] {
+						nameFilter,
+						reporterFilter,
+						assignedFilter,
+						stateFilter,
+						severityFilter,
+						priorityFilter,
+						typeFilter,
+						mCreateFilter,
+						mModifyFilter,
+					}.Any(v => v != null);
+				}
+
+				bool satisfiesNameFilter = FormUtil.FilterContains(p.Name, nameFilter);
+				if (!satisfiesNameFilter)
+					return false;
+
+				return tickets.Any(t => {
+					bool satisfiesReporterFilter = FormUtil.FilterMatch(t.ReportedBy, reporterFilter);
+					bool satisfiesAssignedFilter = FormUtil.FilterMatch(t.AssignedTo, assignedFilter);
+					bool satisfiesStateFilter = stateFilter == null || stateFilter.Value.AppliesTo(t.State);
+					bool satisfiesSeverityFilter = FormUtil.FilterEnum(t.Severity, severityFilter);
+					bool satisfiesPriorityFilter = FormUtil.FilterEnum(t.Priority, priorityFilter);
+					bool satisfiesTypeFilter = FormUtil.FilterEnum(t.Type, typeFilter);
+					bool satisfiesCreatedFilter = FormUtil.FilterContains(t.CreateTimestamp, mCreateFilter);
+					bool satisfiesModifiedFilter = FormUtil.FilterContains(t.ModifyTimestamp, mModifyFilter);
+
+					return
+						satisfiesReporterFilter &&
+						satisfiesAssignedFilter &&
+						satisfiesStateFilter &&
+						satisfiesSeverityFilter &&
+						satisfiesPriorityFilter &&
+						satisfiesTypeFilter &&
+						satisfiesCreatedFilter &&
+						satisfiesModifiedFilter;
+				});
+			}).ToArray();
 
 			projectsListUserControl.ShowProjects(projects, FormUtil.GetFormatter());
 
@@ -379,15 +502,13 @@ namespace Peygir.Presentation.Forms {
 			if (form.ShowDialog() == DialogResult.OK) {
 				// Check name.
 				if (string.IsNullOrWhiteSpace(form.ProjectDetailsUserControl.ProjectName)) {
-					MessageBox.Show
-					(
+					MessageBox.Show(
 						Resources.String_TheProjectNameCannotBeBlank,
 						Resources.String_Error,
 						MessageBoxButtons.OK,
 						MessageBoxIcon.Error,
 						MessageBoxDefaultButton.Button1,
-						FormMessageBoxOptions
-					);
+						FormMessageBoxOptions);
 					goto Again;
 				}
 
@@ -442,16 +563,13 @@ namespace Peygir.Presentation.Forms {
 
 		private void DeleteProject() {
 			if (projectsListUserControl.ProjectsListView.SelectedItems.Count > 0) {
-				DialogResult result =
-				MessageBox.Show
-				(
+				DialogResult result = MessageBox.Show(
 					Resources.String_AreYouSureYouWantToDeleteSelectedProjects,
 					Resources.String_DeleteProjects,
 					MessageBoxButtons.YesNo,
 					MessageBoxIcon.Question,
 					MessageBoxDefaultButton.Button1,
-					FormMessageBoxOptions
-				);
+					FormMessageBoxOptions);
 
 				if (result != DialogResult.Yes) {
 					return;
@@ -477,21 +595,35 @@ namespace Peygir.Presentation.Forms {
 				Process.Start(helpPath);
 			}
 			catch (Exception exception) {
-				MessageBox.Show
-				(
+				MessageBox.Show(
 					exception.Message,
 					Resources.String_Error,
 					MessageBoxButtons.OK,
 					MessageBoxIcon.Error,
 					MessageBoxDefaultButton.Button1,
-					FormMessageBoxOptions
-				);
+					FormMessageBoxOptions);
 			}
 		}
 
 		private void ShowAbout() {
 			AboutForm form = new AboutForm();
 			form.ShowDialog();
+		}
+
+		private void ResetFilters() {
+			mResettingFilters = true;
+			projectTextBox.Text = string.Empty;
+			FormUtil.SetOrDefault(assignedToComboBox);
+			FormUtil.SetOrDefault(reportersComboBox);
+			FormUtil.SetOrDefault(ticketPriorityComboBox);
+			FormUtil.SetOrDefault(ticketSeverityComboBox);
+			FormUtil.SetOrDefault(ticketStateComboBox);
+			FormUtil.SetOrDefault(ticketTypeComboBox);
+			mModifyFilter = null;
+			modifiedTextBox.Text = string.Empty;
+			mCreateFilter = null;
+			createdTextBox.Text = string.Empty;
+			mResettingFilters = false;
 		}
 
 		internal void CloseProjectForm(ProjectForm form) {

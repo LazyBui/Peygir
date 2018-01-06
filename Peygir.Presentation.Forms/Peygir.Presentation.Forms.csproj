@@ -59,6 +59,13 @@
     <Compile Include="AttachmentsForm.Designer.cs">
       <DependentUpon>AttachmentsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DateRange.cs" />
+    <Compile Include="DateRangeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DateRangeForm.designer.cs">
+      <DependentUpon>DateRangeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormUtil.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -148,6 +155,9 @@
     <EmbeddedResource Include="AttachmentsForm.resx">
       <DependentUpon>AttachmentsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DateRangeForm.resx">
+      <DependentUpon>DateRangeForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.fa.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -181,7 +191,7 @@
       <DependentUpon>ProjectForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.fa.resx" />
-	<EmbeddedResource Include="Properties\Resources.resx">
+    <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>

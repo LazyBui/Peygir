@@ -49,6 +49,7 @@
     <Compile Include="Database.cs" />
     <Compile Include="DateTimeFormatter.cs" />
     <Compile Include="DBObject.cs" />
+    <Compile Include="MetaTicketState.cs" />
     <Compile Include="Milestone.cs" />
     <Compile Include="MilestoneState.cs" />
     <Compile Include="Project.cs" />
