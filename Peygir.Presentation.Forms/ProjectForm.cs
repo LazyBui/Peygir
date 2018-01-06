@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Peygir.Logic;
@@ -603,10 +604,13 @@ namespace Peygir.Presentation.Forms {
 
 			form.TicketDetailsUserControl.ShowMilestones(milestones);
 
-			form.TicketDetailsUserControl.Type = (TicketType)(-1);
+			form.TicketDetailsUserControl.Type = TicketType.Task;
 			form.TicketDetailsUserControl.Severity = TicketSeverity.Normal;
-			form.TicketDetailsUserControl.State = TicketState.New;
+			form.TicketDetailsUserControl.State = TicketState.Accepted;
 			form.TicketDetailsUserControl.Priority = TicketPriority.Normal;
+			if (milestones.Count() == 1) {
+				form.TicketDetailsUserControl.Milestone = milestones.First();
+			}
 
 			Again:
 			if (form.ShowDialog() == DialogResult.OK) {
