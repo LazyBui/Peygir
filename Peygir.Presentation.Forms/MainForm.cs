@@ -30,6 +30,126 @@ namespace Peygir.Presentation.Forms {
 			UpdateControlsEnabledProperty();
 		}
 
+		private void ProjectsListView_SelectedIndexChanged(object sender, EventArgs e) {
+			UpdateControlsEnabledProperty();
+		}
+
+		private void ProjectsListView_DoubleClick(object sender, EventArgs e) {
+			EditProject(ticketTab: true);
+		}
+
+		#region Form context menu
+		#region File
+		private void newDatabaseToolStripMenuItem_Click(object sender, EventArgs e) {
+			NewDatabase();
+		}
+
+		private void openDatabaseToolStripMenuItem_Click(object sender, EventArgs e) {
+			OpenDatabase();
+		}
+
+		private void saveDatabaseAsToolStripMenuItem_Click(object sender, EventArgs e) {
+			SaveDatabaseAs();
+		}
+
+		private void closeDatabaseToolStripMenuItem_Click(object sender, EventArgs e) {
+			CloseDatabase();
+		}
+
+		private void exitToolStripMenuItem_Click(object sender, EventArgs e) {
+			Close();
+		}
+		#endregion
+
+		#region Tools
+		private void optionsToolStripMenuItem_Click(object sender, EventArgs e) {
+			ShowOptions();
+		}
+		#endregion
+
+		#region Help
+		private void viewHelpToolStripMenuItem_Click(object sender, EventArgs e) {
+			ShowHelp();
+		}
+
+		private void aboutToolStripMenuItem_Click(object sender, EventArgs e) {
+			ShowAbout();
+		}
+		#endregion
+
+		#region Language
+		private void englishToolStripMenuItem_Click(object sender, EventArgs e) {
+			ChangeLanguage("en");
+		}
+
+		private void persianToolStripMenuItem_Click(object sender, EventArgs e) {
+			ChangeLanguage("fa");
+		}
+		#endregion
+		#endregion
+
+		#region Project modification UI
+		#region Buttons
+		private void addProjectButton_Click(object sender, EventArgs e) {
+			AddProject();
+		}
+
+		private void editProjectButton_Click(object sender, EventArgs e) {
+			EditProject();
+		}
+
+		private void editTicketsButton_Click(object sender, EventArgs e) {
+			EditProject(ticketTab: true);
+		}
+
+		private void deleteProjectButton_Click(object sender, EventArgs e) {
+			DeleteProject();
+		}
+		#endregion
+
+		#region Context menu
+		private void projectContextMenu_Opening(object sender, System.ComponentModel.CancelEventArgs e) {
+			int selectedProjectsCount = projectsListUserControl.ProjectsListView.SelectedItems.Count;
+			if (selectedProjectsCount == 0) {
+				addProjectToolStripMenuItem.Enabled = true;
+				editProjectToolStripMenuItem.Enabled = false;
+				editTicketsToolStripMenuItem.Enabled = false;
+				deleteProjectToolStripMenuItem.Enabled = false;
+			}
+			else if (selectedProjectsCount == 1) {
+				addProjectToolStripMenuItem.Enabled = true;
+				editProjectToolStripMenuItem.Enabled = true;
+				editTicketsToolStripMenuItem.Enabled = true;
+				deleteProjectToolStripMenuItem.Enabled = true;
+			}
+			else {
+				addProjectToolStripMenuItem.Enabled = true;
+				editProjectToolStripMenuItem.Enabled = false;
+				editTicketsToolStripMenuItem.Enabled = false;
+				deleteProjectToolStripMenuItem.Enabled = true;
+			}
+
+		}
+
+		private void addProjectToolStripMenuItem_Click(object sender, EventArgs e) {
+			AddProject();
+		}
+
+		private void editProjectToolStripMenuItem_Click(object sender, EventArgs e) {
+			EditProject();
+		}
+
+		private void editTicketsToolStripMenuItem_Click(object sender, EventArgs e) {
+			EditProject(ticketTab: true);
+		}
+
+		private void deleteProjectToolStripMenuItem_Click(object sender, EventArgs e) {
+			DeleteProject();
+		}
+		#endregion
+		#endregion
+
+		#region Utility functions
 		private void ShowCurrentLanguage() {
 			englishToolStripMenuItem.Checked = false;
 			persianToolStripMenuItem.Checked = false;
@@ -369,113 +489,6 @@ namespace Peygir.Presentation.Forms {
 			AboutForm form = new AboutForm();
 			form.ShowDialog();
 		}
-
-		private void newDatabaseToolStripMenuItem_Click(object sender, EventArgs e) {
-			NewDatabase();
-		}
-
-		private void openDatabaseToolStripMenuItem_Click(object sender, EventArgs e) {
-			OpenDatabase();
-		}
-
-		private void saveDatabaseAsToolStripMenuItem_Click(object sender, EventArgs e) {
-			SaveDatabaseAs();
-		}
-
-		private void closeDatabaseToolStripMenuItem_Click(object sender, EventArgs e) {
-			CloseDatabase();
-		}
-
-		private void exitToolStripMenuItem_Click(object sender, EventArgs e) {
-			Close();
-		}
-
-		private void optionsToolStripMenuItem_Click(object sender, EventArgs e) {
-			ShowOptions();
-		}
-
-		private void ProjectsListView_SelectedIndexChanged(object sender, EventArgs e) {
-			UpdateControlsEnabledProperty();
-		}
-
-		private void ProjectsListView_DoubleClick(object sender, EventArgs e) {
-			EditProject(ticketTab: true);
-		}
-
-		#region Project modification UI
-		#region Buttons
-		private void addProjectButton_Click(object sender, EventArgs e) {
-			AddProject();
-		}
-
-		private void editProjectButton_Click(object sender, EventArgs e) {
-			EditProject();
-		}
-
-		private void editTicketsButton_Click(object sender, EventArgs e) {
-			EditProject(ticketTab: true);
-		}
-
-		private void deleteProjectButton_Click(object sender, EventArgs e) {
-			DeleteProject();
-		}
 		#endregion
-
-		#region Context menu
-		private void projectContextMenu_Opening(object sender, System.ComponentModel.CancelEventArgs e) {
-			int selectedProjectsCount = projectsListUserControl.ProjectsListView.SelectedItems.Count;
-			if (selectedProjectsCount == 0) {
-				addProjectToolStripMenuItem.Enabled = true;
-				editProjectToolStripMenuItem.Enabled = false;
-				editTicketsToolStripMenuItem.Enabled = false;
-				deleteProjectToolStripMenuItem.Enabled = false;
-			}
-			else if (selectedProjectsCount == 1) {
-				addProjectToolStripMenuItem.Enabled = true;
-				editProjectToolStripMenuItem.Enabled = true;
-				editTicketsToolStripMenuItem.Enabled = true;
-				deleteProjectToolStripMenuItem.Enabled = true;
-			}
-			else {
-				addProjectToolStripMenuItem.Enabled = true;
-				editProjectToolStripMenuItem.Enabled = false;
-				editTicketsToolStripMenuItem.Enabled = false;
-				deleteProjectToolStripMenuItem.Enabled = true;
-			}
-
-		}
-		private void addProjectToolStripMenuItem_Click(object sender, EventArgs e) {
-			AddProject();
-		}
-
-		private void editProjectToolStripMenuItem_Click(object sender, EventArgs e) {
-			EditProject();
-		}
-
-		private void editTicketsToolStripMenuItem_Click(object sender, EventArgs e) {
-			EditProject(ticketTab: true);
-		}
-
-		private void deleteProjectToolStripMenuItem_Click(object sender, EventArgs e) {
-			DeleteProject();
-		}
-		#endregion
-		#endregion
-
-		private void viewHelpToolStripMenuItem_Click(object sender, EventArgs e) {
-			ShowHelp();
-		}
-
-		private void aboutToolStripMenuItem_Click(object sender, EventArgs e) {
-			ShowAbout();
-		}
-
-		private void englishToolStripMenuItem_Click(object sender, EventArgs e) {
-			ChangeLanguage("en");
-		}
-
-		private void persianToolStripMenuItem_Click(object sender, EventArgs e) {
-			ChangeLanguage("fa");
-		}
 	}
 }
