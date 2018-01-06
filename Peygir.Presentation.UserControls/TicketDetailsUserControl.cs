@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 using Peygir.Logic;
 
 namespace Peygir.Presentation.UserControls {
 	public partial class TicketDetailsUserControl : UserControl {
 		private bool readOnly;
+		private static readonly Font SansSerif = new Font("Tahoma", 8.5f, GraphicsUnit.Point);
+		private static readonly Font Monospace = new Font("Courier New", 9f, GraphicsUnit.Point);
 
 		public bool ReadOnly {
 			get { return readOnly; }
@@ -179,6 +182,20 @@ namespace Peygir.Presentation.UserControls {
 
 		private void modifiedTextBox_KeyDown(object sender, KeyEventArgs e) {
 			TextBoxUtil.TextBoxKeyDown(sender, e);
+		}
+
+		private void sansSerifButton_CheckedChanged(object sender, EventArgs e) {
+			if (!sansSerifButton.Checked) return;
+			descriptionTextBox.Font = SansSerif;
+		}
+
+		private void monospaceButton_CheckedChanged(object sender, EventArgs e) {
+			if (!monospaceButton.Checked) return;
+			descriptionTextBox.Font = Monospace;
+		}
+
+		private void wordWrapCheckBox_CheckedChanged(object sender, EventArgs e) {
+			descriptionTextBox.WordWrap = wordWrapCheckBox.Checked;
 		}
 	}
 }

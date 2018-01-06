@@ -49,6 +49,10 @@
 			this.label11 = new System.Windows.Forms.Label();
 			this.modifiedTextBox = new System.Windows.Forms.TextBox();
 			this.label12 = new System.Windows.Forms.Label();
+			this.sansSerifButton = new System.Windows.Forms.RadioButton();
+			this.monospaceButton = new System.Windows.Forms.RadioButton();
+			this.label13 = new System.Windows.Forms.Label();
+			this.wordWrapCheckBox = new System.Windows.Forms.CheckBox();
 			this.SuspendLayout();
 			// 
 			// groupBox1
@@ -226,10 +230,43 @@
 			resources.ApplyResources(this.label12, "label12");
 			this.label12.Name = "label12";
 			// 
+			// sansSerifButton
+			// 
+			resources.ApplyResources(this.sansSerifButton, "sansSerifButton");
+			this.sansSerifButton.Checked = true;
+			this.sansSerifButton.Name = "sansSerifButton";
+			this.sansSerifButton.UseVisualStyleBackColor = true;
+			this.sansSerifButton.CheckedChanged += new System.EventHandler(this.sansSerifButton_CheckedChanged);
+			// 
+			// monospaceButton
+			// 
+			resources.ApplyResources(this.monospaceButton, "monospaceButton");
+			this.monospaceButton.Name = "monospaceButton";
+			this.monospaceButton.UseVisualStyleBackColor = true;
+			this.monospaceButton.CheckedChanged += new System.EventHandler(this.monospaceButton_CheckedChanged);
+			// 
+			// label13
+			// 
+			resources.ApplyResources(this.label13, "label13");
+			this.label13.Name = "label13";
+			// 
+			// wordWrapCheckBox
+			// 
+			resources.ApplyResources(this.wordWrapCheckBox, "wordWrapCheckBox");
+			this.wordWrapCheckBox.Checked = true;
+			this.wordWrapCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.wordWrapCheckBox.Name = "wordWrapCheckBox";
+			this.wordWrapCheckBox.UseVisualStyleBackColor = true;
+			this.wordWrapCheckBox.CheckedChanged += new System.EventHandler(this.wordWrapCheckBox_CheckedChanged);
+			// 
 			// TicketDetailsUserControl
 			// 
 			resources.ApplyResources(this, "$this");
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.Controls.Add(this.wordWrapCheckBox);
+			this.Controls.Add(this.label13);
+			this.Controls.Add(this.monospaceButton);
+			this.Controls.Add(this.sansSerifButton);
 			this.Controls.Add(this.modifiedTextBox);
 			this.Controls.Add(this.label12);
 			this.Controls.Add(this.createdTextBox);
@@ -288,5 +325,9 @@
 		private System.Windows.Forms.Label label11;
 		private System.Windows.Forms.TextBox modifiedTextBox;
 		private System.Windows.Forms.Label label12;
+		private System.Windows.Forms.RadioButton sansSerifButton;
+		private System.Windows.Forms.RadioButton monospaceButton;
+		private System.Windows.Forms.Label label13;
+		private System.Windows.Forms.CheckBox wordWrapCheckBox;
 	}
 }
