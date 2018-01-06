@@ -664,6 +664,11 @@ namespace Peygir.Presentation.Forms {
 					new List<string>(assignedToComboBox.Items.Cast<string>()).IndexOf(selectedAssignedText);
 			}
 
+			// Any child should require updated filters
+			foreach (var form in mForms.ToArray()) {
+				form.Value.UpdateTicket();
+			}
+
 			ShowProjects();
 		}
 		#endregion

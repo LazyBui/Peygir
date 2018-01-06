@@ -178,7 +178,7 @@
     <value>projectDetailsUserControl</value>
   </data>
   <data name="&gt;&gt;projectDetailsUserControl.Type" xml:space="preserve">
-    <value>Peygir.Presentation.UserControls.ProjectDetailsUserControl, Peygir.Presentation.UserControls, Version=1.0.1.37825, Culture=neutral, PublicKeyToken=7bc4e639a7e2568f</value>
+    <value>Peygir.Presentation.UserControls.ProjectDetailsUserControl, Peygir.Presentation.UserControls, Version=1.0.1.38903, Culture=neutral, PublicKeyToken=7bc4e639a7e2568f</value>
   </data>
   <data name="&gt;&gt;projectDetailsUserControl.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -376,10 +376,10 @@
     <value>Top, Bottom, Left, Right</value>
   </data>
   <data name="milestonesListUserControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 19</value>
+    <value>6, 20</value>
   </data>
   <data name="milestonesListUserControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>616, 346</value>
+    <value>616, 345</value>
   </data>
   <data name="milestonesListUserControl.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -388,7 +388,7 @@
     <value>milestonesListUserControl</value>
   </data>
   <data name="&gt;&gt;milestonesListUserControl.Type" xml:space="preserve">
-    <value>Peygir.Presentation.UserControls.MilestonesListUserControl, Peygir.Presentation.UserControls, Version=1.0.1.37825, Culture=neutral, PublicKeyToken=7bc4e639a7e2568f</value>
+    <value>Peygir.Presentation.UserControls.MilestonesListUserControl, Peygir.Presentation.UserControls, Version=1.0.1.38903, Culture=neutral, PublicKeyToken=7bc4e639a7e2568f</value>
   </data>
   <data name="&gt;&gt;milestonesListUserControl.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -450,6 +450,675 @@
   <data name="groupBox4.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
+  <data name="ticketMilestoneComboBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>68, 99</value>
+  </data>
+  <data name="ticketMilestoneComboBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>171, 21</value>
+  </data>
+  <data name="ticketMilestoneComboBox.TabIndex" type="System.Int32, mscorlib">
+    <value>60</value>
+  </data>
+  <data name="&gt;&gt;ticketMilestoneComboBox.Name" xml:space="preserve">
+    <value>ticketMilestoneComboBox</value>
+  </data>
+  <data name="&gt;&gt;ticketMilestoneComboBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ticketMilestoneComboBox.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;ticketMilestoneComboBox.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label10.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label10.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 102</value>
+  </data>
+  <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 13</value>
+  </data>
+  <data name="label10.TabIndex" type="System.Int32, mscorlib">
+    <value>59</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>Milestone:</value>
+  </data>
+  <data name="&gt;&gt;label10.Name" xml:space="preserve">
+    <value>label10</value>
+  </data>
+  <data name="&gt;&gt;label10.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label10.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="resetTicketFilterButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="resetTicketFilterButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>540, 99</value>
+  </data>
+  <data name="resetTicketFilterButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="resetTicketFilterButton.TabIndex" type="System.Int32, mscorlib">
+    <value>58</value>
+  </data>
+  <data name="resetTicketFilterButton.Text" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="&gt;&gt;resetTicketFilterButton.Name" xml:space="preserve">
+    <value>resetTicketFilterButton</value>
+  </data>
+  <data name="&gt;&gt;resetTicketFilterButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;resetTicketFilterButton.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;resetTicketFilterButton.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="ticketCreatedButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ticketCreatedButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>218, 45</value>
+  </data>
+  <data name="ticketCreatedButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>21, 21</value>
+  </data>
+  <data name="ticketCreatedButton.TabIndex" type="System.Int32, mscorlib">
+    <value>57</value>
+  </data>
+  <data name="ticketCreatedButton.Text" xml:space="preserve">
+    <value>+</value>
+  </data>
+  <data name="&gt;&gt;ticketCreatedButton.Name" xml:space="preserve">
+    <value>ticketCreatedButton</value>
+  </data>
+  <data name="&gt;&gt;ticketCreatedButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ticketCreatedButton.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;ticketCreatedButton.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="ticketModifiedButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ticketModifiedButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>218, 72</value>
+  </data>
+  <data name="ticketModifiedButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>21, 21</value>
+  </data>
+  <data name="ticketModifiedButton.TabIndex" type="System.Int32, mscorlib">
+    <value>56</value>
+  </data>
+  <data name="ticketModifiedButton.Text" xml:space="preserve">
+    <value>+</value>
+  </data>
+  <data name="&gt;&gt;ticketModifiedButton.Name" xml:space="preserve">
+    <value>ticketModifiedButton</value>
+  </data>
+  <data name="&gt;&gt;ticketModifiedButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ticketModifiedButton.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;ticketModifiedButton.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="modifiedTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>68, 72</value>
+  </data>
+  <data name="modifiedTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 21</value>
+  </data>
+  <data name="modifiedTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>55</value>
+  </data>
+  <data name="&gt;&gt;modifiedTextBox.Name" xml:space="preserve">
+    <value>modifiedTextBox</value>
+  </data>
+  <data name="&gt;&gt;modifiedTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;modifiedTextBox.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;modifiedTextBox.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="createdTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>68, 45</value>
+  </data>
+  <data name="createdTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 21</value>
+  </data>
+  <data name="createdTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>54</value>
+  </data>
+  <data name="&gt;&gt;createdTextBox.Name" xml:space="preserve">
+    <value>createdTextBox</value>
+  </data>
+  <data name="&gt;&gt;createdTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;createdTextBox.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;createdTextBox.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="label9.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label9.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 75</value>
+  </data>
+  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>51, 13</value>
+  </data>
+  <data name="label9.TabIndex" type="System.Int32, mscorlib">
+    <value>53</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>Modified:</value>
+  </data>
+  <data name="&gt;&gt;label9.Name" xml:space="preserve">
+    <value>label9</value>
+  </data>
+  <data name="&gt;&gt;label9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label9.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="label8.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label8.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 48</value>
+  </data>
+  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 13</value>
+  </data>
+  <data name="label8.TabIndex" type="System.Int32, mscorlib">
+    <value>52</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Created:</value>
+  </data>
+  <data name="&gt;&gt;label8.Name" xml:space="preserve">
+    <value>label8</value>
+  </data>
+  <data name="&gt;&gt;label8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="ticketReportersComboBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>316, 72</value>
+  </data>
+  <data name="ticketReportersComboBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>106, 21</value>
+  </data>
+  <data name="ticketReportersComboBox.TabIndex" type="System.Int32, mscorlib">
+    <value>51</value>
+  </data>
+  <data name="&gt;&gt;ticketReportersComboBox.Name" xml:space="preserve">
+    <value>ticketReportersComboBox</value>
+  </data>
+  <data name="&gt;&gt;ticketReportersComboBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ticketReportersComboBox.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;ticketReportersComboBox.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="ticketAssignedToComboBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>316, 45</value>
+  </data>
+  <data name="ticketAssignedToComboBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>106, 21</value>
+  </data>
+  <data name="ticketAssignedToComboBox.TabIndex" type="System.Int32, mscorlib">
+    <value>50</value>
+  </data>
+  <data name="&gt;&gt;ticketAssignedToComboBox.Name" xml:space="preserve">
+    <value>ticketAssignedToComboBox</value>
+  </data>
+  <data name="&gt;&gt;ticketAssignedToComboBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ticketAssignedToComboBox.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;ticketAssignedToComboBox.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="label7.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>244, 48</value>
+  </data>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>69, 13</value>
+  </data>
+  <data name="label7.TabIndex" type="System.Int32, mscorlib">
+    <value>49</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Assigned To:</value>
+  </data>
+  <data name="&gt;&gt;label7.Name" xml:space="preserve">
+    <value>label7</value>
+  </data>
+  <data name="&gt;&gt;label7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="label6.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label6.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>244, 75</value>
+  </data>
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>54, 13</value>
+  </data>
+  <data name="label6.TabIndex" type="System.Int32, mscorlib">
+    <value>48</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Reporter:</value>
+  </data>
+  <data name="&gt;&gt;label6.Name" xml:space="preserve">
+    <value>label6</value>
+  </data>
+  <data name="&gt;&gt;label6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="label5.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>244, 21</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 13</value>
+  </data>
+  <data name="label5.TabIndex" type="System.Int32, mscorlib">
+    <value>47</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Ticket Type:</value>
+  </data>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="ticketTypeComboBox.Items" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ticketTypeComboBox.Items1" xml:space="preserve">
+    <value>Defect</value>
+  </data>
+  <data name="ticketTypeComboBox.Items2" xml:space="preserve">
+    <value>Feature Request</value>
+  </data>
+  <data name="ticketTypeComboBox.Items3" xml:space="preserve">
+    <value>Task</value>
+  </data>
+  <data name="ticketTypeComboBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>316, 18</value>
+  </data>
+  <data name="ticketTypeComboBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>106, 21</value>
+  </data>
+  <data name="ticketTypeComboBox.TabIndex" type="System.Int32, mscorlib">
+    <value>46</value>
+  </data>
+  <data name="&gt;&gt;ticketTypeComboBox.Name" xml:space="preserve">
+    <value>ticketTypeComboBox</value>
+  </data>
+  <data name="&gt;&gt;ticketTypeComboBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ticketTypeComboBox.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;ticketTypeComboBox.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>426, 75</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>82, 13</value>
+  </data>
+  <data name="label4.TabIndex" type="System.Int32, mscorlib">
+    <value>45</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Ticket Severity:</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="ticketSeverityComboBox.Items" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ticketSeverityComboBox.Items1" xml:space="preserve">
+    <value>Blocker</value>
+  </data>
+  <data name="ticketSeverityComboBox.Items2" xml:space="preserve">
+    <value>Critical</value>
+  </data>
+  <data name="ticketSeverityComboBox.Items3" xml:space="preserve">
+    <value>Major</value>
+  </data>
+  <data name="ticketSeverityComboBox.Items4" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="ticketSeverityComboBox.Items5" xml:space="preserve">
+    <value>Minor</value>
+  </data>
+  <data name="ticketSeverityComboBox.Items6" xml:space="preserve">
+    <value>Trivial</value>
+  </data>
+  <data name="ticketSeverityComboBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>509, 72</value>
+  </data>
+  <data name="ticketSeverityComboBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>106, 21</value>
+  </data>
+  <data name="ticketSeverityComboBox.TabIndex" type="System.Int32, mscorlib">
+    <value>44</value>
+  </data>
+  <data name="&gt;&gt;ticketSeverityComboBox.Name" xml:space="preserve">
+    <value>ticketSeverityComboBox</value>
+  </data>
+  <data name="&gt;&gt;ticketSeverityComboBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ticketSeverityComboBox.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;ticketSeverityComboBox.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>426, 48</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>76, 13</value>
+  </data>
+  <data name="label3.TabIndex" type="System.Int32, mscorlib">
+    <value>43</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Ticket Priority:</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="ticketPriorityComboBox.Items" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ticketPriorityComboBox.Items1" xml:space="preserve">
+    <value>Lowest</value>
+  </data>
+  <data name="ticketPriorityComboBox.Items2" xml:space="preserve">
+    <value>Low</value>
+  </data>
+  <data name="ticketPriorityComboBox.Items3" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="ticketPriorityComboBox.Items4" xml:space="preserve">
+    <value>High</value>
+  </data>
+  <data name="ticketPriorityComboBox.Items5" xml:space="preserve">
+    <value>Highest</value>
+  </data>
+  <data name="ticketPriorityComboBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>509, 45</value>
+  </data>
+  <data name="ticketPriorityComboBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>106, 21</value>
+  </data>
+  <data name="ticketPriorityComboBox.TabIndex" type="System.Int32, mscorlib">
+    <value>42</value>
+  </data>
+  <data name="&gt;&gt;ticketPriorityComboBox.Name" xml:space="preserve">
+    <value>ticketPriorityComboBox</value>
+  </data>
+  <data name="&gt;&gt;ticketPriorityComboBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ticketPriorityComboBox.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;ticketPriorityComboBox.ZOrder" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="ticketTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>68, 18</value>
+  </data>
+  <data name="ticketTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>171, 21</value>
+  </data>
+  <data name="ticketTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>41</value>
+  </data>
+  <data name="&gt;&gt;ticketTextBox.Name" xml:space="preserve">
+    <value>ticketTextBox</value>
+  </data>
+  <data name="&gt;&gt;ticketTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ticketTextBox.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;ticketTextBox.ZOrder" xml:space="preserve">
+    <value>19</value>
+  </data>
+  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 21</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 13</value>
+  </data>
+  <data name="label2.TabIndex" type="System.Int32, mscorlib">
+    <value>40</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Summary:</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>426, 21</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>68, 13</value>
+  </data>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>39</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Ticket State:</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>21</value>
+  </data>
+  <data name="ticketStateComboBox.Items" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ticketStateComboBox.Items1" xml:space="preserve">
+    <value>New</value>
+  </data>
+  <data name="ticketStateComboBox.Items2" xml:space="preserve">
+    <value>Accepted</value>
+  </data>
+  <data name="ticketStateComboBox.Items3" xml:space="preserve">
+    <value>Closed</value>
+  </data>
+  <data name="ticketStateComboBox.Items4" xml:space="preserve">
+    <value>Completed</value>
+  </data>
+  <data name="ticketStateComboBox.Items5" xml:space="preserve">
+    <value>In Progress</value>
+  </data>
+  <data name="ticketStateComboBox.Items6" xml:space="preserve">
+    <value>Blocked</value>
+  </data>
+  <data name="ticketStateComboBox.Items7" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="ticketStateComboBox.Items8" xml:space="preserve">
+    <value>Finished</value>
+  </data>
+  <data name="ticketStateComboBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>509, 18</value>
+  </data>
+  <data name="ticketStateComboBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>106, 21</value>
+  </data>
+  <data name="ticketStateComboBox.TabIndex" type="System.Int32, mscorlib">
+    <value>38</value>
+  </data>
+  <data name="&gt;&gt;ticketStateComboBox.Name" xml:space="preserve">
+    <value>ticketStateComboBox</value>
+  </data>
+  <data name="&gt;&gt;ticketStateComboBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ticketStateComboBox.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;ticketStateComboBox.ZOrder" xml:space="preserve">
+    <value>22</value>
+  </data>
   <data name="showTicketAttachmentsButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
@@ -484,7 +1153,7 @@
     <value>groupBox4</value>
   </data>
   <data name="&gt;&gt;showTicketAttachmentsButton.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>23</value>
   </data>
   <data name="showTicketHistoryButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -517,7 +1186,7 @@
     <value>groupBox4</value>
   </data>
   <data name="&gt;&gt;showTicketHistoryButton.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>24</value>
   </data>
   <data name="deleteTicketButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -550,7 +1219,7 @@
     <value>groupBox4</value>
   </data>
   <data name="&gt;&gt;deleteTicketButton.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>25</value>
   </data>
   <data name="editTicketButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -583,7 +1252,7 @@
     <value>groupBox4</value>
   </data>
   <data name="&gt;&gt;editTicketButton.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>26</value>
   </data>
   <data name="showTicketButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -616,7 +1285,7 @@
     <value>groupBox4</value>
   </data>
   <data name="&gt;&gt;showTicketButton.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>27</value>
   </data>
   <data name="addTicketButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -649,16 +1318,16 @@
     <value>groupBox4</value>
   </data>
   <data name="&gt;&gt;addTicketButton.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>28</value>
   </data>
   <data name="ticketsListUserControl.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
   <data name="ticketsListUserControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 19</value>
+    <value>6, 126</value>
   </data>
   <data name="ticketsListUserControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>616, 346</value>
+    <value>616, 239</value>
   </data>
   <data name="ticketsListUserControl.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -667,13 +1336,13 @@
     <value>ticketsListUserControl</value>
   </data>
   <data name="&gt;&gt;ticketsListUserControl.Type" xml:space="preserve">
-    <value>Peygir.Presentation.UserControls.TicketsListUserControl, Peygir.Presentation.UserControls, Version=1.0.1.37825, Culture=neutral, PublicKeyToken=7bc4e639a7e2568f</value>
+    <value>Peygir.Presentation.UserControls.TicketsListUserControl, Peygir.Presentation.UserControls, Version=1.0.1.38903, Culture=neutral, PublicKeyToken=7bc4e639a7e2568f</value>
   </data>
   <data name="&gt;&gt;ticketsListUserControl.Parent" xml:space="preserve">
     <value>groupBox4</value>
   </data>
   <data name="&gt;&gt;ticketsListUserControl.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>29</value>
   </data>
   <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 6</value>
@@ -890,9 +1559,6 @@
         AAAAAAAA//8AAIABAACAAQAAgAEAAIABAACAAQAAgAEAAIABAACAAQAAgAEAAIABAAD4AQAA+AEAAPgf
         AAD4HwAA/B8AAA==
 </value>
-  </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>

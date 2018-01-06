@@ -10,6 +10,10 @@ using Peygir.Presentation.Forms.Properties;
 namespace Peygir.Presentation.Forms {
 	public partial class ProjectForm : Form {
 		private MainForm mMainForm = null;
+		private bool mResettingTicketFilters = false;
+		private DateRange mTicketCreateFilter = null;
+		private DateRange mTicketModifyFilter = null;
+
 		public Project Project { get; private set; }
 		public MessageBoxOptions FormMessageBoxOptions {
 			get {
@@ -47,6 +51,7 @@ namespace Peygir.Presentation.Forms {
 			ShowProjectDetails();
 			ShowMilestones();
 			ShowTickets();
+			PopulateTicketFilters();
 
 			Text = "Project - " + project.Name;
 		}
@@ -212,6 +217,80 @@ namespace Peygir.Presentation.Forms {
 
 		#endregion
 
+		#region Ticket filter UI
+		private void ticketTextBox_TextChanged(object sender, EventArgs e) {
+			ShowTickets();
+		}
+
+		private void ticketStateComboBox_SelectedIndexChanged(object sender, EventArgs e) {
+			ShowTickets();
+		}
+
+		private void ticketPriorityComboBox_SelectedIndexChanged(object sender, EventArgs e) {
+			ShowTickets();
+		}
+
+		private void ticketSeverityComboBox_SelectedIndexChanged(object sender, EventArgs e) {
+			ShowTickets();
+		}
+
+		private void ticketTypeComboBox_SelectedIndexChanged(object sender, EventArgs e) {
+			ShowTickets();
+		}
+
+		private void ticketAssignedToComboBox_SelectedIndexChanged(object sender, EventArgs e) {
+			ShowTickets();
+		}
+
+		private void ticketReportersComboBox_SelectedIndexChanged(object sender, EventArgs e) {
+			ShowTickets();
+		}
+
+		private void ticketMilestoneComboBox_SelectedIndexChanged(object sender, EventArgs e) {
+			ShowTickets();
+		}
+
+		private void resetTicketFilterButton_Click(object sender, EventArgs e) {
+			ResetTicketFilters();
+			ShowTickets();
+		}
+
+		private void ticketCreatedButton_Click(object sender, EventArgs e) {
+			using (var form = new DateRangeForm(mTicketCreateFilter, "Created")) {
+				var result = form.ShowDialog();
+				if (result == DialogResult.Cancel)
+					return;
+				if (result == DialogResult.No) {
+					mTicketCreateFilter = null;
+					createdTextBox.Text = string.Empty;
+					ShowTickets();
+					return;
+				}
+				mTicketCreateFilter = form.Range;
+				createdTextBox.Text = mTicketCreateFilter?.ToString() ?? string.Empty;
+				ShowTickets();
+			}
+		}
+
+		private void ticketModifiedButton_Click(object sender, EventArgs e) {
+			using (var form = new DateRangeForm(mTicketModifyFilter, "Modified")) {
+				var result = form.ShowDialog();
+				if (result == DialogResult.Cancel) {
+					return;
+				}
+				if (result == DialogResult.No) {
+					mTicketModifyFilter = null;
+					modifiedTextBox.Text = string.Empty;
+					ShowTickets();
+					return;
+				}
+				mTicketModifyFilter = form.Range;
+				modifiedTextBox.Text = mTicketModifyFilter?.ToString() ?? string.Empty;
+				ShowTickets();
+			}
+		}
+		#endregion
+
 		#region Utility functions
 		private void UpdateButtonsEnabledProperty() {
 			int selectedMilestonesCount = milestonesListUserControl.MilestonesListView.SelectedItems.Count;
@@ -372,6 +451,8 @@ namespace Peygir.Presentation.Forms {
 					}
 				}
 
+				PopulateTicketFilters();
+
 				UpdateButtonsEnabledProperty();
 
 				milestonesListUserControl.Focus();
@@ -440,6 +521,11 @@ namespace Peygir.Presentation.Forms {
 
 				// Show milestones.
 				ShowMilestones();
+
+				PopulateTicketFilters();
+
+				// Tickets will have outdated naming potentially if we don't update the ticket display
+				ShowTickets();
 			}
 		}
 
@@ -468,6 +554,11 @@ namespace Peygir.Presentation.Forms {
 
 				// Show milestones.
 				ShowMilestones();
+
+				PopulateTicketFilters();
+
+				// Tickets may change as the result of removing a milestone
+				ShowTickets();
 			}
 		}
 		#endregion
@@ -562,6 +653,8 @@ namespace Peygir.Presentation.Forms {
 		}
 
 		private void ShowTickets() {
+			if (mResettingTicketFilters) return;
+
 			// Save selected tickets.
 			List<int> selectedTickets = new List<int>();
 			foreach (ListViewItem item in ticketsListUserControl.TicketsListView.SelectedItems) {
@@ -569,7 +662,41 @@ namespace Peygir.Presentation.Forms {
 				selectedTickets.Add(ticket.ID);
 			}
 
+			string summaryFilter = ticketTextBox.Text;
+			string reporterFilter = ticketReportersComboBox.SelectedText;
+			string assignedFilter = ticketAssignedToComboBox.SelectedText;
+			string milestoneFilter = (string)ticketMilestoneComboBox.SelectedItem;
+			var stateFilter = FormUtil.CastBox<MetaTicketState>(ticketStateComboBox);
+			var severityFilter = FormUtil.CastBox<TicketSeverity>(ticketSeverityComboBox);
+			var priorityFilter = FormUtil.CastBox<TicketPriority>(ticketPriorityComboBox);
+			var typeFilter = FormUtil.CastBox<TicketType>(ticketTypeComboBox);
+
 			Ticket[] tickets = Project.GetTickets();
+
+			tickets = tickets.Where(t => {
+				bool satisfiesSummaryFilter = FormUtil.FilterContains(t.Summary, summaryFilter);
+				bool satisfiesReporterFilter = FormUtil.FilterMatch(t.ReportedBy, reporterFilter);
+				bool satisfiesAssignedFilter = FormUtil.FilterMatch(t.AssignedTo, assignedFilter);
+				bool satisfiesMilestoneFilter = FormUtil.FilterMatch(t.GetMilestone().Name, milestoneFilter);
+				bool satisfiesStateFilter = stateFilter == null || stateFilter.Value.AppliesTo(t.State);
+				bool satisfiesSeverityFilter = FormUtil.FilterEnum(t.Severity, severityFilter);
+				bool satisfiesPriorityFilter = FormUtil.FilterEnum(t.Priority, priorityFilter);
+				bool satisfiesTypeFilter = FormUtil.FilterEnum(t.Type, typeFilter);
+				bool satisfiesCreatedFilter = FormUtil.FilterContains(t.CreateTimestamp, mTicketCreateFilter);
+				bool satisfiesModifiedFilter = FormUtil.FilterContains(t.ModifyTimestamp, mTicketModifyFilter);
+
+				return
+					satisfiesSummaryFilter &&
+					satisfiesReporterFilter &&
+					satisfiesAssignedFilter &&
+					satisfiesMilestoneFilter &&
+					satisfiesStateFilter &&
+					satisfiesSeverityFilter &&
+					satisfiesPriorityFilter &&
+					satisfiesTypeFilter &&
+					satisfiesCreatedFilter &&
+					satisfiesModifiedFilter;
+			}).ToArray();
 
 			ticketsListUserControl.ShowTickets(tickets);
 
@@ -995,11 +1122,70 @@ namespace Peygir.Presentation.Forms {
 		}
 		#endregion
 
+		private void PopulateTicketFilters() {
+			bool hadSelectedReporter = ticketReportersComboBox.SelectedIndex != -1;
+			string selectedReporterText = string.Empty;
+			if (hadSelectedReporter) {
+				selectedReporterText = ticketReportersComboBox.SelectedText;
+			}
+			ticketReportersComboBox.Items.Clear();
+			ticketReportersComboBox.Items.AddRange(Ticket.GetReporters());
+			if (hadSelectedReporter) {
+				ticketReportersComboBox.SelectedIndex =
+					new List<string>(ticketReportersComboBox.Items.Cast<string>()).IndexOf(selectedReporterText);
+			}
+
+			bool hadSelectedAssigned = ticketAssignedToComboBox.SelectedIndex != -1;
+			string selectedAssignedText = string.Empty;
+			if (hadSelectedAssigned) {
+				selectedAssignedText = ticketAssignedToComboBox.SelectedText;
+			}
+			ticketAssignedToComboBox.Items.Clear();
+			ticketAssignedToComboBox.Items.AddRange(Ticket.GetAssignees());
+			if (hadSelectedAssigned) {
+				ticketAssignedToComboBox.SelectedIndex =
+					new List<string>(ticketAssignedToComboBox.Items.Cast<string>()).IndexOf(selectedAssignedText);
+			}
+
+			bool hadMilestone = ticketMilestoneComboBox.SelectedIndex != -1;
+			string selectedMilestone = string.Empty;
+			if (hadMilestone) {
+				selectedMilestone = (string)ticketMilestoneComboBox.SelectedItem;
+			}
+			ticketMilestoneComboBox.Items.Clear();
+			ticketMilestoneComboBox.Items.AddRange(Project.GetMilestones().Select(m => m.Name).ToArray());
+			ticketMilestoneComboBox.Items.Insert(0, string.Empty);
+			if (hadMilestone) {
+				ticketMilestoneComboBox.SelectedItem =
+					new List<string>(ticketMilestoneComboBox.Items.Cast<string>()).IndexOf(selectedMilestone);
+			}
+		}
+
+		private void ResetTicketFilters() {
+			mResettingTicketFilters = true;
+			ticketTextBox.Text = string.Empty;
+			FormUtil.SetOrDefault(ticketAssignedToComboBox);
+			FormUtil.SetOrDefault(ticketReportersComboBox);
+			FormUtil.SetOrDefault(ticketPriorityComboBox);
+			FormUtil.SetOrDefault(ticketSeverityComboBox);
+			FormUtil.SetOrDefault(ticketStateComboBox);
+			FormUtil.SetOrDefault(ticketTypeComboBox);
+			mTicketModifyFilter = null;
+			modifiedTextBox.Text = string.Empty;
+			mTicketCreateFilter = null;
+			createdTextBox.Text = string.Empty;
+			ticketMilestoneComboBox.SelectedItem = null;
+			mResettingTicketFilters = false;
+		}
+
 		internal void ActivateTicketTab() {
 			tabControl.SelectedTab = ticketsTabPage;
 		}
 
 		internal void UpdateSettings() {
+			FormUtil.FormatDateFilter(createdTextBox, mTicketCreateFilter);
+			FormUtil.FormatDateFilter(modifiedTextBox, mTicketModifyFilter);
+
 			// Because ticket details forms (history too) are modal and prevent usage of the main application, we can safely assume here that we don't need to update them
 			// That is, ticket details can't be open while options change
 		}
@@ -1009,6 +1195,8 @@ namespace Peygir.Presentation.Forms {
 		}
 
 		private void UpdateTicket(bool privateCall) {
+			PopulateTicketFilters();
+
 			// Without this bool, this would end up in an infinite loop
 			// This is due to the fact that updating a ticket may add an assignee/reporter and all dialogs must be updated to account for it
 			if (privateCall)
