@@ -81,6 +81,7 @@ namespace Peygir.Presentation.Forms {
 
 				addProjectButton.Enabled = false;
 				editProjectButton.Enabled = false;
+				editTicketsButton.Enabled = false;
 				deleteProjectButton.Enabled = false;
 
 				projectsGroupBox.Enabled = false;
@@ -93,16 +94,19 @@ namespace Peygir.Presentation.Forms {
 				if (selectedProjectsCount == 0) {
 					addProjectButton.Enabled = true;
 					editProjectButton.Enabled = false;
+					editTicketsButton.Enabled = false;
 					deleteProjectButton.Enabled = false;
 				}
 				else if (selectedProjectsCount == 1) {
 					addProjectButton.Enabled = true;
 					editProjectButton.Enabled = true;
+					editTicketsButton.Enabled = true;
 					deleteProjectButton.Enabled = true;
 				}
 				else {
 					addProjectButton.Enabled = true;
 					editProjectButton.Enabled = false;
+					editTicketsButton.Enabled = false;
 					deleteProjectButton.Enabled = true;
 				}
 
@@ -403,6 +407,10 @@ namespace Peygir.Presentation.Forms {
 
 		private void editProjectButton_Click(object sender, EventArgs e) {
 			EditProject();
+		}
+
+		private void editTicketsButton_Click(object sender, EventArgs e) {
+			EditProject(ticketTab: true);
 		}
 
 		private void deleteProjectButton_Click(object sender, EventArgs e) {

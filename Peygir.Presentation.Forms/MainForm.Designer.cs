@@ -50,6 +50,7 @@
 			this.databaseToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
 			this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+			this.editTicketsButton = new System.Windows.Forms.Button();
 			this.projectsGroupBox.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
 			this.statusStrip1.SuspendLayout();
@@ -58,6 +59,7 @@
 			// projectsGroupBox
 			// 
 			resources.ApplyResources(this.projectsGroupBox, "projectsGroupBox");
+			this.projectsGroupBox.Controls.Add(this.editTicketsButton);
 			this.projectsGroupBox.Controls.Add(this.deleteProjectButton);
 			this.projectsGroupBox.Controls.Add(this.editProjectButton);
 			this.projectsGroupBox.Controls.Add(this.addProjectButton);
@@ -239,6 +241,14 @@
 			// 
 			resources.ApplyResources(this.saveFileDialog, "saveFileDialog");
 			// 
+			// editTicketsButton
+			// 
+			this.editTicketsButton.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Open;
+			resources.ApplyResources(this.editTicketsButton, "editTicketsButton");
+			this.editTicketsButton.Name = "editTicketsButton";
+			this.editTicketsButton.UseVisualStyleBackColor = true;
+			this.editTicketsButton.Click += new System.EventHandler(this.editTicketsButton_Click);
+			// 
 			// MainForm
 			// 
 			resources.ApplyResources(this, "$this");
@@ -286,5 +296,6 @@
 		private System.Windows.Forms.ToolStripMenuItem languageToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem englishToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem persianToolStripMenuItem;
+		private System.Windows.Forms.Button editTicketsButton;
 	}
 }

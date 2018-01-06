@@ -121,17 +121,47 @@
   <data name="projectsGroupBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="editTicketsButton.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopCenter</value>
+  </data>
+  <data name="editTicketsButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>422, 360</value>
+  </data>
+  <data name="editTicketsButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>83, 23</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="editTicketsButton.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="editTicketsButton.Text" xml:space="preserve">
+    <value>Ti&amp;ckets...</value>
+  </data>
+  <data name="editTicketsButton.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
+    <value>ImageBeforeText</value>
+  </data>
+  <data name="&gt;&gt;editTicketsButton.Name" xml:space="preserve">
+    <value>editTicketsButton</value>
+  </data>
+  <data name="&gt;&gt;editTicketsButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;editTicketsButton.Parent" xml:space="preserve">
+    <value>projectsGroupBox</value>
+  </data>
+  <data name="&gt;&gt;editTicketsButton.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="deleteProjectButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="deleteProjectButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>519, 360</value>
+    <value>511, 360</value>
   </data>
   <data name="deleteProjectButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
+    <value>83, 23</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="deleteProjectButton.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
@@ -151,16 +181,16 @@
     <value>projectsGroupBox</value>
   </data>
   <data name="&gt;&gt;deleteProjectButton.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="editProjectButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
   <data name="editProjectButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>438, 360</value>
+    <value>333, 360</value>
   </data>
   <data name="editProjectButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
+    <value>83, 23</value>
   </data>
   <data name="editProjectButton.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -181,16 +211,16 @@
     <value>projectsGroupBox</value>
   </data>
   <data name="&gt;&gt;editProjectButton.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="addProjectButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
   <data name="addProjectButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>357, 360</value>
+    <value>244, 360</value>
   </data>
   <data name="addProjectButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
+    <value>83, 23</value>
   </data>
   <data name="addProjectButton.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -211,7 +241,7 @@
     <value>projectsGroupBox</value>
   </data>
   <data name="&gt;&gt;addProjectButton.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="projectsListUserControl.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -229,13 +259,13 @@
     <value>projectsListUserControl</value>
   </data>
   <data name="&gt;&gt;projectsListUserControl.Type" xml:space="preserve">
-    <value>Peygir.Presentation.UserControls.ProjectsListUserControl, Peygir.Presentation.UserControls, Version=1.0.1.18015, Culture=neutral, PublicKeyToken=7bc4e639a7e2568f</value>
+    <value>Peygir.Presentation.UserControls.ProjectsListUserControl, Peygir.Presentation.UserControls, Version=1.0.1.33915, Culture=neutral, PublicKeyToken=7bc4e639a7e2568f</value>
   </data>
   <data name="&gt;&gt;projectsListUserControl.Parent" xml:space="preserve">
     <value>projectsGroupBox</value>
   </data>
   <data name="&gt;&gt;projectsListUserControl.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="projectsGroupBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 27</value>
