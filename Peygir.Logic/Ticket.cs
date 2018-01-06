@@ -146,6 +146,16 @@ namespace Peygir.Logic {
 			}
 		}
 
+		public DateTime CreateTimestamp {
+			get { return createTimestamp; }
+			set { createTimestamp = value; }
+		}
+
+		public DateTime ModifyTimestamp {
+			get { return modifyTimestamp; }
+			set { modifyTimestamp = value; }
+		}
+
 		public Ticket(int projectID, int milestoneID) {
 			if (projectID == InvalidID) {
 				string message = Resources.String_InvalidProjectID;
@@ -186,51 +196,12 @@ namespace Peygir.Logic {
 
 			// Add.
 
-			TicketsTableAdapter tableAdapter = Database.TicketsTableAdapter;
-
-			tableAdapter.Insert
-			(
-				milestoneID,
-				ticketNumber,
-				summary,
-				reportedBy,
-				(int)type,
-				(int)severity,
-				(int)state,
-				assignedTo,
-				(int)priority,
-				description
-			);
-
-			// Find ID.
-			ID = tableAdapter.GetID
-			(
-				milestoneID,
-				ticketNumber,
-				summary,
-				reportedBy,
-				(int)type,
-				(int)severity,
-				(int)state,
-				assignedTo,
-				(int)priority,
-				description
-			).Value;
-		}
-
-		public override void Update() {
-			if (ID == InvalidID) {
-				string message = Resources.String_CurrentObjectDoesNotExistInTheDatabase;
-				throw new InvalidOperationException(message);
-			}
-
-			// Update.
+			createTimestamp = modifyTimestamp = DateTime.UtcNow;
 
 			TicketsTableAdapter tableAdapter = Database.TicketsTableAdapter;
 
-			tableAdapter.UpdateByID
-			(
-							milestoneID,
+			tableAdapter.Insert(
+				milestoneID,
 				ticketNumber,
 				summary,
 				reportedBy,
@@ -240,8 +211,48 @@ namespace Peygir.Logic {
 				assignedTo,
 				(int)priority,
 				description,
-				ID
-			);
+				createTimestamp,
+				modifyTimestamp);
+
+			// Find ID.
+			ID = tableAdapter.GetID(
+				milestoneID,
+				ticketNumber,
+				summary,
+				reportedBy,
+				(int)type,
+				(int)severity,
+				(int)state,
+				assignedTo,
+				(int)priority,
+				description).Value;
+		}
+
+		public override void Update() {
+			if (ID == InvalidID) {
+				string message = Resources.String_CurrentObjectDoesNotExistInTheDatabase;
+				throw new InvalidOperationException(message);
+			}
+
+			modifyTimestamp = DateTime.UtcNow;
+
+			// Update.
+
+			TicketsTableAdapter tableAdapter = Database.TicketsTableAdapter;
+
+			tableAdapter.UpdateByID(
+				milestoneID,
+				ticketNumber,
+				summary,
+				reportedBy,
+				(int)type,
+				(int)severity,
+				(int)state,
+				assignedTo,
+				(int)priority,
+				description,
+				modifyTimestamp,
+				ID);
 		}
 
 		public override void Delete() {
@@ -332,6 +343,8 @@ namespace Peygir.Logic {
 			assignedTo = row.AssignedTo;
 			priority = (TicketPriority)row.Priority;
 			description = row.Description;
+			createTimestamp = DateTime.SpecifyKind(row.CreateTimestamp, DateTimeKind.Utc);
+			modifyTimestamp = DateTime.SpecifyKind(row.ModifyTimestamp, DateTimeKind.Utc);
 		}
 
 		private int milestoneID;
@@ -344,5 +357,7 @@ namespace Peygir.Logic {
 		private string assignedTo;
 		private TicketPriority priority;
 		private string description;
+		private DateTime createTimestamp;
+		private DateTime modifyTimestamp;
 	}
 }
