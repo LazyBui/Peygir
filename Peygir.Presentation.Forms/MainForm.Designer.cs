@@ -540,6 +540,7 @@
 			this.Controls.Add(this.menuStrip1);
 			this.MainMenuStrip = this.menuStrip1;
 			this.Name = "MainForm";
+			this.Resize += new System.EventHandler(this.MainForm_Resize);
 			this.projectsGroupBox.ResumeLayout(false);
 			this.projectsGroupBox.PerformLayout();
 			this.menuStrip1.ResumeLayout(false);

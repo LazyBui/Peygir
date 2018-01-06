@@ -44,6 +44,11 @@ namespace Peygir.Presentation.Forms {
 			EditProject(ticketTab: true);
 		}
 
+		private void MainForm_Resize(object sender, EventArgs e) {
+			// Resize columns
+			ShowProjects();
+		}
+
 		#region Form context menu
 		#region File
 		private void newDatabaseToolStripMenuItem_Click(object sender, EventArgs e) {
