@@ -297,14 +297,15 @@ namespace Peygir.Presentation.Forms {
 			}
 		}
 
-		private void EditProject() {
+		private void EditProject(bool ticketTab = false) {
 			if (projectsListUserControl.ProjectsListView.SelectedItems.Count != 1) {
 				return;
 			}
 
-			Project project = (Project)projectsListUserControl.ProjectsListView.SelectedItems[0].Tag;
+			var project = (Project)projectsListUserControl.ProjectsListView.SelectedItems[0].Tag;
 
-			ProjectForm form = new ProjectForm(project);
+			var form = new ProjectForm(project);
+			if (ticketTab) form.ActivateTicketTab();
 			form.ShowDialog();
 
 			ShowProjects();
@@ -393,7 +394,7 @@ namespace Peygir.Presentation.Forms {
 		}
 
 		private void ProjectsListView_DoubleClick(object sender, EventArgs e) {
-			EditProject();
+			EditProject(ticketTab: true);
 		}
 
 		private void addProjectButton_Click(object sender, EventArgs e) {

@@ -11,8 +11,8 @@ namespace Peygir.Presentation.Forms {
 
 		public MessageBoxOptions FormMessageBoxOptions {
 			get {
-				MessageBoxOptions options = (MessageBoxOptions)0;
-				if (RightToLeft == System.Windows.Forms.RightToLeft.Yes) {
+				MessageBoxOptions options = 0;
+				if (RightToLeft == RightToLeft.Yes) {
 					options = (MessageBoxOptions.RtlReading | MessageBoxOptions.RightAlign);
 				}
 				return options;
@@ -37,6 +37,10 @@ namespace Peygir.Presentation.Forms {
 			ShowProjectDetails();
 			ShowMilestones();
 			ShowTickets();
+		}
+
+		internal void ActivateTicketTab() {
+			tabControl.SelectedTab = ticketsTabPage;
 		}
 
 		private string TranslateTicketType(TicketType ticketType) {
