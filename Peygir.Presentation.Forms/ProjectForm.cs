@@ -719,10 +719,7 @@ namespace Peygir.Presentation.Forms {
 				Database.Flush();
 
 				// Create ticket history entry.
-				TicketHistory ticketHistory = ticket.NewHistory();
-				ticketHistory.Timestamp = DateTime.UtcNow;
-				ticketHistory.Changes = Resources.String_TicketCreated;
-				ticketHistory.Comment = ticket.Description;
+				TicketHistory ticketHistory = ticket.NewHistory(Resources.String_TicketCreated);
 				ticketHistory.Add();
 
 				// Show tickets.
@@ -953,10 +950,7 @@ namespace Peygir.Presentation.Forms {
 				// Create ticket history entry.
 				string changes = changesStringBuilder.ToString();
 				if (!string.IsNullOrEmpty(changes)) {
-					TicketHistory ticketHistory = ticket.NewHistory();
-					ticketHistory.Timestamp = DateTime.UtcNow;
-					ticketHistory.Changes = changes;
-					ticketHistory.Comment = ticket.Description;
+					TicketHistory ticketHistory = ticket.NewHistory(changes);
 					ticketHistory.Add();
 				}
 

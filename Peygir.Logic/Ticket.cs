@@ -272,13 +272,17 @@ namespace Peygir.Logic {
 			return TicketHistory.GetTicketHistoryByTicketID(ID);
 		}
 
-		public TicketHistory NewHistory() {
+		public TicketHistory NewHistory(string changes) {
 			if (ID == InvalidID) {
 				string message = Resources.String_CurrentObjectDoesNotExistInTheDatabase;
 				throw new InvalidOperationException(message);
 			}
 
-			return new TicketHistory(ID);
+			return new TicketHistory(ID) {
+				Timestamp = DateTime.UtcNow,
+				Changes = changes,
+				Comment = Description,
+			};
 		}
 
 		public Attachment[] GetAttachments() {
