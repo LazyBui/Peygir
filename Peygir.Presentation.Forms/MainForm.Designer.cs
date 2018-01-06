@@ -23,6 +23,7 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
+			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 			this.projectsGroupBox = new System.Windows.Forms.GroupBox();
 			this.editTicketsButton = new System.Windows.Forms.Button();
@@ -50,10 +51,16 @@
 			this.databaseToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
 			this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+			this.projectContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.addProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.editProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.editTicketsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.deleteProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.projectsListUserControl = new Peygir.Presentation.UserControls.ProjectsListUserControl();
 			this.projectsGroupBox.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
 			this.statusStrip1.SuspendLayout();
+			this.projectContextMenu.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// projectsGroupBox
@@ -250,6 +257,46 @@
 			// 
 			resources.ApplyResources(this.saveFileDialog, "saveFileDialog");
 			// 
+			// projectContextMenu
+			// 
+			this.projectContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addProjectToolStripMenuItem,
+            this.editProjectToolStripMenuItem,
+            this.editTicketsToolStripMenuItem,
+            this.deleteProjectToolStripMenuItem});
+			this.projectContextMenu.Name = "projectContextMenu";
+			this.projectContextMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+			resources.ApplyResources(this.projectContextMenu, "projectContextMenu");
+			this.projectContextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.projectContextMenu_Opening);
+			// 
+			// addProjectToolStripMenuItem
+			// 
+			this.addProjectToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Add;
+			this.addProjectToolStripMenuItem.Name = "addProjectToolStripMenuItem";
+			resources.ApplyResources(this.addProjectToolStripMenuItem, "addProjectToolStripMenuItem");
+			this.addProjectToolStripMenuItem.Click += new System.EventHandler(this.addProjectToolStripMenuItem_Click);
+			// 
+			// editProjectToolStripMenuItem
+			// 
+			this.editProjectToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Edit;
+			this.editProjectToolStripMenuItem.Name = "editProjectToolStripMenuItem";
+			resources.ApplyResources(this.editProjectToolStripMenuItem, "editProjectToolStripMenuItem");
+			this.editProjectToolStripMenuItem.Click += new System.EventHandler(this.editProjectToolStripMenuItem_Click);
+			// 
+			// editTicketsToolStripMenuItem
+			// 
+			this.editTicketsToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Open;
+			this.editTicketsToolStripMenuItem.Name = "editTicketsToolStripMenuItem";
+			resources.ApplyResources(this.editTicketsToolStripMenuItem, "editTicketsToolStripMenuItem");
+			this.editTicketsToolStripMenuItem.Click += new System.EventHandler(this.editTicketsToolStripMenuItem_Click);
+			// 
+			// deleteProjectToolStripMenuItem
+			// 
+			this.deleteProjectToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Delete;
+			this.deleteProjectToolStripMenuItem.Name = "deleteProjectToolStripMenuItem";
+			resources.ApplyResources(this.deleteProjectToolStripMenuItem, "deleteProjectToolStripMenuItem");
+			this.deleteProjectToolStripMenuItem.Click += new System.EventHandler(this.deleteProjectToolStripMenuItem_Click);
+			// 
 			// projectsListUserControl
 			// 
 			resources.ApplyResources(this.projectsListUserControl, "projectsListUserControl");
@@ -269,6 +316,7 @@
 			this.menuStrip1.PerformLayout();
 			this.statusStrip1.ResumeLayout(false);
 			this.statusStrip1.PerformLayout();
+			this.projectContextMenu.ResumeLayout(false);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -303,5 +351,10 @@
 		private System.Windows.Forms.ToolStripMenuItem englishToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem persianToolStripMenuItem;
 		private System.Windows.Forms.Button editTicketsButton;
+		private System.Windows.Forms.ContextMenuStrip projectContextMenu;
+		private System.Windows.Forms.ToolStripMenuItem addProjectToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem editProjectToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem editTicketsToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem deleteProjectToolStripMenuItem;
 	}
 }

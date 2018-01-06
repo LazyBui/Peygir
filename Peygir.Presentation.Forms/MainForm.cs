@@ -23,6 +23,7 @@ namespace Peygir.Presentation.Forms {
 
 			projectsListUserControl.ProjectsListView.SelectedIndexChanged += ProjectsListView_SelectedIndexChanged;
 			projectsListUserControl.ProjectsListView.DoubleClick += ProjectsListView_DoubleClick;
+			projectsListUserControl.ProjectsListView.ContextMenuStrip = projectContextMenu;
 
 			ShowCurrentLanguage();
 
@@ -401,6 +402,8 @@ namespace Peygir.Presentation.Forms {
 			EditProject(ticketTab: true);
 		}
 
+		#region Project modification UI
+		#region Buttons
 		private void addProjectButton_Click(object sender, EventArgs e) {
 			AddProject();
 		}
@@ -416,6 +419,48 @@ namespace Peygir.Presentation.Forms {
 		private void deleteProjectButton_Click(object sender, EventArgs e) {
 			DeleteProject();
 		}
+		#endregion
+
+		#region Context menu
+		private void projectContextMenu_Opening(object sender, System.ComponentModel.CancelEventArgs e) {
+			int selectedProjectsCount = projectsListUserControl.ProjectsListView.SelectedItems.Count;
+			if (selectedProjectsCount == 0) {
+				addProjectToolStripMenuItem.Enabled = true;
+				editProjectToolStripMenuItem.Enabled = false;
+				editTicketsToolStripMenuItem.Enabled = false;
+				deleteProjectToolStripMenuItem.Enabled = false;
+			}
+			else if (selectedProjectsCount == 1) {
+				addProjectToolStripMenuItem.Enabled = true;
+				editProjectToolStripMenuItem.Enabled = true;
+				editTicketsToolStripMenuItem.Enabled = true;
+				deleteProjectToolStripMenuItem.Enabled = true;
+			}
+			else {
+				addProjectToolStripMenuItem.Enabled = true;
+				editProjectToolStripMenuItem.Enabled = false;
+				editTicketsToolStripMenuItem.Enabled = false;
+				deleteProjectToolStripMenuItem.Enabled = true;
+			}
+
+		}
+		private void addProjectToolStripMenuItem_Click(object sender, EventArgs e) {
+			AddProject();
+		}
+
+		private void editProjectToolStripMenuItem_Click(object sender, EventArgs e) {
+			EditProject();
+		}
+
+		private void editTicketsToolStripMenuItem_Click(object sender, EventArgs e) {
+			EditProject(ticketTab: true);
+		}
+
+		private void deleteProjectToolStripMenuItem_Click(object sender, EventArgs e) {
+			DeleteProject();
+		}
+		#endregion
+		#endregion
 
 		private void viewHelpToolStripMenuItem_Click(object sender, EventArgs e) {
 			ShowHelp();
