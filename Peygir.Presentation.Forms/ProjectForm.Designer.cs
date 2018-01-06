@@ -30,12 +30,14 @@
 			this.projectInfoTabPage = new System.Windows.Forms.TabPage();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
 			this.changeProjectDetailsButton = new System.Windows.Forms.Button();
+			this.projectDetailsUserControl = new Peygir.Presentation.UserControls.ProjectDetailsUserControl();
 			this.milestonesTabPage = new System.Windows.Forms.TabPage();
 			this.groupBox3 = new System.Windows.Forms.GroupBox();
 			this.showMilestoneButton = new System.Windows.Forms.Button();
 			this.deleteMilestoneButton = new System.Windows.Forms.Button();
 			this.editMilestoneButton = new System.Windows.Forms.Button();
 			this.addMilestoneButton = new System.Windows.Forms.Button();
+			this.milestonesListUserControl = new Peygir.Presentation.UserControls.MilestonesListUserControl();
 			this.ticketsTabPage = new System.Windows.Forms.TabPage();
 			this.groupBox4 = new System.Windows.Forms.GroupBox();
 			this.ticketMilestoneComboBox = new System.Windows.Forms.ComboBox();
@@ -67,6 +69,7 @@
 			this.editTicketButton = new System.Windows.Forms.Button();
 			this.showTicketButton = new System.Windows.Forms.Button();
 			this.addTicketButton = new System.Windows.Forms.Button();
+			this.ticketsListUserControl = new Peygir.Presentation.UserControls.TicketsListUserControl();
 			this.ticketContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.addTicketToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.showTicketToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -74,14 +77,6 @@
 			this.showTicketHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.deleteTicketToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.showTicketAttachmentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.milestoneContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-			this.addMilestoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.showMilestoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.editMilestoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.deleteMilestoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.projectDetailsUserControl = new Peygir.Presentation.UserControls.ProjectDetailsUserControl();
-			this.milestonesListUserControl = new Peygir.Presentation.UserControls.MilestonesListUserControl();
-			this.ticketsListUserControl = new Peygir.Presentation.UserControls.TicketsListUserControl();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.stateNewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.stateAcceptedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -91,22 +86,27 @@
 			this.stateClosedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.priorityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.severityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.typeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.lowestPriorityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.lowPriorityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.normalPriorityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.highPriorityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.highestPriorityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.defectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.featureRequestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.taskToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.severityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.trivialSeverityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.minorSeverityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.normalSeverityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.majorSeverityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.criticalSeverityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.blockerSeverityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.typeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.defectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.featureRequestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.taskToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.milestoneContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.addMilestoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.showMilestoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.editMilestoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.deleteMilestoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.groupBox1.SuspendLayout();
 			this.tabControl.SuspendLayout();
 			this.projectInfoTabPage.SuspendLayout();
@@ -158,6 +158,15 @@
 			this.changeProjectDetailsButton.UseVisualStyleBackColor = true;
 			this.changeProjectDetailsButton.Click += new System.EventHandler(this.changeProjectDetailsButton_Click);
 			// 
+			// projectDetailsUserControl
+			// 
+			resources.ApplyResources(this.projectDetailsUserControl, "projectDetailsUserControl");
+			this.projectDetailsUserControl.Description = "";
+			this.projectDetailsUserControl.DisplayOrder = 0;
+			this.projectDetailsUserControl.Name = "projectDetailsUserControl";
+			this.projectDetailsUserControl.ProjectName = "";
+			this.projectDetailsUserControl.ReadOnly = true;
+			// 
 			// milestonesTabPage
 			// 
 			this.milestonesTabPage.Controls.Add(this.groupBox3);
@@ -207,6 +216,11 @@
 			this.addMilestoneButton.Name = "addMilestoneButton";
 			this.addMilestoneButton.UseVisualStyleBackColor = true;
 			this.addMilestoneButton.Click += new System.EventHandler(this.addMilestoneButton_Click);
+			// 
+			// milestonesListUserControl
+			// 
+			resources.ApplyResources(this.milestonesListUserControl, "milestonesListUserControl");
+			this.milestonesListUserControl.Name = "milestonesListUserControl";
 			// 
 			// ticketsTabPage
 			// 
@@ -479,6 +493,11 @@
 			this.addTicketButton.UseVisualStyleBackColor = true;
 			this.addTicketButton.Click += new System.EventHandler(this.addTicketButton_Click);
 			// 
+			// ticketsListUserControl
+			// 
+			resources.ApplyResources(this.ticketsListUserControl, "ticketsListUserControl");
+			this.ticketsListUserControl.Name = "ticketsListUserControl";
+			// 
 			// ticketContextMenu
 			// 
 			this.ticketContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -546,65 +565,6 @@
 			resources.ApplyResources(this.showTicketAttachmentsToolStripMenuItem, "showTicketAttachmentsToolStripMenuItem");
 			this.showTicketAttachmentsToolStripMenuItem.Click += new System.EventHandler(this.showTicketAttachmentsToolStripMenuItem_Click);
 			// 
-			// milestoneContextMenu
-			// 
-			this.milestoneContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addMilestoneToolStripMenuItem,
-            this.showMilestoneToolStripMenuItem,
-            this.editMilestoneToolStripMenuItem,
-            this.deleteMilestoneToolStripMenuItem});
-			this.milestoneContextMenu.Name = "milestoneContextMenu";
-			this.milestoneContextMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-			resources.ApplyResources(this.milestoneContextMenu, "milestoneContextMenu");
-			this.milestoneContextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.milestoneContextMenu_Opening);
-			// 
-			// addMilestoneToolStripMenuItem
-			// 
-			this.addMilestoneToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Add;
-			this.addMilestoneToolStripMenuItem.Name = "addMilestoneToolStripMenuItem";
-			resources.ApplyResources(this.addMilestoneToolStripMenuItem, "addMilestoneToolStripMenuItem");
-			this.addMilestoneToolStripMenuItem.Click += new System.EventHandler(this.addMilestoneToolStripMenuItem_Click);
-			// 
-			// showMilestoneToolStripMenuItem
-			// 
-			this.showMilestoneToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Show;
-			this.showMilestoneToolStripMenuItem.Name = "showMilestoneToolStripMenuItem";
-			resources.ApplyResources(this.showMilestoneToolStripMenuItem, "showMilestoneToolStripMenuItem");
-			this.showMilestoneToolStripMenuItem.Click += new System.EventHandler(this.showMilestoneToolStripMenuItem_Click);
-			// 
-			// editMilestoneToolStripMenuItem
-			// 
-			this.editMilestoneToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Edit;
-			this.editMilestoneToolStripMenuItem.Name = "editMilestoneToolStripMenuItem";
-			resources.ApplyResources(this.editMilestoneToolStripMenuItem, "editMilestoneToolStripMenuItem");
-			this.editMilestoneToolStripMenuItem.Click += new System.EventHandler(this.editMilestoneToolStripMenuItem_Click);
-			// 
-			// deleteMilestoneToolStripMenuItem
-			// 
-			this.deleteMilestoneToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Delete;
-			this.deleteMilestoneToolStripMenuItem.Name = "deleteMilestoneToolStripMenuItem";
-			resources.ApplyResources(this.deleteMilestoneToolStripMenuItem, "deleteMilestoneToolStripMenuItem");
-			this.deleteMilestoneToolStripMenuItem.Click += new System.EventHandler(this.deleteMilestoneToolStripMenuItem_Click);
-			// 
-			// projectDetailsUserControl
-			// 
-			resources.ApplyResources(this.projectDetailsUserControl, "projectDetailsUserControl");
-			this.projectDetailsUserControl.Description = "";
-			this.projectDetailsUserControl.DisplayOrder = 0;
-			this.projectDetailsUserControl.Name = "projectDetailsUserControl";
-			this.projectDetailsUserControl.ProjectName = "";
-			this.projectDetailsUserControl.ReadOnly = true;
-			// 
-			// milestonesListUserControl
-			// 
-			resources.ApplyResources(this.milestonesListUserControl, "milestonesListUserControl");
-			this.milestonesListUserControl.Name = "milestonesListUserControl";
-			// 
-			// ticketsListUserControl
-			// 
-			resources.ApplyResources(this.ticketsListUserControl, "ticketsListUserControl");
-			this.ticketsListUserControl.Name = "ticketsListUserControl";
-			// 
 			// toolStripSeparator1
 			// 
 			this.toolStripSeparator1.Name = "toolStripSeparator1";
@@ -669,29 +629,6 @@
 			this.priorityToolStripMenuItem.Name = "priorityToolStripMenuItem";
 			resources.ApplyResources(this.priorityToolStripMenuItem, "priorityToolStripMenuItem");
 			// 
-			// severityToolStripMenuItem
-			// 
-			this.severityToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.trivialSeverityToolStripMenuItem,
-            this.minorSeverityToolStripMenuItem,
-            this.normalSeverityToolStripMenuItem,
-            this.majorSeverityToolStripMenuItem,
-            this.criticalSeverityToolStripMenuItem,
-            this.blockerSeverityToolStripMenuItem});
-			this.severityToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Peygir;
-			this.severityToolStripMenuItem.Name = "severityToolStripMenuItem";
-			resources.ApplyResources(this.severityToolStripMenuItem, "severityToolStripMenuItem");
-			// 
-			// typeToolStripMenuItem
-			// 
-			this.typeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.defectToolStripMenuItem,
-            this.featureRequestToolStripMenuItem,
-            this.taskToolStripMenuItem});
-			this.typeToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Options;
-			this.typeToolStripMenuItem.Name = "typeToolStripMenuItem";
-			resources.ApplyResources(this.typeToolStripMenuItem, "typeToolStripMenuItem");
-			// 
 			// lowestPriorityToolStripMenuItem
 			// 
 			this.lowestPriorityToolStripMenuItem.Name = "lowestPriorityToolStripMenuItem";
@@ -722,23 +659,18 @@
 			resources.ApplyResources(this.highestPriorityToolStripMenuItem, "highestPriorityToolStripMenuItem");
 			this.highestPriorityToolStripMenuItem.Click += new System.EventHandler(this.highestPriorityToolStripMenuItem_Click);
 			// 
-			// defectToolStripMenuItem
+			// severityToolStripMenuItem
 			// 
-			this.defectToolStripMenuItem.Name = "defectToolStripMenuItem";
-			resources.ApplyResources(this.defectToolStripMenuItem, "defectToolStripMenuItem");
-			this.defectToolStripMenuItem.Click += new System.EventHandler(this.defectToolStripMenuItem_Click);
-			// 
-			// featureRequestToolStripMenuItem
-			// 
-			this.featureRequestToolStripMenuItem.Name = "featureRequestToolStripMenuItem";
-			resources.ApplyResources(this.featureRequestToolStripMenuItem, "featureRequestToolStripMenuItem");
-			this.featureRequestToolStripMenuItem.Click += new System.EventHandler(this.featureRequestToolStripMenuItem_Click);
-			// 
-			// taskToolStripMenuItem
-			// 
-			this.taskToolStripMenuItem.Name = "taskToolStripMenuItem";
-			resources.ApplyResources(this.taskToolStripMenuItem, "taskToolStripMenuItem");
-			this.taskToolStripMenuItem.Click += new System.EventHandler(this.taskToolStripMenuItem_Click);
+			this.severityToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.trivialSeverityToolStripMenuItem,
+            this.minorSeverityToolStripMenuItem,
+            this.normalSeverityToolStripMenuItem,
+            this.majorSeverityToolStripMenuItem,
+            this.criticalSeverityToolStripMenuItem,
+            this.blockerSeverityToolStripMenuItem});
+			this.severityToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Peygir;
+			this.severityToolStripMenuItem.Name = "severityToolStripMenuItem";
+			resources.ApplyResources(this.severityToolStripMenuItem, "severityToolStripMenuItem");
 			// 
 			// trivialSeverityToolStripMenuItem
 			// 
@@ -776,6 +708,74 @@
 			resources.ApplyResources(this.blockerSeverityToolStripMenuItem, "blockerSeverityToolStripMenuItem");
 			this.blockerSeverityToolStripMenuItem.Click += new System.EventHandler(this.blockerSeverityToolStripMenuItem_Click);
 			// 
+			// typeToolStripMenuItem
+			// 
+			this.typeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.defectToolStripMenuItem,
+            this.featureRequestToolStripMenuItem,
+            this.taskToolStripMenuItem});
+			this.typeToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Options;
+			this.typeToolStripMenuItem.Name = "typeToolStripMenuItem";
+			resources.ApplyResources(this.typeToolStripMenuItem, "typeToolStripMenuItem");
+			// 
+			// defectToolStripMenuItem
+			// 
+			this.defectToolStripMenuItem.Name = "defectToolStripMenuItem";
+			resources.ApplyResources(this.defectToolStripMenuItem, "defectToolStripMenuItem");
+			this.defectToolStripMenuItem.Click += new System.EventHandler(this.defectToolStripMenuItem_Click);
+			// 
+			// featureRequestToolStripMenuItem
+			// 
+			this.featureRequestToolStripMenuItem.Name = "featureRequestToolStripMenuItem";
+			resources.ApplyResources(this.featureRequestToolStripMenuItem, "featureRequestToolStripMenuItem");
+			this.featureRequestToolStripMenuItem.Click += new System.EventHandler(this.featureRequestToolStripMenuItem_Click);
+			// 
+			// taskToolStripMenuItem
+			// 
+			this.taskToolStripMenuItem.Name = "taskToolStripMenuItem";
+			resources.ApplyResources(this.taskToolStripMenuItem, "taskToolStripMenuItem");
+			this.taskToolStripMenuItem.Click += new System.EventHandler(this.taskToolStripMenuItem_Click);
+			// 
+			// milestoneContextMenu
+			// 
+			this.milestoneContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addMilestoneToolStripMenuItem,
+            this.showMilestoneToolStripMenuItem,
+            this.editMilestoneToolStripMenuItem,
+            this.deleteMilestoneToolStripMenuItem});
+			this.milestoneContextMenu.Name = "milestoneContextMenu";
+			this.milestoneContextMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+			resources.ApplyResources(this.milestoneContextMenu, "milestoneContextMenu");
+			this.milestoneContextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.milestoneContextMenu_Opening);
+			// 
+			// addMilestoneToolStripMenuItem
+			// 
+			this.addMilestoneToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Add;
+			this.addMilestoneToolStripMenuItem.Name = "addMilestoneToolStripMenuItem";
+			resources.ApplyResources(this.addMilestoneToolStripMenuItem, "addMilestoneToolStripMenuItem");
+			this.addMilestoneToolStripMenuItem.Click += new System.EventHandler(this.addMilestoneToolStripMenuItem_Click);
+			// 
+			// showMilestoneToolStripMenuItem
+			// 
+			this.showMilestoneToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Show;
+			this.showMilestoneToolStripMenuItem.Name = "showMilestoneToolStripMenuItem";
+			resources.ApplyResources(this.showMilestoneToolStripMenuItem, "showMilestoneToolStripMenuItem");
+			this.showMilestoneToolStripMenuItem.Click += new System.EventHandler(this.showMilestoneToolStripMenuItem_Click);
+			// 
+			// editMilestoneToolStripMenuItem
+			// 
+			this.editMilestoneToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Edit;
+			this.editMilestoneToolStripMenuItem.Name = "editMilestoneToolStripMenuItem";
+			resources.ApplyResources(this.editMilestoneToolStripMenuItem, "editMilestoneToolStripMenuItem");
+			this.editMilestoneToolStripMenuItem.Click += new System.EventHandler(this.editMilestoneToolStripMenuItem_Click);
+			// 
+			// deleteMilestoneToolStripMenuItem
+			// 
+			this.deleteMilestoneToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Delete;
+			this.deleteMilestoneToolStripMenuItem.Name = "deleteMilestoneToolStripMenuItem";
+			resources.ApplyResources(this.deleteMilestoneToolStripMenuItem, "deleteMilestoneToolStripMenuItem");
+			this.deleteMilestoneToolStripMenuItem.Click += new System.EventHandler(this.deleteMilestoneToolStripMenuItem_Click);
+			// 
 			// ProjectForm
 			// 
 			resources.ApplyResources(this, "$this");
@@ -784,7 +784,6 @@
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "ProjectForm";
-			this.ShowInTaskbar = false;
 			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ProjectForm_FormClosed);
 			this.groupBox1.ResumeLayout(false);
 			this.tabControl.ResumeLayout(false);
