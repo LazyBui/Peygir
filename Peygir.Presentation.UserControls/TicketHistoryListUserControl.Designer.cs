@@ -32,8 +32,9 @@
 			// 
 			resources.ApplyResources(this.ticketHistoryListView, "ticketHistoryListView");
 			this.ticketHistoryListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-			this.columnHeader1});
+            this.columnHeader1});
 			this.ticketHistoryListView.FullRowSelect = true;
+			this.ticketHistoryListView.GridLines = true;
 			this.ticketHistoryListView.HideSelection = false;
 			this.ticketHistoryListView.Name = "ticketHistoryListView";
 			this.ticketHistoryListView.UseCompatibleStateImageBehavior = false;

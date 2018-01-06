@@ -33,9 +33,10 @@
 			// 
 			resources.ApplyResources(this.attachmentsListView, "attachmentsListView");
 			this.attachmentsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-			this.columnHeader1,
-			this.columnHeader2});
+            this.columnHeader1,
+            this.columnHeader2});
 			this.attachmentsListView.FullRowSelect = true;
+			this.attachmentsListView.GridLines = true;
 			this.attachmentsListView.HideSelection = false;
 			this.attachmentsListView.Name = "attachmentsListView";
 			this.attachmentsListView.UseCompatibleStateImageBehavior = false;

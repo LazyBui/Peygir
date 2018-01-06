@@ -38,14 +38,15 @@
 			// 
 			resources.ApplyResources(this.ticketsListView, "ticketsListView");
 			this.ticketsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-			this.columnHeader1,
-			this.columnHeader2,
-			this.columnHeader3,
-			this.columnHeader4,
-			this.columnHeader5,
-			this.columnHeader6,
-			this.columnHeader7});
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4,
+            this.columnHeader5,
+            this.columnHeader6,
+            this.columnHeader7});
 			this.ticketsListView.FullRowSelect = true;
+			this.ticketsListView.GridLines = true;
 			this.ticketsListView.HideSelection = false;
 			this.ticketsListView.Name = "ticketsListView";
 			this.ticketsListView.UseCompatibleStateImageBehavior = false;
