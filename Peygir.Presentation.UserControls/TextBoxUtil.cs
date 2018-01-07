@@ -101,7 +101,9 @@ namespace Peygir.Presentation.UserControls {
 						}
 					}
 					else {
-						string lineTest = lines[beginLine];
+						string lineTest = beginLine >= 0 ?
+							lines[beginLine] :
+							string.Empty;
 						if (selLength == lineTest.Length && selLength > 0) {
 							if (isShift) {
 								// We know by virtue of getting here that the line has at least 1 character, otherwise selLength could not match the line length due to > 0
