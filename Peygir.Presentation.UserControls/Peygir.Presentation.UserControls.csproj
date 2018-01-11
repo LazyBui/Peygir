@@ -47,11 +47,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormContext.cs" />
-    <Compile Include="ProjectDetailsUserControl.cs">
+    <Compile Include="Source\FormContext.cs" />
+    <Compile Include="Source\Controls\ProjectDetailsUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ProjectDetailsUserControl.Designer.cs">
+    <Compile Include="Source\Controls\ProjectDetailsUserControl.Designer.cs">
       <DependentUpon>ProjectDetailsUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -60,8 +60,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="FontContext.cs" />
-    <Compile Include="TextBoxUtil.cs" />
+    <Compile Include="Source\FontContext.cs" />
+    <Compile Include="Source\TextBoxUtil.cs" />
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
@@ -74,10 +74,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ProjectDetailsUserControl.fa.resx">
+    <EmbeddedResource Include="Source\Controls\ProjectDetailsUserControl.fa.resx">
       <DependentUpon>ProjectDetailsUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProjectDetailsUserControl.resx">
+    <EmbeddedResource Include="Source\Controls\ProjectDetailsUserControl.resx">
       <DependentUpon>ProjectDetailsUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.fa.resx" />
