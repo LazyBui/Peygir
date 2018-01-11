@@ -47,56 +47,56 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AboutForm.cs">
+    <Compile Include="Source\Forms\AboutForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AboutForm.Designer.cs">
+    <Compile Include="Source\Forms\AboutForm.Designer.cs">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="AttachmentsForm.cs">
+    <Compile Include="Source\Forms\AttachmentsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AttachmentsForm.Designer.cs">
+    <Compile Include="Source\Forms\AttachmentsForm.Designer.cs">
       <DependentUpon>AttachmentsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="DateRange.cs" />
-    <Compile Include="DateRangeForm.cs">
+    <Compile Include="Source\DateRange.cs" />
+    <Compile Include="Source\Forms\DateRangeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DateRangeForm.designer.cs">
+    <Compile Include="Source\Forms\DateRangeForm.designer.cs">
       <DependentUpon>DateRangeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="TicketChangeFormatter.cs" />
-    <Compile Include="FormUtil.cs" />
-    <Compile Include="MainForm.cs">
+    <Compile Include="Source\TicketChangeFormatter.cs" />
+    <Compile Include="Source\FormUtil.cs" />
+    <Compile Include="Source\Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
+    <Compile Include="Source\Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MilestoneDetailsForm.cs">
+    <Compile Include="Source\Forms\MilestoneDetailsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MilestoneDetailsForm.Designer.cs">
+    <Compile Include="Source\Forms\MilestoneDetailsForm.Designer.cs">
       <DependentUpon>MilestoneDetailsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="OptionsForm.cs">
+    <Compile Include="Source\Forms\OptionsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="OptionsForm.Designer.cs">
+    <Compile Include="Source\Forms\OptionsForm.Designer.cs">
       <DependentUpon>OptionsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="PeygirApplication.cs" />
-    <Compile Include="ProjectDetailsForm.cs">
+    <Compile Include="Source\PeygirApplication.cs" />
+    <Compile Include="Source\Forms\ProjectDetailsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ProjectDetailsForm.Designer.cs">
+    <Compile Include="Source\Forms\ProjectDetailsForm.Designer.cs">
       <DependentUpon>ProjectDetailsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProjectForm.cs">
+    <Compile Include="Source\Forms\ProjectForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ProjectForm.Designer.cs">
+    <Compile Include="Source\Forms\ProjectForm.Designer.cs">
       <DependentUpon>ProjectForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -110,16 +110,16 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="TicketDetailsForm.cs">
+    <Compile Include="Source\Forms\TicketDetailsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TicketDetailsForm.Designer.cs">
+    <Compile Include="Source\Forms\TicketDetailsForm.Designer.cs">
       <DependentUpon>TicketDetailsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="TicketHistoryForm.cs">
+    <Compile Include="Source\Forms\TicketHistoryForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TicketHistoryForm.Designer.cs">
+    <Compile Include="Source\Forms\TicketHistoryForm.Designer.cs">
       <DependentUpon>TicketHistoryForm.cs</DependentUpon>
     </Compile>
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
@@ -143,52 +143,52 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="AboutForm.fa.resx">
+    <EmbeddedResource Include="Source\Forms\AboutForm.fa.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="AboutForm.resx">
+    <EmbeddedResource Include="Source\Forms\AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AttachmentsForm.fa.resx">
+    <EmbeddedResource Include="Source\Forms\AttachmentsForm.fa.resx">
       <DependentUpon>AttachmentsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AttachmentsForm.resx">
+    <EmbeddedResource Include="Source\Forms\AttachmentsForm.resx">
       <DependentUpon>AttachmentsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DateRangeForm.resx">
+    <EmbeddedResource Include="Source\Forms\DateRangeForm.resx">
       <DependentUpon>DateRangeForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.fa.resx">
+    <EmbeddedResource Include="Source\Forms\MainForm.fa.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
+    <EmbeddedResource Include="Source\Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="MilestoneDetailsForm.fa.resx">
+    <EmbeddedResource Include="Source\Forms\MilestoneDetailsForm.fa.resx">
       <DependentUpon>MilestoneDetailsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MilestoneDetailsForm.resx">
+    <EmbeddedResource Include="Source\Forms\MilestoneDetailsForm.resx">
       <DependentUpon>MilestoneDetailsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="OptionsForm.fa.resx">
+    <EmbeddedResource Include="Source\Forms\OptionsForm.fa.resx">
       <DependentUpon>OptionsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="OptionsForm.resx">
+    <EmbeddedResource Include="Source\Forms\OptionsForm.resx">
       <DependentUpon>OptionsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProjectDetailsForm.fa.resx">
+    <EmbeddedResource Include="Source\Forms\ProjectDetailsForm.fa.resx">
       <DependentUpon>ProjectDetailsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProjectDetailsForm.resx">
+    <EmbeddedResource Include="Source\Forms\ProjectDetailsForm.resx">
       <DependentUpon>ProjectDetailsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProjectForm.fa.resx">
+    <EmbeddedResource Include="Source\Forms\ProjectForm.fa.resx">
       <DependentUpon>ProjectForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProjectForm.resx">
+    <EmbeddedResource Include="Source\Forms\ProjectForm.resx">
       <DependentUpon>ProjectForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.fa.resx" />
@@ -196,16 +196,16 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="TicketDetailsForm.fa.resx">
+    <EmbeddedResource Include="Source\Forms\TicketDetailsForm.fa.resx">
       <DependentUpon>TicketDetailsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TicketDetailsForm.resx">
+    <EmbeddedResource Include="Source\Forms\TicketDetailsForm.resx">
       <DependentUpon>TicketDetailsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TicketHistoryForm.fa.resx">
+    <EmbeddedResource Include="Source\Forms\TicketHistoryForm.fa.resx">
       <DependentUpon>TicketHistoryForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TicketHistoryForm.resx">
+    <EmbeddedResource Include="Source\Forms\TicketHistoryForm.resx">
       <DependentUpon>TicketHistoryForm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
