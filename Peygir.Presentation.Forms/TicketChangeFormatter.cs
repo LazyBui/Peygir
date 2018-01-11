@@ -58,7 +58,7 @@ namespace Peygir.Presentation.Forms {
 				TranslateTicketType(@new));
 		}
 
-		private string TranslateTicketType(TicketType ticketType) {
+		public string TranslateTicketType(TicketType ticketType) {
 			switch (ticketType) {
 				case TicketType.Defect:
 					return Resources.String_Defect;
@@ -74,7 +74,7 @@ namespace Peygir.Presentation.Forms {
 			}
 		}
 
-		private string TranslateTicketSeverity(TicketSeverity ticketSeverity) {
+		public string TranslateTicketSeverity(TicketSeverity ticketSeverity) {
 			switch (ticketSeverity) {
 				case TicketSeverity.Blocker:
 					return Resources.String_Blocker;
@@ -99,7 +99,7 @@ namespace Peygir.Presentation.Forms {
 			}
 		}
 
-		private string TranslateTicketState(TicketState ticketState) {
+		public string TranslateTicketState(TicketState ticketState) {
 			switch (ticketState) {
 				case TicketState.New:
 					return Resources.String_New;
@@ -124,7 +124,7 @@ namespace Peygir.Presentation.Forms {
 			}
 		}
 
-		private string TranslateTicketPriority(TicketPriority ticketPriority) {
+		public string TranslateTicketPriority(TicketPriority ticketPriority) {
 			switch (ticketPriority) {
 				case TicketPriority.Lowest:
 					return Resources.String_Lowest;

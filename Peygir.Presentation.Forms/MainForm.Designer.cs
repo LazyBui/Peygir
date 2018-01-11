@@ -79,7 +79,12 @@
 			this.editProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.editTicketsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.deleteProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.projectsListUserControl = new Peygir.Presentation.UserControls.ProjectsListUserControl();
+			this.projectsListView = new System.Windows.Forms.ListView();
+			this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.projectsGroupBox.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
 			this.statusStrip1.SuspendLayout();
@@ -89,6 +94,7 @@
 			// projectsGroupBox
 			// 
 			resources.ApplyResources(this.projectsGroupBox, "projectsGroupBox");
+			this.projectsGroupBox.Controls.Add(this.projectsListView);
 			this.projectsGroupBox.Controls.Add(this.label5);
 			this.projectsGroupBox.Controls.Add(this.resetFilterButton);
 			this.projectsGroupBox.Controls.Add(this.label1);
@@ -100,7 +106,6 @@
 			this.projectsGroupBox.Controls.Add(this.modifiedTextBox);
 			this.projectsGroupBox.Controls.Add(this.addProjectButton);
 			this.projectsGroupBox.Controls.Add(this.createdTextBox);
-			this.projectsGroupBox.Controls.Add(this.projectsListUserControl);
 			this.projectsGroupBox.Controls.Add(this.label9);
 			this.projectsGroupBox.Controls.Add(this.projectTextBox);
 			this.projectsGroupBox.Controls.Add(this.label8);
@@ -531,10 +536,45 @@
 			resources.ApplyResources(this.deleteProjectToolStripMenuItem, "deleteProjectToolStripMenuItem");
 			this.deleteProjectToolStripMenuItem.Click += new System.EventHandler(this.deleteProjectToolStripMenuItem_Click);
 			// 
-			// projectsListUserControl
+			// projectsListView
 			// 
-			resources.ApplyResources(this.projectsListUserControl, "projectsListUserControl");
-			this.projectsListUserControl.Name = "projectsListUserControl";
+			this.projectsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4,
+            this.columnHeader5});
+			this.projectsListView.ContextMenuStrip = this.projectContextMenu;
+			this.projectsListView.FullRowSelect = true;
+			this.projectsListView.GridLines = true;
+			this.projectsListView.HideSelection = false;
+			resources.ApplyResources(this.projectsListView, "projectsListView");
+			this.projectsListView.Name = "projectsListView";
+			this.projectsListView.UseCompatibleStateImageBehavior = false;
+			this.projectsListView.View = System.Windows.Forms.View.Details;
+			this.projectsListView.SelectedIndexChanged += new System.EventHandler(this.projectsListView_SelectedIndexChanged);
+			this.projectsListView.DoubleClick += new System.EventHandler(this.projectsListView_DoubleClick);
+			this.projectsListView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.projectsListView_KeyDown);
+			// 
+			// columnHeader1
+			// 
+			resources.ApplyResources(this.columnHeader1, "columnHeader1");
+			// 
+			// columnHeader2
+			// 
+			resources.ApplyResources(this.columnHeader2, "columnHeader2");
+			// 
+			// columnHeader3
+			// 
+			resources.ApplyResources(this.columnHeader3, "columnHeader3");
+			// 
+			// columnHeader4
+			// 
+			resources.ApplyResources(this.columnHeader4, "columnHeader4");
+			// 
+			// columnHeader5
+			// 
+			resources.ApplyResources(this.columnHeader5, "columnHeader5");
 			// 
 			// MainForm
 			// 
@@ -561,7 +601,6 @@
 		#endregion
 
 		private System.Windows.Forms.GroupBox projectsGroupBox;
-		private UserControls.ProjectsListUserControl projectsListUserControl;
 		private System.Windows.Forms.MenuStrip menuStrip1;
 		private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
@@ -615,5 +654,11 @@
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.Label label5;
 		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.ListView projectsListView;
+		private System.Windows.Forms.ColumnHeader columnHeader1;
+		private System.Windows.Forms.ColumnHeader columnHeader2;
+		private System.Windows.Forms.ColumnHeader columnHeader3;
+		private System.Windows.Forms.ColumnHeader columnHeader4;
+		private System.Windows.Forms.ColumnHeader columnHeader5;
 	}
 }

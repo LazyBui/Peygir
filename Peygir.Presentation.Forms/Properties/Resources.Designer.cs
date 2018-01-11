@@ -250,6 +250,15 @@ namespace Peygir.Presentation.Forms.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Active.
+        /// </summary>
+        internal static string String_Active {
+            get {
+                return ResourceManager.GetString("String_Active", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to delete selected attachment(s)?.
         /// </summary>
         internal static string String_AreYouSureYouWantToDeleteAttachments {
@@ -309,6 +318,15 @@ namespace Peygir.Presentation.Forms.Properties {
         internal static string String_Blocker {
             get {
                 return ResourceManager.GetString("String_Blocker", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancelled.
+        /// </summary>
+        internal static string String_Cancelled {
+            get {
+                return ResourceManager.GetString("String_Cancelled", resourceCulture);
             }
         }
         

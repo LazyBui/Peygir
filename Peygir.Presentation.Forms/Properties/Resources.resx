@@ -325,4 +325,10 @@
   <data name="String_InProgress" xml:space="preserve">
     <value>In Progress</value>
   </data>
+  <data name="String_Active" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="String_Cancelled" xml:space="preserve">
+    <value>Cancelled</value>
+  </data>
 </root>

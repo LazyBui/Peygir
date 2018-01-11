@@ -15,15 +15,6 @@ namespace Peygir.Presentation.Forms {
 		private DateRange mTicketModifyFilter = null;
 
 		public Project Project { get; private set; }
-		public MessageBoxOptions FormMessageBoxOptions {
-			get {
-				MessageBoxOptions options = 0;
-				if (RightToLeft == RightToLeft.Yes) {
-					options = (MessageBoxOptions.RtlReading | MessageBoxOptions.RightAlign);
-				}
-				return options;
-			}
-		}
 
 		public ProjectForm(Project project, MainForm mainForm) {
 			if (project == null) throw new ArgumentNullException(nameof(project));
@@ -40,14 +31,6 @@ namespace Peygir.Presentation.Forms {
 				mainForm.Location.X + (mainForm.Width - Width) / 2,
 				mainForm.Location.Y + (mainForm.Height - Height) / 2);
 
-			milestonesListUserControl.MilestonesListView.SelectedIndexChanged += MilestonesListView_SelectedIndexChanged;
-			milestonesListUserControl.MilestonesListView.DoubleClick += MilestonesListView_DoubleClick;
-			milestonesListUserControl.MilestonesListView.ContextMenuStrip = milestoneContextMenu;
-
-			ticketsListUserControl.TicketsListView.SelectedIndexChanged += TicketsListView_SelectedIndexChanged;
-			ticketsListUserControl.TicketsListView.DoubleClick += TicketsListView_DoubleClick;
-			ticketsListUserControl.TicketsListView.ContextMenuStrip = ticketContextMenu;
-
 			ShowProjectDetails();
 			ShowMilestones();
 			ShowTickets();
@@ -56,19 +39,29 @@ namespace Peygir.Presentation.Forms {
 			Text = "Project - " + project.Name;
 		}
 
-		private void MilestonesListView_SelectedIndexChanged(object sender, EventArgs e) {
+		private void milestonesListView_SelectedIndexChanged(object sender, EventArgs e) {
 			UpdateButtonsEnabledProperty();
 		}
 
-		private void MilestonesListView_DoubleClick(object sender, EventArgs e) {
+		private void milestonesListView_DoubleClick(object sender, EventArgs e) {
 			ShowMilestone();
 		}
 
-		private void TicketsListView_SelectedIndexChanged(object sender, EventArgs e) {
+		private void milestonesListView_KeyDown(object sender, KeyEventArgs e) {
+			if (e.KeyCode != Keys.Enter) return;
+			ShowMilestone();
+		}
+
+		private void ticketsListView_SelectedIndexChanged(object sender, EventArgs e) {
 			UpdateButtonsEnabledProperty();
 		}
 
-		private void TicketsListView_DoubleClick(object sender, EventArgs e) {
+		private void ticketsListView_DoubleClick(object sender, EventArgs e) {
+			EditTicket();
+		}
+
+		private void ticketsListView_KeyDown(object sender, KeyEventArgs e) {
+			if (e.KeyCode != Keys.Enter) return;
 			EditTicket();
 		}
 
@@ -101,7 +94,7 @@ namespace Peygir.Presentation.Forms {
 
 		#region Context menu
 		private void milestoneContextMenu_Opening(object sender, System.ComponentModel.CancelEventArgs e) {
-			int selectedMilestonesCount = milestonesListUserControl.MilestonesListView.SelectedItems.Count;
+			int selectedMilestonesCount = milestonesListView.SelectedItems.Count;
 			showMilestoneToolStripMenuItem.Enabled = selectedMilestonesCount == 1;
 			editMilestoneToolStripMenuItem.Enabled = selectedMilestonesCount == 1;
 			deleteMilestoneToolStripMenuItem.Enabled = selectedMilestonesCount > 0;
@@ -154,7 +147,7 @@ namespace Peygir.Presentation.Forms {
 
 		#region Context menu
 		private void ticketContextMenu_Opening(object sender, System.ComponentModel.CancelEventArgs e) {
-			int selectedTicketsCount = ticketsListUserControl.TicketsListView.SelectedItems.Count;
+			int selectedTicketsCount = ticketsListView.SelectedItems.Count;
 			showTicketToolStripMenuItem.Enabled = selectedTicketsCount == 1;
 			editTicketToolStripMenuItem.Enabled = selectedTicketsCount == 1;
 			showTicketHistoryToolStripMenuItem.Enabled = selectedTicketsCount == 1;
@@ -365,12 +358,12 @@ namespace Peygir.Presentation.Forms {
 
 		#region Utility functions
 		private void UpdateButtonsEnabledProperty() {
-			int selectedMilestonesCount = milestonesListUserControl.MilestonesListView.SelectedItems.Count;
+			int selectedMilestonesCount = milestonesListView.SelectedItems.Count;
 			showMilestoneButton.Enabled = selectedMilestonesCount == 1;
 			editMilestoneButton.Enabled = selectedMilestonesCount == 1;
 			deleteMilestoneButton.Enabled = selectedMilestonesCount > 0;
 
-			int selectedTicketsCount = ticketsListUserControl.TicketsListView.SelectedItems.Count;
+			int selectedTicketsCount = ticketsListView.SelectedItems.Count;
 			showTicketButton.Enabled = selectedTicketsCount == 1;
 			editTicketButton.Enabled = selectedTicketsCount == 1;
 			showTicketHistoryButton.Enabled = selectedTicketsCount == 1;
@@ -394,54 +387,85 @@ namespace Peygir.Presentation.Forms {
 		}
 
 		private void ChangeProjectDetails() {
-			ProjectDetailsForm form = new ProjectDetailsForm();
+			using (var form = new ProjectDetailsForm()) {
+				form.ProjectDetailsUserControl.ShowProject(Project);
 
-			form.ProjectDetailsUserControl.ShowProject(Project);
+				Again:
+				if (form.ShowDialog() == DialogResult.OK) {
+					// Check name.
+					if (string.IsNullOrWhiteSpace(form.ProjectDetailsUserControl.ProjectName)) {
+						MessageBox.Show(
+							Resources.String_TheProjectNameCannotBeBlank,
+							Resources.String_Error,
+							MessageBoxButtons.OK,
+							MessageBoxIcon.Error,
+							MessageBoxDefaultButton.Button1,
+							FormUtil.GetMessageBoxOptions(this));
+						goto Again;
+					}
 
-			Again:
-			if (form.ShowDialog() == DialogResult.OK) {
-				// Check name.
-				if (string.IsNullOrWhiteSpace(form.ProjectDetailsUserControl.ProjectName)) {
-					MessageBox.Show(
-						Resources.String_TheProjectNameCannotBeBlank,
-						Resources.String_Error,
-						MessageBoxButtons.OK,
-						MessageBoxIcon.Error,
-						MessageBoxDefaultButton.Button1,
-						FormMessageBoxOptions);
-					goto Again;
+					form.ProjectDetailsUserControl.RetrieveProject(Project);
+
+					// Update project.
+					Project.Update();
+
+					// Flush.
+					Database.Flush();
+
+					ShowProjectDetails();
+
+					mMainForm.UpdateTicketOrProject();
 				}
-
-				form.ProjectDetailsUserControl.RetrieveProject(Project);
-
-				// Update project.
-				Project.Update();
-
-				// Flush.
-				Database.Flush();
-
-				ShowProjectDetails();
-
-				mMainForm.UpdateTicketOrProject();
 			}
 		}
 
 		#region Milestone
 		private void ShowMilestones() {
 			// Save selected milestones.
-			List<int> selectedMilestones = new List<int>();
-			foreach (ListViewItem item in milestonesListUserControl.MilestonesListView.SelectedItems) {
-				Milestone milestone = (Milestone)item.Tag;
+			var selectedMilestones = new List<int>();
+			foreach (ListViewItem item in milestonesListView.SelectedItems) {
+				var milestone = (Milestone)item.Tag;
 				selectedMilestones.Add(milestone.ID);
 			}
 
 			Milestone[] milestones = Project.GetMilestones();
 
-			milestonesListUserControl.ShowMilestones(milestones);
+			milestonesListView.BeginUpdate();
+			milestonesListView.Items.Clear();
+			foreach (var milestone in milestones) {
+				string milestoneState;
+				switch (milestone.State) {
+					case MilestoneState.Active:
+						milestoneState = Resources.String_Active;
+						break;
+
+					case MilestoneState.Completed:
+						milestoneState = Resources.String_Completed;
+						break;
+
+					case MilestoneState.Cancelled:
+						milestoneState = Resources.String_Cancelled;
+						break;
+
+					default:
+						milestoneState = string.Empty;
+						break;
+				}
+
+				var lvi = new ListViewItem() {
+					Text = milestone.Name,
+					Tag = milestone,
+				};
+
+				lvi.SubItems.Add(milestoneState);
+				milestonesListView.Items.Add(lvi);
+			}
+			milestonesListView.EndUpdate();
+			milestonesListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
 
 			// Reselect milestones.
-			foreach (ListViewItem item in milestonesListUserControl.MilestonesListView.Items) {
-				Milestone milestone = (Milestone)item.Tag;
+			foreach (ListViewItem item in milestonesListView.Items) {
+				var milestone = (Milestone)item.Tag;
 				if (selectedMilestones.Contains(milestone.ID)) {
 					item.Selected = true;
 				}
@@ -454,174 +478,173 @@ namespace Peygir.Presentation.Forms {
 
 		private void AddMilestone() {
 			Milestone milestone = Project.NewMilestone();
-			MilestoneDetailsForm form = new MilestoneDetailsForm();
-			form.MilestoneDetailsUserControl.ShowMilestone(milestone);
-			form.MilestoneDetailsUserControl.State = MilestoneState.Active;
+			using (var form = new MilestoneDetailsForm()) {
+				form.ShowMilestone(milestone);
+				form.State = MilestoneState.Active;
 
-			Again:
-			if (form.ShowDialog() == DialogResult.OK) {
-				// Check name.
-				if (string.IsNullOrWhiteSpace(form.MilestoneDetailsUserControl.MilestoneName)) {
-					MessageBox.Show(
-						Resources.String_TheMilestoneNameCannotBeBlank,
-						Resources.String_Error,
-						MessageBoxButtons.OK,
-						MessageBoxIcon.Error,
-						MessageBoxDefaultButton.Button1,
-						FormMessageBoxOptions);
-					goto Again;
-				}
-
-				// Check state.
-				if (form.MilestoneDetailsUserControl.State == (MilestoneState)(-1)) {
-					MessageBox.Show(
-						Resources.String_PleaseSpecifyMilestoneState,
-						Resources.String_Error,
-						MessageBoxButtons.OK,
-						MessageBoxIcon.Error,
-						MessageBoxDefaultButton.Button1,
-						FormMessageBoxOptions);
-					goto Again;
-				}
-
-				form.MilestoneDetailsUserControl.RetrieveMilestone(milestone);
-
-				// Add.
-				milestone.Add();
-
-				// Flush.
-				Database.Flush();
-
-				// Show milestones.
-				ShowMilestones();
-
-				// Select new milestone.
-				milestonesListUserControl.MilestonesListView.SelectedItems.Clear();
-				foreach (ListViewItem item in milestonesListUserControl.MilestonesListView.Items) {
-					Milestone m = (Milestone)item.Tag;
-					if (m.ID == milestone.ID) {
-						item.Selected = true;
-						item.EnsureVisible();
-						break;
+				Again:
+				if (form.ShowDialog() == DialogResult.OK) {
+					// Check name.
+					if (string.IsNullOrWhiteSpace(form.MilestoneName)) {
+						MessageBox.Show(
+							Resources.String_TheMilestoneNameCannotBeBlank,
+							Resources.String_Error,
+							MessageBoxButtons.OK,
+							MessageBoxIcon.Error,
+							MessageBoxDefaultButton.Button1,
+							FormUtil.GetMessageBoxOptions(this));
+						goto Again;
 					}
+
+					// Check state.
+					if (form.State == (MilestoneState)(-1)) {
+						MessageBox.Show(
+							Resources.String_PleaseSpecifyMilestoneState,
+							Resources.String_Error,
+							MessageBoxButtons.OK,
+							MessageBoxIcon.Error,
+							MessageBoxDefaultButton.Button1,
+							FormUtil.GetMessageBoxOptions(this));
+						goto Again;
+					}
+
+					form.RetrieveMilestone(milestone);
+
+					// Add.
+					milestone.Add();
+
+					// Flush.
+					Database.Flush();
+
+					// Show milestones.
+					ShowMilestones();
+
+					// Select new milestone.
+					milestonesListView.SelectedItems.Clear();
+					foreach (ListViewItem item in milestonesListView.Items) {
+						var m = (Milestone)item.Tag;
+						if (m.ID == milestone.ID) {
+							item.Selected = true;
+							item.EnsureVisible();
+							break;
+						}
+					}
+
+					PopulateTicketFilters();
+
+					UpdateButtonsEnabledProperty();
+
+					milestonesListView.Focus();
 				}
-
-				PopulateTicketFilters();
-
-				UpdateButtonsEnabledProperty();
-
-				milestonesListUserControl.Focus();
 			}
 		}
 
 		private void ShowMilestone() {
-			if (milestonesListUserControl.MilestonesListView.SelectedItems.Count != 1) {
+			if (milestonesListView.SelectedItems.Count != 1) {
 				return;
 			}
 
-			Milestone milestone = (Milestone)milestonesListUserControl.MilestonesListView.SelectedItems[0].Tag;
+			var milestone = (Milestone)milestonesListView.SelectedItems[0].Tag;
+			using (var form = new MilestoneDetailsForm()) {
+				form.ShowMilestone(milestone);
+				form.ReadOnly = true;
 
-			MilestoneDetailsForm form = new MilestoneDetailsForm();
-
-			form.MilestoneDetailsUserControl.ShowMilestone(milestone);
-			form.MilestoneDetailsUserControl.ReadOnly = true;
-
-			form.ShowDialog();
+				form.ShowDialog();
+			}
 		}
 
 		private void EditMilestone() {
-			if (milestonesListUserControl.MilestonesListView.SelectedItems.Count != 1) {
+			if (milestonesListView.SelectedItems.Count != 1) {
 				return;
 			}
 
-			Milestone milestone = (Milestone)milestonesListUserControl.MilestonesListView.SelectedItems[0].Tag;
+			var milestone = (Milestone)milestonesListView.SelectedItems[0].Tag;
+			using (var form = new MilestoneDetailsForm()) {
+				form.ShowMilestone(milestone);
 
-			MilestoneDetailsForm form = new MilestoneDetailsForm();
+				Again:
+				if (form.ShowDialog() == DialogResult.OK) {
+					// Check name.
+					if (string.IsNullOrWhiteSpace(form.MilestoneName)) {
+						MessageBox.Show(
+							Resources.String_TheMilestoneNameCannotBeBlank,
+							Resources.String_Error,
+							MessageBoxButtons.OK,
+							MessageBoxIcon.Error,
+							MessageBoxDefaultButton.Button1,
+							FormUtil.GetMessageBoxOptions(this));
+						goto Again;
+					}
 
-			form.MilestoneDetailsUserControl.ShowMilestone(milestone);
+					// Check state.
+					if (form.State == (MilestoneState)(-1)) {
+						MessageBox.Show(
+							Resources.String_PleaseSpecifyMilestoneState,
+							Resources.String_Error,
+							MessageBoxButtons.OK,
+							MessageBoxIcon.Error,
+							MessageBoxDefaultButton.Button1,
+							FormUtil.GetMessageBoxOptions(this));
+						goto Again;
+					}
 
-			Again:
-			if (form.ShowDialog() == DialogResult.OK) {
-				// Check name.
-				if (string.IsNullOrWhiteSpace(form.MilestoneDetailsUserControl.MilestoneName)) {
-					MessageBox.Show(
-						Resources.String_TheMilestoneNameCannotBeBlank,
-						Resources.String_Error,
-						MessageBoxButtons.OK,
-						MessageBoxIcon.Error,
-						MessageBoxDefaultButton.Button1,
-						FormMessageBoxOptions);
-					goto Again;
+					form.RetrieveMilestone(milestone);
+
+					// Update milestones.
+					milestone.Update();
+
+					// Flush.
+					Database.Flush();
+
+					// Show milestones.
+					ShowMilestones();
+
+					PopulateTicketFilters();
+
+					// Tickets will have outdated naming potentially if we don't update the ticket display
+					ShowTickets();
 				}
-
-				// Check state.
-				if (form.MilestoneDetailsUserControl.State == (MilestoneState)(-1)) {
-					MessageBox.Show(
-						Resources.String_PleaseSpecifyMilestoneState,
-						Resources.String_Error,
-						MessageBoxButtons.OK,
-						MessageBoxIcon.Error,
-						MessageBoxDefaultButton.Button1,
-						FormMessageBoxOptions);
-					goto Again;
-				}
-
-				form.MilestoneDetailsUserControl.RetrieveMilestone(milestone);
-
-				// Update milestones.
-				milestone.Update();
-
-				// Flush.
-				Database.Flush();
-
-				// Show milestones.
-				ShowMilestones();
-
-				PopulateTicketFilters();
-
-				// Tickets will have outdated naming potentially if we don't update the ticket display
-				ShowTickets();
 			}
 		}
 
 		private void DeleteMilestone() {
-			if (milestonesListUserControl.MilestonesListView.SelectedItems.Count > 0) {
-				DialogResult result = MessageBox.Show(
-					Resources.String_AreYouSureYouWantToDeleteSelectedMilestonesAndTheirTickets,
-					Resources.String_DeleteMilestones,
-					MessageBoxButtons.YesNo,
-					MessageBoxIcon.Question,
-					MessageBoxDefaultButton.Button1,
-					FormMessageBoxOptions);
+			if (milestonesListView.SelectedItems.Count != 0) return;
 
-				if (result != DialogResult.Yes) {
-					return;
-				}
+			DialogResult result = MessageBox.Show(
+				Resources.String_AreYouSureYouWantToDeleteSelectedMilestonesAndTheirTickets,
+				Resources.String_DeleteMilestones,
+				MessageBoxButtons.YesNo,
+				MessageBoxIcon.Question,
+				MessageBoxDefaultButton.Button1,
+				FormUtil.GetMessageBoxOptions(this));
 
-				// Delete milestones.
-				for (int i = 0; i < milestonesListUserControl.MilestonesListView.SelectedItems.Count; i++) {
-					Milestone milestone = (Milestone)milestonesListUserControl.MilestonesListView.SelectedItems[i].Tag;
-					milestone.Delete();
-				}
-
-				// Flush.
-				Database.Flush();
-
-				// Show milestones.
-				ShowMilestones();
-
-				PopulateTicketFilters();
-
-				// Tickets may change as the result of removing a milestone
-				ShowTickets();
+			if (result != DialogResult.Yes) {
+				return;
 			}
+
+			// Delete milestones.
+			for (int i = 0; i < milestonesListView.SelectedItems.Count; i++) {
+				var milestone = (Milestone)milestonesListView.SelectedItems[i].Tag;
+				milestone.Delete();
+			}
+
+			// Flush.
+			Database.Flush();
+
+			// Show milestones.
+			ShowMilestones();
+
+			PopulateTicketFilters();
+
+			// Tickets may change as the result of removing a milestone
+			ShowTickets();
 		}
 		#endregion
 
 		#region Ticket
 		private void TicketBatch<TValue>(Action<Ticket, TValue, bool> ticketFunc, TValue value) {
-			for (int i = 0, end = ticketsListUserControl.TicketsListView.SelectedItems.Count; i < end; i++) {
-				Ticket ticket = (Ticket)ticketsListUserControl.TicketsListView.SelectedItems[i].Tag;
+			for (int i = 0, end = ticketsListView.SelectedItems.Count; i < end; i++) {
+				var ticket = (Ticket)ticketsListView.SelectedItems[i].Tag;
 				ticketFunc(ticket, value, true);
 			}
 
@@ -684,9 +707,9 @@ namespace Peygir.Presentation.Forms {
 			if (mResettingTicketFilters) return;
 
 			// Save selected tickets.
-			List<int> selectedTickets = new List<int>();
-			foreach (ListViewItem item in ticketsListUserControl.TicketsListView.SelectedItems) {
-				Ticket ticket = (Ticket)item.Tag;
+			var selectedTickets = new List<int>();
+			foreach (ListViewItem item in ticketsListView.SelectedItems) {
+				var ticket = (Ticket)item.Tag;
 				selectedTickets.Add(ticket.ID);
 			}
 
@@ -726,11 +749,41 @@ namespace Peygir.Presentation.Forms {
 					satisfiesModifiedFilter;
 			}).ToArray();
 
-			ticketsListUserControl.ShowTickets(tickets);
+			// Cache milestones.
+			var milestoneNames = new Dictionary<int, string>();
+			Milestone[] milestones = Milestone.GetMilestones();
+			foreach (Milestone milestone in milestones) {
+				milestoneNames[milestone.ID] = milestone.Name;
+			}
+
+			ticketsListView.BeginUpdate();
+			ticketsListView.Items.Clear();
+			foreach (var ticket in tickets) {
+				string ticketPriority = TicketChangeFormatter.Default.TranslateTicketPriority(ticket.Priority);
+				string ticketType = TicketChangeFormatter.Default.TranslateTicketType(ticket.Type);
+				string ticketSeverity = TicketChangeFormatter.Default.TranslateTicketSeverity(ticket.Severity);
+				string ticketState = TicketChangeFormatter.Default.TranslateTicketState(ticket.State);
+
+				var lvi = new ListViewItem();
+
+				lvi.Text = $"{ticket.TicketNumber}";
+				lvi.SubItems.Add(ticket.Summary);
+				lvi.SubItems.Add(milestoneNames[ticket.MilestoneID]);
+				lvi.SubItems.Add(ticketPriority);
+				lvi.SubItems.Add(ticketType);
+				lvi.SubItems.Add(ticketSeverity);
+				lvi.SubItems.Add(ticketState);
+				lvi.Tag = ticket;
+
+				ticketsListView.Items.Add(lvi);
+			}
+
+			ticketsListView.EndUpdate();
+			ticketsListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
 
 			// Reselect tickets.
-			foreach (ListViewItem item in ticketsListUserControl.TicketsListView.Items) {
-				Ticket ticket = (Ticket)item.Tag;
+			foreach (ListViewItem item in ticketsListView.Items) {
+				var ticket = (Ticket)item.Tag;
 				if (selectedTickets.Contains(ticket.ID)) {
 					item.Selected = true;
 				}
@@ -748,331 +801,329 @@ namespace Peygir.Presentation.Forms {
 					MessageBoxButtons.OK,
 					MessageBoxIcon.Error,
 					MessageBoxDefaultButton.Button1,
-					FormMessageBoxOptions);
+					FormUtil.GetMessageBoxOptions(this));
 				tabControl.SelectedTab = milestonesTabPage;
 				return;
 			}
 
-			var form = new TicketDetailsForm(Project, null);
+			using (var form = new TicketDetailsForm(Project, null)) {
+				form.ShowMilestones(milestones);
 
-			form.TicketDetailsUserControl.ShowMilestones(milestones);
-
-			form.TicketDetailsUserControl.Type = TicketType.Task;
-			form.TicketDetailsUserControl.Severity = TicketSeverity.Normal;
-			form.TicketDetailsUserControl.State = TicketState.Accepted;
-			form.TicketDetailsUserControl.Priority = TicketPriority.Normal;
-			if (milestones.Count() == 1) {
-				form.TicketDetailsUserControl.Milestone = milestones.First();
-			}
-
-			form.TicketDetailsUserControl.InitializeNewTicket(FormUtil.GetFontContext());
-
-			Again:
-			if (form.ShowDialog() == DialogResult.OK) {
-				// Check milestone.
-				if (form.TicketDetailsUserControl.Milestone == null) {
-					MessageBox.Show(
-						Resources.String_PleaseSelectAMilestone,
-						Resources.String_Error,
-						MessageBoxButtons.OK,
-						MessageBoxIcon.Error,
-						MessageBoxDefaultButton.Button1,
-						FormMessageBoxOptions);
-					goto Again;
+				form.Type = TicketType.Task;
+				form.Severity = TicketSeverity.Normal;
+				form.State = TicketState.Accepted;
+				form.Priority = TicketPriority.Normal;
+				if (milestones.Count() == 1) {
+					form.Milestone = milestones.First();
 				}
 
-				// Check summary.
-				if (string.IsNullOrWhiteSpace(form.TicketDetailsUserControl.Summary)) {
-					MessageBox.Show(
-						Resources.String_TheTicketSummaryCannotBeBlank,
-						Resources.String_Error,
-						MessageBoxButtons.OK,
-						MessageBoxIcon.Error,
-						MessageBoxDefaultButton.Button1,
-						FormMessageBoxOptions);
-					goto Again;
-				}
+				form.InitializeNewTicket(FormUtil.GetFontContext());
 
-				// Check type.
-				if (form.TicketDetailsUserControl.Type == (TicketType)(-1)) {
-					MessageBox.Show(
-						Resources.String_PleaseSpecifyTicketType,
-						Resources.String_Error,
-						MessageBoxButtons.OK,
-						MessageBoxIcon.Error,
-						MessageBoxDefaultButton.Button1,
-						FormMessageBoxOptions);
-					goto Again;
-				}
-
-				// Check severity.
-				if (form.TicketDetailsUserControl.Severity == (TicketSeverity)(-1)) {
-					MessageBox.Show(
-						Resources.String_PleaseSpecifyTicketSeverity,
-						Resources.String_Error,
-						MessageBoxButtons.OK,
-						MessageBoxIcon.Error,
-						MessageBoxDefaultButton.Button1,
-						FormMessageBoxOptions);
-					goto Again;
-				}
-
-				// Check state.
-				if (form.TicketDetailsUserControl.State == (TicketState)(-1)) {
-					MessageBox.Show(
-						Resources.String_PleaseSpecifyTicketState,
-						Resources.String_Error,
-						MessageBoxButtons.OK,
-						MessageBoxIcon.Error,
-						MessageBoxDefaultButton.Button1,
-						FormMessageBoxOptions);
-					goto Again;
-				}
-
-				// Check priority.
-				if (form.TicketDetailsUserControl.Priority == (TicketPriority)(-1)) {
-					MessageBox.Show(
-						Resources.String_PleaseSpecifyTicketPriority,
-						Resources.String_Error,
-						MessageBoxButtons.OK,
-						MessageBoxIcon.Error,
-						MessageBoxDefaultButton.Button1,
-						FormMessageBoxOptions);
-					goto Again;
-				}
-
-				// Check description.
-				if (string.IsNullOrWhiteSpace(form.TicketDetailsUserControl.Description)) {
-					MessageBox.Show(
-						Resources.String_TheTicketDescriptionCannotBeBlank,
-						Resources.String_Error,
-						MessageBoxButtons.OK,
-						MessageBoxIcon.Error,
-						MessageBoxDefaultButton.Button1,
-						FormMessageBoxOptions);
-					goto Again;
-				}
-
-				Milestone milestone = form.TicketDetailsUserControl.Milestone;
-				Ticket ticket = milestone.NewTicket();
-				form.TicketDetailsUserControl.RetrieveTicket(ticket);
-
-				// Add.
-				ticket.Add();
-
-				// Flush.
-				Database.Flush();
-
-				// Create ticket history entry.
-				TicketHistory ticketHistory = ticket.NewHistory(Resources.String_TicketCreated);
-				ticketHistory.Add();
-
-				// Show tickets.
-				ShowTickets();
-
-				// Select new ticket.
-				ticketsListUserControl.TicketsListView.SelectedItems.Clear();
-				foreach (ListViewItem item in ticketsListUserControl.TicketsListView.Items) {
-					Ticket t = (Ticket)item.Tag;
-					if (t.ID == ticket.ID) {
-						item.Selected = true;
-						item.EnsureVisible();
-						break;
+				Again:
+				if (form.ShowDialog() == DialogResult.OK) {
+					// Check milestone.
+					if (form.Milestone == null) {
+						MessageBox.Show(
+							Resources.String_PleaseSelectAMilestone,
+							Resources.String_Error,
+							MessageBoxButtons.OK,
+							MessageBoxIcon.Error,
+							MessageBoxDefaultButton.Button1,
+							FormUtil.GetMessageBoxOptions(this));
+						goto Again;
 					}
+
+					// Check summary.
+					if (string.IsNullOrWhiteSpace(form.Summary)) {
+						MessageBox.Show(
+							Resources.String_TheTicketSummaryCannotBeBlank,
+							Resources.String_Error,
+							MessageBoxButtons.OK,
+							MessageBoxIcon.Error,
+							MessageBoxDefaultButton.Button1,
+							FormUtil.GetMessageBoxOptions(this));
+						goto Again;
+					}
+
+					// Check type.
+					if (form.Type == (TicketType)(-1)) {
+						MessageBox.Show(
+							Resources.String_PleaseSpecifyTicketType,
+							Resources.String_Error,
+							MessageBoxButtons.OK,
+							MessageBoxIcon.Error,
+							MessageBoxDefaultButton.Button1,
+							FormUtil.GetMessageBoxOptions(this));
+						goto Again;
+					}
+
+					// Check severity.
+					if (form.Severity == (TicketSeverity)(-1)) {
+						MessageBox.Show(
+							Resources.String_PleaseSpecifyTicketSeverity,
+							Resources.String_Error,
+							MessageBoxButtons.OK,
+							MessageBoxIcon.Error,
+							MessageBoxDefaultButton.Button1,
+							FormUtil.GetMessageBoxOptions(this));
+						goto Again;
+					}
+
+					// Check state.
+					if (form.State == (TicketState)(-1)) {
+						MessageBox.Show(
+							Resources.String_PleaseSpecifyTicketState,
+							Resources.String_Error,
+							MessageBoxButtons.OK,
+							MessageBoxIcon.Error,
+							MessageBoxDefaultButton.Button1,
+							FormUtil.GetMessageBoxOptions(this));
+						goto Again;
+					}
+
+					// Check priority.
+					if (form.Priority == (TicketPriority)(-1)) {
+						MessageBox.Show(
+							Resources.String_PleaseSpecifyTicketPriority,
+							Resources.String_Error,
+							MessageBoxButtons.OK,
+							MessageBoxIcon.Error,
+							MessageBoxDefaultButton.Button1,
+							FormUtil.GetMessageBoxOptions(this));
+						goto Again;
+					}
+
+					// Check description.
+					if (string.IsNullOrWhiteSpace(form.Description)) {
+						MessageBox.Show(
+							Resources.String_TheTicketDescriptionCannotBeBlank,
+							Resources.String_Error,
+							MessageBoxButtons.OK,
+							MessageBoxIcon.Error,
+							MessageBoxDefaultButton.Button1,
+							FormUtil.GetMessageBoxOptions(this));
+						goto Again;
+					}
+
+					Milestone milestone = form.Milestone;
+					Ticket ticket = milestone.NewTicket();
+					form.RetrieveTicket(ticket);
+
+					// Add.
+					ticket.Add();
+
+					// Flush.
+					Database.Flush();
+
+					// Create ticket history entry.
+					TicketHistory ticketHistory = ticket.NewHistory(Resources.String_TicketCreated);
+					ticketHistory.Add();
+
+					// Show tickets.
+					ShowTickets();
+
+					// Select new ticket.
+					ticketsListView.SelectedItems.Clear();
+					foreach (ListViewItem item in ticketsListView.Items) {
+						var t = (Ticket)item.Tag;
+						if (t.ID == ticket.ID) {
+							item.Selected = true;
+							item.EnsureVisible();
+							break;
+						}
+					}
+
+					UpdateButtonsEnabledProperty();
+
+					ticketsListView.Focus();
+
+					UpdateTicket(true);
 				}
-
-				UpdateButtonsEnabledProperty();
-
-				ticketsListUserControl.Focus();
-
-				UpdateTicket(true);
 			}
 		}
 
 		private void ShowTicket() {
-			if (ticketsListUserControl.TicketsListView.SelectedItems.Count != 1) {
+			if (ticketsListView.SelectedItems.Count != 1) {
 				return;
 			}
 
-			Ticket ticket = (Ticket)ticketsListUserControl.TicketsListView.SelectedItems[0].Tag;
+			var ticket = (Ticket)ticketsListView.SelectedItems[0].Tag;
 
-			var form = new TicketDetailsForm(Project, ticket);
+			using (var form = new TicketDetailsForm(Project, ticket)) {
+				Milestone[] milestones = Project.GetMilestones();
+				form.ShowMilestones(milestones);
 
-			Milestone[] milestones = Project.GetMilestones();
-			form.TicketDetailsUserControl.ShowMilestones(milestones);
+				form.ShowTicket(ticket, FormUtil.GetFormatter(), FormUtil.GetFontContext());
+				form.ReadOnly = true;
 
-			form.TicketDetailsUserControl.ShowTicket(ticket, FormUtil.GetFormatter(), FormUtil.GetFontContext());
-			form.TicketDetailsUserControl.ReadOnly = true;
-
-			form.ShowDialog();
+				form.ShowDialog();
+			}
 		}
 
 		private void EditTicket() {
-			if (ticketsListUserControl.TicketsListView.SelectedItems.Count != 1) {
+			if (ticketsListView.SelectedItems.Count != 1) {
 				return;
 			}
 
-			Ticket ticket = (Ticket)ticketsListUserControl.TicketsListView.SelectedItems[0].Tag;
+			var ticket = (Ticket)ticketsListView.SelectedItems[0].Tag;
 
-			var form = new TicketDetailsForm(Project, ticket);
+			using (var form = new TicketDetailsForm(Project, ticket)) {
+				Milestone[] milestones = Project.GetMilestones();
+				form.ShowMilestones(milestones);
 
-			Milestone[] milestones = Project.GetMilestones();
-			form.TicketDetailsUserControl.ShowMilestones(milestones);
+				form.ShowTicket(ticket, FormUtil.GetFormatter(), FormUtil.GetFontContext());
 
-			form.TicketDetailsUserControl.ShowTicket(ticket, FormUtil.GetFormatter(), FormUtil.GetFontContext());
+				Again:
+				if (form.ShowDialog() == DialogResult.OK) {
+					// Check milestone.
+					if (form.Milestone == null) {
+						MessageBox.Show(
+							Resources.String_PleaseSelectAMilestone,
+							Resources.String_Error,
+							MessageBoxButtons.OK,
+							MessageBoxIcon.Error,
+							MessageBoxDefaultButton.Button1,
+							FormUtil.GetMessageBoxOptions(this));
+						goto Again;
+					}
 
-			Again:
-			if (form.ShowDialog() == DialogResult.OK) {
-				// Check milestone.
-				if (form.TicketDetailsUserControl.Milestone == null) {
-					MessageBox.Show(
-						Resources.String_PleaseSelectAMilestone,
-						Resources.String_Error,
-						MessageBoxButtons.OK,
-						MessageBoxIcon.Error,
-						MessageBoxDefaultButton.Button1,
-						FormMessageBoxOptions);
-					goto Again;
+					// Check summary.
+					if (string.IsNullOrWhiteSpace(form.Summary)) {
+						MessageBox.Show(
+							Resources.String_TheTicketSummaryCannotBeBlank,
+							Resources.String_Error,
+							MessageBoxButtons.OK,
+							MessageBoxIcon.Error,
+							MessageBoxDefaultButton.Button1,
+							FormUtil.GetMessageBoxOptions(this));
+						goto Again;
+					}
+
+					// Check type.
+					if (form.Type == (TicketType)(-1)) {
+						MessageBox.Show(
+							Resources.String_PleaseSpecifyTicketType,
+							Resources.String_Error,
+							MessageBoxButtons.OK,
+							MessageBoxIcon.Error,
+							MessageBoxDefaultButton.Button1,
+							FormUtil.GetMessageBoxOptions(this));
+						goto Again;
+					}
+
+					// Check severity.
+					if (form.Severity == (TicketSeverity)(-1)) {
+						MessageBox.Show(
+							Resources.String_PleaseSpecifyTicketSeverity,
+							Resources.String_Error,
+							MessageBoxButtons.OK,
+							MessageBoxIcon.Error,
+							MessageBoxDefaultButton.Button1,
+							FormUtil.GetMessageBoxOptions(this));
+						goto Again;
+					}
+
+					// Check state.
+					if (form.State == (TicketState)(-1)) {
+						MessageBox.Show(
+							Resources.String_PleaseSpecifyTicketState,
+							Resources.String_Error,
+							MessageBoxButtons.OK,
+							MessageBoxIcon.Error,
+							MessageBoxDefaultButton.Button1,
+							FormUtil.GetMessageBoxOptions(this));
+						goto Again;
+					}
+
+					// Check priority.
+					if (form.Priority == (TicketPriority)(-1)) {
+						MessageBox.Show(
+							Resources.String_PleaseSpecifyTicketPriority,
+							Resources.String_Error,
+							MessageBoxButtons.OK,
+							MessageBoxIcon.Error,
+							MessageBoxDefaultButton.Button1,
+							FormUtil.GetMessageBoxOptions(this));
+						goto Again;
+					}
+
+					// Check description.
+					if (string.IsNullOrWhiteSpace(form.Description)) {
+						MessageBox.Show(
+							Resources.String_TheTicketDescriptionCannotBeBlank,
+							Resources.String_Error,
+							MessageBoxButtons.OK,
+							MessageBoxIcon.Error,
+							MessageBoxDefaultButton.Button1,
+							FormUtil.GetMessageBoxOptions(this));
+						goto Again;
+					}
+
+					ticket.UpdateAndGenerateHistoryRecord(TicketChangeFormatter.Default, t => {
+						form.RetrieveTicket(t);
+					});
+
+					// Flush.
+					Database.Flush();
+
+					// Show tickets.
+					ShowTickets();
+
+					UpdateTicket(true);
 				}
-
-				// Check summary.
-				if (string.IsNullOrWhiteSpace(form.TicketDetailsUserControl.Summary)) {
-					MessageBox.Show(
-						Resources.String_TheTicketSummaryCannotBeBlank,
-						Resources.String_Error,
-						MessageBoxButtons.OK,
-						MessageBoxIcon.Error,
-						MessageBoxDefaultButton.Button1,
-						FormMessageBoxOptions);
-					goto Again;
-				}
-
-				// Check type.
-				if (form.TicketDetailsUserControl.Type == (TicketType)(-1)) {
-					MessageBox.Show(
-						Resources.String_PleaseSpecifyTicketType,
-						Resources.String_Error,
-						MessageBoxButtons.OK,
-						MessageBoxIcon.Error,
-						MessageBoxDefaultButton.Button1,
-						FormMessageBoxOptions);
-					goto Again;
-				}
-
-				// Check severity.
-				if (form.TicketDetailsUserControl.Severity == (TicketSeverity)(-1)) {
-					MessageBox.Show(
-						Resources.String_PleaseSpecifyTicketSeverity,
-						Resources.String_Error,
-						MessageBoxButtons.OK,
-						MessageBoxIcon.Error,
-						MessageBoxDefaultButton.Button1,
-						FormMessageBoxOptions);
-					goto Again;
-				}
-
-				// Check state.
-				if (form.TicketDetailsUserControl.State == (TicketState)(-1)) {
-					MessageBox.Show(
-						Resources.String_PleaseSpecifyTicketState,
-						Resources.String_Error,
-						MessageBoxButtons.OK,
-						MessageBoxIcon.Error,
-						MessageBoxDefaultButton.Button1,
-						FormMessageBoxOptions);
-					goto Again;
-				}
-
-				// Check priority.
-				if (form.TicketDetailsUserControl.Priority == (TicketPriority)(-1)) {
-					MessageBox.Show(
-						Resources.String_PleaseSpecifyTicketPriority,
-						Resources.String_Error,
-						MessageBoxButtons.OK,
-						MessageBoxIcon.Error,
-						MessageBoxDefaultButton.Button1,
-						FormMessageBoxOptions);
-					goto Again;
-				}
-
-				// Check description.
-				if (string.IsNullOrWhiteSpace(form.TicketDetailsUserControl.Description)) {
-					MessageBox.Show(
-						Resources.String_TheTicketDescriptionCannotBeBlank,
-						Resources.String_Error,
-						MessageBoxButtons.OK,
-						MessageBoxIcon.Error,
-						MessageBoxDefaultButton.Button1,
-						FormMessageBoxOptions);
-					goto Again;
-				}
-
-				ticket.UpdateAndGenerateHistoryRecord(TicketChangeFormatter.Default, t => {
-					form.TicketDetailsUserControl.RetrieveTicket(t);
-				});
-
-				// Flush.
-				Database.Flush();
-
-				// Show tickets.
-				ShowTickets();
-
-				UpdateTicket(true);
 			}
 		}
 
 		private void ShowTicketHistory() {
-			if (ticketsListUserControl.TicketsListView.SelectedItems.Count != 1) {
+			if (ticketsListView.SelectedItems.Count != 1) {
 				return;
 			}
 
-			Ticket ticket = (Ticket)ticketsListUserControl.TicketsListView.SelectedItems[0].Tag;
-
-			TicketHistoryForm form = new TicketHistoryForm(ticket);
-
-			form.ShowDialog();
+			var ticket = (Ticket)ticketsListView.SelectedItems[0].Tag;
+			using (var form = new TicketHistoryForm(ticket)) {
+				form.ShowDialog();
+			}
 		}
 
 		private void ShowAttachments() {
-			if (ticketsListUserControl.TicketsListView.SelectedItems.Count != 1) {
+			if (ticketsListView.SelectedItems.Count != 1) {
 				return;
 			}
 
-			Ticket ticket = (Ticket)ticketsListUserControl.TicketsListView.SelectedItems[0].Tag;
-
-			AttachmentsForm form = new AttachmentsForm(ticket);
-
-			form.ShowDialog();
+			var ticket = (Ticket)ticketsListView.SelectedItems[0].Tag;
+			using (var form = new AttachmentsForm(ticket)) {
+				form.ShowDialog();
+			}
 		}
 
 		private void DeleteTicket() {
-			if (ticketsListUserControl.TicketsListView.SelectedItems.Count > 0) {
-				DialogResult result = MessageBox.Show(
-					Resources.String_AreYouSureYouWantToDeleteSelectedTickets,
-					Resources.String_DeleteTickets,
-					MessageBoxButtons.YesNo,
-					MessageBoxIcon.Question,
-					MessageBoxDefaultButton.Button1,
-					FormMessageBoxOptions);
+			if (ticketsListView.SelectedItems.Count == 0) return;
 
-				if (result != DialogResult.Yes) {
-					return;
-				}
+			DialogResult result = MessageBox.Show(
+				Resources.String_AreYouSureYouWantToDeleteSelectedTickets,
+				Resources.String_DeleteTickets,
+				MessageBoxButtons.YesNo,
+				MessageBoxIcon.Question,
+				MessageBoxDefaultButton.Button1,
+				FormUtil.GetMessageBoxOptions(this));
 
-				// Delete tickets.
-				for (int i = 0; i < ticketsListUserControl.TicketsListView.SelectedItems.Count; i++) {
-					Ticket ticket = (Ticket)ticketsListUserControl.TicketsListView.SelectedItems[i].Tag;
-					ticket.Delete();
-				}
-
-				// Flush.
-				Database.Flush();
-
-				// Show tickets.
-				ShowTickets();
-
-				mMainForm.UpdateTicketOrProject();
+			if (result != DialogResult.Yes) {
+				return;
 			}
+
+			// Delete tickets.
+			for (int i = 0; i < ticketsListView.SelectedItems.Count; i++) {
+				var ticket = (Ticket)ticketsListView.SelectedItems[i].Tag;
+				ticket.Delete();
+			}
+
+			// Flush.
+			Database.Flush();
+
+			// Show tickets.
+			ShowTickets();
+
+			mMainForm.UpdateTicketOrProject();
 		}
 		#endregion
 

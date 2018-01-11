@@ -31,11 +31,13 @@
 			this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
 			this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
 			this.okButton = new System.Windows.Forms.Button();
-			this.attachmentsListUserControl = new Peygir.Presentation.UserControls.AttachmentsListUserControl();
 			this.attachmentsContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.addAttachmentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.saveAttachmentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.deleteAttachmentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.attachmentsListView = new System.Windows.Forms.ListView();
+			this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.attachmentsContextMenu.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -79,11 +81,6 @@
 			this.okButton.Name = "okButton";
 			this.okButton.UseVisualStyleBackColor = true;
 			// 
-			// attachmentsListUserControl
-			// 
-			resources.ApplyResources(this.attachmentsListUserControl, "attachmentsListUserControl");
-			this.attachmentsListUserControl.Name = "attachmentsListUserControl";
-			// 
 			// attachmentsContextMenu
 			// 
 			this.attachmentsContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -116,17 +113,40 @@
 			resources.ApplyResources(this.deleteAttachmentToolStripMenuItem, "deleteAttachmentToolStripMenuItem");
 			this.deleteAttachmentToolStripMenuItem.Click += new System.EventHandler(this.deleteAttachmentToolStripMenuItem_Click);
 			// 
+			// attachmentsListView
+			// 
+			this.attachmentsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2});
+			this.attachmentsListView.ContextMenuStrip = this.attachmentsContextMenu;
+			this.attachmentsListView.FullRowSelect = true;
+			this.attachmentsListView.GridLines = true;
+			this.attachmentsListView.HideSelection = false;
+			resources.ApplyResources(this.attachmentsListView, "attachmentsListView");
+			this.attachmentsListView.Name = "attachmentsListView";
+			this.attachmentsListView.UseCompatibleStateImageBehavior = false;
+			this.attachmentsListView.View = System.Windows.Forms.View.Details;
+			this.attachmentsListView.SelectedIndexChanged += new System.EventHandler(this.attachmentsListView_SelectedIndexChanged);
+			// 
+			// columnHeader1
+			// 
+			resources.ApplyResources(this.columnHeader1, "columnHeader1");
+			// 
+			// columnHeader2
+			// 
+			resources.ApplyResources(this.columnHeader2, "columnHeader2");
+			// 
 			// AttachmentsForm
 			// 
 			this.AcceptButton = this.okButton;
 			resources.ApplyResources(this, "$this");
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.CancelButton = this.okButton;
+			this.Controls.Add(this.attachmentsListView);
 			this.Controls.Add(this.okButton);
 			this.Controls.Add(this.deleteButton);
 			this.Controls.Add(this.saveButton);
 			this.Controls.Add(this.addButton);
-			this.Controls.Add(this.attachmentsListUserControl);
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "AttachmentsForm";
@@ -137,8 +157,6 @@
 		}
 
 		#endregion
-
-		private UserControls.AttachmentsListUserControl attachmentsListUserControl;
 		private System.Windows.Forms.Button addButton;
 		private System.Windows.Forms.Button saveButton;
 		private System.Windows.Forms.Button deleteButton;
@@ -149,5 +167,8 @@
 		private System.Windows.Forms.ToolStripMenuItem addAttachmentToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem saveAttachmentToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem deleteAttachmentToolStripMenuItem;
+		private System.Windows.Forms.ListView attachmentsListView;
+		private System.Windows.Forms.ColumnHeader columnHeader1;
+		private System.Windows.Forms.ColumnHeader columnHeader2;
 	}
 }

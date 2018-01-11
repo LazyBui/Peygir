@@ -1,14 +1,77 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
+using Peygir.Logic;
 using Peygir.Presentation.UserControls;
 
 namespace Peygir.Presentation.Forms {
 	public partial class MilestoneDetailsForm : Form {
-		public MilestoneDetailsUserControl MilestoneDetailsUserControl {
-			get { return milestoneDetailsUserControl; }
+		private bool readOnly;
+
+		public bool ReadOnly {
+			get { return readOnly; }
+			set {
+				readOnly = value;
+				UpdateReadOnlyState();
+			}
+		}
+
+		public string MilestoneName {
+			get { return nameTextBox.Text; }
+			set { nameTextBox.Text = value; }
+		}
+
+		public MilestoneState State {
+			get { return (MilestoneState)stateComboBox.SelectedIndex; }
+			set { stateComboBox.SelectedIndex = (int)value; }
+		}
+
+		public int DisplayOrder {
+			get { return (int)displayOrderNumericUpDown.Value; }
+			set { displayOrderNumericUpDown.Value = Math.Min(value, displayOrderNumericUpDown.Maximum); }
+		}
+
+		public string Description {
+			get { return descriptionTextBox.Text; }
+			set { descriptionTextBox.Text = value; }
 		}
 
 		public MilestoneDetailsForm() {
 			InitializeComponent();
+
+			ReadOnly = false;
+		}
+
+		public void ShowMilestone(Milestone milestone) {
+			if (milestone == null) throw new ArgumentNullException(nameof(milestone));
+
+			nameTextBox.Text = milestone.Name;
+			stateComboBox.SelectedIndex = (int)milestone.State;
+			displayOrderNumericUpDown.Value = Math.Min(milestone.DisplayOrder, displayOrderNumericUpDown.Maximum);
+			descriptionTextBox.Text = milestone.Description;
+		}
+
+		public void RetrieveMilestone(Milestone milestone) {
+			if (milestone == null) throw new ArgumentNullException(nameof(milestone));
+
+			milestone.Name = nameTextBox.Text;
+			milestone.State = (MilestoneState)stateComboBox.SelectedIndex;
+			milestone.DisplayOrder = (int)displayOrderNumericUpDown.Value;
+			milestone.Description = descriptionTextBox.Text;
+		}
+
+		private void UpdateReadOnlyState() {
+			nameTextBox.ReadOnly = readOnly;
+			stateComboBox.Enabled = !readOnly;
+			displayOrderNumericUpDown.ReadOnly = readOnly;
+			descriptionTextBox.ReadOnly = readOnly;
+		}
+
+		private void nameTextBox_KeyDown(object sender, KeyEventArgs e) {
+			TextBoxUtil.TextBoxKeyDown(sender, e);
+		}
+
+		private void descriptionTextBox_KeyDown(object sender, KeyEventArgs e) {
+			TextBoxUtil.TextBoxKeyDown(sender, e);
 		}
 	}
 }

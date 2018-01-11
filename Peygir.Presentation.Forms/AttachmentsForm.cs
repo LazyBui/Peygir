@@ -9,32 +9,16 @@ namespace Peygir.Presentation.Forms {
 	public partial class AttachmentsForm : Form {
 		public Ticket Ticket { get; private set; }
 
-		public MessageBoxOptions FormMessageBoxOptions {
-			get {
-				MessageBoxOptions options = 0;
-				if (RightToLeft == RightToLeft.Yes) {
-					options = (MessageBoxOptions.RtlReading | MessageBoxOptions.RightAlign);
-				}
-				return options;
-			}
-		}
-
 		public AttachmentsForm(Ticket ticket) {
-			if (ticket == null) {
-				throw new ArgumentNullException(nameof(ticket));
-			}
+			if (ticket == null) throw new ArgumentNullException(nameof(ticket));
 
 			Ticket = ticket;
 
 			InitializeComponent();
-
-			attachmentsListUserControl.AttachmentsListView.SelectedIndexChanged += AttachmentsListView_SelectedIndexChanged;
-			attachmentsListUserControl.ContextMenuStrip = attachmentsContextMenu;
-
 			ShowAttachments();
 		}
 
-		void AttachmentsListView_SelectedIndexChanged(object sender, EventArgs e) {
+		private void attachmentsListView_SelectedIndexChanged(object sender, EventArgs e) {
 			UpdateButtonsEnabledProperty();
 		}
 
@@ -55,10 +39,11 @@ namespace Peygir.Presentation.Forms {
 
 		#region Context menu
 		private void attachmentsContextMenu_Opening(object sender, System.ComponentModel.CancelEventArgs e) {
-			int count = attachmentsListUserControl.AttachmentsListView.SelectedItems.Count;
+			int count = attachmentsListView.SelectedItems.Count;
 			saveAttachmentToolStripMenuItem.Enabled = count == 1;
 			deleteAttachmentToolStripMenuItem.Enabled = count > 0;
 		}
+
 		private void addAttachmentToolStripMenuItem_Click(object sender, EventArgs e) {
 			AddAttachment();
 		}
@@ -75,26 +60,40 @@ namespace Peygir.Presentation.Forms {
 
 		#region Utility functions
 		private void UpdateButtonsEnabledProperty() {
-			int count = attachmentsListUserControl.AttachmentsListView.SelectedItems.Count;
+			int count = attachmentsListView.SelectedItems.Count;
 			saveButton.Enabled = count == 1;
 			deleteButton.Enabled = count > 0;
 		}
 
 		private void ShowAttachments() {
 			// Save selected attachments.
-			List<int> selectedAttachments = new List<int>();
-			foreach (ListViewItem item in attachmentsListUserControl.AttachmentsListView.SelectedItems) {
-				Attachment attachment = (Attachment)item.Tag;
+			var selectedAttachments = new List<int>();
+			foreach (ListViewItem item in attachmentsListView.SelectedItems) {
+				var attachment = (Attachment)item.Tag;
 				selectedAttachments.Add(attachment.ID);
 			}
 
 			Attachment[] attachments = Ticket.GetAttachmentsWithoutContents();
 
-			attachmentsListUserControl.ShowAttachments(attachments);
+			attachmentsListView.BeginUpdate();
+			attachmentsListView.Items.Clear();
+			foreach (var attachment in attachments) {
+				var lvi = new ListViewItem() {
+					Text = attachment.Name,
+					Tag = attachment,
+				};
+
+				lvi.SubItems.Add($"{attachment.Size}");
+
+				attachmentsListView.Items.Add(lvi);
+			}
+
+			attachmentsListView.EndUpdate();
+			attachmentsListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
 
 			// Reselect attachments.
-			foreach (ListViewItem item in attachmentsListUserControl.AttachmentsListView.Items) {
-				Attachment attachment = (Attachment)item.Tag;
+			foreach (ListViewItem item in attachmentsListView.Items) {
+				var attachment = (Attachment)item.Tag;
 				if (selectedAttachments.Contains(attachment.ID)) {
 					item.Selected = true;
 				}
@@ -107,7 +106,7 @@ namespace Peygir.Presentation.Forms {
 			try {
 				if (openFileDialog.ShowDialog() == DialogResult.OK) {
 					string fileName = openFileDialog.FileName;
-					FileInfo fi = new FileInfo(fileName);
+					var fi = new FileInfo(fileName);
 
 					Attachment attachment = Ticket.NewAttachment();
 
@@ -122,9 +121,9 @@ namespace Peygir.Presentation.Forms {
 					ShowAttachments();
 
 					// Select new attachment.
-					attachmentsListUserControl.AttachmentsListView.SelectedItems.Clear();
-					foreach (ListViewItem item in attachmentsListUserControl.AttachmentsListView.Items) {
-						Attachment a = (Attachment)item.Tag;
+					attachmentsListView.SelectedItems.Clear();
+					foreach (ListViewItem item in attachmentsListView.Items) {
+						var a = (Attachment)item.Tag;
 						if (a.ID == attachment.ID) {
 							item.Selected = true;
 							item.EnsureVisible();
@@ -134,76 +133,68 @@ namespace Peygir.Presentation.Forms {
 				}
 			}
 			catch (Exception exception) {
-				MessageBox.Show
-				(
+				MessageBox.Show(
 					exception.Message,
 					Resources.String_Error,
 					MessageBoxButtons.OK,
 					MessageBoxIcon.Error,
 					MessageBoxDefaultButton.Button1,
-					FormMessageBoxOptions
-				);
+					FormUtil.GetMessageBoxOptions(this));
 
 				ShowAttachments();
 			}
 		}
 
 		private void SaveAttachment() {
-			if (attachmentsListUserControl.AttachmentsListView.SelectedItems.Count == 1) {
-				try {
-					Attachment attachmentWithoutContents = (Attachment)attachmentsListUserControl.AttachmentsListView.SelectedItems[0].Tag;
+			if (attachmentsListView.SelectedItems.Count != 1) return;
+			try {
+				var attachmentWithoutContents = (Attachment)attachmentsListView.SelectedItems[0].Tag;
 
-					saveFileDialog.FileName = attachmentWithoutContents.Name;
-					if (saveFileDialog.ShowDialog() == DialogResult.OK) {
-						string fileName = saveFileDialog.FileName;
-						Attachment attachment = Attachment.GetAttachment(attachmentWithoutContents.ID);
+				saveFileDialog.FileName = attachmentWithoutContents.Name;
+				if (saveFileDialog.ShowDialog() == DialogResult.OK) {
+					string fileName = saveFileDialog.FileName;
+					Attachment attachment = Attachment.GetAttachment(attachmentWithoutContents.ID);
 
-						File.WriteAllBytes(fileName, attachment.GetContents());
-					}
+					File.WriteAllBytes(fileName, attachment.GetContents());
 				}
-				catch (Exception exception) {
-					MessageBox.Show
-					(
-						exception.Message,
-						Resources.String_Error,
-						MessageBoxButtons.OK,
-						MessageBoxIcon.Error,
-						MessageBoxDefaultButton.Button1,
-						FormMessageBoxOptions
-					);
-				}
+			}
+			catch (Exception exception) {
+				MessageBox.Show(
+					exception.Message,
+					Resources.String_Error,
+					MessageBoxButtons.OK,
+					MessageBoxIcon.Error,
+					MessageBoxDefaultButton.Button1,
+					FormUtil.GetMessageBoxOptions(this));
 			}
 		}
 
 		private void DeleteAttachment() {
-			if (attachmentsListUserControl.AttachmentsListView.Items.Count > 0) {
-				DialogResult result =
-				MessageBox.Show
-				(
-					Resources.String_AreYouSureYouWantToDeleteAttachments,
-					Resources.String_DeleteAttachments,
-					MessageBoxButtons.YesNo,
-					MessageBoxIcon.Question,
-					MessageBoxDefaultButton.Button1,
-					FormMessageBoxOptions
-				);
+			if (attachmentsListView.Items.Count == 0) return;
 
-				if (result != DialogResult.Yes) {
-					return;
-				}
+			DialogResult result = MessageBox.Show(
+				Resources.String_AreYouSureYouWantToDeleteAttachments,
+				Resources.String_DeleteAttachments,
+				MessageBoxButtons.YesNo,
+				MessageBoxIcon.Question,
+				MessageBoxDefaultButton.Button1,
+				FormUtil.GetMessageBoxOptions(this));
 
-				// Delete attachments.
-				for (int i = 0; i < attachmentsListUserControl.AttachmentsListView.SelectedItems.Count; i++) {
-					Attachment attachment = (Attachment)attachmentsListUserControl.AttachmentsListView.SelectedItems[i].Tag;
-					attachment.Delete();
-				}
-
-				// Flush.
-				Database.Flush();
-
-				// Show attachments.
-				ShowAttachments();
+			if (result != DialogResult.Yes) {
+				return;
 			}
+
+			// Delete attachments.
+			for (int i = 0; i < attachmentsListView.SelectedItems.Count; i++) {
+				var attachment = (Attachment)attachmentsListView.SelectedItems[i].Tag;
+				attachment.Delete();
+			}
+
+			// Flush.
+			Database.Flush();
+
+			// Show attachments.
+			ShowAttachments();
 		}
 		#endregion
 	}

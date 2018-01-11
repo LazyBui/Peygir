@@ -121,14 +121,104 @@
   <data name="projectsGroupBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
+  <data name="columnHeader1.Text" xml:space="preserve">
+    <value>Name</value>
+  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="columnHeader1.Width" type="System.Int32, mscorlib">
+    <value>222</value>
+  </data>
+  <data name="columnHeader2.Text" xml:space="preserve">
+    <value>Created</value>
+  </data>
+  <data name="columnHeader2.Width" type="System.Int32, mscorlib">
+    <value>105</value>
+  </data>
+  <data name="columnHeader3.Text" xml:space="preserve">
+    <value>Modified</value>
+  </data>
+  <data name="columnHeader3.Width" type="System.Int32, mscorlib">
+    <value>105</value>
+  </data>
+  <data name="columnHeader4.Text" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="columnHeader4.Width" type="System.Int32, mscorlib">
+    <value>65</value>
+  </data>
+  <data name="columnHeader5.Text" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="columnHeader5.Width" type="System.Int32, mscorlib">
+    <value>65</value>
+  </data>
+  <metadata name="projectContextMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>507, 18</value>
+  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="addProjectToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>107, 22</value>
+  </data>
+  <data name="addProjectToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Add</value>
+  </data>
+  <data name="editProjectToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>107, 22</value>
+  </data>
+  <data name="editProjectToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Edit</value>
+  </data>
+  <data name="editTicketsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>107, 22</value>
+  </data>
+  <data name="editTicketsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ti&amp;ckets</value>
+  </data>
+  <data name="deleteProjectToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>107, 22</value>
+  </data>
+  <data name="deleteProjectToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Delete</value>
+  </data>
+  <data name="projectContextMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>108, 92</value>
+  </data>
+  <data name="&gt;&gt;projectContextMenu.Name" xml:space="preserve">
+    <value>projectContextMenu</value>
+  </data>
+  <data name="&gt;&gt;projectContextMenu.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="projectsListView.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 124</value>
+  </data>
+  <data name="projectsListView.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="projectsListView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>580, 228</value>
+  </data>
+  <data name="projectsListView.TabIndex" type="System.Int32, mscorlib">
+    <value>27</value>
+  </data>
+  <data name="&gt;&gt;projectsListView.Name" xml:space="preserve">
+    <value>projectsListView</value>
+  </data>
+  <data name="&gt;&gt;projectsListView.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;projectsListView.Parent" xml:space="preserve">
+    <value>projectsGroupBox</value>
+  </data>
+  <data name="&gt;&gt;projectsListView.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="label5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
     <value>230, 20</value>
   </data>
@@ -151,7 +241,7 @@
     <value>projectsGroupBox</value>
   </data>
   <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="resetFilterButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -178,7 +268,7 @@
     <value>projectsGroupBox</value>
   </data>
   <data name="&gt;&gt;resetFilterButton.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -208,7 +298,7 @@
     <value>projectsGroupBox</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="editTicketsButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -220,7 +310,7 @@
     <value>NoControl</value>
   </data>
   <data name="editTicketsButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>422, 360</value>
+    <value>420, 360</value>
   </data>
   <data name="editTicketsButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>83, 23</value>
@@ -244,7 +334,7 @@
     <value>projectsGroupBox</value>
   </data>
   <data name="&gt;&gt;editTicketsButton.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="createdButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -268,7 +358,7 @@
     <value>projectsGroupBox</value>
   </data>
   <data name="&gt;&gt;createdButton.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="deleteProjectButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -277,7 +367,7 @@
     <value>NoControl</value>
   </data>
   <data name="deleteProjectButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>511, 360</value>
+    <value>509, 360</value>
   </data>
   <data name="deleteProjectButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>83, 23</value>
@@ -301,7 +391,7 @@
     <value>projectsGroupBox</value>
   </data>
   <data name="&gt;&gt;deleteProjectButton.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="modifiedButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -325,7 +415,7 @@
     <value>projectsGroupBox</value>
   </data>
   <data name="&gt;&gt;modifiedButton.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="editProjectButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -334,7 +424,7 @@
     <value>NoControl</value>
   </data>
   <data name="editProjectButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>333, 360</value>
+    <value>331, 360</value>
   </data>
   <data name="editProjectButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>83, 23</value>
@@ -358,7 +448,7 @@
     <value>projectsGroupBox</value>
   </data>
   <data name="&gt;&gt;editProjectButton.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="modifiedTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>65, 71</value>
@@ -379,7 +469,7 @@
     <value>projectsGroupBox</value>
   </data>
   <data name="&gt;&gt;modifiedTextBox.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="addProjectButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -388,7 +478,7 @@
     <value>NoControl</value>
   </data>
   <data name="addProjectButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>244, 360</value>
+    <value>242, 360</value>
   </data>
   <data name="addProjectButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>83, 23</value>
@@ -412,7 +502,7 @@
     <value>projectsGroupBox</value>
   </data>
   <data name="&gt;&gt;addProjectButton.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="createdTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>65, 44</value>
@@ -433,33 +523,6 @@
     <value>projectsGroupBox</value>
   </data>
   <data name="&gt;&gt;createdTextBox.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="projectsListUserControl.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
-  <data name="projectsListUserControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 127</value>
-  </data>
-  <data name="projectsListUserControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="projectsListUserControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>588, 227</value>
-  </data>
-  <data name="projectsListUserControl.TabIndex" type="System.Int32, mscorlib">
-    <value>22</value>
-  </data>
-  <data name="&gt;&gt;projectsListUserControl.Name" xml:space="preserve">
-    <value>projectsListUserControl</value>
-  </data>
-  <data name="&gt;&gt;projectsListUserControl.Type" xml:space="preserve">
-    <value>Peygir.Presentation.UserControls.ProjectsListUserControl, Peygir.Presentation.UserControls, Version=1.0.2.0, Culture=neutral, PublicKeyToken=7bc4e639a7e2568f</value>
-  </data>
-  <data name="&gt;&gt;projectsListUserControl.Parent" xml:space="preserve">
-    <value>projectsGroupBox</value>
-  </data>
-  <data name="&gt;&gt;projectsListUserControl.ZOrder" xml:space="preserve">
     <value>11</value>
   </data>
   <data name="label9.AutoSize" type="System.Boolean, mscorlib">
@@ -1116,42 +1179,6 @@
   <data name="saveFileDialog.Title" xml:space="preserve">
     <value>Save</value>
   </data>
-  <metadata name="projectContextMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>507, 18</value>
-  </metadata>
-  <data name="addProjectToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>107, 22</value>
-  </data>
-  <data name="addProjectToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Add</value>
-  </data>
-  <data name="editProjectToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>107, 22</value>
-  </data>
-  <data name="editProjectToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Edit</value>
-  </data>
-  <data name="editTicketsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>107, 22</value>
-  </data>
-  <data name="editTicketsToolStripMenuItem.Text" xml:space="preserve">
-    <value>Ti&amp;ckets</value>
-  </data>
-  <data name="deleteProjectToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>107, 22</value>
-  </data>
-  <data name="deleteProjectToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Delete</value>
-  </data>
-  <data name="projectContextMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>108, 92</value>
-  </data>
-  <data name="&gt;&gt;projectContextMenu.Name" xml:space="preserve">
-    <value>projectContextMenu</value>
-  </data>
-  <data name="&gt;&gt;projectContextMenu.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -1343,6 +1370,36 @@
   </data>
   <data name="&gt;&gt;deleteProjectToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnHeader1.Name" xml:space="preserve">
+    <value>columnHeader1</value>
+  </data>
+  <data name="&gt;&gt;columnHeader1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnHeader2.Name" xml:space="preserve">
+    <value>columnHeader2</value>
+  </data>
+  <data name="&gt;&gt;columnHeader2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnHeader3.Name" xml:space="preserve">
+    <value>columnHeader3</value>
+  </data>
+  <data name="&gt;&gt;columnHeader3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnHeader4.Name" xml:space="preserve">
+    <value>columnHeader4</value>
+  </data>
+  <data name="&gt;&gt;columnHeader4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnHeader5.Name" xml:space="preserve">
+    <value>columnHeader5</value>
+  </data>
+  <data name="&gt;&gt;columnHeader5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>

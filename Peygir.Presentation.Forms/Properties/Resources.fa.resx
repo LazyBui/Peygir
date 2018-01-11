@@ -120,6 +120,9 @@
   <data name="String_Accepted" xml:space="preserve">
     <value>پذیرفته‌شده</value>
   </data>
+  <data name="String_Active" xml:space="preserve">
+    <value>فعال</value>
+  </data>
   <data name="String_AreYouSureYouWantToDeleteAttachments" xml:space="preserve">
     <value>آیا شما مطمین هستید که می‌خواهید پیوست‌های انتخاب‌شده را حذف نمایید؟</value>
   </data>
@@ -140,6 +143,9 @@
   </data>
   <data name="String_Blocker" xml:space="preserve">
     <value>مسدودگر</value>
+  </data>
+  <data name="String_Cancelled" xml:space="preserve">
+    <value>لغوشده</value>
   </data>
   <data name="String_Closed" xml:space="preserve">
     <value>بسته‌شده</value>

@@ -15,38 +15,23 @@ namespace Peygir.Presentation.Forms {
 		private DateRange mCreateFilter = null;
 		private DateRange mModifyFilter = null;
 
-		public MessageBoxOptions FormMessageBoxOptions {
-			get {
-				MessageBoxOptions options = 0;
-				if (RightToLeft == RightToLeft.Yes) {
-					options = (MessageBoxOptions.RtlReading | MessageBoxOptions.RightAlign);
-				}
-				return options;
-			}
-		}
-
 		public MainForm() {
 			InitializeComponent();
-
-			projectsListUserControl.ProjectsListView.SelectedIndexChanged += ProjectsListView_SelectedIndexChanged;
-			projectsListUserControl.ProjectsListView.DoubleClick += ProjectsListView_DoubleClick;
-			projectsListUserControl.ProjectsListView.KeyDown += ProjectsListView_KeyDown;
-			projectsListUserControl.ProjectsListView.ContextMenuStrip = projectContextMenu;
 
 			ShowCurrentLanguage();
 
 			UpdateControlsEnabledProperty();
 		}
 
-		private void ProjectsListView_SelectedIndexChanged(object sender, EventArgs e) {
+		private void projectsListView_SelectedIndexChanged(object sender, EventArgs e) {
 			UpdateControlsEnabledProperty();
 		}
 
-		private void ProjectsListView_DoubleClick(object sender, EventArgs e) {
+		private void projectsListView_DoubleClick(object sender, EventArgs e) {
 			EditProject(ticketTab: true);
 		}
 
-		private void ProjectsListView_KeyDown(object sender, KeyEventArgs e) {
+		private void projectsListView_KeyDown(object sender, KeyEventArgs e) {
 			if (e.KeyCode != Keys.Enter) return;
 			EditProject(ticketTab: true);
 		}
@@ -127,7 +112,7 @@ namespace Peygir.Presentation.Forms {
 
 		#region Context menu
 		private void projectContextMenu_Opening(object sender, System.ComponentModel.CancelEventArgs e) {
-			int selectedProjectsCount = projectsListUserControl.ProjectsListView.SelectedItems.Count;
+			int selectedProjectsCount = projectsListView.SelectedItems.Count;
 			addProjectToolStripMenuItem.Enabled = true;
 			editProjectToolStripMenuItem.Enabled = selectedProjectsCount > 0;
 			editTicketsToolStripMenuItem.Enabled = selectedProjectsCount > 0;
@@ -282,7 +267,7 @@ namespace Peygir.Presentation.Forms {
 				projectsGroupBox.Enabled = false;
 			}
 			else {
-				int selectedProjectsCount = projectsListUserControl.ProjectsListView.SelectedItems.Count;
+				int selectedProjectsCount = projectsListView.SelectedItems.Count;
 				addProjectButton.Enabled = true;
 				editProjectButton.Enabled = selectedProjectsCount > 0;
 				editTicketsButton.Enabled = selectedProjectsCount > 0;
@@ -319,7 +304,7 @@ namespace Peygir.Presentation.Forms {
 					MessageBoxButtons.OK,
 					MessageBoxIcon.Error,
 					MessageBoxDefaultButton.Button1,
-					FormMessageBoxOptions);
+					FormUtil.GetMessageBoxOptions(this));
 
 				CloseDatabase();
 			}
@@ -347,7 +332,7 @@ namespace Peygir.Presentation.Forms {
 					MessageBoxButtons.OK,
 					MessageBoxIcon.Error,
 					MessageBoxDefaultButton.Button1,
-					FormMessageBoxOptions);
+					FormUtil.GetMessageBoxOptions(this));
 
 				CloseDatabase();
 			}
@@ -377,7 +362,7 @@ namespace Peygir.Presentation.Forms {
 					MessageBoxButtons.OK,
 					MessageBoxIcon.Error,
 					MessageBoxDefaultButton.Button1,
-					FormMessageBoxOptions);
+					FormUtil.GetMessageBoxOptions(this));
 
 				CloseDatabase();
 			}
@@ -392,7 +377,7 @@ namespace Peygir.Presentation.Forms {
 				form.Value.Close();
 			}
 
-			projectsListUserControl.ProjectsListView.Items.Clear();
+			projectsListView.Items.Clear();
 
 			UpdateControlsEnabledProperty();
 
@@ -423,9 +408,9 @@ namespace Peygir.Presentation.Forms {
 			if (mResettingFilters) return;
 
 			// Save selected projects.
-			List<int> selectedProjects = new List<int>();
-			foreach (ListViewItem item in projectsListUserControl.ProjectsListView.SelectedItems) {
-				Project project = (Project)item.Tag;
+			var selectedProjects = new List<int>();
+			foreach (ListViewItem item in projectsListView.SelectedItems) {
+				var project = (Project)item.Tag;
 				selectedProjects.Add(project.ID);
 			}
 
@@ -486,11 +471,43 @@ namespace Peygir.Presentation.Forms {
 				});
 			}).ToArray();
 
-			projectsListUserControl.ShowProjects(projects, FormUtil.GetFormatter());
+			var formatter = FormUtil.GetFormatter();
+
+			projectsListView.BeginUpdate();
+			projectsListView.Items.Clear();
+			foreach (var project in projects) {
+				var tickets = project.GetTickets();
+				var lvi = new ListViewItem(new[] {
+					project.Name,
+					tickets.Any() ?
+						formatter.Format(tickets.Min(t => t.CreateTimestamp)) :
+						string.Empty,
+					tickets.Any() ?
+						formatter.Format(tickets.Max(t => t.ModifyTimestamp)) :
+						string.Empty,
+					tickets.Count(t => t.State.IsOpen()).ToString(),
+					tickets.Count().ToString(),
+				}) {
+					Tag = project,
+				};
+
+				projectsListView.Items.Add(lvi);
+			}
+
+			const int ticketColumnSize = 65;
+			const int updateColumnSize = 105;
+			const int scrollbarSize = 20;
+			projectsListView.Columns[0].Width =
+				projectsListView.Width -
+				(ticketColumnSize * 2) -
+				(updateColumnSize * 2) -
+				scrollbarSize;
+
+			projectsListView.EndUpdate();
 
 			// Reselect projects.
-			foreach (ListViewItem item in projectsListUserControl.ProjectsListView.Items) {
-				Project project = (Project)item.Tag;
+			foreach (ListViewItem item in projectsListView.Items) {
+				var project = (Project)item.Tag;
 				if (selectedProjects.Contains(project.ID)) {
 					item.Selected = true;
 					item.EnsureVisible();
@@ -504,57 +521,58 @@ namespace Peygir.Presentation.Forms {
 		}
 
 		private void AddProject() {
-			Project project = new Project();
-			ProjectDetailsForm form = new ProjectDetailsForm();
-			form.ProjectDetailsUserControl.ShowProject(project);
+			using (var form = new ProjectDetailsForm()) {
+				var project = new Project();
+				form.ProjectDetailsUserControl.ShowProject(project);
 
-			Again:
-			if (form.ShowDialog() == DialogResult.OK) {
-				// Check name.
-				if (string.IsNullOrWhiteSpace(form.ProjectDetailsUserControl.ProjectName)) {
-					MessageBox.Show(
-						Resources.String_TheProjectNameCannotBeBlank,
-						Resources.String_Error,
-						MessageBoxButtons.OK,
-						MessageBoxIcon.Error,
-						MessageBoxDefaultButton.Button1,
-						FormMessageBoxOptions);
-					goto Again;
-				}
-
-				form.ProjectDetailsUserControl.RetrieveProject(project);
-
-				// Add.
-				project.Add();
-
-				// Flush.
-				Database.Flush();
-
-				// Show projects.
-				ShowProjects();
-
-				// Select new project.
-				projectsListUserControl.ProjectsListView.SelectedItems.Clear();
-				foreach (ListViewItem item in projectsListUserControl.ProjectsListView.Items) {
-					Project p = (Project)item.Tag;
-					if (p.ID == project.ID) {
-						item.Selected = true;
-						break;
+				Again:
+				if (form.ShowDialog() == DialogResult.OK) {
+					// Check name.
+					if (string.IsNullOrWhiteSpace(form.ProjectDetailsUserControl.ProjectName)) {
+						MessageBox.Show(
+							Resources.String_TheProjectNameCannotBeBlank,
+							Resources.String_Error,
+							MessageBoxButtons.OK,
+							MessageBoxIcon.Error,
+							MessageBoxDefaultButton.Button1,
+							FormUtil.GetMessageBoxOptions(this));
+						goto Again;
 					}
+
+					form.ProjectDetailsUserControl.RetrieveProject(project);
+
+					// Add.
+					project.Add();
+
+					// Flush.
+					Database.Flush();
+
+					// Show projects.
+					ShowProjects();
+
+					// Select new project.
+					projectsListView.SelectedItems.Clear();
+					foreach (ListViewItem item in projectsListView.Items) {
+						Project p = (Project)item.Tag;
+						if (p.ID == project.ID) {
+							item.Selected = true;
+							break;
+						}
+					}
+
+					UpdateControlsEnabledProperty();
+
+					// Show edit project form.
+					EditProject();
+
+					projectsListView.Focus();
 				}
-
-				UpdateControlsEnabledProperty();
-
-				// Show edit project form.
-				EditProject();
-
-				projectsListUserControl.Focus();
 			}
 		}
 
 		private void EditProject(bool ticketTab = false) {
-			for (int i = 0, end = projectsListUserControl.ProjectsListView.SelectedItems.Count; i < end; i++) {
-				var item = (Project)projectsListUserControl.ProjectsListView.SelectedItems[i].Tag;
+			for (int i = 0, end = projectsListView.SelectedItems.Count; i < end; i++) {
+				var item = (Project)projectsListView.SelectedItems[i].Tag;
 				ProjectForm form;
 				if (!mForms.TryGetValue(item.ID, out form)) {
 					form = new ProjectForm(item, this);
@@ -570,31 +588,30 @@ namespace Peygir.Presentation.Forms {
 		}
 
 		private void DeleteProject() {
-			if (projectsListUserControl.ProjectsListView.SelectedItems.Count > 0) {
-				DialogResult result = MessageBox.Show(
-					Resources.String_AreYouSureYouWantToDeleteSelectedProjects,
-					Resources.String_DeleteProjects,
-					MessageBoxButtons.YesNo,
-					MessageBoxIcon.Question,
-					MessageBoxDefaultButton.Button1,
-					FormMessageBoxOptions);
+			if (projectsListView.SelectedItems.Count == 0) return;
+			DialogResult result = MessageBox.Show(
+				Resources.String_AreYouSureYouWantToDeleteSelectedProjects,
+				Resources.String_DeleteProjects,
+				MessageBoxButtons.YesNo,
+				MessageBoxIcon.Question,
+				MessageBoxDefaultButton.Button1,
+				FormUtil.GetMessageBoxOptions(this));
 
-				if (result != DialogResult.Yes) {
-					return;
-				}
-
-				// Delete projects.
-				for (int i = 0; i < projectsListUserControl.ProjectsListView.SelectedItems.Count; i++) {
-					Project project = (Project)projectsListUserControl.ProjectsListView.SelectedItems[i].Tag;
-					project.Delete();
-				}
-
-				// Flush.
-				Database.Flush();
-
-				// Show projects.
-				ShowProjects();
+			if (result != DialogResult.Yes) {
+				return;
 			}
+
+			// Delete projects.
+			for (int i = 0; i < projectsListView.SelectedItems.Count; i++) {
+				var project = (Project)projectsListView.SelectedItems[i].Tag;
+				project.Delete();
+			}
+
+			// Flush.
+			Database.Flush();
+
+			// Show projects.
+			ShowProjects();
 		}
 
 		private void ShowHelp() {
@@ -609,13 +626,14 @@ namespace Peygir.Presentation.Forms {
 					MessageBoxButtons.OK,
 					MessageBoxIcon.Error,
 					MessageBoxDefaultButton.Button1,
-					FormMessageBoxOptions);
+					FormUtil.GetMessageBoxOptions(this));
 			}
 		}
 
 		private void ShowAbout() {
-			AboutForm form = new AboutForm();
-			form.ShowDialog();
+			using (var form = new AboutForm()) {
+				form.ShowDialog();
+			}
 		}
 
 		private void ResetFilters() {

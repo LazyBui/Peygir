@@ -33,11 +33,18 @@
 			this.projectDetailsUserControl = new Peygir.Presentation.UserControls.ProjectDetailsUserControl();
 			this.milestonesTabPage = new System.Windows.Forms.TabPage();
 			this.groupBox3 = new System.Windows.Forms.GroupBox();
+			this.milestonesListView = new System.Windows.Forms.ListView();
+			this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.milestoneContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.addMilestoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.showMilestoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.editMilestoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.deleteMilestoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.showMilestoneButton = new System.Windows.Forms.Button();
 			this.deleteMilestoneButton = new System.Windows.Forms.Button();
 			this.editMilestoneButton = new System.Windows.Forms.Button();
 			this.addMilestoneButton = new System.Windows.Forms.Button();
-			this.milestonesListUserControl = new Peygir.Presentation.UserControls.MilestonesListUserControl();
 			this.ticketsTabPage = new System.Windows.Forms.TabPage();
 			this.groupBox4 = new System.Windows.Forms.GroupBox();
 			this.ticketMilestoneComboBox = new System.Windows.Forms.ComboBox();
@@ -69,7 +76,6 @@
 			this.editTicketButton = new System.Windows.Forms.Button();
 			this.showTicketButton = new System.Windows.Forms.Button();
 			this.addTicketButton = new System.Windows.Forms.Button();
-			this.ticketsListUserControl = new Peygir.Presentation.UserControls.TicketsListUserControl();
 			this.ticketContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.addTicketToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.showTicketToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -102,21 +108,24 @@
 			this.defectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.featureRequestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.taskToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.milestoneContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-			this.addMilestoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.showMilestoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.editMilestoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.deleteMilestoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.ticketsListView = new System.Windows.Forms.ListView();
+			this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.groupBox1.SuspendLayout();
 			this.tabControl.SuspendLayout();
 			this.projectInfoTabPage.SuspendLayout();
 			this.groupBox2.SuspendLayout();
 			this.milestonesTabPage.SuspendLayout();
 			this.groupBox3.SuspendLayout();
+			this.milestoneContextMenu.SuspendLayout();
 			this.ticketsTabPage.SuspendLayout();
 			this.groupBox4.SuspendLayout();
 			this.ticketContextMenu.SuspendLayout();
-			this.milestoneContextMenu.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// groupBox1
@@ -177,13 +186,78 @@
 			// groupBox3
 			// 
 			resources.ApplyResources(this.groupBox3, "groupBox3");
+			this.groupBox3.Controls.Add(this.milestonesListView);
 			this.groupBox3.Controls.Add(this.showMilestoneButton);
 			this.groupBox3.Controls.Add(this.deleteMilestoneButton);
 			this.groupBox3.Controls.Add(this.editMilestoneButton);
 			this.groupBox3.Controls.Add(this.addMilestoneButton);
-			this.groupBox3.Controls.Add(this.milestonesListUserControl);
 			this.groupBox3.Name = "groupBox3";
 			this.groupBox3.TabStop = false;
+			// 
+			// milestonesListView
+			// 
+			this.milestonesListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2});
+			this.milestonesListView.ContextMenuStrip = this.milestoneContextMenu;
+			this.milestonesListView.FullRowSelect = true;
+			this.milestonesListView.GridLines = true;
+			this.milestonesListView.HideSelection = false;
+			resources.ApplyResources(this.milestonesListView, "milestonesListView");
+			this.milestonesListView.Name = "milestonesListView";
+			this.milestonesListView.UseCompatibleStateImageBehavior = false;
+			this.milestonesListView.View = System.Windows.Forms.View.Details;
+			this.milestonesListView.SelectedIndexChanged += new System.EventHandler(this.milestonesListView_SelectedIndexChanged);
+			this.milestonesListView.DoubleClick += new System.EventHandler(this.milestonesListView_DoubleClick);
+			this.milestonesListView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.milestonesListView_KeyDown);
+			// 
+			// columnHeader1
+			// 
+			resources.ApplyResources(this.columnHeader1, "columnHeader1");
+			// 
+			// columnHeader2
+			// 
+			resources.ApplyResources(this.columnHeader2, "columnHeader2");
+			// 
+			// milestoneContextMenu
+			// 
+			this.milestoneContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addMilestoneToolStripMenuItem,
+            this.showMilestoneToolStripMenuItem,
+            this.editMilestoneToolStripMenuItem,
+            this.deleteMilestoneToolStripMenuItem});
+			this.milestoneContextMenu.Name = "milestoneContextMenu";
+			this.milestoneContextMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+			resources.ApplyResources(this.milestoneContextMenu, "milestoneContextMenu");
+			this.milestoneContextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.milestoneContextMenu_Opening);
+			// 
+			// addMilestoneToolStripMenuItem
+			// 
+			this.addMilestoneToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Add;
+			this.addMilestoneToolStripMenuItem.Name = "addMilestoneToolStripMenuItem";
+			resources.ApplyResources(this.addMilestoneToolStripMenuItem, "addMilestoneToolStripMenuItem");
+			this.addMilestoneToolStripMenuItem.Click += new System.EventHandler(this.addMilestoneToolStripMenuItem_Click);
+			// 
+			// showMilestoneToolStripMenuItem
+			// 
+			this.showMilestoneToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Show;
+			this.showMilestoneToolStripMenuItem.Name = "showMilestoneToolStripMenuItem";
+			resources.ApplyResources(this.showMilestoneToolStripMenuItem, "showMilestoneToolStripMenuItem");
+			this.showMilestoneToolStripMenuItem.Click += new System.EventHandler(this.showMilestoneToolStripMenuItem_Click);
+			// 
+			// editMilestoneToolStripMenuItem
+			// 
+			this.editMilestoneToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Edit;
+			this.editMilestoneToolStripMenuItem.Name = "editMilestoneToolStripMenuItem";
+			resources.ApplyResources(this.editMilestoneToolStripMenuItem, "editMilestoneToolStripMenuItem");
+			this.editMilestoneToolStripMenuItem.Click += new System.EventHandler(this.editMilestoneToolStripMenuItem_Click);
+			// 
+			// deleteMilestoneToolStripMenuItem
+			// 
+			this.deleteMilestoneToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Delete;
+			this.deleteMilestoneToolStripMenuItem.Name = "deleteMilestoneToolStripMenuItem";
+			resources.ApplyResources(this.deleteMilestoneToolStripMenuItem, "deleteMilestoneToolStripMenuItem");
+			this.deleteMilestoneToolStripMenuItem.Click += new System.EventHandler(this.deleteMilestoneToolStripMenuItem_Click);
 			// 
 			// showMilestoneButton
 			// 
@@ -217,11 +291,6 @@
 			this.addMilestoneButton.UseVisualStyleBackColor = true;
 			this.addMilestoneButton.Click += new System.EventHandler(this.addMilestoneButton_Click);
 			// 
-			// milestonesListUserControl
-			// 
-			resources.ApplyResources(this.milestonesListUserControl, "milestonesListUserControl");
-			this.milestonesListUserControl.Name = "milestonesListUserControl";
-			// 
 			// ticketsTabPage
 			// 
 			this.ticketsTabPage.Controls.Add(this.groupBox4);
@@ -232,6 +301,7 @@
 			// groupBox4
 			// 
 			resources.ApplyResources(this.groupBox4, "groupBox4");
+			this.groupBox4.Controls.Add(this.ticketsListView);
 			this.groupBox4.Controls.Add(this.ticketMilestoneComboBox);
 			this.groupBox4.Controls.Add(this.label10);
 			this.groupBox4.Controls.Add(this.resetTicketFilterButton);
@@ -261,7 +331,6 @@
 			this.groupBox4.Controls.Add(this.editTicketButton);
 			this.groupBox4.Controls.Add(this.showTicketButton);
 			this.groupBox4.Controls.Add(this.addTicketButton);
-			this.groupBox4.Controls.Add(this.ticketsListUserControl);
 			this.groupBox4.Name = "groupBox4";
 			this.groupBox4.TabStop = false;
 			// 
@@ -492,11 +561,6 @@
 			this.addTicketButton.Name = "addTicketButton";
 			this.addTicketButton.UseVisualStyleBackColor = true;
 			this.addTicketButton.Click += new System.EventHandler(this.addTicketButton_Click);
-			// 
-			// ticketsListUserControl
-			// 
-			resources.ApplyResources(this.ticketsListUserControl, "ticketsListUserControl");
-			this.ticketsListUserControl.Name = "ticketsListUserControl";
 			// 
 			// ticketContextMenu
 			// 
@@ -736,45 +800,55 @@
 			resources.ApplyResources(this.taskToolStripMenuItem, "taskToolStripMenuItem");
 			this.taskToolStripMenuItem.Click += new System.EventHandler(this.taskToolStripMenuItem_Click);
 			// 
-			// milestoneContextMenu
+			// ticketsListView
 			// 
-			this.milestoneContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addMilestoneToolStripMenuItem,
-            this.showMilestoneToolStripMenuItem,
-            this.editMilestoneToolStripMenuItem,
-            this.deleteMilestoneToolStripMenuItem});
-			this.milestoneContextMenu.Name = "milestoneContextMenu";
-			this.milestoneContextMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-			resources.ApplyResources(this.milestoneContextMenu, "milestoneContextMenu");
-			this.milestoneContextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.milestoneContextMenu_Opening);
+			this.ticketsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader3,
+            this.columnHeader4,
+            this.columnHeader5,
+            this.columnHeader6,
+            this.columnHeader7,
+            this.columnHeader8,
+            this.columnHeader9});
+			this.ticketsListView.ContextMenuStrip = this.ticketContextMenu;
+			this.ticketsListView.FullRowSelect = true;
+			this.ticketsListView.GridLines = true;
+			this.ticketsListView.HideSelection = false;
+			resources.ApplyResources(this.ticketsListView, "ticketsListView");
+			this.ticketsListView.Name = "ticketsListView";
+			this.ticketsListView.UseCompatibleStateImageBehavior = false;
+			this.ticketsListView.View = System.Windows.Forms.View.Details;
+			this.ticketsListView.SelectedIndexChanged += new System.EventHandler(this.ticketsListView_SelectedIndexChanged);
+			this.ticketsListView.DoubleClick += new System.EventHandler(this.ticketsListView_DoubleClick);
+			this.ticketsListView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ticketsListView_KeyDown);
 			// 
-			// addMilestoneToolStripMenuItem
+			// columnHeader3
 			// 
-			this.addMilestoneToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Add;
-			this.addMilestoneToolStripMenuItem.Name = "addMilestoneToolStripMenuItem";
-			resources.ApplyResources(this.addMilestoneToolStripMenuItem, "addMilestoneToolStripMenuItem");
-			this.addMilestoneToolStripMenuItem.Click += new System.EventHandler(this.addMilestoneToolStripMenuItem_Click);
+			resources.ApplyResources(this.columnHeader3, "columnHeader3");
 			// 
-			// showMilestoneToolStripMenuItem
+			// columnHeader4
 			// 
-			this.showMilestoneToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Show;
-			this.showMilestoneToolStripMenuItem.Name = "showMilestoneToolStripMenuItem";
-			resources.ApplyResources(this.showMilestoneToolStripMenuItem, "showMilestoneToolStripMenuItem");
-			this.showMilestoneToolStripMenuItem.Click += new System.EventHandler(this.showMilestoneToolStripMenuItem_Click);
+			resources.ApplyResources(this.columnHeader4, "columnHeader4");
 			// 
-			// editMilestoneToolStripMenuItem
+			// columnHeader5
 			// 
-			this.editMilestoneToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Edit;
-			this.editMilestoneToolStripMenuItem.Name = "editMilestoneToolStripMenuItem";
-			resources.ApplyResources(this.editMilestoneToolStripMenuItem, "editMilestoneToolStripMenuItem");
-			this.editMilestoneToolStripMenuItem.Click += new System.EventHandler(this.editMilestoneToolStripMenuItem_Click);
+			resources.ApplyResources(this.columnHeader5, "columnHeader5");
 			// 
-			// deleteMilestoneToolStripMenuItem
+			// columnHeader6
 			// 
-			this.deleteMilestoneToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Delete;
-			this.deleteMilestoneToolStripMenuItem.Name = "deleteMilestoneToolStripMenuItem";
-			resources.ApplyResources(this.deleteMilestoneToolStripMenuItem, "deleteMilestoneToolStripMenuItem");
-			this.deleteMilestoneToolStripMenuItem.Click += new System.EventHandler(this.deleteMilestoneToolStripMenuItem_Click);
+			resources.ApplyResources(this.columnHeader6, "columnHeader6");
+			// 
+			// columnHeader7
+			// 
+			resources.ApplyResources(this.columnHeader7, "columnHeader7");
+			// 
+			// columnHeader8
+			// 
+			resources.ApplyResources(this.columnHeader8, "columnHeader8");
+			// 
+			// columnHeader9
+			// 
+			resources.ApplyResources(this.columnHeader9, "columnHeader9");
 			// 
 			// ProjectForm
 			// 
@@ -791,11 +865,11 @@
 			this.groupBox2.ResumeLayout(false);
 			this.milestonesTabPage.ResumeLayout(false);
 			this.groupBox3.ResumeLayout(false);
+			this.milestoneContextMenu.ResumeLayout(false);
 			this.ticketsTabPage.ResumeLayout(false);
 			this.groupBox4.ResumeLayout(false);
 			this.groupBox4.PerformLayout();
 			this.ticketContextMenu.ResumeLayout(false);
-			this.milestoneContextMenu.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -810,14 +884,12 @@
 		private System.Windows.Forms.Button changeProjectDetailsButton;
 		private UserControls.ProjectDetailsUserControl projectDetailsUserControl;
 		private System.Windows.Forms.GroupBox groupBox3;
-		private UserControls.MilestonesListUserControl milestonesListUserControl;
 		private System.Windows.Forms.Button showMilestoneButton;
 		private System.Windows.Forms.Button deleteMilestoneButton;
 		private System.Windows.Forms.Button editMilestoneButton;
 		private System.Windows.Forms.Button addMilestoneButton;
 		private System.Windows.Forms.TabPage ticketsTabPage;
 		private System.Windows.Forms.GroupBox groupBox4;
-		private UserControls.TicketsListUserControl ticketsListUserControl;
 		private System.Windows.Forms.Button addTicketButton;
 		private System.Windows.Forms.Button deleteTicketButton;
 		private System.Windows.Forms.Button editTicketButton;
@@ -884,5 +956,16 @@
 		private System.Windows.Forms.ToolStripMenuItem defectToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem featureRequestToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem taskToolStripMenuItem;
+		private System.Windows.Forms.ListView milestonesListView;
+		private System.Windows.Forms.ColumnHeader columnHeader1;
+		private System.Windows.Forms.ColumnHeader columnHeader2;
+		private System.Windows.Forms.ListView ticketsListView;
+		private System.Windows.Forms.ColumnHeader columnHeader3;
+		private System.Windows.Forms.ColumnHeader columnHeader4;
+		private System.Windows.Forms.ColumnHeader columnHeader5;
+		private System.Windows.Forms.ColumnHeader columnHeader6;
+		private System.Windows.Forms.ColumnHeader columnHeader7;
+		private System.Windows.Forms.ColumnHeader columnHeader8;
+		private System.Windows.Forms.ColumnHeader columnHeader9;
 	}
 }

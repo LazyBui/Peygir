@@ -19,6 +19,14 @@ namespace Peygir.Presentation.Forms {
 			input.SelectedIndex = 0;
 		}
 
+		public static MessageBoxOptions GetMessageBoxOptions(Form form) {
+			MessageBoxOptions options = 0;
+			if (form.RightToLeft == RightToLeft.Yes) {
+				options = (MessageBoxOptions.RtlReading | MessageBoxOptions.RightAlign);
+			}
+			return options;
+		}
+
 		public static void FormatDateFilter(TextBox input, DateRange range) {
 			input.Text = range?.ToString() ?? string.Empty;
 		}
