@@ -366,6 +366,9 @@
   <data name="assignedToComboBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>352, 71</value>
   </data>
+  <data name="assignedToComboBox.MaxLength" type="System.Int32, mscorlib">
+    <value>255</value>
+  </data>
   <data name="assignedToComboBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>150, 21</value>
   </data>
@@ -386,6 +389,9 @@
   </data>
   <data name="reportedByComboBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>352, 45</value>
+  </data>
+  <data name="reportedByComboBox.MaxLength" type="System.Int32, mscorlib">
+    <value>255</value>
   </data>
   <data name="reportedByComboBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>150, 21</value>
