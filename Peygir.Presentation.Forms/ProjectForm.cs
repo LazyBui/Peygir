@@ -713,8 +713,8 @@ namespace Peygir.Presentation.Forms {
 			}
 
 			string summaryFilter = ticketTextBox.Text;
-			string reporterFilter = ticketReportersComboBox.SelectedText;
-			string assignedFilter = ticketAssignedToComboBox.SelectedText;
+			var reporterFilter = (string)ticketReportersComboBox.SelectedItem;
+			var assignedFilter = (string)ticketAssignedToComboBox.SelectedItem;
 			string milestoneFilter = (string)ticketMilestoneComboBox.SelectedItem;
 			var stateFilter = FormUtil.CastBox<MetaTicketState>(ticketStateComboBox);
 			var severityFilter = FormUtil.CastBox<TicketSeverity>(ticketSeverityComboBox);
@@ -1127,42 +1127,12 @@ namespace Peygir.Presentation.Forms {
 		#endregion
 
 		private void PopulateTicketFilters() {
-			bool hadSelectedReporter = ticketReportersComboBox.SelectedIndex != -1;
-			string selectedReporterText = string.Empty;
-			if (hadSelectedReporter) {
-				selectedReporterText = ticketReportersComboBox.SelectedText;
-			}
-			ticketReportersComboBox.Items.Clear();
-			ticketReportersComboBox.Items.AddRange(Ticket.GetReporters());
-			if (hadSelectedReporter) {
-				ticketReportersComboBox.SelectedIndex =
-					new List<string>(ticketReportersComboBox.Items.Cast<string>()).IndexOf(selectedReporterText);
-			}
-
-			bool hadSelectedAssigned = ticketAssignedToComboBox.SelectedIndex != -1;
-			string selectedAssignedText = string.Empty;
-			if (hadSelectedAssigned) {
-				selectedAssignedText = ticketAssignedToComboBox.SelectedText;
-			}
-			ticketAssignedToComboBox.Items.Clear();
-			ticketAssignedToComboBox.Items.AddRange(Ticket.GetAssignees());
-			if (hadSelectedAssigned) {
-				ticketAssignedToComboBox.SelectedIndex =
-					new List<string>(ticketAssignedToComboBox.Items.Cast<string>()).IndexOf(selectedAssignedText);
-			}
-
-			bool hadMilestone = ticketMilestoneComboBox.SelectedIndex != -1;
-			string selectedMilestone = string.Empty;
-			if (hadMilestone) {
-				selectedMilestone = (string)ticketMilestoneComboBox.SelectedItem;
-			}
-			ticketMilestoneComboBox.Items.Clear();
-			ticketMilestoneComboBox.Items.AddRange(Project.GetMilestones().Select(m => m.Name).ToArray());
-			ticketMilestoneComboBox.Items.Insert(0, string.Empty);
-			if (hadMilestone) {
-				ticketMilestoneComboBox.SelectedItem =
-					new List<string>(ticketMilestoneComboBox.Items.Cast<string>()).IndexOf(selectedMilestone);
-			}
+			FormUtil.UpdateUserBoxWithSelectedItem(ticketReportersComboBox, Ticket.GetReporters());
+			FormUtil.UpdateUserBoxWithSelectedItem(ticketAssignedToComboBox, Ticket.GetAssignees());
+			FormUtil.UpdateUserBoxWithSelectedItem(
+				ticketMilestoneComboBox,
+				Project.GetMilestones().Select(m => m.Name),
+				hasEmptyItem: true);
 		}
 
 		private void ResetTicketFilters() {

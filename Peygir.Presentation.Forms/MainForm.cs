@@ -417,8 +417,8 @@ namespace Peygir.Presentation.Forms {
 			Project[] projects = Project.GetProjects();
 
 			string nameFilter = projectTextBox.Text;
-			string reporterFilter = reportersComboBox.SelectedText;
-			string assignedFilter = assignedToComboBox.SelectedText;
+			var reporterFilter = (string)reportersComboBox.SelectedItem;
+			var assignedFilter = (string)assignedToComboBox.SelectedItem;
 			var stateFilter = FormUtil.CastBox<MetaTicketState>(ticketStateComboBox);
 			var severityFilter = FormUtil.CastBox<TicketSeverity>(ticketSeverityComboBox);
 			var priorityFilter = FormUtil.CastBox<TicketPriority>(ticketPriorityComboBox);
@@ -661,29 +661,8 @@ namespace Peygir.Presentation.Forms {
 
 		internal void UpdateTicketOrProject() {
 			// Update our UI elements for assigned/reported, can't populate this in ShowProjects because that would cause nightmares
-			bool hadSelectedReporter = reportersComboBox.SelectedIndex != -1;
-			string selectedReporterText = string.Empty;
-			if (hadSelectedReporter) {
-				selectedReporterText = reportersComboBox.SelectedText;
-			}
-			reportersComboBox.Items.Clear();
-			reportersComboBox.Items.AddRange(Ticket.GetReporters());
-			if (hadSelectedReporter) {
-				reportersComboBox.SelectedIndex =
-					new List<string>(reportersComboBox.Items.Cast<string>()).IndexOf(selectedReporterText);
-			}
-
-			bool hadSelectedAssigned = assignedToComboBox.SelectedIndex != -1;
-			string selectedAssignedText = string.Empty;
-			if (hadSelectedAssigned) {
-				selectedAssignedText = assignedToComboBox.SelectedText;
-			}
-			assignedToComboBox.Items.Clear();
-			assignedToComboBox.Items.AddRange(Ticket.GetAssignees());
-			if (hadSelectedAssigned) {
-				assignedToComboBox.SelectedIndex =
-					new List<string>(assignedToComboBox.Items.Cast<string>()).IndexOf(selectedAssignedText);
-			}
+			FormUtil.UpdateUserBoxWithSelectedItem(reportersComboBox, Ticket.GetReporters());
+			FormUtil.UpdateUserBoxWithSelectedItem(assignedToComboBox, Ticket.GetAssignees());
 
 			// Any child should require updated filters
 			foreach (var form in mForms.ToArray()) {

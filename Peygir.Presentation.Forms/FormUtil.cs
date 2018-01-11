@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 using Peygir.Logic;
 using Peygir.Presentation.Forms.Properties;
@@ -17,6 +19,39 @@ namespace Peygir.Presentation.Forms {
 			if (input.Items.Count == 0)
 				return;
 			input.SelectedIndex = 0;
+		}
+
+		public static void UpdateUserBoxWithSelectedText(ComboBox input, IEnumerable<string> data, bool hasEmptyItem = false) {
+			bool hadSelected = input.SelectedIndex != -1;
+			string selectedText = string.Empty;
+			if (hadSelected) {
+				selectedText = input.SelectedText;
+			}
+
+			var casted = new List<string>(data);
+			if (hasEmptyItem) casted.Insert(0, string.Empty);
+
+			input.Items.Clear();
+			input.Items.AddRange(casted.ToArray());
+			if (hadSelected) {
+				input.SelectedIndex = casted.IndexOf(selectedText);
+			}
+		}
+
+		public static void UpdateUserBoxWithSelectedItem(ComboBox input, IEnumerable<string> data, bool hasEmptyItem = false) {
+			bool hadSelected = input.SelectedIndex != -1;
+			string selectedText = string.Empty;
+			if (hadSelected) {
+				selectedText = (string)input.SelectedItem;
+			}
+
+			var casted = new List<string>(data);
+			if (hasEmptyItem) casted.Insert(0, string.Empty);
+			input.Items.Clear();
+			input.Items.AddRange(casted.ToArray());
+			if (hadSelected) {
+				input.SelectedItem = selectedText;
+			}
 		}
 
 		public static MessageBoxOptions GetMessageBoxOptions(Form form) {
