@@ -31,10 +31,10 @@
 			// 
 			// milestonesListView
 			// 
-			resources.ApplyResources(this.milestonesListView, "milestonesListView");
 			this.milestonesListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2});
+			resources.ApplyResources(this.milestonesListView, "milestonesListView");
 			this.milestonesListView.FullRowSelect = true;
 			this.milestonesListView.GridLines = true;
 			this.milestonesListView.HideSelection = false;

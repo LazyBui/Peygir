@@ -34,13 +34,13 @@
 			// 
 			// projectsListView
 			// 
-			resources.ApplyResources(this.projectsListView, "projectsListView");
 			this.projectsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3,
             this.columnHeader4,
             this.columnHeader5});
+			resources.ApplyResources(this.projectsListView, "projectsListView");
 			this.projectsListView.FullRowSelect = true;
 			this.projectsListView.GridLines = true;
 			this.projectsListView.HideSelection = false;

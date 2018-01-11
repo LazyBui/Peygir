@@ -37,7 +37,6 @@
 			this.modifiedTextBox = new System.Windows.Forms.TextBox();
 			this.addProjectButton = new System.Windows.Forms.Button();
 			this.createdTextBox = new System.Windows.Forms.TextBox();
-			this.projectsListUserControl = new Peygir.Presentation.UserControls.ProjectsListUserControl();
 			this.label9 = new System.Windows.Forms.Label();
 			this.projectTextBox = new System.Windows.Forms.TextBox();
 			this.label8 = new System.Windows.Forms.Label();
@@ -80,6 +79,7 @@
 			this.editProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.editTicketsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.deleteProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.projectsListUserControl = new Peygir.Presentation.UserControls.ProjectsListUserControl();
 			this.projectsGroupBox.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
 			this.statusStrip1.SuspendLayout();
@@ -196,11 +196,6 @@
 			this.createdTextBox.Name = "createdTextBox";
 			this.createdTextBox.ReadOnly = true;
 			this.createdTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.createdTextBox_KeyDown);
-			// 
-			// projectsListUserControl
-			// 
-			resources.ApplyResources(this.projectsListUserControl, "projectsListUserControl");
-			this.projectsListUserControl.Name = "projectsListUserControl";
 			// 
 			// label9
 			// 
@@ -535,6 +530,11 @@
 			this.deleteProjectToolStripMenuItem.Name = "deleteProjectToolStripMenuItem";
 			resources.ApplyResources(this.deleteProjectToolStripMenuItem, "deleteProjectToolStripMenuItem");
 			this.deleteProjectToolStripMenuItem.Click += new System.EventHandler(this.deleteProjectToolStripMenuItem_Click);
+			// 
+			// projectsListUserControl
+			// 
+			resources.ApplyResources(this.projectsListUserControl, "projectsListUserControl");
+			this.projectsListUserControl.Name = "projectsListUserControl";
 			// 
 			// MainForm
 			// 
