@@ -7,9 +7,9 @@ using Peygir.Logic.Properties;
 
 namespace Peygir.Logic {
 	public class Ticket : DBObject {
-		public static string[] GetReporters() {
-			TicketReportersTableAdapter tableAdapter = Database.TicketReportersTableAdapter;
-
+		public static string[] GetReporters(IDatabaseProvider db) {
+			if (db == null) throw new ArgumentNullException(nameof(db));
+			TicketReportersTableAdapter tableAdapter = db.DB.TicketReportersTableAdapter;
 			PeygirDatabaseDataSet.TicketReportersDataTable rows = tableAdapter.GetData();
 
 			// Create list.
@@ -23,9 +23,9 @@ namespace Peygir.Logic {
 			return reporters.ToArray();
 		}
 
-		public static string[] GetAssignees() {
-			TicketAssigneesTableAdapter tableAdapter = Database.TicketAssigneesTableAdapter;
-
+		public static string[] GetAssignees(IDatabaseProvider db) {
+			if (db == null) throw new ArgumentNullException(nameof(db));
+			TicketAssigneesTableAdapter tableAdapter = db.DB.TicketAssigneesTableAdapter;
 			PeygirDatabaseDataSet.TicketAssigneesDataTable rows = tableAdapter.GetData();
 
 			// Create list.
@@ -39,8 +39,9 @@ namespace Peygir.Logic {
 			return assignees.ToArray();
 		}
 
-		public static Ticket[] GetTickets(int milestoneID) {
-			TicketsTableAdapter tableAdapter = Database.TicketsTableAdapter;
+		public static Ticket[] GetTickets(IDatabaseProvider db, int milestoneID) {
+			if (db == null) throw new ArgumentNullException(nameof(db));
+			TicketsTableAdapter tableAdapter = db.DB.TicketsTableAdapter;
 
 			PeygirDatabaseDataSet.TicketsDataTable rows = tableAdapter.GetDataByMilestoneID(milestoneID);
 
@@ -55,8 +56,9 @@ namespace Peygir.Logic {
 			return tickets.ToArray();
 		}
 
-		public static Ticket GetTicket(int id) {
-			TicketsTableAdapter tableAdapter = Database.TicketsTableAdapter;
+		public static Ticket GetTicket(IDatabaseProvider db, int id) {
+			if (db == null) throw new ArgumentNullException(nameof(db));
+			TicketsTableAdapter tableAdapter = db.DB.TicketsTableAdapter;
 
 			PeygirDatabaseDataSet.TicketsDataTable rows = tableAdapter.GetDataByID(id);
 
@@ -161,7 +163,8 @@ namespace Peygir.Logic {
 			// Blank
 		}
 
-		public Ticket(int projectID, int milestoneID) {
+		public Ticket(IDatabaseProvider db, int projectID, int milestoneID) {
+			if (db == null) throw new ArgumentNullException(nameof(db));
 			if (projectID == InvalidID) {
 				string message = Resources.String_InvalidProjectID;
 				throw new ArgumentException(message, nameof(projectID));
@@ -183,7 +186,7 @@ namespace Peygir.Logic {
 			description = string.Empty;
 
 			// Find max ticket number.
-			TicketsTableAdapter tableAdapter = Database.TicketsTableAdapter;
+			TicketsTableAdapter tableAdapter = db.DB.TicketsTableAdapter;
 			int? maxTicketNumber = tableAdapter.GetMaxTicketNumber(projectID);
 			if (maxTicketNumber.HasValue) {
 				ticketNumber = maxTicketNumber.Value + 1;
@@ -193,7 +196,8 @@ namespace Peygir.Logic {
 			}
 		}
 
-		public override void Add() {
+		protected override void AddPrivate(Database db) {
+			if (db == null) throw new ArgumentNullException(nameof(db));
 			if (ID != InvalidID) {
 				string message = Resources.String_CurrentObjectAlreadyAdded;
 				throw new InvalidOperationException(message);
@@ -203,7 +207,7 @@ namespace Peygir.Logic {
 
 			createTimestamp = modifyTimestamp = DateTime.UtcNow;
 
-			TicketsTableAdapter tableAdapter = Database.TicketsTableAdapter;
+			TicketsTableAdapter tableAdapter = db.TicketsTableAdapter;
 
 			tableAdapter.Insert(
 				milestoneID,
@@ -251,7 +255,8 @@ namespace Peygir.Logic {
 			};
 		}
 
-		public bool UpdateAndGenerateHistoryRecord(ITicketChangeFormatter formatter, Action<Ticket> assignNewProperties) {
+		public bool UpdateAndGenerateHistoryRecord(IDatabaseProvider db, ITicketChangeFormatter formatter, Action<Ticket> assignNewProperties) {
+			if (db == null) throw new ArgumentNullException(nameof(db));
 			if (formatter == null) throw new ArgumentNullException(nameof(formatter));
 			if (assignNewProperties == null) throw new ArgumentNullException(nameof(assignNewProperties));
 
@@ -266,7 +271,7 @@ namespace Peygir.Logic {
 
 			// Milestone.
 			if (MilestoneID != @new.MilestoneID) {
-				changesStringBuilder.AppendFormat(formatter.Milestone(MilestoneID, @new.MilestoneID));
+				changesStringBuilder.AppendFormat(formatter.Milestone(db, MilestoneID, @new.MilestoneID));
 				changesStringBuilder.AppendLine();
 				MilestoneID = @new.MilestoneID;
 			}
@@ -322,24 +327,17 @@ namespace Peygir.Logic {
 			string changes = changesStringBuilder.ToString();
 			if (string.IsNullOrEmpty(changes)) return false;
 
-			Update();
+			UpdatePrivate(db.DB);
 			
 			TicketHistory ticketHistory = NewHistory(changes);
-			ticketHistory.Add();
+			ticketHistory.Add(db);
 			return true;
 		}
 
-		public override void Update() {
-			if (ID == InvalidID) {
-				string message = Resources.String_CurrentObjectDoesNotExistInTheDatabase;
-				throw new InvalidOperationException(message);
-			}
-
+		protected override void UpdatePrivate(Database db) {
 			modifyTimestamp = DateTime.UtcNow;
 
-			// Update.
-
-			TicketsTableAdapter tableAdapter = Database.TicketsTableAdapter;
+			TicketsTableAdapter tableAdapter = db.TicketsTableAdapter;
 
 			tableAdapter.UpdateByID(
 				milestoneID,
@@ -356,32 +354,26 @@ namespace Peygir.Logic {
 				ID);
 		}
 
-		public override void Delete() {
-			if (ID == InvalidID) {
-				string message = Resources.String_CurrentObjectDoesNotExistInTheDatabase;
-				throw new InvalidOperationException(message);
-			}
-
-			// Delete.
-
-			TicketsTableAdapter tableAdapter = Database.TicketsTableAdapter;
+		protected override void DeletePrivate(Database db) {
+			TicketsTableAdapter tableAdapter = db.TicketsTableAdapter;
 
 			tableAdapter.DeleteByID(ID);
 
 			ID = InvalidID;
 		}
 
-		public Milestone GetMilestone() {
-			return Milestone.GetMilestone(milestoneID);
+		public Milestone GetMilestone(IDatabaseProvider db) {
+			return Milestone.GetMilestone(db, milestoneID);
 		}
 
-		public TicketHistory[] GetHistory() {
+		public TicketHistory[] GetHistory(IDatabaseProvider db) {
+			if (db == null) throw new ArgumentNullException(nameof(db));
 			if (ID == InvalidID) {
 				string message = Resources.String_CurrentObjectDoesNotExistInTheDatabase;
 				throw new InvalidOperationException(message);
 			}
 
-			return TicketHistory.GetTicketHistoryByTicketID(ID);
+			return TicketHistory.GetTicketHistoryByTicketID(db, ID);
 		}
 
 		public TicketHistory NewHistory(string changes) {
@@ -397,22 +389,24 @@ namespace Peygir.Logic {
 			};
 		}
 
-		public Attachment[] GetAttachments() {
+		public Attachment[] GetAttachments(IDatabaseProvider db) {
+			if (db == null) throw new ArgumentNullException(nameof(db));
 			if (ID == InvalidID) {
 				string message = Resources.String_CurrentObjectDoesNotExistInTheDatabase;
 				throw new InvalidOperationException(message);
 			}
 
-			return Attachment.GetAttachments(ID);
+			return Attachment.GetAttachments(db, ID);
 		}
 
-		public Attachment[] GetAttachmentsWithoutContents() {
+		public Attachment[] GetAttachmentsWithoutContents(IDatabaseProvider db) {
+			if (db == null) throw new ArgumentNullException(nameof(db));
 			if (ID == InvalidID) {
 				string message = Resources.String_CurrentObjectDoesNotExistInTheDatabase;
 				throw new InvalidOperationException(message);
 			}
 
-			return Attachment.GetAttachmentsWithoutContents(ID);
+			return Attachment.GetAttachmentsWithoutContents(db, ID);
 		}
 
 		public Attachment NewAttachment() {

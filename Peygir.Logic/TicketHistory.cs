@@ -6,9 +6,9 @@ using Peygir.Logic.Properties;
 
 namespace Peygir.Logic {
 	public class TicketHistory : DBObject {
-		public static TicketHistory[] GetTicketsHistory() {
-			TicketsHistoryTableAdapter tableAdapter = Database.TicketsHistoryTableAdapter;
-
+		public static TicketHistory[] GetTicketsHistory(IDatabaseProvider db) {
+			if (db == null) throw new ArgumentNullException(nameof(db));
+			TicketsHistoryTableAdapter tableAdapter = db.DB.TicketsHistoryTableAdapter;
 			PeygirDatabaseDataSet.TicketsHistoryDataTable rows = tableAdapter.GetData();
 
 			// Create list.
@@ -22,9 +22,9 @@ namespace Peygir.Logic {
 			return ticketsHistory.ToArray();
 		}
 
-		public static TicketHistory[] GetTicketHistoryByTicketID(int ticketID) {
-			TicketsHistoryTableAdapter tableAdapter = Database.TicketsHistoryTableAdapter;
-
+		public static TicketHistory[] GetTicketHistoryByTicketID(IDatabaseProvider db, int ticketID) {
+			if (db == null) throw new ArgumentNullException(nameof(db));
+			TicketsHistoryTableAdapter tableAdapter = db.DB.TicketsHistoryTableAdapter;
 			PeygirDatabaseDataSet.TicketsHistoryDataTable rows = tableAdapter.GetDataByTicketID(ticketID);
 
 			// Create list.
@@ -38,9 +38,9 @@ namespace Peygir.Logic {
 			return ticketsHistory.ToArray();
 		}
 
-		public static TicketHistory GetTicketHistory(int id) {
-			TicketsHistoryTableAdapter tableAdapter = Database.TicketsHistoryTableAdapter;
-
+		public static TicketHistory GetTicketHistory(IDatabaseProvider db, int id) {
+			if (db == null) throw new ArgumentNullException(nameof(db));
+			TicketsHistoryTableAdapter tableAdapter = db.DB.TicketsHistoryTableAdapter;
 			PeygirDatabaseDataSet.TicketsHistoryDataTable rows = tableAdapter.GetDataByID(id);
 
 			if (rows.Count == 1) {
@@ -94,15 +94,8 @@ namespace Peygir.Logic {
 			comment = string.Empty;
 		}
 
-		public override void Add() {
-			if (ID != InvalidID) {
-				string message = Resources.String_CurrentObjectAlreadyAdded;
-				throw new InvalidOperationException(message);
-			}
-
-			// Add.
-
-			TicketsHistoryTableAdapter tableAdapter = Database.TicketsHistoryTableAdapter;
+		protected override void AddPrivate(Database db) {
+			TicketsHistoryTableAdapter tableAdapter = db.TicketsHistoryTableAdapter;
 
 			tableAdapter.Insert(ticketID, timestamp, changes, comment);
 
@@ -110,36 +103,22 @@ namespace Peygir.Logic {
 			ID = tableAdapter.GetID(ticketID, timestamp, changes, comment).Value;
 		}
 
-		public override void Update() {
-			if (ID == InvalidID) {
-				string message = Resources.String_CurrentObjectDoesNotExistInTheDatabase;
-				throw new InvalidOperationException(message);
-			}
-
-			// Update.
-
-			TicketsHistoryTableAdapter tableAdapter = Database.TicketsHistoryTableAdapter;
+		protected override void UpdatePrivate(Database db) {
+			TicketsHistoryTableAdapter tableAdapter = db.TicketsHistoryTableAdapter;
 
 			tableAdapter.UpdateByID(ticketID, timestamp, changes, comment, ID);
 		}
 
-		public override void Delete() {
-			if (ID == InvalidID) {
-				string message = Resources.String_CurrentObjectDoesNotExistInTheDatabase;
-				throw new InvalidOperationException(message);
-			}
-
-			// Delete.
-
-			TicketsHistoryTableAdapter tableAdapter = Database.TicketsHistoryTableAdapter;
+		protected override void DeletePrivate(Database db) {
+			TicketsHistoryTableAdapter tableAdapter = db.TicketsHistoryTableAdapter;
 
 			tableAdapter.DeleteByID(ID);
 
 			ID = InvalidID;
 		}
 
-		public Ticket GetTicket() {
-			return Ticket.GetTicket(ticketID);
+		public Ticket GetTicket(IDatabaseProvider db) {
+			return Ticket.GetTicket(db, ticketID);
 		}
 
 		internal TicketHistory(PeygirDatabaseDataSet.TicketsHistoryRow row) {

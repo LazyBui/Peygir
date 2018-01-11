@@ -9,6 +9,7 @@ namespace Peygir.Presentation.Forms {
 		private bool readOnly;
 		private Font mSansSerif;
 		private Font mMonospace;
+		private FormContext mContext;
 
 		public bool ReadOnly {
 			get { return readOnly; }
@@ -88,9 +89,11 @@ namespace Peygir.Presentation.Forms {
 		public Project Project { get; private set; }
 		public Ticket Ticket { get; private set; }
 
-		public TicketDetailsForm(Project project, Ticket ticket) {
+		public TicketDetailsForm(FormContext context, Project project, Ticket ticket) {
+			if (context == null) throw new ArgumentNullException(nameof(context));
 			if (project == null) throw new ArgumentNullException(nameof(project));
 
+			mContext = context;
 			Project = project;
 			Ticket = ticket;
 			InitializeComponent();
@@ -117,10 +120,10 @@ namespace Peygir.Presentation.Forms {
 			milestoneComboBox.EndUpdate();
 
 			reportedByComboBox.Items.Clear();
-			reportedByComboBox.Items.AddRange(Ticket.GetReporters());
+			reportedByComboBox.Items.AddRange(Ticket.GetReporters(mContext));
 
 			assignedToComboBox.Items.Clear();
-			assignedToComboBox.Items.AddRange(Ticket.GetAssignees());
+			assignedToComboBox.Items.AddRange(Ticket.GetAssignees(mContext));
 		}
 
 		public void ShowTicket(Ticket ticket, DateTimeFormatter formatter, FontContext context) {

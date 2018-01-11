@@ -2,7 +2,7 @@
 
 namespace Peygir.Logic {
 	public interface ITicketChangeFormatter {
-		string Milestone(int old, int @new);
+		string Milestone(IDatabaseProvider db, int old, int @new);
 		string Summary(string old, string @new);
 		string ReportedBy(string old, string @new);
 		string AssignedTo(string old, string @new);

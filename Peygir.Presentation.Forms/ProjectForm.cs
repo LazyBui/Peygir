@@ -10,18 +10,21 @@ using Peygir.Presentation.UserControls;
 namespace Peygir.Presentation.Forms {
 	public partial class ProjectForm : Form {
 		private MainForm mMainForm = null;
+		private FormContext mContext = null;
 		private bool mResettingTicketFilters = false;
 		private DateRange mTicketCreateFilter = null;
 		private DateRange mTicketModifyFilter = null;
 
 		public Project Project { get; private set; }
 
-		public ProjectForm(Project project, MainForm mainForm) {
-			if (project == null) throw new ArgumentNullException(nameof(project));
+		public ProjectForm(MainForm mainForm, FormContext context, Project project) {
 			if (mainForm == null) throw new ArgumentNullException(nameof(mainForm));
+			if (context == null) throw new ArgumentNullException(nameof(context));
+			if (project == null) throw new ArgumentNullException(nameof(project));
 
-			Project = project;
 			mMainForm = mainForm;
+			mContext = context;
+			Project = project;
 
 			InitializeComponent();
 
@@ -406,10 +409,10 @@ namespace Peygir.Presentation.Forms {
 					form.ProjectDetailsUserControl.RetrieveProject(Project);
 
 					// Update project.
-					Project.Update();
+					Project.Update(mContext);
 
 					// Flush.
-					Database.Flush();
+					mContext.Flush();
 
 					ShowProjectDetails();
 
@@ -427,7 +430,7 @@ namespace Peygir.Presentation.Forms {
 				selectedMilestones.Add(milestone.ID);
 			}
 
-			Milestone[] milestones = Project.GetMilestones();
+			Milestone[] milestones = Project.GetMilestones(mContext);
 
 			milestonesListView.BeginUpdate();
 			milestonesListView.Items.Clear();
@@ -476,7 +479,7 @@ namespace Peygir.Presentation.Forms {
 		}
 
 		private void AddMilestone() {
-			Milestone milestone = Project.NewMilestone();
+			Milestone milestone = Project.NewMilestone(mContext);
 			using (var form = new MilestoneDetailsForm()) {
 				form.ShowMilestone(milestone);
 				form.State = MilestoneState.Active;
@@ -510,10 +513,10 @@ namespace Peygir.Presentation.Forms {
 					form.RetrieveMilestone(milestone);
 
 					// Add.
-					milestone.Add();
+					milestone.Add(mContext);
 
 					// Flush.
-					Database.Flush();
+					mContext.Flush();
 
 					// Show milestones.
 					ShowMilestones();
@@ -590,10 +593,10 @@ namespace Peygir.Presentation.Forms {
 					form.RetrieveMilestone(milestone);
 
 					// Update milestones.
-					milestone.Update();
+					milestone.Update(mContext);
 
 					// Flush.
-					Database.Flush();
+					mContext.Flush();
 
 					// Show milestones.
 					ShowMilestones();
@@ -624,11 +627,11 @@ namespace Peygir.Presentation.Forms {
 			// Delete milestones.
 			for (int i = 0; i < milestonesListView.SelectedItems.Count; i++) {
 				var milestone = (Milestone)milestonesListView.SelectedItems[i].Tag;
-				milestone.Delete();
+				milestone.Delete(mContext);
 			}
 
 			// Flush.
-			Database.Flush();
+			mContext.Flush();
 
 			// Show milestones.
 			ShowMilestones();
@@ -648,7 +651,7 @@ namespace Peygir.Presentation.Forms {
 			}
 
 			// Flush.
-			Database.Flush();
+			mContext.Flush();
 
 			// Show tickets.
 			ShowTickets();
@@ -657,12 +660,12 @@ namespace Peygir.Presentation.Forms {
 		}
 
 		private void TicketSingle(Ticket ticket, bool batch, Action<Ticket> changes) {
-			bool applied = ticket.UpdateAndGenerateHistoryRecord(TicketChangeFormatter.Default, changes);
+			bool applied = ticket.UpdateAndGenerateHistoryRecord(mContext, TicketChangeFormatter.Default, changes);
 
 			if (!applied || batch) return;
 
 			// Flush.
-			Database.Flush();
+			mContext.Flush();
 
 			// Show tickets.
 			ShowTickets();
@@ -727,7 +730,7 @@ namespace Peygir.Presentation.Forms {
 				bool satisfiesSummaryFilter = FormUtil.FilterContains(t.Summary, summaryFilter);
 				bool satisfiesReporterFilter = FormUtil.FilterMatch(t.ReportedBy, reporterFilter);
 				bool satisfiesAssignedFilter = FormUtil.FilterMatch(t.AssignedTo, assignedFilter);
-				bool satisfiesMilestoneFilter = FormUtil.FilterMatch(t.GetMilestone().Name, milestoneFilter);
+				bool satisfiesMilestoneFilter = FormUtil.FilterMatch(t.GetMilestone(mContext).Name, milestoneFilter);
 				bool satisfiesStateFilter = stateFilter == null || stateFilter.Value.AppliesTo(t.State);
 				bool satisfiesSeverityFilter = FormUtil.FilterEnum(t.Severity, severityFilter);
 				bool satisfiesPriorityFilter = FormUtil.FilterEnum(t.Priority, priorityFilter);
@@ -750,7 +753,7 @@ namespace Peygir.Presentation.Forms {
 
 			// Cache milestones.
 			var milestoneNames = new Dictionary<int, string>();
-			Milestone[] milestones = Milestone.GetMilestones();
+			Milestone[] milestones = Milestone.GetMilestones(mContext);
 			foreach (Milestone milestone in milestones) {
 				milestoneNames[milestone.ID] = milestone.Name;
 			}
@@ -792,7 +795,7 @@ namespace Peygir.Presentation.Forms {
 		}
 
 		private void AddTicket() {
-			Milestone[] milestones = Project.GetMilestones();
+			Milestone[] milestones = Project.GetMilestones(mContext);
 			if (milestones.Length == 0) {
 				MessageBox.Show(
 					Resources.String_PleaseAddAMilestoneBeforeAddingATicket,
@@ -805,7 +808,7 @@ namespace Peygir.Presentation.Forms {
 				return;
 			}
 
-			using (var form = new TicketDetailsForm(Project, null)) {
+			using (var form = new TicketDetailsForm(mContext, Project, null)) {
 				form.ShowMilestones(milestones);
 
 				form.Type = TicketType.Task;
@@ -905,18 +908,18 @@ namespace Peygir.Presentation.Forms {
 					}
 
 					Milestone milestone = form.Milestone;
-					Ticket ticket = milestone.NewTicket();
+					Ticket ticket = milestone.NewTicket(mContext);
 					form.RetrieveTicket(ticket);
 
 					// Add.
-					ticket.Add();
+					ticket.Add(mContext);
 
 					// Flush.
-					Database.Flush();
+					mContext.Flush();
 
 					// Create ticket history entry.
 					TicketHistory ticketHistory = ticket.NewHistory(Resources.String_TicketCreated);
-					ticketHistory.Add();
+					ticketHistory.Add(mContext);
 
 					// Show tickets.
 					ShowTickets();
@@ -948,8 +951,8 @@ namespace Peygir.Presentation.Forms {
 
 			var ticket = (Ticket)ticketsListView.SelectedItems[0].Tag;
 
-			using (var form = new TicketDetailsForm(Project, ticket)) {
-				Milestone[] milestones = Project.GetMilestones();
+			using (var form = new TicketDetailsForm(mContext, Project, ticket)) {
+				Milestone[] milestones = Project.GetMilestones(mContext);
 				form.ShowMilestones(milestones);
 
 				form.ShowTicket(ticket, FormUtil.GetFormatter(), FormUtil.GetFontContext());
@@ -966,8 +969,8 @@ namespace Peygir.Presentation.Forms {
 
 			var ticket = (Ticket)ticketsListView.SelectedItems[0].Tag;
 
-			using (var form = new TicketDetailsForm(Project, ticket)) {
-				Milestone[] milestones = Project.GetMilestones();
+			using (var form = new TicketDetailsForm(mContext, Project, ticket)) {
+				Milestone[] milestones = Project.GetMilestones(mContext);
 				form.ShowMilestones(milestones);
 
 				form.ShowTicket(ticket, FormUtil.GetFormatter(), FormUtil.GetFontContext());
@@ -1058,12 +1061,12 @@ namespace Peygir.Presentation.Forms {
 						goto Again;
 					}
 
-					ticket.UpdateAndGenerateHistoryRecord(TicketChangeFormatter.Default, t => {
+					ticket.UpdateAndGenerateHistoryRecord(mContext, TicketChangeFormatter.Default, t => {
 						form.RetrieveTicket(t);
 					});
 
 					// Flush.
-					Database.Flush();
+					mContext.Flush();
 
 					// Show tickets.
 					ShowTickets();
@@ -1079,7 +1082,7 @@ namespace Peygir.Presentation.Forms {
 			}
 
 			var ticket = (Ticket)ticketsListView.SelectedItems[0].Tag;
-			using (var form = new TicketHistoryForm(ticket)) {
+			using (var form = new TicketHistoryForm(mContext, ticket)) {
 				form.ShowDialog();
 			}
 		}
@@ -1090,7 +1093,7 @@ namespace Peygir.Presentation.Forms {
 			}
 
 			var ticket = (Ticket)ticketsListView.SelectedItems[0].Tag;
-			using (var form = new AttachmentsForm(ticket)) {
+			using (var form = new AttachmentsForm(mContext, ticket)) {
 				form.ShowDialog();
 			}
 		}
@@ -1113,11 +1116,11 @@ namespace Peygir.Presentation.Forms {
 			// Delete tickets.
 			for (int i = 0; i < ticketsListView.SelectedItems.Count; i++) {
 				var ticket = (Ticket)ticketsListView.SelectedItems[i].Tag;
-				ticket.Delete();
+				ticket.Delete(mContext);
 			}
 
 			// Flush.
-			Database.Flush();
+			mContext.Flush();
 
 			// Show tickets.
 			ShowTickets();
@@ -1127,11 +1130,11 @@ namespace Peygir.Presentation.Forms {
 		#endregion
 
 		private void PopulateTicketFilters() {
-			FormUtil.UpdateUserBoxWithSelectedItem(ticketReportersComboBox, Ticket.GetReporters());
-			FormUtil.UpdateUserBoxWithSelectedItem(ticketAssignedToComboBox, Ticket.GetAssignees());
+			FormUtil.UpdateUserBoxWithSelectedItem(ticketReportersComboBox, Ticket.GetReporters(mContext));
+			FormUtil.UpdateUserBoxWithSelectedItem(ticketAssignedToComboBox, Ticket.GetAssignees(mContext));
 			FormUtil.UpdateUserBoxWithSelectedItem(
 				ticketMilestoneComboBox,
-				Project.GetMilestones().Select(m => m.Name),
+				Project.GetMilestones(mContext).Select(m => m.Name),
 				hasEmptyItem: true);
 		}
 
@@ -1162,6 +1165,10 @@ namespace Peygir.Presentation.Forms {
 
 			// Because ticket details forms (history too) are modal and prevent usage of the main application, we can safely assume here that we don't need to update them
 			// That is, ticket details can't be open while options change
+		}
+
+		internal void SaveDatabaseAs(FormContext context) {
+			mContext = context;
 		}
 
 		internal void UpdateTicket() {

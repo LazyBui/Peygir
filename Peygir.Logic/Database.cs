@@ -4,79 +4,66 @@ using Peygir.Data;
 using Peygir.Data.PeygirDatabaseDataSetTableAdapters;
 
 namespace Peygir.Logic {
-	public static class Database {
-		private static string currentDatabasePath;
-		public static string CurrentDatabasePath {
+	public class Database : IDatabaseProvider {
+		private string currentDatabasePath;
+		public string CurrentDatabasePath {
 			get { return currentDatabasePath; }
 		}
 
-		private static bool isOpen;
-		public static bool IsOpen {
+		private bool isOpen;
+		public bool IsOpen {
 			get { return isOpen; }
 		}
 
-		private static ProjectsTableAdapter projectsTableAdapter;
-		internal static ProjectsTableAdapter ProjectsTableAdapter {
+		private ProjectsTableAdapter projectsTableAdapter;
+		internal ProjectsTableAdapter ProjectsTableAdapter {
 			get { return projectsTableAdapter; }
 		}
 
-		private static MilestonesTableAdapter milestonesTableAdapter;
-		internal static MilestonesTableAdapter MilestonesTableAdapter {
+		private MilestonesTableAdapter milestonesTableAdapter;
+		internal MilestonesTableAdapter MilestonesTableAdapter {
 			get { return milestonesTableAdapter; }
 		}
 
-		private static TicketReportersTableAdapter ticketReportersTableAdapter;
-		internal static TicketReportersTableAdapter TicketReportersTableAdapter {
+		private TicketReportersTableAdapter ticketReportersTableAdapter;
+		internal TicketReportersTableAdapter TicketReportersTableAdapter {
 			get { return ticketReportersTableAdapter; }
 		}
 
-		private static TicketAssigneesTableAdapter ticketAssigneesTableAdapter;
-		internal static TicketAssigneesTableAdapter TicketAssigneesTableAdapter {
+		private TicketAssigneesTableAdapter ticketAssigneesTableAdapter;
+		internal TicketAssigneesTableAdapter TicketAssigneesTableAdapter {
 			get { return ticketAssigneesTableAdapter; }
 		}
 
-		private static TicketsTableAdapter ticketsTableAdapter;
-		internal static TicketsTableAdapter TicketsTableAdapter {
+		private TicketsTableAdapter ticketsTableAdapter;
+		internal TicketsTableAdapter TicketsTableAdapter {
 			get { return ticketsTableAdapter; }
 		}
 
-		private static AttachmentsWithoutContentsTableAdapter attachmentsWithoutContentsTableAdapter;
-		internal static AttachmentsWithoutContentsTableAdapter AttachmentsWithoutContentsTableAdapter {
+		private AttachmentsWithoutContentsTableAdapter attachmentsWithoutContentsTableAdapter;
+		internal AttachmentsWithoutContentsTableAdapter AttachmentsWithoutContentsTableAdapter {
 			get { return attachmentsWithoutContentsTableAdapter; }
 		}
 
-		private static AttachmentsTableAdapter attachmentsTableAdapter;
-		internal static AttachmentsTableAdapter AttachmentsTableAdapter {
+		private AttachmentsTableAdapter attachmentsTableAdapter;
+		internal AttachmentsTableAdapter AttachmentsTableAdapter {
 			get { return attachmentsTableAdapter; }
 		}
 
-		private static TicketsHistoryTableAdapter ticketsHistoryTableAdapter;
-		internal static TicketsHistoryTableAdapter TicketsHistoryTableAdapter {
+		private TicketsHistoryTableAdapter ticketsHistoryTableAdapter;
+		internal TicketsHistoryTableAdapter TicketsHistoryTableAdapter {
 			get { return ticketsHistoryTableAdapter; }
 		}
 
-		static Database() {
-			currentDatabasePath = null;
-			isOpen = false;
+		public Database DB => this;
 
-			projectsTableAdapter = null;
-			milestonesTableAdapter = null;
-			ticketReportersTableAdapter = null;
-			ticketAssigneesTableAdapter = null;
-			ticketsTableAdapter = null;
-			attachmentsWithoutContentsTableAdapter = null;
-			attachmentsTableAdapter = null;
-			ticketsHistoryTableAdapter = null;
+		private Database() {
+
 		}
 
-		public static void CreateAndOpen(string databasePath) {
+		public static Database CreateAndOpen(string databasePath) {
 			if (databasePath == null) {
 				throw new ArgumentNullException(nameof(databasePath));
-			}
-
-			// Close.
-			if (isOpen) {
-				Close();
 			}
 
 			// Copy default database to new location.
@@ -84,44 +71,45 @@ namespace Peygir.Logic {
 			File.Copy(defaultDatabasePath, databasePath, true);
 
 			// Open database.
-			Open(databasePath);
+			return Open(databasePath);
 		}
 
-		public static void Open(string databasePath) {
+		public static Database Open(string databasePath) {
 			if (databasePath == null) {
 				throw new ArgumentNullException(nameof(databasePath));
 			}
 
-			// Close.
-			if (isOpen) {
-				Close();
-			}
-
 			PeygirDatabaseDataSet.ChangeDatabasePath(databasePath);
 
-			projectsTableAdapter = new ProjectsTableAdapter();
-			milestonesTableAdapter = new MilestonesTableAdapter();
-			ticketReportersTableAdapter = new TicketReportersTableAdapter();
-			ticketAssigneesTableAdapter = new TicketAssigneesTableAdapter();
-			ticketsTableAdapter = new TicketsTableAdapter();
-			attachmentsWithoutContentsTableAdapter = new AttachmentsWithoutContentsTableAdapter();
-			attachmentsTableAdapter = new AttachmentsTableAdapter();
-			ticketsHistoryTableAdapter = new TicketsHistoryTableAdapter();
-
-			projectsTableAdapter.Connection.Open();
-			milestonesTableAdapter.Connection.Open();
-			ticketReportersTableAdapter.Connection.Open();
-			ticketAssigneesTableAdapter.Connection.Open();
-			ticketsTableAdapter.Connection.Open();
-			attachmentsWithoutContentsTableAdapter.Connection.Open();
-			attachmentsTableAdapter.Connection.Open();
-			ticketsHistoryTableAdapter.Connection.Open();
-
-			currentDatabasePath = databasePath;
-			isOpen = true;
+			var result = new Database();
+			InitializeDatabase(result, databasePath);
+			return result;
 		}
 
-		public static void Close() {
+		private static void InitializeDatabase(Database value, string databasePath) {
+			value.projectsTableAdapter = new ProjectsTableAdapter();
+			value.milestonesTableAdapter = new MilestonesTableAdapter();
+			value.ticketReportersTableAdapter = new TicketReportersTableAdapter();
+			value.ticketAssigneesTableAdapter = new TicketAssigneesTableAdapter();
+			value.ticketsTableAdapter = new TicketsTableAdapter();
+			value.attachmentsWithoutContentsTableAdapter = new AttachmentsWithoutContentsTableAdapter();
+			value.attachmentsTableAdapter = new AttachmentsTableAdapter();
+			value.ticketsHistoryTableAdapter = new TicketsHistoryTableAdapter();
+
+			value.projectsTableAdapter.Connection.Open();
+			value.milestonesTableAdapter.Connection.Open();
+			value.ticketReportersTableAdapter.Connection.Open();
+			value.ticketAssigneesTableAdapter.Connection.Open();
+			value.ticketsTableAdapter.Connection.Open();
+			value.attachmentsWithoutContentsTableAdapter.Connection.Open();
+			value.attachmentsTableAdapter.Connection.Open();
+			value.ticketsHistoryTableAdapter.Connection.Open();
+
+			value.currentDatabasePath = databasePath;
+			value.isOpen = true;
+		}
+
+		public void Close() {
 			if (!isOpen) {
 				return;
 			}
@@ -148,16 +136,18 @@ namespace Peygir.Logic {
 			isOpen = false;
 		}
 
-		public static void Flush() {
+		public void Flush() {
 			if (!isOpen) {
 				throw new InvalidOperationException();
 			}
 
-			string databasePath = Database.CurrentDatabasePath;
+			string databasePath = CurrentDatabasePath;
 
 			// Reconnect.
-			Database.Close();
-			Database.Open(databasePath);
+			Close();
+
+			PeygirDatabaseDataSet.ChangeDatabasePath(databasePath);
+			InitializeDatabase(this, databasePath);
 		}
 	}
 }

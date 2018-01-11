@@ -14,6 +14,7 @@ namespace Peygir.Presentation.Forms {
 		private bool mResettingFilters = false;
 		private DateRange mCreateFilter = null;
 		private DateRange mModifyFilter = null;
+		private FormContext mContext = FormContext.Default;
 
 		public MainForm() {
 			InitializeComponent();
@@ -256,7 +257,7 @@ namespace Peygir.Presentation.Forms {
 		}
 
 		private void UpdateControlsEnabledProperty() {
-			bool hasDatabase = !string.IsNullOrEmpty(Database.CurrentDatabasePath);
+			bool hasDatabase = mContext.HasDatabase;
 			saveDatabaseAsToolStripMenuItem.Enabled = hasDatabase;
 			closeDatabaseToolStripMenuItem.Enabled = hasDatabase;
 			if (!hasDatabase) {
@@ -277,9 +278,7 @@ namespace Peygir.Presentation.Forms {
 
 			databaseToolStripStatusLabel.Text = string.Format(
 				Resources.String_DatabaseX,
-				string.IsNullOrEmpty(Database.CurrentDatabasePath) ?
-					"N/A" :
-					Database.CurrentDatabasePath);
+				mContext.DB?.CurrentDatabasePath ?? "N/A");
 		}
 
 		private void NewDatabase() {
@@ -314,13 +313,14 @@ namespace Peygir.Presentation.Forms {
 			openFileDialog.FileName = string.Empty;
 			if (openFileDialog.ShowDialog() != DialogResult.OK) return;
 			try {
-				if (Database.IsOpen)
+				if (mContext?.DB?.IsOpen == true) {
 					CloseDatabase();
+				}
 
 				string databasePath = openFileDialog.FileName;
 
 				Environment.CurrentDirectory = Application.StartupPath;
-				Database.Open(databasePath);
+				mContext = new FormContext(Database.Open(databasePath));
 
 				// This is required to update the assigned to/reporter combos
 				UpdateTicketOrProject();
@@ -339,11 +339,11 @@ namespace Peygir.Presentation.Forms {
 		}
 
 		private void SaveDatabaseAs() {
-			string currentDatabasePath = Database.CurrentDatabasePath;
+			string currentDatabasePath = mContext.DB.CurrentDatabasePath;
 			saveFileDialog.FileName = currentDatabasePath;
 			if (saveFileDialog.ShowDialog() != DialogResult.OK) return;
 			try {
-				Database.Close();
+				mContext.Close();
 
 				string newDatabasePath = saveFileDialog.FileName;
 
@@ -351,7 +351,11 @@ namespace Peygir.Presentation.Forms {
 				File.Copy(currentDatabasePath, newDatabasePath, true);
 
 				Environment.CurrentDirectory = Application.StartupPath;
-				Database.Open(newDatabasePath);
+				mContext = new FormContext(Database.Open(newDatabasePath));
+
+				foreach (var form in mForms.ToArray()) {
+					form.Value.SaveDatabaseAs(mContext);
+				}
 
 				ShowProjects();
 			}
@@ -369,7 +373,8 @@ namespace Peygir.Presentation.Forms {
 		}
 
 		private void CloseDatabase() {
-			Database.Close();
+			mContext.Close();
+			mContext = FormContext.Default;
 			ResetFilters();
 
 			// ToArray to copy the forms so we can mutate the dictionary
@@ -388,7 +393,9 @@ namespace Peygir.Presentation.Forms {
 		private void ShowOptions() {
 			using (var form = new OptionsForm()) {
 				if (form.ShowDialog() != DialogResult.OK) return;
-				if (!Database.IsOpen) return;
+
+				// If the DB isn't open, we can't have filters or things like that, so there's no point in going on
+				if (mContext?.DB?.IsOpen != true) return;
 
 				// Might change date formatting, update display
 				ShowProjects();
@@ -414,7 +421,7 @@ namespace Peygir.Presentation.Forms {
 				selectedProjects.Add(project.ID);
 			}
 
-			Project[] projects = Project.GetProjects();
+			Project[] projects = Project.GetProjects(mContext.DB);
 
 			string nameFilter = projectTextBox.Text;
 			var reporterFilter = (string)reportersComboBox.SelectedItem;
@@ -522,7 +529,7 @@ namespace Peygir.Presentation.Forms {
 
 		private void AddProject() {
 			using (var form = new ProjectDetailsForm()) {
-				var project = new Project();
+				var project = new Project(mContext);
 				form.ProjectDetailsUserControl.ShowProject(project);
 
 				Again:
@@ -542,10 +549,10 @@ namespace Peygir.Presentation.Forms {
 					form.ProjectDetailsUserControl.RetrieveProject(project);
 
 					// Add.
-					project.Add();
+					project.Add(mContext);
 
 					// Flush.
-					Database.Flush();
+					mContext.Flush();
 
 					// Show projects.
 					ShowProjects();
@@ -575,7 +582,7 @@ namespace Peygir.Presentation.Forms {
 				var item = (Project)projectsListView.SelectedItems[i].Tag;
 				ProjectForm form;
 				if (!mForms.TryGetValue(item.ID, out form)) {
-					form = new ProjectForm(item, this);
+					form = new ProjectForm(this, mContext, item);
 					mForms[item.ID] = form;
 					form.ActivateTicketTab();
 					form.Show();
@@ -604,11 +611,11 @@ namespace Peygir.Presentation.Forms {
 			// Delete projects.
 			for (int i = 0; i < projectsListView.SelectedItems.Count; i++) {
 				var project = (Project)projectsListView.SelectedItems[i].Tag;
-				project.Delete();
+				project.Delete(mContext);
 			}
 
 			// Flush.
-			Database.Flush();
+			mContext.Flush();
 
 			// Show projects.
 			ShowProjects();
@@ -661,8 +668,8 @@ namespace Peygir.Presentation.Forms {
 
 		internal void UpdateTicketOrProject() {
 			// Update our UI elements for assigned/reported, can't populate this in ShowProjects because that would cause nightmares
-			FormUtil.UpdateUserBoxWithSelectedItem(reportersComboBox, Ticket.GetReporters());
-			FormUtil.UpdateUserBoxWithSelectedItem(assignedToComboBox, Ticket.GetAssignees());
+			FormUtil.UpdateUserBoxWithSelectedItem(reportersComboBox, Ticket.GetReporters(mContext));
+			FormUtil.UpdateUserBoxWithSelectedItem(assignedToComboBox, Ticket.GetAssignees(mContext));
 
 			// Any child should require updated filters
 			foreach (var form in mForms.ToArray()) {

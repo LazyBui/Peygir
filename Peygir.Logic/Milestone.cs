@@ -6,9 +6,9 @@ using Peygir.Logic.Properties;
 
 namespace Peygir.Logic {
 	public class Milestone : DBObject {
-		public static Milestone[] GetMilestones() {
-			MilestonesTableAdapter tableAdapter = Database.MilestonesTableAdapter;
-
+		public static Milestone[] GetMilestones(IDatabaseProvider db) {
+			if (db == null) throw new ArgumentNullException(nameof(db));
+			MilestonesTableAdapter tableAdapter = db.DB.MilestonesTableAdapter;
 			PeygirDatabaseDataSet.MilestonesDataTable rows = tableAdapter.GetData();
 
 			// Create list.
@@ -22,9 +22,9 @@ namespace Peygir.Logic {
 			return milestones.ToArray();
 		}
 
-		public static Milestone[] GetMilestones(int projectID) {
-			MilestonesTableAdapter tableAdapter = Database.MilestonesTableAdapter;
-
+		public static Milestone[] GetMilestones(IDatabaseProvider db, int projectID) {
+			if (db == null) throw new ArgumentNullException(nameof(db));
+			MilestonesTableAdapter tableAdapter = db.DB.MilestonesTableAdapter;
 			PeygirDatabaseDataSet.MilestonesDataTable rows = tableAdapter.GetDataByProjectID(projectID);
 
 			// Create list.
@@ -38,9 +38,9 @@ namespace Peygir.Logic {
 			return milestones.ToArray();
 		}
 
-		public static Milestone GetMilestone(int id) {
-			MilestonesTableAdapter tableAdapter = Database.MilestonesTableAdapter;
-
+		public static Milestone GetMilestone(IDatabaseProvider db, int id) {
+			if (db == null) throw new ArgumentNullException(nameof(db));
+			MilestonesTableAdapter tableAdapter = db.DB.MilestonesTableAdapter;
 			PeygirDatabaseDataSet.MilestonesDataTable rows = tableAdapter.GetDataByID(id);
 
 			if (rows.Count == 1) {
@@ -87,7 +87,8 @@ namespace Peygir.Logic {
 			set { displayOrder = value; }
 		}
 
-		public Milestone(int projectID) {
+		public Milestone(IDatabaseProvider db, int projectID) {
+			if (db == null) throw new ArgumentNullException(nameof(db));
 			if (projectID == InvalidID) {
 				string message = Resources.String_InvalidProjectID;
 				throw new ArgumentException(message, nameof(projectID));
@@ -100,7 +101,7 @@ namespace Peygir.Logic {
 			displayOrder = -1;
 
 			// Find max display order.
-			MilestonesTableAdapter tableAdapter = Database.MilestonesTableAdapter;
+			MilestonesTableAdapter tableAdapter = db.DB.MilestonesTableAdapter;
 			int? maxDisplayOrder = tableAdapter.GetMaxDisplayOrder(projectID);
 			if (maxDisplayOrder.HasValue) {
 				displayOrder = maxDisplayOrder.Value + 1;
@@ -110,15 +111,8 @@ namespace Peygir.Logic {
 			}
 		}
 
-		public override void Add() {
-			if (ID != InvalidID) {
-				string message = Resources.String_CurrentObjectAlreadyAdded;
-				throw new InvalidOperationException(message);
-			}
-
-			// Add.
-
-			MilestonesTableAdapter tableAdapter = Database.MilestonesTableAdapter;
+		protected override void AddPrivate(Database db) {
+			MilestonesTableAdapter tableAdapter = db.MilestonesTableAdapter;
 
 			tableAdapter.Insert(projectID, name, description, (int)state, displayOrder);
 
@@ -126,54 +120,40 @@ namespace Peygir.Logic {
 			ID = tableAdapter.GetID(projectID, name, description, (int)state, displayOrder).Value;
 		}
 
-		public override void Update() {
-			if (ID == InvalidID) {
-				string message = Resources.String_CurrentObjectDoesNotExistInTheDatabase;
-				throw new InvalidOperationException(message);
-			}
-
-			// Update.
-
-			MilestonesTableAdapter tableAdapter = Database.MilestonesTableAdapter;
+		protected override void UpdatePrivate(Database db) {
+			MilestonesTableAdapter tableAdapter = db.MilestonesTableAdapter;
 
 			tableAdapter.UpdateByID(projectID, name, description, (int)state, displayOrder, ID);
 		}
 
-		public override void Delete() {
-			if (ID == InvalidID) {
-				string message = Resources.String_CurrentObjectDoesNotExistInTheDatabase;
-				throw new InvalidOperationException(message);
-			}
-
-			// Delete.
-
-			MilestonesTableAdapter tableAdapter = Database.MilestonesTableAdapter;
+		protected override void DeletePrivate(Database db) {
+			MilestonesTableAdapter tableAdapter = db.MilestonesTableAdapter;
 
 			tableAdapter.DeleteByID(ID);
 
 			ID = InvalidID;
 		}
 
-		public Project GetProject() {
-			return Project.GetProject(projectID);
+		public Project GetProject(IDatabaseProvider db) {
+			return Project.GetProject(db, projectID);
 		}
 
-		public Ticket[] GetTickets() {
+		public Ticket[] GetTickets(IDatabaseProvider db) {
 			if (ID == InvalidID) {
 				string message = Resources.String_CurrentObjectDoesNotExistInTheDatabase;
 				throw new InvalidOperationException(message);
 			}
 
-			return Ticket.GetTickets(ID);
+			return Ticket.GetTickets(db, ID);
 		}
 
-		public Ticket NewTicket() {
+		public Ticket NewTicket(IDatabaseProvider db) {
 			if (ID == InvalidID) {
 				string message = Resources.String_CurrentObjectDoesNotExistInTheDatabase;
 				throw new InvalidOperationException(message);
 			}
 
-			return new Ticket(ProjectID, ID);
+			return new Ticket(db, ProjectID, ID);
 		}
 
 		public override string ToString() {

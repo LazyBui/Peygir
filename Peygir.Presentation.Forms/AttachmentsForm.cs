@@ -4,15 +4,19 @@ using System.IO;
 using System.Windows.Forms;
 using Peygir.Logic;
 using Peygir.Presentation.Forms.Properties;
+using Peygir.Presentation.UserControls;
 
 namespace Peygir.Presentation.Forms {
 	public partial class AttachmentsForm : Form {
-		public Ticket Ticket { get; private set; }
+		private FormContext mContext = null;
+		private Ticket mTicket = null;
 
-		public AttachmentsForm(Ticket ticket) {
+		public AttachmentsForm(FormContext context, Ticket ticket) {
+			if (context == null) throw new ArgumentNullException(nameof(context));
 			if (ticket == null) throw new ArgumentNullException(nameof(ticket));
 
-			Ticket = ticket;
+			mContext = context;
+			mTicket = ticket;
 
 			InitializeComponent();
 			ShowAttachments();
@@ -73,7 +77,7 @@ namespace Peygir.Presentation.Forms {
 				selectedAttachments.Add(attachment.ID);
 			}
 
-			Attachment[] attachments = Ticket.GetAttachmentsWithoutContents();
+			Attachment[] attachments = mTicket.GetAttachmentsWithoutContents(mContext);
 
 			attachmentsListView.BeginUpdate();
 			attachmentsListView.Items.Clear();
@@ -108,15 +112,15 @@ namespace Peygir.Presentation.Forms {
 					string fileName = openFileDialog.FileName;
 					var fi = new FileInfo(fileName);
 
-					Attachment attachment = Ticket.NewAttachment();
+					Attachment attachment = mTicket.NewAttachment();
 
 					attachment.Name = fi.Name.Substring(0, Math.Min(255, fi.Name.Length)); // Max 255 characters.
 					attachment.SetContents(File.ReadAllBytes(fileName));
 
-					attachment.Add();
+					attachment.Add(mContext);
 
 					// Flush.
-					Database.Flush();
+					mContext.Flush();
 
 					ShowAttachments();
 
@@ -153,7 +157,7 @@ namespace Peygir.Presentation.Forms {
 				saveFileDialog.FileName = attachmentWithoutContents.Name;
 				if (saveFileDialog.ShowDialog() == DialogResult.OK) {
 					string fileName = saveFileDialog.FileName;
-					Attachment attachment = Attachment.GetAttachment(attachmentWithoutContents.ID);
+					Attachment attachment = Attachment.GetAttachment(mContext, attachmentWithoutContents.ID);
 
 					File.WriteAllBytes(fileName, attachment.GetContents());
 				}
@@ -187,11 +191,11 @@ namespace Peygir.Presentation.Forms {
 			// Delete attachments.
 			for (int i = 0; i < attachmentsListView.SelectedItems.Count; i++) {
 				var attachment = (Attachment)attachmentsListView.SelectedItems[i].Tag;
-				attachment.Delete();
+				attachment.Delete(mContext);
 			}
 
 			// Flush.
-			Database.Flush();
+			mContext.Flush();
 
 			// Show attachments.
 			ShowAttachments();

@@ -6,9 +6,9 @@ using Peygir.Logic.Properties;
 
 namespace Peygir.Logic {
 	public class Project : DBObject {
-		public static Project[] GetProjects() {
-			ProjectsTableAdapter tableAdapter = Database.ProjectsTableAdapter;
-
+		public static Project[] GetProjects(IDatabaseProvider db) {
+			if (db == null) throw new ArgumentNullException(nameof(db));
+			ProjectsTableAdapter tableAdapter = db.DB.ProjectsTableAdapter;
 			PeygirDatabaseDataSet.ProjectsDataTable rows = tableAdapter.GetData();
 
 			// Create list.
@@ -22,9 +22,9 @@ namespace Peygir.Logic {
 			return projects.ToArray();
 		}
 
-		public static Project GetProject(int id) {
-			ProjectsTableAdapter tableAdapter = Database.ProjectsTableAdapter;
-
+		public static Project GetProject(IDatabaseProvider db, int id) {
+			if (db == null) throw new ArgumentNullException(nameof(db));
+			ProjectsTableAdapter tableAdapter = db.DB.ProjectsTableAdapter;
 			PeygirDatabaseDataSet.ProjectsDataTable rows = tableAdapter.GetDataByID(id);
 
 			if (rows.Count == 1) {
@@ -62,13 +62,14 @@ namespace Peygir.Logic {
 			set { displayOrder = value; }
 		}
 
-		public Project() {
+		public Project(IDatabaseProvider db) {
+			if (db == null) throw new ArgumentNullException(nameof(db));
 			name = string.Empty;
 			description = string.Empty;
 			displayOrder = -1;
 
 			// Find max display order.
-			ProjectsTableAdapter tableAdapter = Database.ProjectsTableAdapter;
+			ProjectsTableAdapter tableAdapter = db.DB.ProjectsTableAdapter;
 			int? maxDisplayOrder = tableAdapter.GetMaxDisplayOrder();
 			if (maxDisplayOrder.HasValue) {
 				displayOrder = maxDisplayOrder.Value + 1;
@@ -78,15 +79,8 @@ namespace Peygir.Logic {
 			}
 		}
 
-		public override void Add() {
-			if (ID != InvalidID) {
-				string message = Resources.String_CurrentObjectAlreadyAdded;
-				throw new InvalidOperationException(message);
-			}
-
-			// Add.
-
-			ProjectsTableAdapter tableAdapter = Database.ProjectsTableAdapter;
+		protected override void AddPrivate(Database db) {
+			ProjectsTableAdapter tableAdapter = db.ProjectsTableAdapter;
 
 			tableAdapter.Insert(name, description, displayOrder);
 
@@ -94,50 +88,36 @@ namespace Peygir.Logic {
 			ID = tableAdapter.GetID(name, description, displayOrder).Value;
 		}
 
-		public override void Update() {
-			if (ID == InvalidID) {
-				string message = Resources.String_CurrentObjectDoesNotExistInTheDatabase;
-				throw new InvalidOperationException(message);
-			}
-
-			// Update.
-
-			ProjectsTableAdapter tableAdapter = Database.ProjectsTableAdapter;
+		protected override void UpdatePrivate(Database db) {
+			ProjectsTableAdapter tableAdapter = db.ProjectsTableAdapter;
 
 			tableAdapter.UpdateByID(name, description, displayOrder, ID);
 		}
 
-		public override void Delete() {
-			if (ID == InvalidID) {
-				string message = Resources.String_CurrentObjectDoesNotExistInTheDatabase;
-				throw new InvalidOperationException(message);
-			}
-
-			// Delete.
-
-			ProjectsTableAdapter tableAdapter = Database.ProjectsTableAdapter;
+		protected override void DeletePrivate(Database db) {
+			ProjectsTableAdapter tableAdapter = db.ProjectsTableAdapter;
 
 			tableAdapter.DeleteByID(ID);
 
 			ID = InvalidID;
 		}
 
-		public Milestone[] GetMilestones() {
+		public Milestone[] GetMilestones(IDatabaseProvider db) {
 			if (ID == InvalidID) {
 				string message = Resources.String_CurrentObjectDoesNotExistInTheDatabase;
 				throw new InvalidOperationException(message);
 			}
 
-			return Milestone.GetMilestones(ID);
+			return Milestone.GetMilestones(db, ID);
 		}
 
-		public Milestone NewMilestone() {
+		public Milestone NewMilestone(IDatabaseProvider db) {
 			if (ID == InvalidID) {
 				string message = Resources.String_CurrentObjectDoesNotExistInTheDatabase;
 				throw new InvalidOperationException(message);
 			}
 
-			return new Milestone(ID);
+			return new Milestone(db, ID);
 		}
 
 		public Ticket[] GetTickets() {

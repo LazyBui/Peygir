@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attachment.cs" />
+    <Compile Include="IDatabaseProvider.cs" />
     <Compile Include="Database.cs" />
     <Compile Include="DateTimeFormatter.cs" />
     <Compile Include="DBObject.cs" />

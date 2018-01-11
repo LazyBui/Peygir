@@ -5,12 +5,15 @@ using Peygir.Presentation.UserControls;
 
 namespace Peygir.Presentation.Forms {
 	public partial class TicketHistoryForm : Form {
-		public Ticket Ticket { get; private set; }
+		private FormContext mContext = null;
+		private Ticket mTicket = null;
 
-		public TicketHistoryForm(Ticket ticket) {
+		public TicketHistoryForm(FormContext context, Ticket ticket) {
+			if (context == null) throw new ArgumentNullException(nameof(context));
 			if (ticket == null) throw new ArgumentNullException(nameof(ticket));
 
-			Ticket = ticket;
+			mContext = context;
+			mTicket = ticket;
 
 			InitializeComponent();
 
@@ -24,7 +27,7 @@ namespace Peygir.Presentation.Forms {
 		}
 
 		private void ShowTicketHistory() {
-			TicketHistory[] history = Ticket.GetHistory();
+			TicketHistory[] history = mTicket.GetHistory(mContext);
 			var formatter = FormUtil.GetFormatter();
 
 			ticketHistoryListView.BeginUpdate();

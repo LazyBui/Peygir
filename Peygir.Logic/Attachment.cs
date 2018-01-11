@@ -6,9 +6,9 @@ using Peygir.Logic.Properties;
 
 namespace Peygir.Logic {
 	public class Attachment : DBObject {
-		public static Attachment[] GetAttachments() {
-			AttachmentsTableAdapter tableAdapter = Database.AttachmentsTableAdapter;
-
+		public static Attachment[] GetAttachments(IDatabaseProvider db) {
+			if (db == null) throw new ArgumentNullException(nameof(db));
+			AttachmentsTableAdapter tableAdapter = db.DB.AttachmentsTableAdapter;
 			PeygirDatabaseDataSet.AttachmentsDataTable rows = tableAdapter.GetData();
 
 			// Create list.
@@ -22,9 +22,9 @@ namespace Peygir.Logic {
 			return attachments.ToArray();
 		}
 
-		public static Attachment[] GetAttachments(int ticketID) {
-			AttachmentsTableAdapter tableAdapter = Database.AttachmentsTableAdapter;
-
+		public static Attachment[] GetAttachments(IDatabaseProvider db, int ticketID) {
+			if (db == null) throw new ArgumentNullException(nameof(db));
+			AttachmentsTableAdapter tableAdapter = db.DB.AttachmentsTableAdapter;
 			PeygirDatabaseDataSet.AttachmentsDataTable rows = tableAdapter.GetDataByTicketID(ticketID);
 
 			// Create list.
@@ -38,9 +38,9 @@ namespace Peygir.Logic {
 			return attachments.ToArray();
 		}
 
-		public static Attachment[] GetAttachmentsWithoutContents() {
-			AttachmentsWithoutContentsTableAdapter tableAdapter = Database.AttachmentsWithoutContentsTableAdapter;
-
+		public static Attachment[] GetAttachmentsWithoutContents(IDatabaseProvider db) {
+			if (db == null) throw new ArgumentNullException(nameof(db));
+			AttachmentsWithoutContentsTableAdapter tableAdapter = db.DB.AttachmentsWithoutContentsTableAdapter;
 			PeygirDatabaseDataSet.AttachmentsWithoutContentsDataTable rows = tableAdapter.GetData();
 
 			// Create list.
@@ -54,9 +54,9 @@ namespace Peygir.Logic {
 			return attachments.ToArray();
 		}
 
-		public static Attachment[] GetAttachmentsWithoutContents(int ticketID) {
-			AttachmentsWithoutContentsTableAdapter tableAdapter = Database.AttachmentsWithoutContentsTableAdapter;
-
+		public static Attachment[] GetAttachmentsWithoutContents(IDatabaseProvider db, int ticketID) {
+			if (db == null) throw new ArgumentNullException(nameof(db));
+			AttachmentsWithoutContentsTableAdapter tableAdapter = db.DB.AttachmentsWithoutContentsTableAdapter;
 			PeygirDatabaseDataSet.AttachmentsWithoutContentsDataTable rows = tableAdapter.GetDataByTicketID(ticketID);
 
 			// Create list.
@@ -71,9 +71,9 @@ namespace Peygir.Logic {
 		}
 
 
-		public static Attachment GetAttachment(int id) {
-			AttachmentsTableAdapter tableAdapter = Database.AttachmentsTableAdapter;
-
+		public static Attachment GetAttachment(IDatabaseProvider db, int id) {
+			if (db == null) throw new ArgumentNullException(nameof(db));
+			AttachmentsTableAdapter tableAdapter = db.DB.AttachmentsTableAdapter;
 			PeygirDatabaseDataSet.AttachmentsDataTable rows = tableAdapter.GetDataByID(id);
 
 			if (rows.Count == 1) {
@@ -116,15 +116,8 @@ namespace Peygir.Logic {
 			contents = string.Empty;
 		}
 
-		public override void Add() {
-			if (ID != InvalidID) {
-				string message = Resources.String_CurrentObjectAlreadyAdded;
-				throw new InvalidOperationException(message);
-			}
-
-			// Add.
-
-			AttachmentsTableAdapter tableAdapter = Database.AttachmentsTableAdapter;
+		protected override void AddPrivate(Database db) {
+			AttachmentsTableAdapter tableAdapter = db.AttachmentsTableAdapter;
 
 			tableAdapter.Insert(ticketID, name, size, contents);
 
@@ -132,28 +125,14 @@ namespace Peygir.Logic {
 			ID = tableAdapter.GetID(ticketID, name, size).Value;
 		}
 
-		public override void Update() {
-			if (ID == InvalidID) {
-				string message = Resources.String_CurrentObjectDoesNotExistInTheDatabase;
-				throw new InvalidOperationException(message);
-			}
-
-			// Update.
-
-			AttachmentsTableAdapter tableAdapter = Database.AttachmentsTableAdapter;
+		protected override void UpdatePrivate(Database db) {
+			AttachmentsTableAdapter tableAdapter = db.AttachmentsTableAdapter;
 
 			tableAdapter.UpdateByID(ticketID, name, size, contents, ID);
 		}
 
-		public override void Delete() {
-			if (ID == InvalidID) {
-				string message = Resources.String_CurrentObjectDoesNotExistInTheDatabase;
-				throw new InvalidOperationException(message);
-			}
-
-			// Delete.
-
-			AttachmentsTableAdapter tableAdapter = Database.AttachmentsTableAdapter;
+		protected override void DeletePrivate(Database db) {
+			AttachmentsTableAdapter tableAdapter = db.AttachmentsTableAdapter;
 
 			tableAdapter.DeleteByID(ID);
 
@@ -173,8 +152,8 @@ namespace Peygir.Logic {
 			this.size = contents.Length;
 		}
 
-		public Ticket GetTicket() {
-			return Ticket.GetTicket(ticketID);
+		public Ticket GetTicket(IDatabaseProvider db) {
+			return Ticket.GetTicket(db, ticketID);
 		}
 
 		public override string ToString() {

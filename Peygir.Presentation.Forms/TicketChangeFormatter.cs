@@ -16,10 +16,10 @@ namespace Peygir.Presentation.Forms {
 			return Resources.String_DescriptionChanges;
 		}
 
-		public string Milestone(int old, int @new) {
+		public string Milestone(IDatabaseProvider db, int old, int @new) {
 			return string.Format(Resources.String_MilestoneChangesFromXToY,
-				Logic.Milestone.GetMilestone(old).Name,
-				Logic.Milestone.GetMilestone(@new).Name);
+				Logic.Milestone.GetMilestone(db, old).Name,
+				Logic.Milestone.GetMilestone(db, @new).Name);
 		}
 
 		public string Priority(TicketPriority old, TicketPriority @new) {
