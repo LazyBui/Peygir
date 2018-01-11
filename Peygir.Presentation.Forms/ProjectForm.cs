@@ -154,6 +154,16 @@ namespace Peygir.Presentation.Forms {
 			deleteTicketToolStripMenuItem.Enabled = selectedTicketsCount > 0;
 			showTicketAttachmentsToolStripMenuItem.Enabled = selectedTicketsCount == 1;
 
+			stateNewToolStripMenuItem.Enabled = selectedTicketsCount > 0;
+			stateAcceptedToolStripMenuItem.Enabled = selectedTicketsCount > 0;
+			stateInProgressToolStripMenuItem.Enabled = selectedTicketsCount > 0;
+			stateBlockedToolStripMenuItem.Enabled = selectedTicketsCount > 0;
+			stateCompletedToolStripMenuItem.Enabled = selectedTicketsCount > 0;
+			stateClosedToolStripMenuItem.Enabled = selectedTicketsCount > 0;
+
+			priorityToolStripMenuItem.Enabled = selectedTicketsCount > 0;
+			severityToolStripMenuItem.Enabled = selectedTicketsCount > 0;
+			typeToolStripMenuItem.Enabled = selectedTicketsCount > 0;
 		}
 
 		private void addTicketToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -369,17 +379,6 @@ namespace Peygir.Presentation.Forms {
 			showTicketHistoryButton.Enabled = selectedTicketsCount == 1;
 			deleteTicketButton.Enabled = selectedTicketsCount > 0;
 			showTicketAttachmentsButton.Enabled = selectedTicketsCount == 1;
-
-			stateNewToolStripMenuItem.Enabled = selectedTicketsCount > 0;
-			stateAcceptedToolStripMenuItem.Enabled = selectedTicketsCount > 0;
-			stateInProgressToolStripMenuItem.Enabled = selectedTicketsCount > 0;
-			stateBlockedToolStripMenuItem.Enabled = selectedTicketsCount > 0;
-			stateCompletedToolStripMenuItem.Enabled = selectedTicketsCount > 0;
-			stateClosedToolStripMenuItem.Enabled = selectedTicketsCount > 0;
-
-			priorityToolStripMenuItem.Enabled = selectedTicketsCount > 0;
-			severityToolStripMenuItem.Enabled = selectedTicketsCount > 0;
-			typeToolStripMenuItem.Enabled = selectedTicketsCount > 0;
 		}
 
 		private void ShowProjectDetails() {
