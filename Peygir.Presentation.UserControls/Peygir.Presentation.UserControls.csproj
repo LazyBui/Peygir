@@ -47,12 +47,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AttachmentDetailsUserControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="AttachmentDetailsUserControl.Designer.cs">
-      <DependentUpon>AttachmentDetailsUserControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="AttachmentsListUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -127,12 +121,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="AttachmentDetailsUserControl.fa.resx">
-      <DependentUpon>AttachmentDetailsUserControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AttachmentDetailsUserControl.resx">
-      <DependentUpon>AttachmentDetailsUserControl.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="AttachmentsListUserControl.fa.resx">
       <DependentUpon>AttachmentsListUserControl.cs</DependentUpon>
     </EmbeddedResource>
