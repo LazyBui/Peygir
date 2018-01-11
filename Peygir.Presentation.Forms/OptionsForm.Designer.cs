@@ -37,16 +37,16 @@
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.tabPageDateTime = new System.Windows.Forms.TabPage();
 			this.tabPageText = new System.Windows.Forms.TabPage();
-			this.label4 = new System.Windows.Forms.Label();
-			this.label5 = new System.Windows.Forms.Label();
-			this.sansSerifTextBox = new System.Windows.Forms.TextBox();
-			this.sansSerifButton = new System.Windows.Forms.Button();
+			this.monospaceRadioButton = new System.Windows.Forms.RadioButton();
+			this.sansSerifRadioButton = new System.Windows.Forms.RadioButton();
+			this.label6 = new System.Windows.Forms.Label();
+			this.wordWrapCheckBox = new System.Windows.Forms.CheckBox();
 			this.monospaceButton = new System.Windows.Forms.Button();
 			this.monospaceTextBox = new System.Windows.Forms.TextBox();
-			this.wordWrapCheckBox = new System.Windows.Forms.CheckBox();
-			this.label6 = new System.Windows.Forms.Label();
-			this.sansSerifRadioButton = new System.Windows.Forms.RadioButton();
-			this.monospaceRadioButton = new System.Windows.Forms.RadioButton();
+			this.sansSerifButton = new System.Windows.Forms.Button();
+			this.sansSerifTextBox = new System.Windows.Forms.TextBox();
+			this.label5 = new System.Windows.Forms.Label();
+			this.label4 = new System.Windows.Forms.Label();
 			this.formatDateTimePanel.SuspendLayout();
 			this.tabControl1.SuspendLayout();
 			this.tabPageDateTime.SuspendLayout();
@@ -169,29 +169,30 @@
 			this.tabPageText.Name = "tabPageText";
 			this.tabPageText.UseVisualStyleBackColor = true;
 			// 
-			// label4
+			// monospaceRadioButton
 			// 
-			resources.ApplyResources(this.label4, "label4");
-			this.label4.Name = "label4";
+			resources.ApplyResources(this.monospaceRadioButton, "monospaceRadioButton");
+			this.monospaceRadioButton.Name = "monospaceRadioButton";
+			this.monospaceRadioButton.TabStop = true;
+			this.monospaceRadioButton.UseVisualStyleBackColor = true;
 			// 
-			// label5
+			// sansSerifRadioButton
 			// 
-			resources.ApplyResources(this.label5, "label5");
-			this.label5.Name = "label5";
+			resources.ApplyResources(this.sansSerifRadioButton, "sansSerifRadioButton");
+			this.sansSerifRadioButton.Name = "sansSerifRadioButton";
+			this.sansSerifRadioButton.TabStop = true;
+			this.sansSerifRadioButton.UseVisualStyleBackColor = true;
 			// 
-			// sansSerifTextBox
+			// label6
 			// 
-			resources.ApplyResources(this.sansSerifTextBox, "sansSerifTextBox");
-			this.sansSerifTextBox.Name = "sansSerifTextBox";
-			this.sansSerifTextBox.ReadOnly = true;
+			resources.ApplyResources(this.label6, "label6");
+			this.label6.Name = "label6";
 			// 
-			// sansSerifButton
+			// wordWrapCheckBox
 			// 
-			this.sansSerifButton.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Options;
-			resources.ApplyResources(this.sansSerifButton, "sansSerifButton");
-			this.sansSerifButton.Name = "sansSerifButton";
-			this.sansSerifButton.UseVisualStyleBackColor = true;
-			this.sansSerifButton.Click += new System.EventHandler(this.sansSerifButton_Click);
+			resources.ApplyResources(this.wordWrapCheckBox, "wordWrapCheckBox");
+			this.wordWrapCheckBox.Name = "wordWrapCheckBox";
+			this.wordWrapCheckBox.UseVisualStyleBackColor = true;
 			// 
 			// monospaceButton
 			// 
@@ -207,30 +208,29 @@
 			this.monospaceTextBox.Name = "monospaceTextBox";
 			this.monospaceTextBox.ReadOnly = true;
 			// 
-			// wordWrapCheckBox
+			// sansSerifButton
 			// 
-			resources.ApplyResources(this.wordWrapCheckBox, "wordWrapCheckBox");
-			this.wordWrapCheckBox.Name = "wordWrapCheckBox";
-			this.wordWrapCheckBox.UseVisualStyleBackColor = true;
+			this.sansSerifButton.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Options;
+			resources.ApplyResources(this.sansSerifButton, "sansSerifButton");
+			this.sansSerifButton.Name = "sansSerifButton";
+			this.sansSerifButton.UseVisualStyleBackColor = true;
+			this.sansSerifButton.Click += new System.EventHandler(this.sansSerifButton_Click);
 			// 
-			// label6
+			// sansSerifTextBox
 			// 
-			resources.ApplyResources(this.label6, "label6");
-			this.label6.Name = "label6";
+			resources.ApplyResources(this.sansSerifTextBox, "sansSerifTextBox");
+			this.sansSerifTextBox.Name = "sansSerifTextBox";
+			this.sansSerifTextBox.ReadOnly = true;
 			// 
-			// sansSerifRadioButton
+			// label5
 			// 
-			resources.ApplyResources(this.sansSerifRadioButton, "sansSerifRadioButton");
-			this.sansSerifRadioButton.Name = "sansSerifRadioButton";
-			this.sansSerifRadioButton.TabStop = true;
-			this.sansSerifRadioButton.UseVisualStyleBackColor = true;
+			resources.ApplyResources(this.label5, "label5");
+			this.label5.Name = "label5";
 			// 
-			// monospaceRadioButton
+			// label4
 			// 
-			resources.ApplyResources(this.monospaceRadioButton, "monospaceRadioButton");
-			this.monospaceRadioButton.Name = "monospaceRadioButton";
-			this.monospaceRadioButton.TabStop = true;
-			this.monospaceRadioButton.UseVisualStyleBackColor = true;
+			resources.ApplyResources(this.label4, "label4");
+			this.label4.Name = "label4";
 			// 
 			// OptionsForm
 			// 

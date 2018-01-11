@@ -724,7 +724,7 @@ s	The second.</value>
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPageText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>310, 282</value>
+    <value>310, 289</value>
   </data>
   <data name="tabPageText.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -800,6 +800,9 @@ s	The second.</value>
         AAAAAAAA//8AAIABAACAAQAAgAEAAIABAACAAQAAgAEAAIABAACAAQAAgAEAAIABAAD4AQAA+AEAAPgf
         AAD4HwAA/B8AAA==
 </value>
+  </data>
+  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>348, 391</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>

@@ -25,8 +25,6 @@
 		private void InitializeComponent() {
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TicketDetailsForm));
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.cancelButton = new System.Windows.Forms.Button();
-			this.okButton = new System.Windows.Forms.Button();
 			this.wordWrapCheckBox = new System.Windows.Forms.CheckBox();
 			this.label13 = new System.Windows.Forms.Label();
 			this.monospaceButton = new System.Windows.Forms.RadioButton();
@@ -56,6 +54,8 @@
 			this.label9 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
+			this.cancelButton = new System.Windows.Forms.Button();
+			this.okButton = new System.Windows.Forms.Button();
 			this.groupBox1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -93,22 +93,6 @@
 			this.groupBox1.Controls.Add(this.label1);
 			this.groupBox1.Name = "groupBox1";
 			this.groupBox1.TabStop = false;
-			// 
-			// cancelButton
-			// 
-			resources.ApplyResources(this.cancelButton, "cancelButton");
-			this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.cancelButton.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Cancel;
-			this.cancelButton.Name = "cancelButton";
-			this.cancelButton.UseVisualStyleBackColor = true;
-			// 
-			// okButton
-			// 
-			resources.ApplyResources(this.okButton, "okButton");
-			this.okButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-			this.okButton.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_OK;
-			this.okButton.Name = "okButton";
-			this.okButton.UseVisualStyleBackColor = true;
 			// 
 			// wordWrapCheckBox
 			// 
@@ -314,6 +298,22 @@
 			// 
 			resources.ApplyResources(this.label1, "label1");
 			this.label1.Name = "label1";
+			// 
+			// cancelButton
+			// 
+			resources.ApplyResources(this.cancelButton, "cancelButton");
+			this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+			this.cancelButton.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Cancel;
+			this.cancelButton.Name = "cancelButton";
+			this.cancelButton.UseVisualStyleBackColor = true;
+			// 
+			// okButton
+			// 
+			resources.ApplyResources(this.okButton, "okButton");
+			this.okButton.DialogResult = System.Windows.Forms.DialogResult.OK;
+			this.okButton.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_OK;
+			this.okButton.Name = "okButton";
+			this.okButton.UseVisualStyleBackColor = true;
 			// 
 			// TicketDetailsForm
 			// 

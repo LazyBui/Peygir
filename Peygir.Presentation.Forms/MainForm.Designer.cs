@@ -26,6 +26,17 @@
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 			this.projectsGroupBox = new System.Windows.Forms.GroupBox();
+			this.projectsListView = new System.Windows.Forms.ListView();
+			this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.projectContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.addProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.editProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.editTicketsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.deleteProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.label5 = new System.Windows.Forms.Label();
 			this.resetFilterButton = new System.Windows.Forms.Button();
 			this.label1 = new System.Windows.Forms.Label();
@@ -74,21 +85,10 @@
 			this.totalTicketsToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
 			this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
-			this.projectContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-			this.addProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.editProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.editTicketsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.deleteProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.projectsListView = new System.Windows.Forms.ListView();
-			this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.projectsGroupBox.SuspendLayout();
+			this.projectContextMenu.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
 			this.statusStrip1.SuspendLayout();
-			this.projectContextMenu.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// projectsGroupBox
@@ -122,6 +122,86 @@
 			this.projectsGroupBox.Controls.Add(this.label4);
 			this.projectsGroupBox.Name = "projectsGroupBox";
 			this.projectsGroupBox.TabStop = false;
+			// 
+			// projectsListView
+			// 
+			resources.ApplyResources(this.projectsListView, "projectsListView");
+			this.projectsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4,
+            this.columnHeader5});
+			this.projectsListView.ContextMenuStrip = this.projectContextMenu;
+			this.projectsListView.FullRowSelect = true;
+			this.projectsListView.GridLines = true;
+			this.projectsListView.HideSelection = false;
+			this.projectsListView.Name = "projectsListView";
+			this.projectsListView.UseCompatibleStateImageBehavior = false;
+			this.projectsListView.View = System.Windows.Forms.View.Details;
+			this.projectsListView.SelectedIndexChanged += new System.EventHandler(this.projectsListView_SelectedIndexChanged);
+			this.projectsListView.DoubleClick += new System.EventHandler(this.projectsListView_DoubleClick);
+			this.projectsListView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.projectsListView_KeyDown);
+			// 
+			// columnHeader1
+			// 
+			resources.ApplyResources(this.columnHeader1, "columnHeader1");
+			// 
+			// columnHeader2
+			// 
+			resources.ApplyResources(this.columnHeader2, "columnHeader2");
+			// 
+			// columnHeader3
+			// 
+			resources.ApplyResources(this.columnHeader3, "columnHeader3");
+			// 
+			// columnHeader4
+			// 
+			resources.ApplyResources(this.columnHeader4, "columnHeader4");
+			// 
+			// columnHeader5
+			// 
+			resources.ApplyResources(this.columnHeader5, "columnHeader5");
+			// 
+			// projectContextMenu
+			// 
+			this.projectContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addProjectToolStripMenuItem,
+            this.editProjectToolStripMenuItem,
+            this.editTicketsToolStripMenuItem,
+            this.deleteProjectToolStripMenuItem});
+			this.projectContextMenu.Name = "projectContextMenu";
+			this.projectContextMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+			resources.ApplyResources(this.projectContextMenu, "projectContextMenu");
+			this.projectContextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.projectContextMenu_Opening);
+			// 
+			// addProjectToolStripMenuItem
+			// 
+			this.addProjectToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Add;
+			this.addProjectToolStripMenuItem.Name = "addProjectToolStripMenuItem";
+			resources.ApplyResources(this.addProjectToolStripMenuItem, "addProjectToolStripMenuItem");
+			this.addProjectToolStripMenuItem.Click += new System.EventHandler(this.addProjectToolStripMenuItem_Click);
+			// 
+			// editProjectToolStripMenuItem
+			// 
+			this.editProjectToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Edit;
+			this.editProjectToolStripMenuItem.Name = "editProjectToolStripMenuItem";
+			resources.ApplyResources(this.editProjectToolStripMenuItem, "editProjectToolStripMenuItem");
+			this.editProjectToolStripMenuItem.Click += new System.EventHandler(this.editProjectToolStripMenuItem_Click);
+			// 
+			// editTicketsToolStripMenuItem
+			// 
+			this.editTicketsToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Open;
+			this.editTicketsToolStripMenuItem.Name = "editTicketsToolStripMenuItem";
+			resources.ApplyResources(this.editTicketsToolStripMenuItem, "editTicketsToolStripMenuItem");
+			this.editTicketsToolStripMenuItem.Click += new System.EventHandler(this.editTicketsToolStripMenuItem_Click);
+			// 
+			// deleteProjectToolStripMenuItem
+			// 
+			this.deleteProjectToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Delete;
+			this.deleteProjectToolStripMenuItem.Name = "deleteProjectToolStripMenuItem";
+			resources.ApplyResources(this.deleteProjectToolStripMenuItem, "deleteProjectToolStripMenuItem");
+			this.deleteProjectToolStripMenuItem.Click += new System.EventHandler(this.deleteProjectToolStripMenuItem_Click);
 			// 
 			// label5
 			// 
@@ -496,86 +576,6 @@
 			// 
 			resources.ApplyResources(this.saveFileDialog, "saveFileDialog");
 			// 
-			// projectContextMenu
-			// 
-			this.projectContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addProjectToolStripMenuItem,
-            this.editProjectToolStripMenuItem,
-            this.editTicketsToolStripMenuItem,
-            this.deleteProjectToolStripMenuItem});
-			this.projectContextMenu.Name = "projectContextMenu";
-			this.projectContextMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-			resources.ApplyResources(this.projectContextMenu, "projectContextMenu");
-			this.projectContextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.projectContextMenu_Opening);
-			// 
-			// addProjectToolStripMenuItem
-			// 
-			this.addProjectToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Add;
-			this.addProjectToolStripMenuItem.Name = "addProjectToolStripMenuItem";
-			resources.ApplyResources(this.addProjectToolStripMenuItem, "addProjectToolStripMenuItem");
-			this.addProjectToolStripMenuItem.Click += new System.EventHandler(this.addProjectToolStripMenuItem_Click);
-			// 
-			// editProjectToolStripMenuItem
-			// 
-			this.editProjectToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Edit;
-			this.editProjectToolStripMenuItem.Name = "editProjectToolStripMenuItem";
-			resources.ApplyResources(this.editProjectToolStripMenuItem, "editProjectToolStripMenuItem");
-			this.editProjectToolStripMenuItem.Click += new System.EventHandler(this.editProjectToolStripMenuItem_Click);
-			// 
-			// editTicketsToolStripMenuItem
-			// 
-			this.editTicketsToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Open;
-			this.editTicketsToolStripMenuItem.Name = "editTicketsToolStripMenuItem";
-			resources.ApplyResources(this.editTicketsToolStripMenuItem, "editTicketsToolStripMenuItem");
-			this.editTicketsToolStripMenuItem.Click += new System.EventHandler(this.editTicketsToolStripMenuItem_Click);
-			// 
-			// deleteProjectToolStripMenuItem
-			// 
-			this.deleteProjectToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Delete;
-			this.deleteProjectToolStripMenuItem.Name = "deleteProjectToolStripMenuItem";
-			resources.ApplyResources(this.deleteProjectToolStripMenuItem, "deleteProjectToolStripMenuItem");
-			this.deleteProjectToolStripMenuItem.Click += new System.EventHandler(this.deleteProjectToolStripMenuItem_Click);
-			// 
-			// projectsListView
-			// 
-			this.projectsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader4,
-            this.columnHeader5});
-			this.projectsListView.ContextMenuStrip = this.projectContextMenu;
-			this.projectsListView.FullRowSelect = true;
-			this.projectsListView.GridLines = true;
-			this.projectsListView.HideSelection = false;
-			resources.ApplyResources(this.projectsListView, "projectsListView");
-			this.projectsListView.Name = "projectsListView";
-			this.projectsListView.UseCompatibleStateImageBehavior = false;
-			this.projectsListView.View = System.Windows.Forms.View.Details;
-			this.projectsListView.SelectedIndexChanged += new System.EventHandler(this.projectsListView_SelectedIndexChanged);
-			this.projectsListView.DoubleClick += new System.EventHandler(this.projectsListView_DoubleClick);
-			this.projectsListView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.projectsListView_KeyDown);
-			// 
-			// columnHeader1
-			// 
-			resources.ApplyResources(this.columnHeader1, "columnHeader1");
-			// 
-			// columnHeader2
-			// 
-			resources.ApplyResources(this.columnHeader2, "columnHeader2");
-			// 
-			// columnHeader3
-			// 
-			resources.ApplyResources(this.columnHeader3, "columnHeader3");
-			// 
-			// columnHeader4
-			// 
-			resources.ApplyResources(this.columnHeader4, "columnHeader4");
-			// 
-			// columnHeader5
-			// 
-			resources.ApplyResources(this.columnHeader5, "columnHeader5");
-			// 
 			// MainForm
 			// 
 			resources.ApplyResources(this, "$this");
@@ -588,11 +588,11 @@
 			this.ResizeEnd += new System.EventHandler(this.MainForm_ResizeEnd);
 			this.projectsGroupBox.ResumeLayout(false);
 			this.projectsGroupBox.PerformLayout();
+			this.projectContextMenu.ResumeLayout(false);
 			this.menuStrip1.ResumeLayout(false);
 			this.menuStrip1.PerformLayout();
 			this.statusStrip1.ResumeLayout(false);
 			this.statusStrip1.PerformLayout();
-			this.projectContextMenu.ResumeLayout(false);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

@@ -47,35 +47,14 @@
 			this.addMilestoneButton = new System.Windows.Forms.Button();
 			this.ticketsTabPage = new System.Windows.Forms.TabPage();
 			this.groupBox4 = new System.Windows.Forms.GroupBox();
-			this.ticketMilestoneComboBox = new System.Windows.Forms.ComboBox();
-			this.label10 = new System.Windows.Forms.Label();
-			this.resetTicketFilterButton = new System.Windows.Forms.Button();
-			this.ticketCreatedButton = new System.Windows.Forms.Button();
-			this.ticketModifiedButton = new System.Windows.Forms.Button();
-			this.modifiedTextBox = new System.Windows.Forms.TextBox();
-			this.createdTextBox = new System.Windows.Forms.TextBox();
-			this.label9 = new System.Windows.Forms.Label();
-			this.label8 = new System.Windows.Forms.Label();
-			this.ticketReportersComboBox = new System.Windows.Forms.ComboBox();
-			this.ticketAssignedToComboBox = new System.Windows.Forms.ComboBox();
-			this.label7 = new System.Windows.Forms.Label();
-			this.label6 = new System.Windows.Forms.Label();
-			this.label5 = new System.Windows.Forms.Label();
-			this.ticketTypeComboBox = new System.Windows.Forms.ComboBox();
-			this.label4 = new System.Windows.Forms.Label();
-			this.ticketSeverityComboBox = new System.Windows.Forms.ComboBox();
-			this.label3 = new System.Windows.Forms.Label();
-			this.ticketPriorityComboBox = new System.Windows.Forms.ComboBox();
-			this.ticketTextBox = new System.Windows.Forms.TextBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.label1 = new System.Windows.Forms.Label();
-			this.ticketStateComboBox = new System.Windows.Forms.ComboBox();
-			this.showTicketAttachmentsButton = new System.Windows.Forms.Button();
-			this.showTicketHistoryButton = new System.Windows.Forms.Button();
-			this.deleteTicketButton = new System.Windows.Forms.Button();
-			this.editTicketButton = new System.Windows.Forms.Button();
-			this.showTicketButton = new System.Windows.Forms.Button();
-			this.addTicketButton = new System.Windows.Forms.Button();
+			this.ticketsListView = new System.Windows.Forms.ListView();
+			this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.ticketContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.addTicketToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.showTicketToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -108,14 +87,35 @@
 			this.defectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.featureRequestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.taskToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.ticketsListView = new System.Windows.Forms.ListView();
-			this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.ticketMilestoneComboBox = new System.Windows.Forms.ComboBox();
+			this.label10 = new System.Windows.Forms.Label();
+			this.resetTicketFilterButton = new System.Windows.Forms.Button();
+			this.ticketCreatedButton = new System.Windows.Forms.Button();
+			this.ticketModifiedButton = new System.Windows.Forms.Button();
+			this.modifiedTextBox = new System.Windows.Forms.TextBox();
+			this.createdTextBox = new System.Windows.Forms.TextBox();
+			this.label9 = new System.Windows.Forms.Label();
+			this.label8 = new System.Windows.Forms.Label();
+			this.ticketReportersComboBox = new System.Windows.Forms.ComboBox();
+			this.ticketAssignedToComboBox = new System.Windows.Forms.ComboBox();
+			this.label7 = new System.Windows.Forms.Label();
+			this.label6 = new System.Windows.Forms.Label();
+			this.label5 = new System.Windows.Forms.Label();
+			this.ticketTypeComboBox = new System.Windows.Forms.ComboBox();
+			this.label4 = new System.Windows.Forms.Label();
+			this.ticketSeverityComboBox = new System.Windows.Forms.ComboBox();
+			this.label3 = new System.Windows.Forms.Label();
+			this.ticketPriorityComboBox = new System.Windows.Forms.ComboBox();
+			this.ticketTextBox = new System.Windows.Forms.TextBox();
+			this.label2 = new System.Windows.Forms.Label();
+			this.label1 = new System.Windows.Forms.Label();
+			this.ticketStateComboBox = new System.Windows.Forms.ComboBox();
+			this.showTicketAttachmentsButton = new System.Windows.Forms.Button();
+			this.showTicketHistoryButton = new System.Windows.Forms.Button();
+			this.deleteTicketButton = new System.Windows.Forms.Button();
+			this.editTicketButton = new System.Windows.Forms.Button();
+			this.showTicketButton = new System.Windows.Forms.Button();
+			this.addTicketButton = new System.Windows.Forms.Button();
 			this.groupBox1.SuspendLayout();
 			this.tabControl.SuspendLayout();
 			this.projectInfoTabPage.SuspendLayout();
@@ -196,6 +196,7 @@
 			// 
 			// milestonesListView
 			// 
+			resources.ApplyResources(this.milestonesListView, "milestonesListView");
 			this.milestonesListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2});
@@ -203,7 +204,6 @@
 			this.milestonesListView.FullRowSelect = true;
 			this.milestonesListView.GridLines = true;
 			this.milestonesListView.HideSelection = false;
-			resources.ApplyResources(this.milestonesListView, "milestonesListView");
 			this.milestonesListView.Name = "milestonesListView";
 			this.milestonesListView.UseCompatibleStateImageBehavior = false;
 			this.milestonesListView.View = System.Windows.Forms.View.Details;
@@ -334,233 +334,55 @@
 			this.groupBox4.Name = "groupBox4";
 			this.groupBox4.TabStop = false;
 			// 
-			// ticketMilestoneComboBox
+			// ticketsListView
 			// 
-			this.ticketMilestoneComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.ticketMilestoneComboBox.FormattingEnabled = true;
-			resources.ApplyResources(this.ticketMilestoneComboBox, "ticketMilestoneComboBox");
-			this.ticketMilestoneComboBox.Name = "ticketMilestoneComboBox";
-			this.ticketMilestoneComboBox.SelectedIndexChanged += new System.EventHandler(this.ticketMilestoneComboBox_SelectedIndexChanged);
+			resources.ApplyResources(this.ticketsListView, "ticketsListView");
+			this.ticketsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader3,
+            this.columnHeader4,
+            this.columnHeader5,
+            this.columnHeader6,
+            this.columnHeader7,
+            this.columnHeader8,
+            this.columnHeader9});
+			this.ticketsListView.ContextMenuStrip = this.ticketContextMenu;
+			this.ticketsListView.FullRowSelect = true;
+			this.ticketsListView.GridLines = true;
+			this.ticketsListView.HideSelection = false;
+			this.ticketsListView.Name = "ticketsListView";
+			this.ticketsListView.UseCompatibleStateImageBehavior = false;
+			this.ticketsListView.View = System.Windows.Forms.View.Details;
+			this.ticketsListView.SelectedIndexChanged += new System.EventHandler(this.ticketsListView_SelectedIndexChanged);
+			this.ticketsListView.DoubleClick += new System.EventHandler(this.ticketsListView_DoubleClick);
+			this.ticketsListView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ticketsListView_KeyDown);
 			// 
-			// label10
+			// columnHeader3
 			// 
-			resources.ApplyResources(this.label10, "label10");
-			this.label10.Name = "label10";
+			resources.ApplyResources(this.columnHeader3, "columnHeader3");
 			// 
-			// resetTicketFilterButton
+			// columnHeader4
 			// 
-			resources.ApplyResources(this.resetTicketFilterButton, "resetTicketFilterButton");
-			this.resetTicketFilterButton.Name = "resetTicketFilterButton";
-			this.resetTicketFilterButton.UseVisualStyleBackColor = true;
-			this.resetTicketFilterButton.Click += new System.EventHandler(this.resetTicketFilterButton_Click);
+			resources.ApplyResources(this.columnHeader4, "columnHeader4");
 			// 
-			// ticketCreatedButton
+			// columnHeader5
 			// 
-			this.ticketCreatedButton.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Options;
-			resources.ApplyResources(this.ticketCreatedButton, "ticketCreatedButton");
-			this.ticketCreatedButton.Name = "ticketCreatedButton";
-			this.ticketCreatedButton.UseVisualStyleBackColor = true;
-			this.ticketCreatedButton.Click += new System.EventHandler(this.ticketCreatedButton_Click);
+			resources.ApplyResources(this.columnHeader5, "columnHeader5");
 			// 
-			// ticketModifiedButton
+			// columnHeader6
 			// 
-			this.ticketModifiedButton.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Options;
-			resources.ApplyResources(this.ticketModifiedButton, "ticketModifiedButton");
-			this.ticketModifiedButton.Name = "ticketModifiedButton";
-			this.ticketModifiedButton.UseVisualStyleBackColor = true;
-			this.ticketModifiedButton.Click += new System.EventHandler(this.ticketModifiedButton_Click);
+			resources.ApplyResources(this.columnHeader6, "columnHeader6");
 			// 
-			// modifiedTextBox
+			// columnHeader7
 			// 
-			resources.ApplyResources(this.modifiedTextBox, "modifiedTextBox");
-			this.modifiedTextBox.Name = "modifiedTextBox";
-			this.modifiedTextBox.ReadOnly = true;
-			this.modifiedTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.modifiedTextBox_KeyDown);
+			resources.ApplyResources(this.columnHeader7, "columnHeader7");
 			// 
-			// createdTextBox
+			// columnHeader8
 			// 
-			resources.ApplyResources(this.createdTextBox, "createdTextBox");
-			this.createdTextBox.Name = "createdTextBox";
-			this.createdTextBox.ReadOnly = true;
-			this.createdTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.createdTextBox_KeyDown);
+			resources.ApplyResources(this.columnHeader8, "columnHeader8");
 			// 
-			// label9
+			// columnHeader9
 			// 
-			resources.ApplyResources(this.label9, "label9");
-			this.label9.Name = "label9";
-			// 
-			// label8
-			// 
-			resources.ApplyResources(this.label8, "label8");
-			this.label8.Name = "label8";
-			// 
-			// ticketReportersComboBox
-			// 
-			this.ticketReportersComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.ticketReportersComboBox.FormattingEnabled = true;
-			resources.ApplyResources(this.ticketReportersComboBox, "ticketReportersComboBox");
-			this.ticketReportersComboBox.Name = "ticketReportersComboBox";
-			this.ticketReportersComboBox.SelectedIndexChanged += new System.EventHandler(this.ticketReportersComboBox_SelectedIndexChanged);
-			// 
-			// ticketAssignedToComboBox
-			// 
-			this.ticketAssignedToComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.ticketAssignedToComboBox.FormattingEnabled = true;
-			resources.ApplyResources(this.ticketAssignedToComboBox, "ticketAssignedToComboBox");
-			this.ticketAssignedToComboBox.Name = "ticketAssignedToComboBox";
-			this.ticketAssignedToComboBox.SelectedIndexChanged += new System.EventHandler(this.ticketAssignedToComboBox_SelectedIndexChanged);
-			// 
-			// label7
-			// 
-			resources.ApplyResources(this.label7, "label7");
-			this.label7.Name = "label7";
-			// 
-			// label6
-			// 
-			resources.ApplyResources(this.label6, "label6");
-			this.label6.Name = "label6";
-			// 
-			// label5
-			// 
-			resources.ApplyResources(this.label5, "label5");
-			this.label5.Name = "label5";
-			// 
-			// ticketTypeComboBox
-			// 
-			this.ticketTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.ticketTypeComboBox.FormattingEnabled = true;
-			this.ticketTypeComboBox.Items.AddRange(new object[] {
-            resources.GetString("ticketTypeComboBox.Items"),
-            resources.GetString("ticketTypeComboBox.Items1"),
-            resources.GetString("ticketTypeComboBox.Items2"),
-            resources.GetString("ticketTypeComboBox.Items3")});
-			resources.ApplyResources(this.ticketTypeComboBox, "ticketTypeComboBox");
-			this.ticketTypeComboBox.Name = "ticketTypeComboBox";
-			this.ticketTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.ticketTypeComboBox_SelectedIndexChanged);
-			// 
-			// label4
-			// 
-			resources.ApplyResources(this.label4, "label4");
-			this.label4.Name = "label4";
-			// 
-			// ticketSeverityComboBox
-			// 
-			this.ticketSeverityComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.ticketSeverityComboBox.FormattingEnabled = true;
-			this.ticketSeverityComboBox.Items.AddRange(new object[] {
-            resources.GetString("ticketSeverityComboBox.Items"),
-            resources.GetString("ticketSeverityComboBox.Items1"),
-            resources.GetString("ticketSeverityComboBox.Items2"),
-            resources.GetString("ticketSeverityComboBox.Items3"),
-            resources.GetString("ticketSeverityComboBox.Items4"),
-            resources.GetString("ticketSeverityComboBox.Items5"),
-            resources.GetString("ticketSeverityComboBox.Items6")});
-			resources.ApplyResources(this.ticketSeverityComboBox, "ticketSeverityComboBox");
-			this.ticketSeverityComboBox.Name = "ticketSeverityComboBox";
-			this.ticketSeverityComboBox.SelectedIndexChanged += new System.EventHandler(this.ticketSeverityComboBox_SelectedIndexChanged);
-			// 
-			// label3
-			// 
-			resources.ApplyResources(this.label3, "label3");
-			this.label3.Name = "label3";
-			// 
-			// ticketPriorityComboBox
-			// 
-			this.ticketPriorityComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.ticketPriorityComboBox.FormattingEnabled = true;
-			this.ticketPriorityComboBox.Items.AddRange(new object[] {
-            resources.GetString("ticketPriorityComboBox.Items"),
-            resources.GetString("ticketPriorityComboBox.Items1"),
-            resources.GetString("ticketPriorityComboBox.Items2"),
-            resources.GetString("ticketPriorityComboBox.Items3"),
-            resources.GetString("ticketPriorityComboBox.Items4"),
-            resources.GetString("ticketPriorityComboBox.Items5")});
-			resources.ApplyResources(this.ticketPriorityComboBox, "ticketPriorityComboBox");
-			this.ticketPriorityComboBox.Name = "ticketPriorityComboBox";
-			this.ticketPriorityComboBox.SelectedIndexChanged += new System.EventHandler(this.ticketPriorityComboBox_SelectedIndexChanged);
-			// 
-			// ticketTextBox
-			// 
-			resources.ApplyResources(this.ticketTextBox, "ticketTextBox");
-			this.ticketTextBox.Name = "ticketTextBox";
-			this.ticketTextBox.TextChanged += new System.EventHandler(this.ticketTextBox_TextChanged);
-			this.ticketTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ticketTextBox_KeyDown);
-			// 
-			// label2
-			// 
-			resources.ApplyResources(this.label2, "label2");
-			this.label2.Name = "label2";
-			// 
-			// label1
-			// 
-			resources.ApplyResources(this.label1, "label1");
-			this.label1.Name = "label1";
-			// 
-			// ticketStateComboBox
-			// 
-			this.ticketStateComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.ticketStateComboBox.FormattingEnabled = true;
-			this.ticketStateComboBox.Items.AddRange(new object[] {
-            resources.GetString("ticketStateComboBox.Items"),
-            resources.GetString("ticketStateComboBox.Items1"),
-            resources.GetString("ticketStateComboBox.Items2"),
-            resources.GetString("ticketStateComboBox.Items3"),
-            resources.GetString("ticketStateComboBox.Items4"),
-            resources.GetString("ticketStateComboBox.Items5"),
-            resources.GetString("ticketStateComboBox.Items6"),
-            resources.GetString("ticketStateComboBox.Items7"),
-            resources.GetString("ticketStateComboBox.Items8")});
-			resources.ApplyResources(this.ticketStateComboBox, "ticketStateComboBox");
-			this.ticketStateComboBox.Name = "ticketStateComboBox";
-			this.ticketStateComboBox.SelectedIndexChanged += new System.EventHandler(this.ticketStateComboBox_SelectedIndexChanged);
-			// 
-			// showTicketAttachmentsButton
-			// 
-			resources.ApplyResources(this.showTicketAttachmentsButton, "showTicketAttachmentsButton");
-			this.showTicketAttachmentsButton.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Attachment;
-			this.showTicketAttachmentsButton.Name = "showTicketAttachmentsButton";
-			this.showTicketAttachmentsButton.UseVisualStyleBackColor = true;
-			this.showTicketAttachmentsButton.Click += new System.EventHandler(this.showTicketAttachmentsButton_Click);
-			// 
-			// showTicketHistoryButton
-			// 
-			resources.ApplyResources(this.showTicketHistoryButton, "showTicketHistoryButton");
-			this.showTicketHistoryButton.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_History;
-			this.showTicketHistoryButton.Name = "showTicketHistoryButton";
-			this.showTicketHistoryButton.UseVisualStyleBackColor = true;
-			this.showTicketHistoryButton.Click += new System.EventHandler(this.showTicketHistoryButton_Click);
-			// 
-			// deleteTicketButton
-			// 
-			resources.ApplyResources(this.deleteTicketButton, "deleteTicketButton");
-			this.deleteTicketButton.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Delete;
-			this.deleteTicketButton.Name = "deleteTicketButton";
-			this.deleteTicketButton.UseVisualStyleBackColor = true;
-			this.deleteTicketButton.Click += new System.EventHandler(this.deleteTicketButton_Click);
-			// 
-			// editTicketButton
-			// 
-			resources.ApplyResources(this.editTicketButton, "editTicketButton");
-			this.editTicketButton.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Edit;
-			this.editTicketButton.Name = "editTicketButton";
-			this.editTicketButton.UseVisualStyleBackColor = true;
-			this.editTicketButton.Click += new System.EventHandler(this.editTicketButton_Click);
-			// 
-			// showTicketButton
-			// 
-			resources.ApplyResources(this.showTicketButton, "showTicketButton");
-			this.showTicketButton.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Show;
-			this.showTicketButton.Name = "showTicketButton";
-			this.showTicketButton.UseVisualStyleBackColor = true;
-			this.showTicketButton.Click += new System.EventHandler(this.showTicketButton_Click);
-			// 
-			// addTicketButton
-			// 
-			resources.ApplyResources(this.addTicketButton, "addTicketButton");
-			this.addTicketButton.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Add;
-			this.addTicketButton.Name = "addTicketButton";
-			this.addTicketButton.UseVisualStyleBackColor = true;
-			this.addTicketButton.Click += new System.EventHandler(this.addTicketButton_Click);
+			resources.ApplyResources(this.columnHeader9, "columnHeader9");
 			// 
 			// ticketContextMenu
 			// 
@@ -800,55 +622,233 @@
 			resources.ApplyResources(this.taskToolStripMenuItem, "taskToolStripMenuItem");
 			this.taskToolStripMenuItem.Click += new System.EventHandler(this.taskToolStripMenuItem_Click);
 			// 
-			// ticketsListView
+			// ticketMilestoneComboBox
 			// 
-			this.ticketsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader3,
-            this.columnHeader4,
-            this.columnHeader5,
-            this.columnHeader6,
-            this.columnHeader7,
-            this.columnHeader8,
-            this.columnHeader9});
-			this.ticketsListView.ContextMenuStrip = this.ticketContextMenu;
-			this.ticketsListView.FullRowSelect = true;
-			this.ticketsListView.GridLines = true;
-			this.ticketsListView.HideSelection = false;
-			resources.ApplyResources(this.ticketsListView, "ticketsListView");
-			this.ticketsListView.Name = "ticketsListView";
-			this.ticketsListView.UseCompatibleStateImageBehavior = false;
-			this.ticketsListView.View = System.Windows.Forms.View.Details;
-			this.ticketsListView.SelectedIndexChanged += new System.EventHandler(this.ticketsListView_SelectedIndexChanged);
-			this.ticketsListView.DoubleClick += new System.EventHandler(this.ticketsListView_DoubleClick);
-			this.ticketsListView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ticketsListView_KeyDown);
+			this.ticketMilestoneComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.ticketMilestoneComboBox.FormattingEnabled = true;
+			resources.ApplyResources(this.ticketMilestoneComboBox, "ticketMilestoneComboBox");
+			this.ticketMilestoneComboBox.Name = "ticketMilestoneComboBox";
+			this.ticketMilestoneComboBox.SelectedIndexChanged += new System.EventHandler(this.ticketMilestoneComboBox_SelectedIndexChanged);
 			// 
-			// columnHeader3
+			// label10
 			// 
-			resources.ApplyResources(this.columnHeader3, "columnHeader3");
+			resources.ApplyResources(this.label10, "label10");
+			this.label10.Name = "label10";
 			// 
-			// columnHeader4
+			// resetTicketFilterButton
 			// 
-			resources.ApplyResources(this.columnHeader4, "columnHeader4");
+			resources.ApplyResources(this.resetTicketFilterButton, "resetTicketFilterButton");
+			this.resetTicketFilterButton.Name = "resetTicketFilterButton";
+			this.resetTicketFilterButton.UseVisualStyleBackColor = true;
+			this.resetTicketFilterButton.Click += new System.EventHandler(this.resetTicketFilterButton_Click);
 			// 
-			// columnHeader5
+			// ticketCreatedButton
 			// 
-			resources.ApplyResources(this.columnHeader5, "columnHeader5");
+			this.ticketCreatedButton.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Options;
+			resources.ApplyResources(this.ticketCreatedButton, "ticketCreatedButton");
+			this.ticketCreatedButton.Name = "ticketCreatedButton";
+			this.ticketCreatedButton.UseVisualStyleBackColor = true;
+			this.ticketCreatedButton.Click += new System.EventHandler(this.ticketCreatedButton_Click);
 			// 
-			// columnHeader6
+			// ticketModifiedButton
 			// 
-			resources.ApplyResources(this.columnHeader6, "columnHeader6");
+			this.ticketModifiedButton.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Options;
+			resources.ApplyResources(this.ticketModifiedButton, "ticketModifiedButton");
+			this.ticketModifiedButton.Name = "ticketModifiedButton";
+			this.ticketModifiedButton.UseVisualStyleBackColor = true;
+			this.ticketModifiedButton.Click += new System.EventHandler(this.ticketModifiedButton_Click);
 			// 
-			// columnHeader7
+			// modifiedTextBox
 			// 
-			resources.ApplyResources(this.columnHeader7, "columnHeader7");
+			resources.ApplyResources(this.modifiedTextBox, "modifiedTextBox");
+			this.modifiedTextBox.Name = "modifiedTextBox";
+			this.modifiedTextBox.ReadOnly = true;
+			this.modifiedTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.modifiedTextBox_KeyDown);
 			// 
-			// columnHeader8
+			// createdTextBox
 			// 
-			resources.ApplyResources(this.columnHeader8, "columnHeader8");
+			resources.ApplyResources(this.createdTextBox, "createdTextBox");
+			this.createdTextBox.Name = "createdTextBox";
+			this.createdTextBox.ReadOnly = true;
+			this.createdTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.createdTextBox_KeyDown);
 			// 
-			// columnHeader9
+			// label9
 			// 
-			resources.ApplyResources(this.columnHeader9, "columnHeader9");
+			resources.ApplyResources(this.label9, "label9");
+			this.label9.Name = "label9";
+			// 
+			// label8
+			// 
+			resources.ApplyResources(this.label8, "label8");
+			this.label8.Name = "label8";
+			// 
+			// ticketReportersComboBox
+			// 
+			this.ticketReportersComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.ticketReportersComboBox.FormattingEnabled = true;
+			resources.ApplyResources(this.ticketReportersComboBox, "ticketReportersComboBox");
+			this.ticketReportersComboBox.Name = "ticketReportersComboBox";
+			this.ticketReportersComboBox.SelectedIndexChanged += new System.EventHandler(this.ticketReportersComboBox_SelectedIndexChanged);
+			// 
+			// ticketAssignedToComboBox
+			// 
+			this.ticketAssignedToComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.ticketAssignedToComboBox.FormattingEnabled = true;
+			resources.ApplyResources(this.ticketAssignedToComboBox, "ticketAssignedToComboBox");
+			this.ticketAssignedToComboBox.Name = "ticketAssignedToComboBox";
+			this.ticketAssignedToComboBox.SelectedIndexChanged += new System.EventHandler(this.ticketAssignedToComboBox_SelectedIndexChanged);
+			// 
+			// label7
+			// 
+			resources.ApplyResources(this.label7, "label7");
+			this.label7.Name = "label7";
+			// 
+			// label6
+			// 
+			resources.ApplyResources(this.label6, "label6");
+			this.label6.Name = "label6";
+			// 
+			// label5
+			// 
+			resources.ApplyResources(this.label5, "label5");
+			this.label5.Name = "label5";
+			// 
+			// ticketTypeComboBox
+			// 
+			this.ticketTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.ticketTypeComboBox.FormattingEnabled = true;
+			this.ticketTypeComboBox.Items.AddRange(new object[] {
+            resources.GetString("ticketTypeComboBox.Items"),
+            resources.GetString("ticketTypeComboBox.Items1"),
+            resources.GetString("ticketTypeComboBox.Items2"),
+            resources.GetString("ticketTypeComboBox.Items3")});
+			resources.ApplyResources(this.ticketTypeComboBox, "ticketTypeComboBox");
+			this.ticketTypeComboBox.Name = "ticketTypeComboBox";
+			this.ticketTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.ticketTypeComboBox_SelectedIndexChanged);
+			// 
+			// label4
+			// 
+			resources.ApplyResources(this.label4, "label4");
+			this.label4.Name = "label4";
+			// 
+			// ticketSeverityComboBox
+			// 
+			this.ticketSeverityComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.ticketSeverityComboBox.FormattingEnabled = true;
+			this.ticketSeverityComboBox.Items.AddRange(new object[] {
+            resources.GetString("ticketSeverityComboBox.Items"),
+            resources.GetString("ticketSeverityComboBox.Items1"),
+            resources.GetString("ticketSeverityComboBox.Items2"),
+            resources.GetString("ticketSeverityComboBox.Items3"),
+            resources.GetString("ticketSeverityComboBox.Items4"),
+            resources.GetString("ticketSeverityComboBox.Items5"),
+            resources.GetString("ticketSeverityComboBox.Items6")});
+			resources.ApplyResources(this.ticketSeverityComboBox, "ticketSeverityComboBox");
+			this.ticketSeverityComboBox.Name = "ticketSeverityComboBox";
+			this.ticketSeverityComboBox.SelectedIndexChanged += new System.EventHandler(this.ticketSeverityComboBox_SelectedIndexChanged);
+			// 
+			// label3
+			// 
+			resources.ApplyResources(this.label3, "label3");
+			this.label3.Name = "label3";
+			// 
+			// ticketPriorityComboBox
+			// 
+			this.ticketPriorityComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.ticketPriorityComboBox.FormattingEnabled = true;
+			this.ticketPriorityComboBox.Items.AddRange(new object[] {
+            resources.GetString("ticketPriorityComboBox.Items"),
+            resources.GetString("ticketPriorityComboBox.Items1"),
+            resources.GetString("ticketPriorityComboBox.Items2"),
+            resources.GetString("ticketPriorityComboBox.Items3"),
+            resources.GetString("ticketPriorityComboBox.Items4"),
+            resources.GetString("ticketPriorityComboBox.Items5")});
+			resources.ApplyResources(this.ticketPriorityComboBox, "ticketPriorityComboBox");
+			this.ticketPriorityComboBox.Name = "ticketPriorityComboBox";
+			this.ticketPriorityComboBox.SelectedIndexChanged += new System.EventHandler(this.ticketPriorityComboBox_SelectedIndexChanged);
+			// 
+			// ticketTextBox
+			// 
+			resources.ApplyResources(this.ticketTextBox, "ticketTextBox");
+			this.ticketTextBox.Name = "ticketTextBox";
+			this.ticketTextBox.TextChanged += new System.EventHandler(this.ticketTextBox_TextChanged);
+			this.ticketTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ticketTextBox_KeyDown);
+			// 
+			// label2
+			// 
+			resources.ApplyResources(this.label2, "label2");
+			this.label2.Name = "label2";
+			// 
+			// label1
+			// 
+			resources.ApplyResources(this.label1, "label1");
+			this.label1.Name = "label1";
+			// 
+			// ticketStateComboBox
+			// 
+			this.ticketStateComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.ticketStateComboBox.FormattingEnabled = true;
+			this.ticketStateComboBox.Items.AddRange(new object[] {
+            resources.GetString("ticketStateComboBox.Items"),
+            resources.GetString("ticketStateComboBox.Items1"),
+            resources.GetString("ticketStateComboBox.Items2"),
+            resources.GetString("ticketStateComboBox.Items3"),
+            resources.GetString("ticketStateComboBox.Items4"),
+            resources.GetString("ticketStateComboBox.Items5"),
+            resources.GetString("ticketStateComboBox.Items6"),
+            resources.GetString("ticketStateComboBox.Items7"),
+            resources.GetString("ticketStateComboBox.Items8")});
+			resources.ApplyResources(this.ticketStateComboBox, "ticketStateComboBox");
+			this.ticketStateComboBox.Name = "ticketStateComboBox";
+			this.ticketStateComboBox.SelectedIndexChanged += new System.EventHandler(this.ticketStateComboBox_SelectedIndexChanged);
+			// 
+			// showTicketAttachmentsButton
+			// 
+			resources.ApplyResources(this.showTicketAttachmentsButton, "showTicketAttachmentsButton");
+			this.showTicketAttachmentsButton.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Attachment;
+			this.showTicketAttachmentsButton.Name = "showTicketAttachmentsButton";
+			this.showTicketAttachmentsButton.UseVisualStyleBackColor = true;
+			this.showTicketAttachmentsButton.Click += new System.EventHandler(this.showTicketAttachmentsButton_Click);
+			// 
+			// showTicketHistoryButton
+			// 
+			resources.ApplyResources(this.showTicketHistoryButton, "showTicketHistoryButton");
+			this.showTicketHistoryButton.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_History;
+			this.showTicketHistoryButton.Name = "showTicketHistoryButton";
+			this.showTicketHistoryButton.UseVisualStyleBackColor = true;
+			this.showTicketHistoryButton.Click += new System.EventHandler(this.showTicketHistoryButton_Click);
+			// 
+			// deleteTicketButton
+			// 
+			resources.ApplyResources(this.deleteTicketButton, "deleteTicketButton");
+			this.deleteTicketButton.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Delete;
+			this.deleteTicketButton.Name = "deleteTicketButton";
+			this.deleteTicketButton.UseVisualStyleBackColor = true;
+			this.deleteTicketButton.Click += new System.EventHandler(this.deleteTicketButton_Click);
+			// 
+			// editTicketButton
+			// 
+			resources.ApplyResources(this.editTicketButton, "editTicketButton");
+			this.editTicketButton.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Edit;
+			this.editTicketButton.Name = "editTicketButton";
+			this.editTicketButton.UseVisualStyleBackColor = true;
+			this.editTicketButton.Click += new System.EventHandler(this.editTicketButton_Click);
+			// 
+			// showTicketButton
+			// 
+			resources.ApplyResources(this.showTicketButton, "showTicketButton");
+			this.showTicketButton.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Show;
+			this.showTicketButton.Name = "showTicketButton";
+			this.showTicketButton.UseVisualStyleBackColor = true;
+			this.showTicketButton.Click += new System.EventHandler(this.showTicketButton_Click);
+			// 
+			// addTicketButton
+			// 
+			resources.ApplyResources(this.addTicketButton, "addTicketButton");
+			this.addTicketButton.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Add;
+			this.addTicketButton.Name = "addTicketButton";
+			this.addTicketButton.UseVisualStyleBackColor = true;
+			this.addTicketButton.Click += new System.EventHandler(this.addTicketButton_Click);
 			// 
 			// ProjectForm
 			// 

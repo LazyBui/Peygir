@@ -300,6 +300,9 @@
   <data name="deleteAttachmentToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Delete</value>
   </data>
+  <data name="attachmentsListView.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
   <data name="columnHeader1.Text" xml:space="preserve">
     <value>Name</value>
   </data>
@@ -365,6 +368,9 @@
         AAAAAAAA//8AAIABAACAAQAAgAEAAIABAACAAQAAgAEAAIABAACAAQAAgAEAAIABAAD4AQAA+AEAAPgf
         AAD4HwAA/B8AAA==
 </value>
+  </data>
+  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>442, 288</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>

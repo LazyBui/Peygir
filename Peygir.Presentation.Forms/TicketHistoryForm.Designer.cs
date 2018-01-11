@@ -25,15 +25,15 @@
 		private void InitializeComponent() {
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TicketHistoryForm));
 			this.groupBox = new System.Windows.Forms.GroupBox();
-			this.okButton = new System.Windows.Forms.Button();
-			this.ticketHistoryListView = new System.Windows.Forms.ListView();
-			this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.commentTextBox = new System.Windows.Forms.TextBox();
 			this.label2 = new System.Windows.Forms.Label();
 			this.changesTextBox = new System.Windows.Forms.TextBox();
 			this.label3 = new System.Windows.Forms.Label();
 			this.timestampTextBox = new System.Windows.Forms.TextBox();
 			this.label1 = new System.Windows.Forms.Label();
+			this.okButton = new System.Windows.Forms.Button();
+			this.ticketHistoryListView = new System.Windows.Forms.ListView();
+			this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.groupBox.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -48,31 +48,6 @@
 			this.groupBox.Controls.Add(this.label1);
 			this.groupBox.Name = "groupBox";
 			this.groupBox.TabStop = false;
-			// 
-			// okButton
-			// 
-			resources.ApplyResources(this.okButton, "okButton");
-			this.okButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-			this.okButton.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_OK;
-			this.okButton.Name = "okButton";
-			this.okButton.UseVisualStyleBackColor = true;
-			// 
-			// ticketHistoryListView
-			// 
-			this.ticketHistoryListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1});
-			this.ticketHistoryListView.FullRowSelect = true;
-			this.ticketHistoryListView.GridLines = true;
-			this.ticketHistoryListView.HideSelection = false;
-			resources.ApplyResources(this.ticketHistoryListView, "ticketHistoryListView");
-			this.ticketHistoryListView.Name = "ticketHistoryListView";
-			this.ticketHistoryListView.UseCompatibleStateImageBehavior = false;
-			this.ticketHistoryListView.View = System.Windows.Forms.View.Details;
-			this.ticketHistoryListView.SelectedIndexChanged += new System.EventHandler(this.ticketHistoryListView_SelectedIndexChanged);
-			// 
-			// columnHeader1
-			// 
-			resources.ApplyResources(this.columnHeader1, "columnHeader1");
 			// 
 			// commentTextBox
 			// 
@@ -111,6 +86,31 @@
 			// 
 			resources.ApplyResources(this.label1, "label1");
 			this.label1.Name = "label1";
+			// 
+			// okButton
+			// 
+			resources.ApplyResources(this.okButton, "okButton");
+			this.okButton.DialogResult = System.Windows.Forms.DialogResult.OK;
+			this.okButton.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_OK;
+			this.okButton.Name = "okButton";
+			this.okButton.UseVisualStyleBackColor = true;
+			// 
+			// ticketHistoryListView
+			// 
+			resources.ApplyResources(this.ticketHistoryListView, "ticketHistoryListView");
+			this.ticketHistoryListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1});
+			this.ticketHistoryListView.FullRowSelect = true;
+			this.ticketHistoryListView.GridLines = true;
+			this.ticketHistoryListView.HideSelection = false;
+			this.ticketHistoryListView.Name = "ticketHistoryListView";
+			this.ticketHistoryListView.UseCompatibleStateImageBehavior = false;
+			this.ticketHistoryListView.View = System.Windows.Forms.View.Details;
+			this.ticketHistoryListView.SelectedIndexChanged += new System.EventHandler(this.ticketHistoryListView_SelectedIndexChanged);
+			// 
+			// columnHeader1
+			// 
+			resources.ApplyResources(this.columnHeader1, "columnHeader1");
 			// 
 			// TicketHistoryForm
 			// 
