@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 using Peygir.Data;
 using Peygir.Data.PeygirDatabaseDataSetTableAdapters;
 using Peygir.Logic.Properties;
@@ -156,6 +157,10 @@ namespace Peygir.Logic {
 			set { modifyTimestamp = value; }
 		}
 
+		private Ticket() {
+			// Blank
+		}
+
 		public Ticket(int projectID, int milestoneID) {
 			if (projectID == InvalidID) {
 				string message = Resources.String_InvalidProjectID;
@@ -226,6 +231,102 @@ namespace Peygir.Logic {
 				assignedTo,
 				(int)priority,
 				description).Value;
+		}
+
+		public Ticket Copy() {
+			return new Ticket() {
+				ID = ID,
+				AssignedTo = AssignedTo,
+				CreateTimestamp = CreateTimestamp,
+				Description = Description,
+				MilestoneID = MilestoneID,
+				ModifyTimestamp = ModifyTimestamp,
+				Priority = Priority,
+				ReportedBy = ReportedBy,
+				Severity = Severity,
+				State = State,
+				Summary = Summary,
+				TicketNumber = TicketNumber,
+				Type = Type,
+			};
+		}
+
+		public bool UpdateAndGenerateHistoryRecord(ITicketChangeFormatter formatter, Action<Ticket> assignNewProperties) {
+			if (formatter == null) throw new ArgumentNullException(nameof(formatter));
+			if (assignNewProperties == null) throw new ArgumentNullException(nameof(assignNewProperties));
+
+			var @new = Copy();
+			assignNewProperties(@new);
+
+			if (@new.ID != ID) throw new InvalidOperationException("Cannot modify ticket ID");
+			if (@new.TicketNumber != TicketNumber) throw new InvalidOperationException("Cannot modify ticket number");
+
+			// Changes.
+			var changesStringBuilder = new StringBuilder();
+
+			// Milestone.
+			if (MilestoneID != @new.MilestoneID) {
+				changesStringBuilder.AppendFormat(formatter.Milestone(MilestoneID, @new.MilestoneID));
+				changesStringBuilder.AppendLine();
+				MilestoneID = @new.MilestoneID;
+			}
+			// Summary.
+			if (Summary != @new.Summary) {
+				changesStringBuilder.AppendFormat(formatter.Summary(Summary, @new.Summary));
+				changesStringBuilder.AppendLine();
+				Summary = @new.Summary;
+			}
+			// Reported by.
+			if (ReportedBy != @new.ReportedBy) {
+				changesStringBuilder.AppendFormat(formatter.ReportedBy(ReportedBy, @new.ReportedBy));
+				changesStringBuilder.AppendLine();
+				ReportedBy = @new.ReportedBy;
+			}
+			// Type.
+			if (Type != @new.Type) {
+				changesStringBuilder.AppendFormat(formatter.Type(Type, @new.Type));
+				changesStringBuilder.AppendLine();
+				Type = @new.Type;
+			}
+			// Severity.
+			if (Severity != @new.Severity) {
+				changesStringBuilder.AppendFormat(formatter.Severity(Severity, @new.Severity));
+				changesStringBuilder.AppendLine();
+				Severity = @new.Severity;
+			}
+			// State.
+			if (State != @new.State) {
+				changesStringBuilder.AppendFormat(formatter.State(State, @new.State));
+				changesStringBuilder.AppendLine();
+				State = @new.State;
+			}
+			// AssignedTo.
+			if (AssignedTo != @new.AssignedTo) {
+				changesStringBuilder.AppendFormat(formatter.AssignedTo(AssignedTo, @new.AssignedTo));
+				changesStringBuilder.AppendLine();
+				AssignedTo = @new.AssignedTo;
+			}
+			// Priority.
+			if (Priority != @new.Priority) {
+				changesStringBuilder.AppendFormat(formatter.Priority(Priority, @new.Priority));
+				changesStringBuilder.AppendLine();
+				Priority = @new.Priority;
+			}
+			// Description.
+			if (Description != @new.Description) {
+				changesStringBuilder.AppendFormat(formatter.Description(Description, @new.Description));
+				changesStringBuilder.AppendLine();
+				Description = @new.Description;
+			}
+
+			string changes = changesStringBuilder.ToString();
+			if (string.IsNullOrEmpty(changes)) return false;
+
+			Update();
+			
+			TicketHistory ticketHistory = NewHistory(changes);
+			ticketHistory.Add();
+			return true;
 		}
 
 		public override void Update() {

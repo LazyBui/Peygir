@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using Peygir.Logic;
 using Peygir.Presentation.Forms.Properties;
@@ -620,260 +619,65 @@ namespace Peygir.Presentation.Forms {
 		#endregion
 
 		#region Ticket
-		private string TranslateTicketType(TicketType ticketType) {
-			switch (ticketType) {
-				case TicketType.Defect:
-					return Resources.String_Defect;
-
-				case TicketType.FeatureRequest:
-					return Resources.String_FeatureRequest;
-
-				case TicketType.Task:
-					return Resources.String_Task;
-
-				default:
-					return ticketType.ToString();
+		private void TicketBatch<TValue>(Action<Ticket, TValue, bool> ticketFunc, TValue value) {
+			for (int i = 0, end = ticketsListUserControl.TicketsListView.SelectedItems.Count; i < end; i++) {
+				Ticket ticket = (Ticket)ticketsListUserControl.TicketsListView.SelectedItems[i].Tag;
+				ticketFunc(ticket, value, true);
 			}
+
+			// Flush.
+			Database.Flush();
+
+			// Show tickets.
+			ShowTickets();
+
+			UpdateTicket(true);
 		}
 
-		private string TranslateTicketSeverity(TicketSeverity ticketSeverity) {
-			switch (ticketSeverity) {
-				case TicketSeverity.Blocker:
-					return Resources.String_Blocker;
+		private void TicketSingle(Ticket ticket, bool batch, Action<Ticket> changes) {
+			bool applied = ticket.UpdateAndGenerateHistoryRecord(TicketChangeFormatter.Default, changes);
 
-				case TicketSeverity.Critical:
-					return Resources.String_Critical;
+			if (!applied || batch) return;
 
-				case TicketSeverity.Major:
-					return Resources.String_Major;
+			// Flush.
+			Database.Flush();
 
-				case TicketSeverity.Normal:
-					return Resources.String_Normal;
+			// Show tickets.
+			ShowTickets();
 
-				case TicketSeverity.Minor:
-					return Resources.String_Minor;
-
-				case TicketSeverity.Trivial:
-					return Resources.String_Trivial;
-
-				default:
-					return ticketSeverity.ToString();
-			}
-		}
-
-		private string TranslateTicketState(TicketState ticketState) {
-			switch (ticketState) {
-				case TicketState.New:
-					return Resources.String_New;
-
-				case TicketState.Accepted:
-					return Resources.String_Accepted;
-
-				case TicketState.Closed:
-					return Resources.String_Closed;
-
-				case TicketState.Completed:
-					return Resources.String_Completed;
-
-				case TicketState.InProgress:
-					return Resources.String_InProgress;
-
-				case TicketState.Blocked:
-					return Resources.String_Blocked;
-
-				default:
-					return ticketState.ToString();
-			}
-		}
-
-		private string TranslateTicketPriority(TicketPriority ticketPriority) {
-			switch (ticketPriority) {
-				case TicketPriority.Lowest:
-					return Resources.String_Lowest;
-
-				case TicketPriority.Low:
-					return Resources.String_Low;
-
-				case TicketPriority.Normal:
-					return Resources.String_Normal;
-
-				case TicketPriority.High:
-					return Resources.String_High;
-
-				case TicketPriority.Highest:
-					return Resources.String_Highest;
-
-				default:
-					return ticketPriority.ToString();
-			}
+			UpdateTicket(true);
 		}
 
 		private void SetTicketState(TicketState state) {
-			for (int i = 0, end = ticketsListUserControl.TicketsListView.SelectedItems.Count; i < end; i++) {
-				Ticket ticket = (Ticket)ticketsListUserControl.TicketsListView.SelectedItems[i].Tag;
-				SetTicketState(ticket, state);
-			}
+			TicketBatch(SetTicketState, state);
 		}
 
-		private void SetTicketState(Ticket ticket, TicketState state) {
-			// Changes.
-			StringBuilder changesStringBuilder = new StringBuilder();
-			// State.
-			if (ticket.State != state) {
-				changesStringBuilder.AppendFormat(
-					Resources.String_StateChangesFromXToY,
-					TranslateTicketState(ticket.State),
-					TranslateTicketState(state));
-				changesStringBuilder.AppendLine();
-			}
-			else {
-				return;
-			}
-
-			ticket.State = state;
-			// Update tickets.
-			ticket.Update();
-
-			// Create ticket history entry.
-			string changes = changesStringBuilder.ToString();
-			if (!string.IsNullOrEmpty(changes)) {
-				TicketHistory ticketHistory = ticket.NewHistory(changes);
-				ticketHistory.Add();
-			}
-
-			// Flush.
-			Database.Flush();
-
-			// Show tickets.
-			ShowTickets();
-
-			UpdateTicket(true);
+		private void SetTicketState(Ticket ticket, TicketState state, bool batch = false) {
+			TicketSingle(ticket, batch, t => t.State = state);
 		}
 
 		private void SetTicketPriority(TicketPriority priority) {
-			for (int i = 0, end = ticketsListUserControl.TicketsListView.SelectedItems.Count; i < end; i++) {
-				Ticket ticket = (Ticket)ticketsListUserControl.TicketsListView.SelectedItems[i].Tag;
-				SetTicketPriority(ticket, priority);
-			}
+			TicketBatch(SetTicketPriority, priority);
 		}
 
-		private void SetTicketPriority(Ticket ticket, TicketPriority priority) {
-			// Changes.
-			StringBuilder changesStringBuilder = new StringBuilder();
-			// Priority.
-			if (ticket.Priority != priority) {
-				changesStringBuilder.AppendFormat(
-					Resources.String_PriorityChangesFromXToY,
-					TranslateTicketPriority(ticket.Priority),
-					TranslateTicketPriority(priority));
-				changesStringBuilder.AppendLine();
-			}
-			else {
-				return;
-			}
-
-			ticket.Priority = priority;
-			// Update tickets.
-			ticket.Update();
-
-			// Create ticket history entry.
-			string changes = changesStringBuilder.ToString();
-			if (!string.IsNullOrEmpty(changes)) {
-				TicketHistory ticketHistory = ticket.NewHistory(changes);
-				ticketHistory.Add();
-			}
-
-			// Flush.
-			Database.Flush();
-
-			// Show tickets.
-			ShowTickets();
-
-			UpdateTicket(true);
+		private void SetTicketPriority(Ticket ticket, TicketPriority priority, bool batch = false) {
+			TicketSingle(ticket, batch, t => t.Priority = priority);
 		}
 
 		private void SetTicketSeverity(TicketSeverity severity) {
-			for (int i = 0, end = ticketsListUserControl.TicketsListView.SelectedItems.Count; i < end; i++) {
-				Ticket ticket = (Ticket)ticketsListUserControl.TicketsListView.SelectedItems[i].Tag;
-				SetTicketSeverity(ticket, severity);
-			}
+			TicketBatch(SetTicketSeverity, severity);
 		}
 
-		private void SetTicketSeverity(Ticket ticket, TicketSeverity severity) {
-			// Changes.
-			StringBuilder changesStringBuilder = new StringBuilder();
-			// Severity.
-			if (ticket.Severity != severity) {
-				changesStringBuilder.AppendFormat(
-					Resources.String_SeverityChangesFromXToY,
-					TranslateTicketSeverity(ticket.Severity),
-					TranslateTicketSeverity(severity));
-				changesStringBuilder.AppendLine();
-			}
-			else {
-				return;
-			}
-
-			ticket.Severity = severity;
-			// Update tickets.
-			ticket.Update();
-
-			// Create ticket history entry.
-			string changes = changesStringBuilder.ToString();
-			if (!string.IsNullOrEmpty(changes)) {
-				TicketHistory ticketHistory = ticket.NewHistory(changes);
-				ticketHistory.Add();
-			}
-
-			// Flush.
-			Database.Flush();
-
-			// Show tickets.
-			ShowTickets();
-
-			UpdateTicket(true);
+		private void SetTicketSeverity(Ticket ticket, TicketSeverity severity, bool batch = false) {
+			TicketSingle(ticket, batch, t => t.Severity = severity);
 		}
 
 		private void SetTicketType(TicketType type) {
-			for (int i = 0, end = ticketsListUserControl.TicketsListView.SelectedItems.Count; i < end; i++) {
-				Ticket ticket = (Ticket)ticketsListUserControl.TicketsListView.SelectedItems[i].Tag;
-				SetTicketType(ticket, type);
-			}
+			TicketBatch(SetTicketType, type);
 		}
 
-		private void SetTicketType(Ticket ticket, TicketType type) {
-			// Changes.
-			StringBuilder changesStringBuilder = new StringBuilder();
-			// Type.
-			if (ticket.Type != type) {
-				changesStringBuilder.AppendFormat(
-					Resources.String_TypeChangesFromXToY,
-					TranslateTicketType(ticket.Type),
-					TranslateTicketType(type));
-				changesStringBuilder.AppendLine();
-			}
-			else {
-				return;
-			}
-
-			ticket.Type = type;
-			// Update tickets.
-			ticket.Update();
-
-			// Create ticket history entry.
-			string changes = changesStringBuilder.ToString();
-			if (!string.IsNullOrEmpty(changes)) {
-				TicketHistory ticketHistory = ticket.NewHistory(changes);
-				ticketHistory.Add();
-			}
-
-			// Flush.
-			Database.Flush();
-
-			// Show tickets.
-			ShowTickets();
-
-			UpdateTicket(true);
+		private void SetTicketType(Ticket ticket, TicketType type, bool batch = false) {
+			TicketSingle(ticket, batch, t => t.Type = type);
 		}
 
 		private void ShowTickets() {
@@ -1203,77 +1007,9 @@ namespace Peygir.Presentation.Forms {
 					goto Again;
 				}
 
-				// Changes.
-				StringBuilder changesStringBuilder = new StringBuilder();
-				// Milestone.
-				if (ticket.MilestoneID != form.TicketDetailsUserControl.Milestone.ID) {
-					changesStringBuilder.AppendFormat(Resources.String_MilestoneChangesFromXToY, ticket.GetMilestone().Name, form.TicketDetailsUserControl.Milestone.Name);
-					changesStringBuilder.AppendLine();
-				}
-				// Summary.
-				if (ticket.Summary != form.TicketDetailsUserControl.Summary) {
-					changesStringBuilder.AppendFormat(Resources.String_SummaryChangesFromXToY, ticket.Summary, form.TicketDetailsUserControl.Summary);
-					changesStringBuilder.AppendLine();
-				}
-				// Reported by.
-				if (ticket.ReportedBy != form.TicketDetailsUserControl.ReportedBy) {
-					changesStringBuilder.AppendFormat(Resources.String_ReportedByChangesFromXToY, ticket.ReportedBy, form.TicketDetailsUserControl.ReportedBy);
-					changesStringBuilder.AppendLine();
-				}
-				// Type.
-				if (ticket.Type != form.TicketDetailsUserControl.Type) {
-					changesStringBuilder.AppendFormat(
-						Resources.String_TypeChangesFromXToY,
-						TranslateTicketType(ticket.Type),
-						TranslateTicketType(form.TicketDetailsUserControl.Type));
-					changesStringBuilder.AppendLine();
-				}
-				// Severity.
-				if (ticket.Severity != form.TicketDetailsUserControl.Severity) {
-					changesStringBuilder.AppendFormat(
-						Resources.String_SeverityChangesFromXToY,
-						TranslateTicketSeverity(ticket.Severity),
-						TranslateTicketSeverity(form.TicketDetailsUserControl.Severity));
-					changesStringBuilder.AppendLine();
-				}
-				// State.
-				if (ticket.State != form.TicketDetailsUserControl.State) {
-					changesStringBuilder.AppendFormat(
-						Resources.String_StateChangesFromXToY,
-						TranslateTicketState(ticket.State),
-						TranslateTicketState(form.TicketDetailsUserControl.State));
-					changesStringBuilder.AppendLine();
-				}
-				// AssignedTo.
-				if (ticket.AssignedTo != form.TicketDetailsUserControl.AssignedTo) {
-					changesStringBuilder.AppendFormat(Resources.String_AssignedToChangesFromXToY, ticket.AssignedTo, form.TicketDetailsUserControl.AssignedTo);
-					changesStringBuilder.AppendLine();
-				}
-				// Priority.
-				if (ticket.Priority != form.TicketDetailsUserControl.Priority) {
-					changesStringBuilder.AppendFormat(
-						Resources.String_PriorityChangesFromXToY,
-						TranslateTicketPriority(ticket.Priority),
-						TranslateTicketPriority(form.TicketDetailsUserControl.Priority));
-					changesStringBuilder.AppendLine();
-				}
-				// Description.
-				if (ticket.Description != form.TicketDetailsUserControl.Description) {
-					changesStringBuilder.AppendFormat(Resources.String_DescriptionChanges);
-					changesStringBuilder.AppendLine();
-				}
-
-				form.TicketDetailsUserControl.RetrieveTicket(ticket);
-
-				// Update tickets.
-				ticket.Update();
-
-				// Create ticket history entry.
-				string changes = changesStringBuilder.ToString();
-				if (!string.IsNullOrEmpty(changes)) {
-					TicketHistory ticketHistory = ticket.NewHistory(changes);
-					ticketHistory.Add();
-				}
+				ticket.UpdateAndGenerateHistoryRecord(TicketChangeFormatter.Default, t => {
+					form.TicketDetailsUserControl.RetrieveTicket(t);
+				});
 
 				// Flush.
 				Database.Flush();
