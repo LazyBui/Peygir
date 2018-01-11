@@ -6,16 +6,6 @@ using Peygir.Presentation.UserControls;
 
 namespace Peygir.Presentation.Forms {
 	partial class AboutForm : Form {
-		public MessageBoxOptions FormMessageBoxOptions {
-			get {
-				MessageBoxOptions options = 0;
-				if (RightToLeft == RightToLeft.Yes) {
-					options = (MessageBoxOptions.RtlReading | MessageBoxOptions.RightAlign);
-				}
-				return options;
-			}
-		}
-
 		public AboutForm() {
 			InitializeComponent();
 
@@ -28,16 +18,13 @@ namespace Peygir.Presentation.Forms {
 				Process.Start(address);
 			}
 			catch (Exception exception) {
-				MessageBox.Show
-				(
+				MessageBox.Show(
 					exception.Message,
 					Resources.String_Error,
 					MessageBoxButtons.OK,
 					MessageBoxIcon.Error,
 					MessageBoxDefaultButton.Button1,
-					FormMessageBoxOptions
-
-				);
+					FormUtil.GetMessageBoxOptions(this));
 			}
 		}
 
