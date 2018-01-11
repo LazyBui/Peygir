@@ -45,28 +45,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Attachment.cs" />
-    <Compile Include="IDatabaseProvider.cs" />
-    <Compile Include="Database.cs" />
-    <Compile Include="DateTimeFormatter.cs" />
-    <Compile Include="DBObject.cs" />
-    <Compile Include="MetaTicketState.cs" />
-    <Compile Include="ITicketChangeFormatter.cs" />
-    <Compile Include="Milestone.cs" />
-    <Compile Include="MilestoneState.cs" />
-    <Compile Include="Project.cs" />
+    <Compile Include="Source\Attachment.cs" />
+    <Compile Include="Source\Framework\IDatabaseProvider.cs" />
+    <Compile Include="Source\Framework\Database.cs" />
+    <Compile Include="Source\Framework\DateTimeFormatter.cs" />
+    <Compile Include="Source\Framework\DBObject.cs" />
+    <Compile Include="Source\Support\MetaTicketState.cs" />
+    <Compile Include="Source\Framework\ITicketChangeFormatter.cs" />
+    <Compile Include="Source\Milestone.cs" />
+    <Compile Include="Source\Support\MilestoneState.cs" />
+    <Compile Include="Source\Project.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Ticket.cs" />
-    <Compile Include="TicketHistory.cs" />
-    <Compile Include="TicketPriority.cs" />
-    <Compile Include="TicketSeverity.cs" />
-    <Compile Include="TicketState.cs" />
-    <Compile Include="TicketType.cs" />
+    <Compile Include="Source\Ticket.cs" />
+    <Compile Include="Source\TicketHistory.cs" />
+    <Compile Include="Source\Support\TicketPriority.cs" />
+    <Compile Include="Source\Support\TicketSeverity.cs" />
+    <Compile Include="Source\Support\TicketState.cs" />
+    <Compile Include="Source\Support\TicketType.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Key.snk" />

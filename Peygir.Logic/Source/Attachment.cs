@@ -70,7 +70,6 @@ namespace Peygir.Logic {
 			return attachments.ToArray();
 		}
 
-
 		public static Attachment GetAttachment(IDatabaseProvider db, int id) {
 			if (db == null) throw new ArgumentNullException(nameof(db));
 			AttachmentsTableAdapter tableAdapter = db.DB.AttachmentsTableAdapter;
