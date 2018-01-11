@@ -280,14 +280,15 @@ namespace Peygir.Presentation.Forms {
 				editTicketsButton.Enabled = false;
 				deleteProjectButton.Enabled = false;
 				projectsGroupBox.Enabled = false;
-				return;
 			}
-			int selectedProjectsCount = projectsListUserControl.ProjectsListView.SelectedItems.Count;
-			addProjectButton.Enabled = true;
-			editProjectButton.Enabled = selectedProjectsCount > 0;
-			editTicketsButton.Enabled = selectedProjectsCount > 0;
-			deleteProjectButton.Enabled = selectedProjectsCount > 0;
-			projectsGroupBox.Enabled = true;
+			else {
+				int selectedProjectsCount = projectsListUserControl.ProjectsListView.SelectedItems.Count;
+				addProjectButton.Enabled = true;
+				editProjectButton.Enabled = selectedProjectsCount > 0;
+				editTicketsButton.Enabled = selectedProjectsCount > 0;
+				deleteProjectButton.Enabled = selectedProjectsCount > 0;
+				projectsGroupBox.Enabled = true;
+			}
 
 			databaseToolStripStatusLabel.Text = string.Format(
 				Resources.String_DatabaseX,
@@ -394,6 +395,9 @@ namespace Peygir.Presentation.Forms {
 			projectsListUserControl.ProjectsListView.Items.Clear();
 
 			UpdateControlsEnabledProperty();
+
+			openTicketsToolStripStatusLabel.Text = "Open Tickets: 0";
+			totalTicketsToolStripStatusLabel.Text = "Total Tickets: 0";
 		}
 
 		private void ShowOptions() {

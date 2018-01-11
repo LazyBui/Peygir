@@ -441,6 +441,9 @@
   <data name="projectsListUserControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 127</value>
   </data>
+  <data name="projectsListUserControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
   <data name="projectsListUserControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>588, 227</value>
   </data>
@@ -451,7 +454,7 @@
     <value>projectsListUserControl</value>
   </data>
   <data name="&gt;&gt;projectsListUserControl.Type" xml:space="preserve">
-    <value>Peygir.Presentation.UserControls.ProjectsListUserControl, Peygir.Presentation.UserControls, Version=1.0.1.5419, Culture=neutral, PublicKeyToken=7bc4e639a7e2568f</value>
+    <value>Peygir.Presentation.UserControls.ProjectsListUserControl, Peygir.Presentation.UserControls, Version=1.0.2.0, Culture=neutral, PublicKeyToken=7bc4e639a7e2568f</value>
   </data>
   <data name="&gt;&gt;projectsListUserControl.Parent" xml:space="preserve">
     <value>projectsGroupBox</value>
@@ -1054,10 +1057,10 @@
     <value>132, 17</value>
   </metadata>
   <data name="databaseToolStripStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 18</value>
+    <value>82, 18</value>
   </data>
   <data name="databaseToolStripStatusLabel.Text" xml:space="preserve">
-    <value>Database: -</value>
+    <value>Database: N/A</value>
   </data>
   <data name="openTicketsToolStripStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>86, 18</value>
