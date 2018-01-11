@@ -5,60 +5,22 @@ using Peygir.Data.PeygirDatabaseDataSetTableAdapters;
 
 namespace Peygir.Logic {
 	public class Database : IDatabaseProvider {
-		private string currentDatabasePath;
-		public string CurrentDatabasePath {
-			get { return currentDatabasePath; }
-		}
+		public string CurrentDatabasePath { get; private set; }
+		public bool IsOpen { get; private set; }
 
-		private bool isOpen;
-		public bool IsOpen {
-			get { return isOpen; }
-		}
-
-		private ProjectsTableAdapter projectsTableAdapter;
-		internal ProjectsTableAdapter ProjectsTableAdapter {
-			get { return projectsTableAdapter; }
-		}
-
-		private MilestonesTableAdapter milestonesTableAdapter;
-		internal MilestonesTableAdapter MilestonesTableAdapter {
-			get { return milestonesTableAdapter; }
-		}
-
-		private TicketReportersTableAdapter ticketReportersTableAdapter;
-		internal TicketReportersTableAdapter TicketReportersTableAdapter {
-			get { return ticketReportersTableAdapter; }
-		}
-
-		private TicketAssigneesTableAdapter ticketAssigneesTableAdapter;
-		internal TicketAssigneesTableAdapter TicketAssigneesTableAdapter {
-			get { return ticketAssigneesTableAdapter; }
-		}
-
-		private TicketsTableAdapter ticketsTableAdapter;
-		internal TicketsTableAdapter TicketsTableAdapter {
-			get { return ticketsTableAdapter; }
-		}
-
-		private AttachmentsWithoutContentsTableAdapter attachmentsWithoutContentsTableAdapter;
-		internal AttachmentsWithoutContentsTableAdapter AttachmentsWithoutContentsTableAdapter {
-			get { return attachmentsWithoutContentsTableAdapter; }
-		}
-
-		private AttachmentsTableAdapter attachmentsTableAdapter;
-		internal AttachmentsTableAdapter AttachmentsTableAdapter {
-			get { return attachmentsTableAdapter; }
-		}
-
-		private TicketsHistoryTableAdapter ticketsHistoryTableAdapter;
-		internal TicketsHistoryTableAdapter TicketsHistoryTableAdapter {
-			get { return ticketsHistoryTableAdapter; }
-		}
+		internal ProjectsTableAdapter ProjectsTableAdapter { get; private set; }
+		internal MilestonesTableAdapter MilestonesTableAdapter { get; private set; }
+		internal TicketReportersTableAdapter TicketReportersTableAdapter { get; private set; }
+		internal TicketAssigneesTableAdapter TicketAssigneesTableAdapter { get; private set; }
+		internal TicketsTableAdapter TicketsTableAdapter { get; private set; }
+		internal AttachmentsWithoutContentsTableAdapter AttachmentsWithoutContentsTableAdapter { get; private set; }
+		internal AttachmentsTableAdapter AttachmentsTableAdapter { get; private set; }
+		internal TicketsHistoryTableAdapter TicketsHistoryTableAdapter { get; private set; }
 
 		public Database DB => this;
 
 		private Database() {
-
+			// Blank
 		}
 
 		public static Database CreateAndOpen(string databasePath) {
@@ -87,57 +49,57 @@ namespace Peygir.Logic {
 		}
 
 		private static void InitializeDatabase(Database value, string databasePath) {
-			value.projectsTableAdapter = new ProjectsTableAdapter();
-			value.milestonesTableAdapter = new MilestonesTableAdapter();
-			value.ticketReportersTableAdapter = new TicketReportersTableAdapter();
-			value.ticketAssigneesTableAdapter = new TicketAssigneesTableAdapter();
-			value.ticketsTableAdapter = new TicketsTableAdapter();
-			value.attachmentsWithoutContentsTableAdapter = new AttachmentsWithoutContentsTableAdapter();
-			value.attachmentsTableAdapter = new AttachmentsTableAdapter();
-			value.ticketsHistoryTableAdapter = new TicketsHistoryTableAdapter();
+			value.ProjectsTableAdapter = new ProjectsTableAdapter();
+			value.MilestonesTableAdapter = new MilestonesTableAdapter();
+			value.TicketReportersTableAdapter = new TicketReportersTableAdapter();
+			value.TicketAssigneesTableAdapter = new TicketAssigneesTableAdapter();
+			value.TicketsTableAdapter = new TicketsTableAdapter();
+			value.AttachmentsWithoutContentsTableAdapter = new AttachmentsWithoutContentsTableAdapter();
+			value.AttachmentsTableAdapter = new AttachmentsTableAdapter();
+			value.TicketsHistoryTableAdapter = new TicketsHistoryTableAdapter();
 
-			value.projectsTableAdapter.Connection.Open();
-			value.milestonesTableAdapter.Connection.Open();
-			value.ticketReportersTableAdapter.Connection.Open();
-			value.ticketAssigneesTableAdapter.Connection.Open();
-			value.ticketsTableAdapter.Connection.Open();
-			value.attachmentsWithoutContentsTableAdapter.Connection.Open();
-			value.attachmentsTableAdapter.Connection.Open();
-			value.ticketsHistoryTableAdapter.Connection.Open();
+			value.ProjectsTableAdapter.Connection.Open();
+			value.MilestonesTableAdapter.Connection.Open();
+			value.TicketReportersTableAdapter.Connection.Open();
+			value.TicketAssigneesTableAdapter.Connection.Open();
+			value.TicketsTableAdapter.Connection.Open();
+			value.AttachmentsWithoutContentsTableAdapter.Connection.Open();
+			value.AttachmentsTableAdapter.Connection.Open();
+			value.TicketsHistoryTableAdapter.Connection.Open();
 
-			value.currentDatabasePath = databasePath;
-			value.isOpen = true;
+			value.CurrentDatabasePath = databasePath;
+			value.IsOpen = true;
 		}
 
 		public void Close() {
-			if (!isOpen) {
+			if (!IsOpen) {
 				return;
 			}
 
-			projectsTableAdapter.Connection.Close();
-			milestonesTableAdapter.Connection.Close();
-			ticketReportersTableAdapter.Connection.Close();
-			ticketAssigneesTableAdapter.Connection.Close();
-			ticketsTableAdapter.Connection.Close();
-			attachmentsWithoutContentsTableAdapter.Connection.Close();
-			attachmentsTableAdapter.Connection.Close();
-			ticketsHistoryTableAdapter.Connection.Close();
+			ProjectsTableAdapter.Connection.Close();
+			MilestonesTableAdapter.Connection.Close();
+			TicketReportersTableAdapter.Connection.Close();
+			TicketAssigneesTableAdapter.Connection.Close();
+			TicketsTableAdapter.Connection.Close();
+			AttachmentsWithoutContentsTableAdapter.Connection.Close();
+			AttachmentsTableAdapter.Connection.Close();
+			TicketsHistoryTableAdapter.Connection.Close();
 
-			projectsTableAdapter = null;
-			milestonesTableAdapter = null;
-			ticketReportersTableAdapter = null;
-			ticketAssigneesTableAdapter = null;
-			ticketsTableAdapter = null;
-			attachmentsWithoutContentsTableAdapter = null;
-			attachmentsTableAdapter = null;
-			ticketsHistoryTableAdapter = null;
+			ProjectsTableAdapter = null;
+			MilestonesTableAdapter = null;
+			TicketReportersTableAdapter = null;
+			TicketAssigneesTableAdapter = null;
+			TicketsTableAdapter = null;
+			AttachmentsWithoutContentsTableAdapter = null;
+			AttachmentsTableAdapter = null;
+			TicketsHistoryTableAdapter = null;
 
-			currentDatabasePath = null;
-			isOpen = false;
+			CurrentDatabasePath = null;
+			IsOpen = false;
 		}
 
 		public void Flush() {
-			if (!isOpen) {
+			if (!IsOpen) {
 				throw new InvalidOperationException();
 			}
 
