@@ -238,7 +238,7 @@
     <value>70, 3</value>
   </data>
   <data name="timestampTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 20</value>
+    <value>327, 20</value>
   </data>
   <data name="timestampTextBox.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
