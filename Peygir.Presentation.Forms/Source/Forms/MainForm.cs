@@ -291,7 +291,7 @@ namespace Peygir.Presentation.Forms {
 				string databasePath = saveFileDialog.FileName;
 
 				Environment.CurrentDirectory = Application.StartupPath;
-				Database.CreateAndOpen(databasePath);
+				mContext = new FormContext(Database.CreateAndOpen(databasePath));
 
 				// This is required to clear out the assigned to/reporter combos
 				UpdateTicketOrProject();
@@ -313,7 +313,7 @@ namespace Peygir.Presentation.Forms {
 			openFileDialog.FileName = string.Empty;
 			if (openFileDialog.ShowDialog() != DialogResult.OK) return;
 			try {
-				if (mContext?.DB?.IsOpen == true) {
+				if (mContext.DB?.IsOpen == true) {
 					CloseDatabase();
 				}
 
@@ -395,7 +395,7 @@ namespace Peygir.Presentation.Forms {
 				if (form.ShowDialog() != DialogResult.OK) return;
 
 				// If the DB isn't open, we can't have filters or things like that, so there's no point in going on
-				if (mContext?.DB?.IsOpen != true) return;
+				if (mContext.DB?.IsOpen != true) return;
 
 				// Might change date formatting, update display
 				ShowProjects();
