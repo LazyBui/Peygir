@@ -46,6 +46,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Source\Attachment.cs" />
+    <Compile Include="Source\Framework\BackwardCompatibilityException.cs" />
+    <Compile Include="Source\Framework\ManualTamperingException.cs" />
     <Compile Include="Source\Framework\IDatabaseProvider.cs" />
     <Compile Include="Source\Framework\Database.cs" />
     <Compile Include="Source\Framework\DateTimeFormatter.cs" />
@@ -61,6 +63,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Source\Version.cs" />
     <Compile Include="Source\Ticket.cs" />
     <Compile Include="Source\TicketHistory.cs" />
     <Compile Include="Source\Support\TicketPriority.cs" />

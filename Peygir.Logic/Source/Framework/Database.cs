@@ -16,6 +16,7 @@ namespace Peygir.Logic {
 		internal AttachmentsWithoutContentsTableAdapter AttachmentsWithoutContentsTableAdapter { get; private set; }
 		internal AttachmentsTableAdapter AttachmentsTableAdapter { get; private set; }
 		internal TicketsHistoryTableAdapter TicketsHistoryTableAdapter { get; private set; }
+		internal VersionTableAdapter VersionTableAdapter { get; private set; }
 
 		public Database DB => this;
 
@@ -45,6 +46,7 @@ namespace Peygir.Logic {
 
 			var result = new Database();
 			InitializeDatabase(result, databasePath);
+			Version.UpdateIfAppropriate(result);
 			return result;
 		}
 
@@ -57,6 +59,7 @@ namespace Peygir.Logic {
 			value.AttachmentsWithoutContentsTableAdapter = new AttachmentsWithoutContentsTableAdapter();
 			value.AttachmentsTableAdapter = new AttachmentsTableAdapter();
 			value.TicketsHistoryTableAdapter = new TicketsHistoryTableAdapter();
+			value.VersionTableAdapter = new VersionTableAdapter();
 
 			value.ProjectsTableAdapter.Connection.Open();
 			value.MilestonesTableAdapter.Connection.Open();
@@ -66,6 +69,7 @@ namespace Peygir.Logic {
 			value.AttachmentsWithoutContentsTableAdapter.Connection.Open();
 			value.AttachmentsTableAdapter.Connection.Open();
 			value.TicketsHistoryTableAdapter.Connection.Open();
+			value.VersionTableAdapter.Connection.Open();
 
 			value.CurrentDatabasePath = databasePath;
 			value.IsOpen = true;
@@ -84,6 +88,7 @@ namespace Peygir.Logic {
 			AttachmentsWithoutContentsTableAdapter.Connection.Close();
 			AttachmentsTableAdapter.Connection.Close();
 			TicketsHistoryTableAdapter.Connection.Close();
+			VersionTableAdapter.Connection.Close();
 
 			ProjectsTableAdapter = null;
 			MilestonesTableAdapter = null;
@@ -93,6 +98,7 @@ namespace Peygir.Logic {
 			AttachmentsWithoutContentsTableAdapter = null;
 			AttachmentsTableAdapter = null;
 			TicketsHistoryTableAdapter = null;
+			VersionTableAdapter = null;
 
 			CurrentDatabasePath = null;
 			IsOpen = false;

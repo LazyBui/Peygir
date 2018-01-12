@@ -132,4 +132,10 @@
   <data name="String_InvalidTicketID" xml:space="preserve">
     <value>Invalid ticket ID.</value>
   </data>
+  <data name="String_VersionBackwardCompatibility" xml:space="preserve">
+    <value>The Version table contains a value that is greater than this version of Peygir supports. For safety reasons, this database will be closed and no alterations will be made.</value>
+  </data>
+  <data name="String_VersionManualTampering" xml:space="preserve">
+    <value>The Version table was manually altered. The table should have a single record at all times and the ID field should be 1 or greater.</value>
+  </data>
 </root>
