@@ -196,47 +196,6 @@ namespace Peygir.Logic {
 			}
 		}
 
-		protected override void AddPrivate(Database db) {
-			if (db == null) throw new ArgumentNullException(nameof(db));
-			if (ID != InvalidID) {
-				string message = Resources.String_CurrentObjectAlreadyAdded;
-				throw new InvalidOperationException(message);
-			}
-
-			// Add.
-
-			createTimestamp = modifyTimestamp = DateTime.UtcNow;
-
-			TicketsTableAdapter tableAdapter = db.TicketsTableAdapter;
-
-			tableAdapter.Insert(
-				milestoneID,
-				ticketNumber,
-				summary,
-				reportedBy,
-				(int)type,
-				(int)severity,
-				(int)state,
-				assignedTo,
-				(int)priority,
-				description,
-				createTimestamp,
-				modifyTimestamp);
-
-			// Find ID.
-			ID = tableAdapter.GetID(
-				milestoneID,
-				ticketNumber,
-				summary,
-				reportedBy,
-				(int)type,
-				(int)severity,
-				(int)state,
-				assignedTo,
-				(int)priority,
-				description).Value;
-		}
-
 		public Ticket Copy() {
 			return new Ticket() {
 				ID = ID,
@@ -332,6 +291,39 @@ namespace Peygir.Logic {
 			TicketHistory ticketHistory = NewHistory(changes);
 			ticketHistory.Add(db);
 			return true;
+		}
+
+		protected override void AddPrivate(Database db) {
+			createTimestamp = modifyTimestamp = DateTime.UtcNow;
+
+			TicketsTableAdapter tableAdapter = db.TicketsTableAdapter;
+
+			tableAdapter.Insert(
+				milestoneID,
+				ticketNumber,
+				summary,
+				reportedBy,
+				(int)type,
+				(int)severity,
+				(int)state,
+				assignedTo,
+				(int)priority,
+				description,
+				createTimestamp,
+				modifyTimestamp);
+
+			// Find ID.
+			ID = tableAdapter.GetID(
+				milestoneID,
+				ticketNumber,
+				summary,
+				reportedBy,
+				(int)type,
+				(int)severity,
+				(int)state,
+				assignedTo,
+				(int)priority,
+				description).Value;
 		}
 
 		protected override void UpdatePrivate(Database db) {
