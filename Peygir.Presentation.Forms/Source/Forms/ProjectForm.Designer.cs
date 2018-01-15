@@ -92,8 +92,8 @@
 			this.resetTicketFilterButton = new System.Windows.Forms.Button();
 			this.ticketCreatedButton = new System.Windows.Forms.Button();
 			this.ticketModifiedButton = new System.Windows.Forms.Button();
-			this.modifiedTextBox = new System.Windows.Forms.TextBox();
-			this.createdTextBox = new System.Windows.Forms.TextBox();
+			this.ticketModifiedTextBox = new System.Windows.Forms.TextBox();
+			this.ticketCreatedTextBox = new System.Windows.Forms.TextBox();
 			this.label9 = new System.Windows.Forms.Label();
 			this.label8 = new System.Windows.Forms.Label();
 			this.ticketReportersComboBox = new System.Windows.Forms.ComboBox();
@@ -106,7 +106,7 @@
 			this.ticketSeverityComboBox = new System.Windows.Forms.ComboBox();
 			this.label3 = new System.Windows.Forms.Label();
 			this.ticketPriorityComboBox = new System.Windows.Forms.ComboBox();
-			this.ticketTextBox = new System.Windows.Forms.TextBox();
+			this.ticketSummaryTextBox = new System.Windows.Forms.TextBox();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
 			this.ticketStateComboBox = new System.Windows.Forms.ComboBox();
@@ -307,8 +307,8 @@
 			this.groupBox4.Controls.Add(this.resetTicketFilterButton);
 			this.groupBox4.Controls.Add(this.ticketCreatedButton);
 			this.groupBox4.Controls.Add(this.ticketModifiedButton);
-			this.groupBox4.Controls.Add(this.modifiedTextBox);
-			this.groupBox4.Controls.Add(this.createdTextBox);
+			this.groupBox4.Controls.Add(this.ticketModifiedTextBox);
+			this.groupBox4.Controls.Add(this.ticketCreatedTextBox);
 			this.groupBox4.Controls.Add(this.label9);
 			this.groupBox4.Controls.Add(this.label8);
 			this.groupBox4.Controls.Add(this.ticketReportersComboBox);
@@ -321,7 +321,7 @@
 			this.groupBox4.Controls.Add(this.ticketSeverityComboBox);
 			this.groupBox4.Controls.Add(this.label3);
 			this.groupBox4.Controls.Add(this.ticketPriorityComboBox);
-			this.groupBox4.Controls.Add(this.ticketTextBox);
+			this.groupBox4.Controls.Add(this.ticketSummaryTextBox);
 			this.groupBox4.Controls.Add(this.label2);
 			this.groupBox4.Controls.Add(this.label1);
 			this.groupBox4.Controls.Add(this.ticketStateComboBox);
@@ -336,7 +336,6 @@
 			// 
 			// ticketsListView
 			// 
-			resources.ApplyResources(this.ticketsListView, "ticketsListView");
 			this.ticketsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader3,
             this.columnHeader4,
@@ -349,6 +348,7 @@
 			this.ticketsListView.FullRowSelect = true;
 			this.ticketsListView.GridLines = true;
 			this.ticketsListView.HideSelection = false;
+			resources.ApplyResources(this.ticketsListView, "ticketsListView");
 			this.ticketsListView.Name = "ticketsListView";
 			this.ticketsListView.UseCompatibleStateImageBehavior = false;
 			this.ticketsListView.View = System.Windows.Forms.View.Details;
@@ -658,19 +658,19 @@
 			this.ticketModifiedButton.UseVisualStyleBackColor = true;
 			this.ticketModifiedButton.Click += new System.EventHandler(this.ticketModifiedButton_Click);
 			// 
-			// modifiedTextBox
+			// ticketModifiedTextBox
 			// 
-			resources.ApplyResources(this.modifiedTextBox, "modifiedTextBox");
-			this.modifiedTextBox.Name = "modifiedTextBox";
-			this.modifiedTextBox.ReadOnly = true;
-			this.modifiedTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.modifiedTextBox_KeyDown);
+			resources.ApplyResources(this.ticketModifiedTextBox, "ticketModifiedTextBox");
+			this.ticketModifiedTextBox.Name = "ticketModifiedTextBox";
+			this.ticketModifiedTextBox.ReadOnly = true;
+			this.ticketModifiedTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ticketModifiedTextBox_KeyDown);
 			// 
-			// createdTextBox
+			// ticketCreatedTextBox
 			// 
-			resources.ApplyResources(this.createdTextBox, "createdTextBox");
-			this.createdTextBox.Name = "createdTextBox";
-			this.createdTextBox.ReadOnly = true;
-			this.createdTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.createdTextBox_KeyDown);
+			resources.ApplyResources(this.ticketCreatedTextBox, "ticketCreatedTextBox");
+			this.ticketCreatedTextBox.Name = "ticketCreatedTextBox";
+			this.ticketCreatedTextBox.ReadOnly = true;
+			this.ticketCreatedTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ticketCreatedTextBox_KeyDown);
 			// 
 			// label9
 			// 
@@ -767,12 +767,12 @@
 			this.ticketPriorityComboBox.Name = "ticketPriorityComboBox";
 			this.ticketPriorityComboBox.SelectedIndexChanged += new System.EventHandler(this.ticketPriorityComboBox_SelectedIndexChanged);
 			// 
-			// ticketTextBox
+			// ticketSummaryTextBox
 			// 
-			resources.ApplyResources(this.ticketTextBox, "ticketTextBox");
-			this.ticketTextBox.Name = "ticketTextBox";
-			this.ticketTextBox.TextChanged += new System.EventHandler(this.ticketTextBox_TextChanged);
-			this.ticketTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ticketTextBox_KeyDown);
+			resources.ApplyResources(this.ticketSummaryTextBox, "ticketSummaryTextBox");
+			this.ticketSummaryTextBox.Name = "ticketSummaryTextBox";
+			this.ticketSummaryTextBox.TextChanged += new System.EventHandler(this.ticketSummaryTextBox_TextChanged);
+			this.ticketSummaryTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ticketSummaryTextBox_KeyDown);
 			// 
 			// label2
 			// 
@@ -855,6 +855,7 @@
 			resources.ApplyResources(this, "$this");
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.Controls.Add(this.groupBox1);
+			this.DoubleBuffered = true;
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "ProjectForm";
@@ -913,8 +914,8 @@
 		private System.Windows.Forms.Button resetTicketFilterButton;
 		private System.Windows.Forms.Button ticketCreatedButton;
 		private System.Windows.Forms.Button ticketModifiedButton;
-		private System.Windows.Forms.TextBox modifiedTextBox;
-		private System.Windows.Forms.TextBox createdTextBox;
+		private System.Windows.Forms.TextBox ticketModifiedTextBox;
+		private System.Windows.Forms.TextBox ticketCreatedTextBox;
 		private System.Windows.Forms.Label label9;
 		private System.Windows.Forms.Label label8;
 		private System.Windows.Forms.ComboBox ticketReportersComboBox;
@@ -927,7 +928,7 @@
 		private System.Windows.Forms.ComboBox ticketSeverityComboBox;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.ComboBox ticketPriorityComboBox;
-		private System.Windows.Forms.TextBox ticketTextBox;
+		private System.Windows.Forms.TextBox ticketSummaryTextBox;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.ComboBox ticketStateComboBox;

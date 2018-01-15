@@ -98,6 +98,7 @@
 			this.Controls.Add(this.lowBoundCheckbox);
 			this.Controls.Add(this.cancelButton);
 			this.Controls.Add(this.okButton);
+			this.DoubleBuffered = true;
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;

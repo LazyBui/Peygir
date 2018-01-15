@@ -25,6 +25,8 @@
 		private void InitializeComponent() {
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TicketDetailsForm));
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.label14 = new System.Windows.Forms.Label();
+			this.projectComboBox = new System.Windows.Forms.ComboBox();
 			this.wordWrapCheckBox = new System.Windows.Forms.CheckBox();
 			this.label13 = new System.Windows.Forms.Label();
 			this.monospaceButton = new System.Windows.Forms.RadioButton();
@@ -35,7 +37,6 @@
 			this.label11 = new System.Windows.Forms.Label();
 			this.assignedToComboBox = new System.Windows.Forms.ComboBox();
 			this.reportedByComboBox = new System.Windows.Forms.ComboBox();
-			this.groupBox2 = new System.Windows.Forms.GroupBox();
 			this.milestoneComboBox = new System.Windows.Forms.ComboBox();
 			this.priorityComboBox = new System.Windows.Forms.ComboBox();
 			this.typeComboBox = new System.Windows.Forms.ComboBox();
@@ -62,6 +63,8 @@
 			// groupBox1
 			// 
 			resources.ApplyResources(this.groupBox1, "groupBox1");
+			this.groupBox1.Controls.Add(this.label14);
+			this.groupBox1.Controls.Add(this.projectComboBox);
 			this.groupBox1.Controls.Add(this.wordWrapCheckBox);
 			this.groupBox1.Controls.Add(this.label13);
 			this.groupBox1.Controls.Add(this.monospaceButton);
@@ -72,7 +75,6 @@
 			this.groupBox1.Controls.Add(this.label11);
 			this.groupBox1.Controls.Add(this.assignedToComboBox);
 			this.groupBox1.Controls.Add(this.reportedByComboBox);
-			this.groupBox1.Controls.Add(this.groupBox2);
 			this.groupBox1.Controls.Add(this.milestoneComboBox);
 			this.groupBox1.Controls.Add(this.priorityComboBox);
 			this.groupBox1.Controls.Add(this.typeComboBox);
@@ -93,6 +95,19 @@
 			this.groupBox1.Controls.Add(this.label1);
 			this.groupBox1.Name = "groupBox1";
 			this.groupBox1.TabStop = false;
+			// 
+			// label14
+			// 
+			resources.ApplyResources(this.label14, "label14");
+			this.label14.Name = "label14";
+			// 
+			// projectComboBox
+			// 
+			this.projectComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.projectComboBox.FormattingEnabled = true;
+			resources.ApplyResources(this.projectComboBox, "projectComboBox");
+			this.projectComboBox.Name = "projectComboBox";
+			this.projectComboBox.SelectedIndexChanged += new System.EventHandler(this.projectComboBox_SelectedIndexChanged);
 			// 
 			// wordWrapCheckBox
 			// 
@@ -161,12 +176,6 @@
 			this.reportedByComboBox.FormattingEnabled = true;
 			resources.ApplyResources(this.reportedByComboBox, "reportedByComboBox");
 			this.reportedByComboBox.Name = "reportedByComboBox";
-			// 
-			// groupBox2
-			// 
-			resources.ApplyResources(this.groupBox2, "groupBox2");
-			this.groupBox2.Name = "groupBox2";
-			this.groupBox2.TabStop = false;
 			// 
 			// milestoneComboBox
 			// 
@@ -324,10 +333,12 @@
 			this.Controls.Add(this.cancelButton);
 			this.Controls.Add(this.okButton);
 			this.Controls.Add(this.groupBox1);
+			this.DoubleBuffered = true;
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "TicketDetailsForm";
 			this.ShowInTaskbar = false;
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TicketDetailsForm_FormClosing);
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();
 			this.ResumeLayout(false);
@@ -349,7 +360,6 @@
 		private System.Windows.Forms.Label label11;
 		private System.Windows.Forms.ComboBox assignedToComboBox;
 		private System.Windows.Forms.ComboBox reportedByComboBox;
-		private System.Windows.Forms.GroupBox groupBox2;
 		private System.Windows.Forms.ComboBox milestoneComboBox;
 		private System.Windows.Forms.ComboBox priorityComboBox;
 		private System.Windows.Forms.ComboBox typeComboBox;
@@ -368,5 +378,7 @@
 		private System.Windows.Forms.Label label9;
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.Label label14;
+		private System.Windows.Forms.ComboBox projectComboBox;
 	}
 }

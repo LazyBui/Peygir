@@ -114,9 +114,8 @@ namespace Peygir.Presentation.Forms {
 		}
 
 		private void OptionsForm_FormClosing(object sender, FormClosingEventArgs e) {
-			if (DialogResult == DialogResult.OK) {
-				SaveSettings();
-			}
+			if (DialogResult != DialogResult.OK) return;
+			SaveSettings();
 		}
 
 		private void formatDateTimeCheckBox_CheckedChanged(object sender, EventArgs e) {

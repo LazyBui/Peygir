@@ -121,6 +121,7 @@
 			this.Controls.Add(this.ticketHistoryListView);
 			this.Controls.Add(this.okButton);
 			this.Controls.Add(this.groupBox);
+			this.DoubleBuffered = true;
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "TicketHistoryForm";

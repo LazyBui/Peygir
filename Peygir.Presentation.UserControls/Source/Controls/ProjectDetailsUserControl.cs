@@ -37,22 +37,13 @@ namespace Peygir.Presentation.UserControls {
 
 		public void ShowProject(Project project) {
 			if (project == null) {
-				throw new ArgumentNullException(nameof(project));
+				// Blank
 			}
-
-			nameTextBox.Text = project.Name;
-			displayOrderNumericUpDown.Value = Math.Min(project.DisplayOrder, displayOrderNumericUpDown.Maximum);
-			descriptionTextBox.Text = project.Description;
-		}
-
-		public void RetrieveProject(Project project) {
-			if (project == null) {
-				throw new ArgumentNullException(nameof(project));
+			else {
+				nameTextBox.Text = project.Name;
+				displayOrderNumericUpDown.Value = Math.Min(project.DisplayOrder, displayOrderNumericUpDown.Maximum);
+				descriptionTextBox.Text = project.Description;
 			}
-
-			project.Name = nameTextBox.Text;
-			project.DisplayOrder = (int)displayOrderNumericUpDown.Value;
-			project.Description = descriptionTextBox.Text;
 		}
 
 		private void UpdateReadOnlyState() {

@@ -214,13 +214,12 @@ namespace Peygir.Logic {
 			};
 		}
 
-		public bool UpdateAndGenerateHistoryRecord(IDatabaseProvider db, ITicketChangeFormatter formatter, Action<Ticket> assignNewProperties) {
+		public bool UpdateAndGenerateHistoryRecord(IDatabaseProvider db, ITicketChangeFormatter formatter, Func<Ticket, Ticket> assignNewProperties) {
 			if (db == null) throw new ArgumentNullException(nameof(db));
 			if (formatter == null) throw new ArgumentNullException(nameof(formatter));
 			if (assignNewProperties == null) throw new ArgumentNullException(nameof(assignNewProperties));
 
-			var @new = Copy();
-			assignNewProperties(@new);
+			var @new = assignNewProperties(Copy());
 
 			if (@new.ID != ID) throw new InvalidOperationException("Cannot modify ticket ID");
 			if (@new.TicketNumber != TicketNumber) throw new InvalidOperationException("Cannot modify ticket number");

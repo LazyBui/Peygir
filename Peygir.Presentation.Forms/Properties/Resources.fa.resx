@@ -135,11 +135,14 @@
   <data name="String_AreYouSureYouWantToDeleteSelectedTickets" xml:space="preserve">
     <value>آیا شما مطمین هستید که می‌خواهید آگهی‌های انتخاب‌شده را حذف نمایید؟</value>
   </data>
+  <data name="String_AskUserAboutMilestone" xml:space="preserve">
+    <value>The selected project has no milestones. Tickets cannot be created for a project without a milestone. Would you like to create a milestone for this project?</value>
+  </data>
   <data name="String_AssignedToChangesFromXToY" xml:space="preserve">
     <value>* «تخصیص‌یافته» از «{0}» به «{1}» تغییریافت.</value>
   </data>
   <data name="String_Blocked" xml:space="preserve">
-    <value />
+    <value>Blocked</value>
   </data>
   <data name="String_Blocker" xml:space="preserve">
     <value>مسدودگر</value>
@@ -190,7 +193,7 @@
     <value>بالاترین</value>
   </data>
   <data name="String_InProgress" xml:space="preserve">
-    <value />
+    <value>In Progress</value>
   </data>
   <data name="String_Low" xml:space="preserve">
     <value>پایین</value>

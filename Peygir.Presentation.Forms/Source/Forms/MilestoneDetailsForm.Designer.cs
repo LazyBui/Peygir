@@ -132,10 +132,12 @@
 			this.Controls.Add(this.cancelButton);
 			this.Controls.Add(this.okButton);
 			this.Controls.Add(this.groupBox1);
+			this.DoubleBuffered = true;
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "MilestoneDetailsForm";
 			this.ShowInTaskbar = false;
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MilestoneDetailsForm_FormClosing);
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.displayOrderNumericUpDown)).EndInit();

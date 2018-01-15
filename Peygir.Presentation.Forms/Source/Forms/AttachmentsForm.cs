@@ -108,31 +108,31 @@ namespace Peygir.Presentation.Forms {
 
 		private void AddAttachment() {
 			try {
-				if (openFileDialog.ShowDialog() == DialogResult.OK) {
-					string fileName = openFileDialog.FileName;
-					var fi = new FileInfo(fileName);
+				if (openFileDialog.ShowDialog() != DialogResult.OK) return;
 
-					Attachment attachment = mTicket.NewAttachment();
+				string fileName = openFileDialog.FileName;
+				var fi = new FileInfo(fileName);
 
-					attachment.Name = fi.Name.Substring(0, Math.Min(255, fi.Name.Length)); // Max 255 characters.
-					attachment.SetContents(File.ReadAllBytes(fileName));
+				Attachment attachment = mTicket.NewAttachment();
 
-					attachment.Add(mContext);
+				attachment.Name = fi.Name.Substring(0, Math.Min(255, fi.Name.Length)); // Max 255 characters.
+				attachment.SetContents(File.ReadAllBytes(fileName));
 
-					// Flush.
-					mContext.Flush();
+				attachment.Add(mContext);
 
-					ShowAttachments();
+				// Flush.
+				mContext.Flush();
 
-					// Select new attachment.
-					attachmentsListView.SelectedItems.Clear();
-					foreach (ListViewItem item in attachmentsListView.Items) {
-						var a = (Attachment)item.Tag;
-						if (a.ID == attachment.ID) {
-							item.Selected = true;
-							item.EnsureVisible();
-							break;
-						}
+				ShowAttachments();
+
+				// Select new attachment.
+				attachmentsListView.SelectedItems.Clear();
+				foreach (ListViewItem item in attachmentsListView.Items) {
+					var a = (Attachment)item.Tag;
+					if (a.ID == attachment.ID) {
+						item.Selected = true;
+						item.EnsureVisible();
+						break;
 					}
 				}
 			}
@@ -155,12 +155,12 @@ namespace Peygir.Presentation.Forms {
 				var attachmentWithoutContents = (Attachment)attachmentsListView.SelectedItems[0].Tag;
 
 				saveFileDialog.FileName = attachmentWithoutContents.Name;
-				if (saveFileDialog.ShowDialog() == DialogResult.OK) {
-					string fileName = saveFileDialog.FileName;
-					Attachment attachment = Attachment.GetAttachment(mContext, attachmentWithoutContents.ID);
+				if (saveFileDialog.ShowDialog() != DialogResult.OK) return;
 
-					File.WriteAllBytes(fileName, attachment.GetContents());
-				}
+				string fileName = saveFileDialog.FileName;
+				Attachment attachment = Attachment.GetAttachment(mContext, attachmentWithoutContents.ID);
+
+				File.WriteAllBytes(fileName, attachment.GetContents());
 			}
 			catch (Exception exception) {
 				MessageBox.Show(

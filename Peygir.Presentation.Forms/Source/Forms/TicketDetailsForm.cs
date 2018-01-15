@@ -1,15 +1,20 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 using Peygir.Logic;
+using Peygir.Presentation.Forms.Properties;
 using Peygir.Presentation.UserControls;
 
 namespace Peygir.Presentation.Forms {
 	public partial class TicketDetailsForm : Form {
 		private bool readOnly;
-		private Font mSansSerif;
-		private Font mMonospace;
+		private FontContext mFontContext;
 		private FormContext mContext;
+		private DateTimeFormatter mFormatter;
+		private Project mProject;
+		private Ticket mTicket;
 
 		public bool ReadOnly {
 			get { return readOnly; }
@@ -19,105 +24,132 @@ namespace Peygir.Presentation.Forms {
 			}
 		}
 
-		public ComboBox MilestoneComboBox {
-			get {
-				return milestoneComboBox;
-			}
-		}
-
-		public Milestone Milestone {
-			get {
-				return (Milestone)milestoneComboBox.SelectedItem;
-			}
-			set {
-				if (value == null) {
-					milestoneComboBox.SelectedIndex = -1;
-				}
-				else {
-					milestoneComboBox.SelectedIndex = -1;
-					for (int i = 0; i < milestoneComboBox.Items.Count; i++) {
-						Milestone milestone = (Milestone)milestoneComboBox.Items[i];
-						if (milestone.ID == value.ID) {
-							milestoneComboBox.SelectedIndex = i;
-							break;
-						}
-					}
-				}
-			}
-		}
-
-		public string Summary {
-			get { return summaryTextBox.Text; }
-			set { summaryTextBox.Text = value; }
-		}
-
-		public string ReportedBy {
-			get { return reportedByComboBox.Text; }
-			set { reportedByComboBox.Text = value; }
-		}
-
-		public TicketType Type {
-			get { return (TicketType)typeComboBox.SelectedIndex; }
-			set { typeComboBox.SelectedIndex = (int)value; }
-		}
-
-		public TicketSeverity Severity {
-			get { return (TicketSeverity)severityComboBox.SelectedIndex; }
-			set { severityComboBox.SelectedIndex = (int)value; }
-		}
-
-		public TicketState State {
-			get { return (TicketState)stateComboBox.SelectedIndex; }
-			set { stateComboBox.SelectedIndex = (int)value; }
-		}
-
-		public string AssignedTo {
-			get { return assignedToComboBox.Text; }
-			set { assignedToComboBox.Text = value; }
-		}
-
-		public TicketPriority Priority {
-			get { return (TicketPriority)priorityComboBox.SelectedIndex; }
-			set { priorityComboBox.SelectedIndex = (int)value; }
-		}
-
-		public string Description {
-			get { return descriptionTextBox.Text; }
-			set { descriptionTextBox.Text = value; }
-		}
-
-		public Project Project { get; private set; }
-		public Ticket Ticket { get; private set; }
-
-		public TicketDetailsForm(FormContext context, Project project, Ticket ticket) {
+		public TicketDetailsForm(
+			FormContext context,
+			FontContext font,
+			DateTimeFormatter formatter,
+			Project project,
+			Ticket ticket)
+		{
 			if (context == null) throw new ArgumentNullException(nameof(context));
-			if (project == null) throw new ArgumentNullException(nameof(project));
+			if (font == null) throw new ArgumentNullException(nameof(font));
+			if (formatter == null) throw new ArgumentNullException(nameof(formatter));
 
 			mContext = context;
-			Project = project;
-			Ticket = ticket;
+			mFontContext = font;
+			mFormatter = formatter;
+			mProject = project;
+			mTicket = ticket;
+
 			InitializeComponent();
 
-			if (object.ReferenceEquals(ticket, null)) {
-				Text = project.Name + " - New Ticket";
-			}
-			else {
-				Text = project.Name + " - " + ticket.Summary;
-			}
+			SetTitle();
+			InitializeFontContext();
+			InitializeComboBoxes(
+				project != null ?
+					new[] { project } :
+					Project.GetProjects(context),
+				project != null ?
+					mProject.GetMilestones(context) :
+					new Milestone[0]);
+			InitializeTicketControls();
 
 			ReadOnly = false;
 		}
 
+		private void SetTitle() {
+			if (object.ReferenceEquals(mProject, null)) {
+				Text = "New Ticket";
+			}
+			else if (object.ReferenceEquals(mTicket, null)) {
+				Text = mProject.Name + " - New Ticket";
+			}
+			else {
+				Text = mProject.Name + " - " + mTicket.Summary;
+			}
+		}
 
-		public void ShowMilestones(Milestone[] milestones) {
-			if (milestones == null) {
-				throw new ArgumentNullException(nameof(milestones));
+		private void InitializeFontContext() {
+			if (mFontContext.UseSansSerif) {
+				descriptionTextBox.Font = mFontContext.SansSerif;
+			}
+			else {
+				monospaceButton.Checked = true;
+				descriptionTextBox.Font = mFontContext.Monospace;
 			}
 
+			if (!mFontContext.WordWrap) {
+				wordWrapCheckBox.Checked = false;
+				descriptionTextBox.WordWrap = false;
+			}
+		}
+
+		private void InitializeTicketControls() {
+			if (object.ReferenceEquals(mTicket, null)) {
+				// Set defaults
+				typeComboBox.SelectedIndex = (int)TicketType.Task;
+				severityComboBox.SelectedIndex = (int)TicketSeverity.Normal;
+				stateComboBox.SelectedIndex = (int)TicketState.Accepted;
+				priorityComboBox.SelectedIndex = (int)TicketPriority.Normal;
+			}
+			else {
+				ticketNumberTextBox.Text = string.Format("{0}", mTicket.TicketNumber);
+				summaryTextBox.Text = mTicket.Summary;
+				reportedByComboBox.Text = mTicket.ReportedBy;
+				assignedToComboBox.Text = mTicket.AssignedTo;
+				descriptionTextBox.Text = mTicket.Description;
+				typeComboBox.SelectedIndex = (int)mTicket.Type;
+				severityComboBox.SelectedIndex = (int)mTicket.Severity;
+				stateComboBox.SelectedIndex = (int)mTicket.State;
+				priorityComboBox.SelectedIndex = (int)mTicket.Priority;
+				createdTextBox.Text = mFormatter.Format(mTicket.CreateTimestamp);
+				modifiedTextBox.Text = mFormatter.Format(mTicket.ModifyTimestamp);
+			}
+		}
+
+		private void InitializeComboBoxes(Project[] projects, Milestone[] milestones) {
+			// Milestones intentionally first because updating the project combo (e.g. if there's only one project) could be overwritten otherwise
 			milestoneComboBox.BeginUpdate();
 			milestoneComboBox.Items.Clear();
 			milestoneComboBox.Items.AddRange(milestones);
 			milestoneComboBox.EndUpdate();
+			if (mTicket != null) {
+				milestoneComboBox.SelectedIndex = -1;
+				for (int i = 0; i < milestoneComboBox.Items.Count; i++) {
+					var milestone = (Milestone)milestoneComboBox.Items[i];
+					if (milestone.ID == mTicket.MilestoneID) {
+						milestoneComboBox.SelectedIndex = i;
+						break;
+					}
+				}
+			}
+			else if (milestones.Length == 1) {
+				milestoneComboBox.SelectedItem = milestones[0];
+			}
+			else if (milestones.Length == 0) {
+				milestoneComboBox.Enabled = false;
+			}
+
+			projectComboBox.BeginUpdate();
+			projectComboBox.Items.Clear();
+			projectComboBox.Items.AddRange(projects);
+			projectComboBox.EndUpdate();
+			if (mProject != null) {
+				projectComboBox.SelectedIndex = -1;
+				int projectId = mProject.ID;
+				for (int i = 0; i < projectComboBox.Items.Count; i++) {
+					var project = (Project)projectComboBox.Items[i];
+					if (project.ID == projectId) {
+						projectComboBox.SelectedIndex = i;
+						break;
+					}
+				}
+				projectComboBox.Enabled = false;
+			}
+			else if (projects.Length == 1) {
+				projectComboBox.SelectedItem = projects[0];
+				projectComboBox.Enabled = false;
+			}
 
 			reportedByComboBox.Items.Clear();
 			reportedByComboBox.Items.AddRange(Ticket.GetReporters(mContext));
@@ -126,63 +158,12 @@ namespace Peygir.Presentation.Forms {
 			assignedToComboBox.Items.AddRange(Ticket.GetAssignees(mContext));
 		}
 
-		public void ShowTicket(Ticket ticket, DateTimeFormatter formatter, FontContext context) {
-			if (ticket == null) throw new ArgumentNullException(nameof(ticket));
-			if (formatter == null) throw new ArgumentNullException(nameof(formatter));
-			if (context == null) throw new ArgumentNullException(nameof(context));
-
-			milestoneComboBox.SelectedIndex = -1;
-			for (int i = 0; i < milestoneComboBox.Items.Count; i++) {
-				Milestone milestone = (Milestone)milestoneComboBox.Items[i];
-				if (milestone.ID == ticket.MilestoneID) {
-					milestoneComboBox.SelectedIndex = i;
-					break;
-				}
-			}
-
-			ticketNumberTextBox.Text = string.Format("{0}", ticket.TicketNumber);
-			summaryTextBox.Text = ticket.Summary;
-			reportedByComboBox.Text = ticket.ReportedBy;
-			typeComboBox.SelectedIndex = (int)ticket.Type;
-			severityComboBox.SelectedIndex = (int)ticket.Severity;
-			stateComboBox.SelectedIndex = (int)ticket.State;
-			assignedToComboBox.Text = ticket.AssignedTo;
-			priorityComboBox.SelectedIndex = (int)ticket.Priority;
-			descriptionTextBox.Text = ticket.Description;
-			createdTextBox.Text = formatter.Format(ticket.CreateTimestamp);
-			modifiedTextBox.Text = formatter.Format(ticket.ModifyTimestamp);
-
-			InitializeFontContext(context);
-		}
-
-		public void InitializeNewTicket(FontContext context) {
-			if (context == null) throw new ArgumentNullException(nameof(context));
-			InitializeFontContext(context);
-		}
-
-		private void InitializeFontContext(FontContext context) {
-			mSansSerif = context.SansSerif;
-			mMonospace = context.Monospace;
-			if (context.UseSansSerif) {
-				descriptionTextBox.Font = mSansSerif;
-			}
-			else {
-				monospaceButton.Checked = true;
-				descriptionTextBox.Font = mMonospace;
-			}
-
-			if (!context.WordWrap) {
-				wordWrapCheckBox.Checked = false;
-				descriptionTextBox.WordWrap = false;
-			}
-		}
-
-		public void RetrieveTicket(Ticket ticket) {
+		public Ticket RetrieveTicket(Ticket @base = null) {
+			var ticket = @base;
+			var milestone = (Milestone)milestoneComboBox.SelectedItem;
 			if (ticket == null) {
-				throw new ArgumentNullException(nameof(ticket));
+				ticket = milestone.NewTicket(mContext);
 			}
-
-			Milestone milestone = (Milestone)milestoneComboBox.SelectedItem;
 
 			ticket.MilestoneID = milestone.ID;
 			ticket.Summary = summaryTextBox.Text;
@@ -193,10 +174,12 @@ namespace Peygir.Presentation.Forms {
 			ticket.AssignedTo = assignedToComboBox.Text.Substring(0, Math.Min(255, assignedToComboBox.Text.Length)); // Max 255 characters.
 			ticket.Priority = (TicketPriority)priorityComboBox.SelectedIndex;
 			ticket.Description = descriptionTextBox.Text;
+			return ticket;
 		}
 
 		private void UpdateReadOnlyState() {
-			milestoneComboBox.Enabled = !readOnly;
+			projectComboBox.Enabled = !readOnly && projectComboBox.Items.Count > 1;
+			milestoneComboBox.Enabled = !readOnly && milestoneComboBox.Items.Count > 0;
 			summaryTextBox.ReadOnly = readOnly;
 			reportedByComboBox.Enabled = !readOnly;
 			typeComboBox.Enabled = !readOnly;
@@ -205,6 +188,49 @@ namespace Peygir.Presentation.Forms {
 			assignedToComboBox.Enabled = !readOnly;
 			priorityComboBox.Enabled = !readOnly;
 			descriptionTextBox.ReadOnly = readOnly;
+		}
+
+		private void projectComboBox_SelectedIndexChanged(object sender, EventArgs e) {
+			int selectedIndex = projectComboBox.SelectedIndex;
+
+			milestoneComboBox.BeginUpdate();
+			milestoneComboBox.SelectedItem = null;
+			milestoneComboBox.Items.Clear();
+			milestoneComboBox.Enabled = false;
+			if (selectedIndex != -1) {	
+				var project = (Project)projectComboBox.SelectedItem;
+				var milestones = project.GetMilestones(mContext);
+				if (!milestones.Any()) {
+					DialogResult result = MessageBox.Show(
+						Resources.String_AskUserAboutMilestone,
+						Resources.String_Error,
+						MessageBoxButtons.YesNoCancel,
+						MessageBoxIcon.Error,
+						MessageBoxDefaultButton.Button1,
+						FormUtil.GetMessageBoxOptions(this));
+					
+					if (result == DialogResult.Yes) {
+						using (var form = new MilestoneDetailsForm(mContext, project, null)) {
+							if (form.ShowDialog() != DialogResult.OK) return;
+							Milestone milestone = form.RetrieveMilestone();
+
+							// Add.
+							milestone.Add(mContext);
+
+							// Flush.
+							mContext.Flush();
+
+							milestones = new[] { milestone };
+						}
+					}
+				}
+				milestoneComboBox.Items.AddRange(milestones);
+				milestoneComboBox.Enabled = milestones.Any();
+				if (milestones.Length == 1) {
+					milestoneComboBox.SelectedItem = milestones[0];
+				}
+			}
+			milestoneComboBox.EndUpdate();
 		}
 
 		private void descriptionTextBox_KeyDown(object sender, KeyEventArgs e) {
@@ -229,16 +255,40 @@ namespace Peygir.Presentation.Forms {
 
 		private void sansSerifButton_CheckedChanged(object sender, EventArgs e) {
 			if (!sansSerifButton.Checked) return;
-			descriptionTextBox.Font = mSansSerif;
+			descriptionTextBox.Font = mFontContext.SansSerif;
 		}
 
 		private void monospaceButton_CheckedChanged(object sender, EventArgs e) {
 			if (!monospaceButton.Checked) return;
-			descriptionTextBox.Font = mMonospace;
+			descriptionTextBox.Font = mFontContext.Monospace;
 		}
 
 		private void wordWrapCheckBox_CheckedChanged(object sender, EventArgs e) {
 			descriptionTextBox.WordWrap = wordWrapCheckBox.Checked;
+		}
+
+		private void TicketDetailsForm_FormClosing(object sender, FormClosingEventArgs e) {
+			if (DialogResult != DialogResult.OK) return;
+	
+			var problems = new List<string>();
+			if (milestoneComboBox.SelectedItem == null) problems.Add(Resources.String_PleaseSelectAMilestone);
+			if (string.IsNullOrWhiteSpace(summaryTextBox.Text)) problems.Add(Resources.String_TheTicketSummaryCannotBeBlank);
+			if (typeComboBox.SelectedIndex == -1) problems.Add(Resources.String_PleaseSpecifyTicketType);
+			if (severityComboBox.SelectedIndex == -1) problems.Add(Resources.String_PleaseSpecifyTicketSeverity);
+			if (stateComboBox.SelectedIndex == -1) problems.Add(Resources.String_PleaseSpecifyTicketState);
+			if (priorityComboBox.SelectedIndex == -1) problems.Add(Resources.String_PleaseSpecifyTicketPriority);
+			if (string.IsNullOrWhiteSpace(descriptionTextBox.Text)) problems.Add(Resources.String_TheTicketDescriptionCannotBeBlank);
+			if (!problems.Any()) return;
+
+			MessageBox.Show(
+				string.Join(Environment.NewLine, problems),
+				Resources.String_Error,
+				MessageBoxButtons.OK,
+				MessageBoxIcon.Error,
+				MessageBoxDefaultButton.Button1,
+				FormUtil.GetMessageBoxOptions(this));
+
+			e.Cancel = true;
 		}
 	}
 }

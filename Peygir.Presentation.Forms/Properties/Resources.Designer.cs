@@ -268,7 +268,7 @@ namespace Peygir.Presentation.Forms.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to delete selected milestone(s) and its (their) tickets?.
+        ///   Looks up a localized string similar to Are you sure you want to delete selected milestone(s) and associated tickets?.
         /// </summary>
         internal static string String_AreYouSureYouWantToDeleteSelectedMilestonesAndTheirTickets {
             get {
@@ -277,7 +277,7 @@ namespace Peygir.Presentation.Forms.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to delete selected project(s) and its (their) milestones and tickets?.
+        ///   Looks up a localized string similar to Are you sure you want to delete selected project(s) and associated milestones and tickets?.
         /// </summary>
         internal static string String_AreYouSureYouWantToDeleteSelectedProjects {
             get {
@@ -291,6 +291,15 @@ namespace Peygir.Presentation.Forms.Properties {
         internal static string String_AreYouSureYouWantToDeleteSelectedTickets {
             get {
                 return ResourceManager.GetString("String_AreYouSureYouWantToDeleteSelectedTickets", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The selected project has no milestones. Tickets cannot be created for a project without a milestone. Would you like to create a milestone for this project?.
+        /// </summary>
+        internal static string String_AskUserAboutMilestone {
+            get {
+                return ResourceManager.GetString("String_AskUserAboutMilestone", resourceCulture);
             }
         }
         

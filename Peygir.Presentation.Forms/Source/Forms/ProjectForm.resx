@@ -1473,46 +1473,46 @@
   <data name="&gt;&gt;ticketModifiedButton.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="modifiedTextBox.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="ticketModifiedTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>68, 72</value>
   </data>
-  <data name="modifiedTextBox.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="ticketModifiedTextBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>144, 21</value>
   </data>
-  <data name="modifiedTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
+  <data name="ticketModifiedTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>32</value>
   </data>
-  <data name="&gt;&gt;modifiedTextBox.Name" xml:space="preserve">
-    <value>modifiedTextBox</value>
+  <data name="&gt;&gt;ticketModifiedTextBox.Name" xml:space="preserve">
+    <value>ticketModifiedTextBox</value>
   </data>
-  <data name="&gt;&gt;modifiedTextBox.Type" xml:space="preserve">
+  <data name="&gt;&gt;ticketModifiedTextBox.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;modifiedTextBox.Parent" xml:space="preserve">
+  <data name="&gt;&gt;ticketModifiedTextBox.Parent" xml:space="preserve">
     <value>groupBox4</value>
   </data>
-  <data name="&gt;&gt;modifiedTextBox.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;ticketModifiedTextBox.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="createdTextBox.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="ticketCreatedTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>68, 45</value>
   </data>
-  <data name="createdTextBox.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="ticketCreatedTextBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>144, 21</value>
   </data>
-  <data name="createdTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
+  <data name="ticketCreatedTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>33</value>
   </data>
-  <data name="&gt;&gt;createdTextBox.Name" xml:space="preserve">
-    <value>createdTextBox</value>
+  <data name="&gt;&gt;ticketCreatedTextBox.Name" xml:space="preserve">
+    <value>ticketCreatedTextBox</value>
   </data>
-  <data name="&gt;&gt;createdTextBox.Type" xml:space="preserve">
+  <data name="&gt;&gt;ticketCreatedTextBox.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;createdTextBox.Parent" xml:space="preserve">
+  <data name="&gt;&gt;ticketCreatedTextBox.Parent" xml:space="preserve">
     <value>groupBox4</value>
   </data>
-  <data name="&gt;&gt;createdTextBox.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;ticketCreatedTextBox.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
   <data name="label9.AutoSize" type="System.Boolean, mscorlib">
@@ -1881,25 +1881,25 @@
   <data name="&gt;&gt;ticketPriorityComboBox.ZOrder" xml:space="preserve">
     <value>19</value>
   </data>
-  <data name="ticketTextBox.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="ticketSummaryTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>68, 18</value>
   </data>
-  <data name="ticketTextBox.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="ticketSummaryTextBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>171, 21</value>
   </data>
-  <data name="ticketTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="ticketSummaryTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>34</value>
   </data>
-  <data name="&gt;&gt;ticketTextBox.Name" xml:space="preserve">
-    <value>ticketTextBox</value>
+  <data name="&gt;&gt;ticketSummaryTextBox.Name" xml:space="preserve">
+    <value>ticketSummaryTextBox</value>
   </data>
-  <data name="&gt;&gt;ticketTextBox.Type" xml:space="preserve">
+  <data name="&gt;&gt;ticketSummaryTextBox.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ticketTextBox.Parent" xml:space="preserve">
+  <data name="&gt;&gt;ticketSummaryTextBox.Parent" xml:space="preserve">
     <value>groupBox4</value>
   </data>
-  <data name="&gt;&gt;ticketTextBox.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;ticketSummaryTextBox.ZOrder" xml:space="preserve">
     <value>20</value>
   </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">

@@ -139,7 +139,7 @@
     <value>projectDetailsUserControl</value>
   </data>
   <data name="&gt;&gt;projectDetailsUserControl.Type" xml:space="preserve">
-    <value>Peygir.Presentation.UserControls.ProjectDetailsUserControl, Peygir.Presentation.UserControls, Version=1.0.2.0, Culture=neutral, PublicKeyToken=7bc4e639a7e2568f</value>
+    <value>Peygir.Presentation.UserControls.ProjectDetailsUserControl, Peygir.Presentation.UserControls, Version=1.0.3.0, Culture=neutral, PublicKeyToken=7bc4e639a7e2568f</value>
   </data>
   <data name="&gt;&gt;projectDetailsUserControl.Parent" xml:space="preserve">
     <value>groupBox1</value>

@@ -9,7 +9,9 @@ namespace Peygir.Presentation.Forms {
 		public AboutForm() {
 			InitializeComponent();
 
-			versionLabel.Text = string.Format(Resources.String_Version, PeygirApplication.AssemblyVersion);
+			versionLabel.Text = string.Format(
+				Resources.String_Version,
+				PeygirApplication.AssemblyVersion);
 		}
 
 		private void OpenLink() {

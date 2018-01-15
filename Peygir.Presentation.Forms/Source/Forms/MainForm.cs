@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 using Peygir.Logic;
 using Peygir.Presentation.Forms.Properties;
@@ -11,11 +12,31 @@ using Peygir.Presentation.UserControls;
 namespace Peygir.Presentation.Forms {
 	public partial class MainForm : Form {
 		private Dictionary<int, ProjectForm> mForms = new Dictionary<int, ProjectForm>();
-		private bool mResettingFilters = false;
-		private DateRange mCreateFilter = null;
-		private DateRange mModifyFilter = null;
+		private bool mResettingProjectFilters = false;
+		private DateRange mProjectCreateFilter = null;
+		private DateRange mProjectModifyFilter = null;
+		private bool mResettingTicketFilters = false;
+		private DateRange mTicketCreateFilter = null;
+		private DateRange mTicketModifyFilter = null;
+		private TicketCount mProjectTicketCount = TicketCount.Empty;
+		private TicketCount mTicketTicketCount = TicketCount.Empty;
 		private FormContext mContext = FormContext.Default;
 
+		private class TicketCount {
+			public static readonly TicketCount Empty = new TicketCount(0, 0);
+
+			public int Open { get; private set; }
+			public int Total { get; private set; }
+
+			public TicketCount(int open, int total) {
+				if (open < 0) throw new ArgumentException("Must be 0 or greater", nameof(open));
+				if (total < 0) throw new ArgumentException("Must be 0 or greater", nameof(total));
+				if (open > total) throw new ArgumentException($"Must be less than {nameof(total)}", nameof(open));
+				Open = open;
+				Total = total;
+			}
+		}
+		
 		public MainForm() {
 			InitializeComponent();
 
@@ -33,13 +54,33 @@ namespace Peygir.Presentation.Forms {
 		}
 
 		private void projectsListView_KeyDown(object sender, KeyEventArgs e) {
-			if (e.KeyCode != Keys.Enter) return;
+			if (e.KeyCode != Keys.Enter)
+				return;
 			EditProject(ticketTab: true);
+		}
+
+		private void ticketsListView_SelectedIndexChanged(object sender, EventArgs e) {
+			UpdateControlsEnabledProperty();
+		}
+
+		private void ticketsListView_DoubleClick(object sender, EventArgs e) {
+			EditTicket();
+		}
+
+		private void ticketsListView_KeyDown(object sender, KeyEventArgs e) {
+			if (e.KeyCode != Keys.Enter)
+				return;
+			EditTicket();
 		}
 
 		private void MainForm_ResizeEnd(object sender, EventArgs e) {
 			// Resize columns
 			ShowProjects();
+			ShowTickets();
+		}
+
+		private void mainTabControl_SelectedIndexChanged(object sender, EventArgs e) {
+			UpdateStatusbar();
 		}
 
 		#region Form context menu
@@ -138,78 +179,314 @@ namespace Peygir.Presentation.Forms {
 		#endregion
 		#endregion
 
-		#region Filter UI
-		private void projectTextBox_KeyDown(object sender, KeyEventArgs e) {
+		#region Ticket modification UI
+		#region Buttons
+		private void addTicketButton_Click(object sender, EventArgs e) {
+			AddTicket();
+		}
+
+		private void showTicketButton_Click(object sender, EventArgs e) {
+			ShowTicket();
+		}
+
+		private void editTicketButton_Click(object sender, EventArgs e) {
+			EditTicket();
+		}
+
+		private void showTicketHistoryButton_Click(object sender, EventArgs e) {
+			ShowTicketHistory();
+		}
+
+		private void deleteTicketButton_Click(object sender, EventArgs e) {
+			DeleteTicket();
+		}
+
+		private void showTicketAttachmentsButton_Click(object sender, EventArgs e) {
+			ShowAttachments();
+		}
+		#endregion
+
+		#region Context menu
+		private void ticketContextMenu_Opening(object sender, System.ComponentModel.CancelEventArgs e) {
+			int selectedTicketsCount = ticketsListView.SelectedItems.Count;
+			showTicketToolStripMenuItem.Enabled = selectedTicketsCount == 1;
+			editTicketToolStripMenuItem.Enabled = selectedTicketsCount == 1;
+			showTicketHistoryToolStripMenuItem.Enabled = selectedTicketsCount == 1;
+			deleteTicketToolStripMenuItem.Enabled = selectedTicketsCount > 0;
+			showTicketAttachmentsToolStripMenuItem.Enabled = selectedTicketsCount == 1;
+
+			stateNewToolStripMenuItem.Enabled = selectedTicketsCount > 0;
+			stateAcceptedToolStripMenuItem.Enabled = selectedTicketsCount > 0;
+			stateInProgressToolStripMenuItem.Enabled = selectedTicketsCount > 0;
+			stateBlockedToolStripMenuItem.Enabled = selectedTicketsCount > 0;
+			stateCompletedToolStripMenuItem.Enabled = selectedTicketsCount > 0;
+			stateClosedToolStripMenuItem.Enabled = selectedTicketsCount > 0;
+
+			priorityToolStripMenuItem.Enabled = selectedTicketsCount > 0;
+			severityToolStripMenuItem.Enabled = selectedTicketsCount > 0;
+			typeToolStripMenuItem.Enabled = selectedTicketsCount > 0;
+		}
+
+		private void addTicketToolStripMenuItem_Click(object sender, EventArgs e) {
+			AddTicket();
+		}
+
+		private void showTicketToolStripMenuItem_Click(object sender, EventArgs e) {
+			ShowTicket();
+		}
+
+		private void editTicketToolStripMenuItem_Click(object sender, EventArgs e) {
+			EditTicket();
+		}
+
+		private void showTicketHistoryToolStripMenuItem_Click(object sender, EventArgs e) {
+			ShowTicketHistory();
+		}
+
+		private void deleteTicketToolStripMenuItem_Click(object sender, EventArgs e) {
+			DeleteTicket();
+		}
+
+		private void showTicketAttachmentsToolStripMenuItem_Click(object sender, EventArgs e) {
+			ShowAttachments();
+		}
+
+		#region Ticket state
+		private void stateNewToolStripMenuItem_Click(object sender, EventArgs e) {
+			SetTicketState(TicketState.New);
+		}
+
+		private void stateAcceptedToolStripMenuItem_Click(object sender, EventArgs e) {
+			SetTicketState(TicketState.Accepted);
+		}
+
+		private void stateInProgressToolStripMenuItem_Click(object sender, EventArgs e) {
+			SetTicketState(TicketState.InProgress);
+		}
+
+		private void stateBlockedToolStripMenuItem_Click(object sender, EventArgs e) {
+			SetTicketState(TicketState.Blocked);
+		}
+
+		private void stateCompletedToolStripMenuItem_Click(object sender, EventArgs e) {
+			SetTicketState(TicketState.Completed);
+		}
+
+		private void stateClosedToolStripMenuItem_Click(object sender, EventArgs e) {
+			SetTicketState(TicketState.Closed);
+		}
+		#endregion
+
+		#region Ticket priority
+		private void lowestPriorityToolStripMenuItem_Click(object sender, EventArgs e) {
+			SetTicketPriority(TicketPriority.Lowest);
+		}
+
+		private void lowPriorityToolStripMenuItem_Click(object sender, EventArgs e) {
+			SetTicketPriority(TicketPriority.Low);
+		}
+
+		private void normalPriorityToolStripMenuItem_Click(object sender, EventArgs e) {
+			SetTicketPriority(TicketPriority.Normal);
+		}
+
+		private void highPriorityToolStripMenuItem_Click(object sender, EventArgs e) {
+			SetTicketPriority(TicketPriority.High);
+		}
+
+		private void highestPriorityToolStripMenuItem_Click(object sender, EventArgs e) {
+			SetTicketPriority(TicketPriority.Highest);
+		}
+		#endregion
+
+		#region Ticket severity
+		private void trivialSeverityToolStripMenuItem_Click(object sender, EventArgs e) {
+			SetTicketSeverity(TicketSeverity.Trivial);
+		}
+
+		private void minorSeverityToolStripMenuItem_Click(object sender, EventArgs e) {
+			SetTicketSeverity(TicketSeverity.Minor);
+		}
+
+		private void normalSeverityToolStripMenuItem_Click(object sender, EventArgs e) {
+			SetTicketSeverity(TicketSeverity.Normal);
+		}
+
+		private void majorSeverityToolStripMenuItem_Click(object sender, EventArgs e) {
+			SetTicketSeverity(TicketSeverity.Major);
+		}
+
+		private void criticalSeverityToolStripMenuItem_Click(object sender, EventArgs e) {
+			SetTicketSeverity(TicketSeverity.Critical);
+		}
+
+		private void blockerSeverityToolStripMenuItem_Click(object sender, EventArgs e) {
+			SetTicketSeverity(TicketSeverity.Blocker);
+		}
+		#endregion
+
+		#region Ticket type
+		private void defectToolStripMenuItem_Click(object sender, EventArgs e) {
+			SetTicketType(TicketType.Defect);
+		}
+
+		private void featureRequestToolStripMenuItem_Click(object sender, EventArgs e) {
+			SetTicketType(TicketType.FeatureRequest);
+		}
+
+		private void taskToolStripMenuItem_Click(object sender, EventArgs e) {
+			SetTicketType(TicketType.Task);
+		}
+		#endregion
+		#endregion
+		#endregion
+
+		#region Project filter UI
+		private void projectNameTextBox_KeyDown(object sender, KeyEventArgs e) {
 			TextBoxUtil.TextBoxKeyDown(sender, e);
 		}
 
-		private void projectTextBox_TextChanged(object sender, EventArgs e) {
+		private void projectNameTextBox_TextChanged(object sender, EventArgs e) {
 			ShowProjects();
 		}
 
-		private void ticketStateComboBox_SelectedIndexChanged(object sender, EventArgs e) {
+		private void projectTicketStateComboBox_SelectedIndexChanged(object sender, EventArgs e) {
 			ShowProjects();
 		}
 
-		private void ticketPriorityComboBox_SelectedIndexChanged(object sender, EventArgs e) {
+		private void projectTicketPriorityComboBox_SelectedIndexChanged(object sender, EventArgs e) {
 			ShowProjects();
 		}
 
-		private void ticketSeverityComboBox_SelectedIndexChanged(object sender, EventArgs e) {
+		private void projectTicketSeverityComboBox_SelectedIndexChanged(object sender, EventArgs e) {
 			ShowProjects();
 		}
 
-		private void ticketTypeComboBox_SelectedIndexChanged(object sender, EventArgs e) {
+		private void projectTicketTypeComboBox_SelectedIndexChanged(object sender, EventArgs e) {
 			ShowProjects();
 		}
 
-		private void reporterComboBox_SelectedIndexChanged(object sender, EventArgs e) {
+		private void projectTicketReportersComboBox_SelectedIndexChanged(object sender, EventArgs e) {
 			ShowProjects();
 		}
 
-		private void assignedComboBox_SelectedIndexChanged(object sender, EventArgs e) {
+		private void projectTicketAssignedToComboBox_SelectedIndexChanged(object sender, EventArgs e) {
 			ShowProjects();
 		}
 
-		private void createdTextBox_KeyDown(object sender, KeyEventArgs e) {
+		private void projectCreatedTextBox_KeyDown(object sender, KeyEventArgs e) {
 			TextBoxUtil.TextBoxKeyDown(sender, e);
 		}
 
-		private void modifiedTextBox_KeyDown(object sender, KeyEventArgs e) {
+		private void projectModifiedTextBox_KeyDown(object sender, KeyEventArgs e) {
 			TextBoxUtil.TextBoxKeyDown(sender, e);
 		}
 
-		private void createdButton_Click(object sender, EventArgs e) {
-			using (var form = new DateRangeForm(mCreateFilter, "Created")) {
+		private void projectCreatedButton_Click(object sender, EventArgs e) {
+			using (var form = new DateRangeForm(mProjectCreateFilter, "Created")) {
 				var result = form.ShowDialog();
 				if (result == DialogResult.Cancel)
 					return;
 
-				mCreateFilter = result == DialogResult.No ?
+				mProjectCreateFilter = result == DialogResult.No ?
 					null :
 					form.Range;
-				FormUtil.FormatDateFilter(createdTextBox, mCreateFilter);
+				FormUtil.FormatDateFilter(projectCreatedTextBox, mProjectCreateFilter);
 				ShowProjects();
 			}
 		}
 
-		private void modifiedButton_Click(object sender, EventArgs e) {
-			using (var form = new DateRangeForm(mModifyFilter, "Modified")) {
+		private void projectModifiedButton_Click(object sender, EventArgs e) {
+			using (var form = new DateRangeForm(mProjectModifyFilter, "Modified")) {
 				var result = form.ShowDialog();
 				if (result == DialogResult.Cancel)
 					return;
 
-				mModifyFilter = result == DialogResult.No ?
+				mProjectModifyFilter = result == DialogResult.No ?
 					null :
 					form.Range;
-				FormUtil.FormatDateFilter(modifiedTextBox, mModifyFilter);
+				FormUtil.FormatDateFilter(projectModifiedTextBox, mProjectModifyFilter);
 				ShowProjects();
 			}
 		}
 
-		private void resetFilterButton_Click(object sender, EventArgs e) {
-			ResetFilters();
+		private void resetProjectFilterButton_Click(object sender, EventArgs e) {
+			ResetProjectFilters();
 			ShowProjects();
+		}
+		#endregion
+
+		#region Ticket filter UI
+		private void ticketSummaryTextBox_KeyDown(object sender, KeyEventArgs e) {
+			TextBoxUtil.TextBoxKeyDown(sender, e);
+		}
+
+		private void ticketSummaryTextBox_TextChanged(object sender, EventArgs e) {
+			ShowTickets();
+		}
+
+		private void ticketTicketStateComboBox_SelectedIndexChanged(object sender, EventArgs e) {
+			ShowTickets();
+		}
+
+		private void ticketTicketPriorityComboBox_SelectedIndexChanged(object sender, EventArgs e) {
+			ShowTickets();
+		}
+
+		private void ticketTicketSeverityComboBox_SelectedIndexChanged(object sender, EventArgs e) {
+			ShowTickets();
+		}
+
+		private void ticketTicketTypeComboBox_SelectedIndexChanged(object sender, EventArgs e) {
+			ShowTickets();
+		}
+
+		private void ticketTicketReportersComboBox_SelectedIndexChanged(object sender, EventArgs e) {
+			ShowTickets();
+		}
+
+		private void ticketTicketAssignedToComboBox_SelectedIndexChanged(object sender, EventArgs e) {
+			ShowTickets();
+		}
+
+		private void ticketCreatedTextBox_KeyDown(object sender, KeyEventArgs e) {
+			TextBoxUtil.TextBoxKeyDown(sender, e);
+		}
+
+		private void ticketModifiedTextBox_KeyDown(object sender, KeyEventArgs e) {
+			TextBoxUtil.TextBoxKeyDown(sender, e);
+		}
+
+		private void ticketCreatedButton_Click(object sender, EventArgs e) {
+			using (var form = new DateRangeForm(mTicketCreateFilter, "Created")) {
+				var result = form.ShowDialog();
+				if (result == DialogResult.Cancel) return;
+
+				mTicketCreateFilter = result == DialogResult.No ?
+					null :
+					form.Range;
+				FormUtil.FormatDateFilter(ticketCreatedTextBox, mTicketCreateFilter);
+
+				ShowTickets();
+			}
+		}
+
+		private void ticketModifiedButton_Click(object sender, EventArgs e) {
+			using (var form = new DateRangeForm(mTicketModifyFilter, "Modified")) {
+				var result = form.ShowDialog();
+				if (result == DialogResult.Cancel) return;
+
+				mTicketModifyFilter = result == DialogResult.No ?
+					null :
+					form.Range;
+				FormUtil.FormatDateFilter(ticketModifiedTextBox, mTicketModifyFilter);
+				ShowTickets();
+			}
+		}
+
+		private void resetTicketFilterButton_Click(object sender, EventArgs e) {
+			ResetTicketFilters();
+			ShowTickets();
 		}
 		#endregion
 
@@ -265,7 +542,8 @@ namespace Peygir.Presentation.Forms {
 				editProjectButton.Enabled = false;
 				editTicketsButton.Enabled = false;
 				deleteProjectButton.Enabled = false;
-				projectsGroupBox.Enabled = false;
+				projectsTabPage.Enabled = false;
+				ticketsTabPage.Enabled = false;
 			}
 			else {
 				int selectedProjectsCount = projectsListView.SelectedItems.Count;
@@ -273,7 +551,16 @@ namespace Peygir.Presentation.Forms {
 				editProjectButton.Enabled = selectedProjectsCount > 0;
 				editTicketsButton.Enabled = selectedProjectsCount > 0;
 				deleteProjectButton.Enabled = selectedProjectsCount > 0;
-				projectsGroupBox.Enabled = true;
+
+				int selectedTicketsCount = ticketsListView.SelectedItems.Count;
+				showTicketButton.Enabled = selectedTicketsCount == 1;
+				editTicketButton.Enabled = selectedTicketsCount == 1;
+				showTicketHistoryButton.Enabled = selectedTicketsCount == 1;
+				deleteTicketButton.Enabled = selectedTicketsCount > 0;
+				showTicketAttachmentsButton.Enabled = selectedTicketsCount == 1;
+
+				projectsTabPage.Enabled = true;
+				ticketsTabPage.Enabled = Project.GetProjects(mContext).Any();
 			}
 
 			databaseToolStripStatusLabel.Text = string.Format(
@@ -283,7 +570,8 @@ namespace Peygir.Presentation.Forms {
 
 		private void NewDatabase() {
 			saveFileDialog.FileName = string.Empty;
-			if (saveFileDialog.ShowDialog() != DialogResult.OK) return;
+			if (saveFileDialog.ShowDialog() != DialogResult.OK)
+				return;
 
 			try {
 				CloseDatabase();
@@ -311,7 +599,8 @@ namespace Peygir.Presentation.Forms {
 
 		private void OpenDatabase() {
 			openFileDialog.FileName = string.Empty;
-			if (openFileDialog.ShowDialog() != DialogResult.OK) return;
+			if (openFileDialog.ShowDialog() != DialogResult.OK)
+				return;
 			try {
 				if (mContext.DB?.IsOpen == true) {
 					CloseDatabase();
@@ -341,7 +630,8 @@ namespace Peygir.Presentation.Forms {
 		private void SaveDatabaseAs() {
 			string currentDatabasePath = mContext.DB.CurrentDatabasePath;
 			saveFileDialog.FileName = currentDatabasePath;
-			if (saveFileDialog.ShowDialog() != DialogResult.OK) return;
+			if (saveFileDialog.ShowDialog() != DialogResult.OK)
+				return;
 			try {
 				mContext.Close();
 
@@ -358,6 +648,8 @@ namespace Peygir.Presentation.Forms {
 				}
 
 				ShowProjects();
+				ShowTickets();
+				UpdateStatusbar();
 			}
 			catch (Exception exception) {
 				MessageBox.Show(
@@ -375,7 +667,11 @@ namespace Peygir.Presentation.Forms {
 		private void CloseDatabase() {
 			mContext.Close();
 			mContext = FormContext.Default;
-			ResetFilters();
+			ResetProjectFilters();
+			ResetTicketFilters();
+			mProjectTicketCount = TicketCount.Empty;
+			mTicketTicketCount = TicketCount.Empty;
+			UpdateStatusbar(TicketCount.Empty);
 
 			// ToArray to copy the forms so we can mutate the dictionary
 			foreach (var form in mForms.ToArray()) {
@@ -385,9 +681,6 @@ namespace Peygir.Presentation.Forms {
 			projectsListView.Items.Clear();
 
 			UpdateControlsEnabledProperty();
-
-			openTicketsToolStripStatusLabel.Text = "Open Tickets: 0";
-			totalTicketsToolStripStatusLabel.Text = "Total Tickets: 0";
 		}
 
 		private void ShowOptions() {
@@ -399,10 +692,13 @@ namespace Peygir.Presentation.Forms {
 
 				// Might change date formatting, update display
 				ShowProjects();
+				ShowTickets();
 
 				// Update filter boxes
-				FormUtil.FormatDateFilter(createdTextBox, mCreateFilter);
-				FormUtil.FormatDateFilter(modifiedTextBox, mModifyFilter);
+				FormUtil.FormatDateFilter(projectCreatedTextBox, mProjectCreateFilter);
+				FormUtil.FormatDateFilter(projectModifiedTextBox, mProjectModifyFilter);
+				FormUtil.FormatDateFilter(ticketCreatedTextBox, mTicketCreateFilter);
+				FormUtil.FormatDateFilter(ticketModifiedTextBox, mTicketModifyFilter);
 
 				// If there are any open forms, go through them and let them know as well
 				foreach (var child in mForms) {
@@ -411,8 +707,80 @@ namespace Peygir.Presentation.Forms {
 			}
 		}
 
+		private void ShowHelp() {
+			try {
+				string helpPath = string.Format(Settings.Default.HelpPath, Application.StartupPath);
+				Process.Start(helpPath);
+			}
+			catch (Exception exception) {
+				MessageBox.Show(
+					exception.Message,
+					Resources.String_Error,
+					MessageBoxButtons.OK,
+					MessageBoxIcon.Error,
+					MessageBoxDefaultButton.Button1,
+					FormUtil.GetMessageBoxOptions(this));
+			}
+		}
+
+		private void ShowAbout() {
+			using (var form = new AboutForm()) {
+				form.ShowDialog();
+			}
+		}
+
+		internal void CloseProjectForm(ProjectForm form) {
+			ProjectForm query;
+			if (mForms.TryGetValue(form.Project.ID, out query)) {
+				mForms.Remove(form.Project.ID);
+			}
+		}
+
+		internal void UpdateTicketOrProject() {
+			// Update our UI elements for assigned/reported, can't populate this in ShowProjects because that would cause nightmares
+
+			var reporters = Ticket.GetReporters(mContext);
+			var assignees = Ticket.GetAssignees(mContext);
+			FormUtil.UpdateUserBoxWithSelectedItem(
+				projectTicketReportersComboBox,
+				reporters);
+
+			FormUtil.UpdateUserBoxWithSelectedItem(
+				projectTicketAssignedToComboBox,
+				assignees);
+
+			FormUtil.UpdateUserBoxWithSelectedItem(
+				ticketTicketReportersComboBox,
+				reporters);
+
+			FormUtil.UpdateUserBoxWithSelectedItem(
+				ticketTicketAssignedToComboBox,
+				assignees);
+
+			// Any child should require updated filters
+			foreach (var form in mForms.ToArray()) {
+				form.Value.UpdateTicket();
+			}
+
+			ShowProjects();
+			ShowTickets();
+		}
+
+		private void UpdateStatusbar() {
+			UpdateStatusbar(mainTabControl.SelectedTab == projectsTabPage ?
+				mProjectTicketCount :
+				mTicketTicketCount);
+		}
+
+		private void UpdateStatusbar(TicketCount count) {
+			openTicketsToolStripStatusLabel.Text = $"Open Tickets: {count.Open}";
+			totalTicketsToolStripStatusLabel.Text = $"Total Tickets: {count.Total}";
+		}
+
+		#region Projects
 		private void ShowProjects() {
-			if (mResettingFilters) return;
+			if (mResettingProjectFilters)
+				return;
 
 			// Save selected projects.
 			var selectedProjects = new List<int>();
@@ -423,23 +791,26 @@ namespace Peygir.Presentation.Forms {
 
 			Project[] projects = Project.GetProjects(mContext.DB);
 
-			string nameFilter = projectTextBox.Text;
-			var reporterFilter = (string)reportersComboBox.SelectedItem;
-			var assignedFilter = (string)assignedToComboBox.SelectedItem;
-			var stateFilter = FormUtil.CastBox<MetaTicketState>(ticketStateComboBox);
-			var severityFilter = FormUtil.CastBox<TicketSeverity>(ticketSeverityComboBox);
-			var priorityFilter = FormUtil.CastBox<TicketPriority>(ticketPriorityComboBox);
-			var typeFilter = FormUtil.CastBox<TicketType>(ticketTypeComboBox);
+			string nameFilter = projectNameTextBox.Text;
+			var reporterFilter = (string)projectTicketReportersComboBox.SelectedItem;
+			var assignedFilter = (string)projectTicketAssignedToComboBox.SelectedItem;
+			var stateFilter = FormUtil.CastBox<MetaTicketState>(projectTicketStateComboBox);
+			var severityFilter = FormUtil.CastBox<TicketSeverity>(projectTicketSeverityComboBox);
+			var priorityFilter = FormUtil.CastBox<TicketPriority>(projectTicketPriorityComboBox);
+			var typeFilter = FormUtil.CastBox<TicketType>(projectTicketTypeComboBox);
 
 			if (string.IsNullOrEmpty(reporterFilter)) reporterFilter = null;
 			if (string.IsNullOrEmpty(assignedFilter)) assignedFilter = null;
+
+			var allTickets = new List<Tuple<Project, Ticket[]>>(
+				projects.Select(p => Tuple.Create(p, p.GetTickets(mContext))));
 
 			projects = projects.Where(p => {
 				bool satisfiesNameFilter = FormUtil.FilterContains(p.Name, nameFilter);
 				if (!satisfiesNameFilter)
 					return false;
 
-				var tickets = p.GetTickets();
+				var tickets = allTickets.First(item => item.Item1 == p).Item2;
 				if (!tickets.Any()) {
 					// If we have any filters specified, this project can't qualify with no tickets
 					// Since we're returning true if it qualifies and false if not, we need to check for the negative condition
@@ -450,13 +821,13 @@ namespace Peygir.Presentation.Forms {
 						severityFilter,
 						priorityFilter,
 						typeFilter,
-						mCreateFilter,
-						mModifyFilter,
+						mProjectCreateFilter,
+						mProjectModifyFilter,
 					}.Any(v => v != null);
 				}
 
-				bool satisfiesCreatedFilter = FormUtil.FilterContains(tickets.Min(t => t.CreateTimestamp), mCreateFilter);
-				bool satisfiesModifiedFilter = FormUtil.FilterContains(tickets.Max(t => t.ModifyTimestamp), mModifyFilter);
+				bool satisfiesCreatedFilter = FormUtil.FilterContains(tickets.Min(t => t.CreateTimestamp), mProjectCreateFilter);
+				bool satisfiesModifiedFilter = FormUtil.FilterContains(tickets.Max(t => t.ModifyTimestamp), mProjectModifyFilter);
 				if (!(satisfiesCreatedFilter && satisfiesModifiedFilter))
 					return false;
 
@@ -483,7 +854,7 @@ namespace Peygir.Presentation.Forms {
 			projectsListView.BeginUpdate();
 			projectsListView.Items.Clear();
 			foreach (var project in projects) {
-				var tickets = project.GetTickets();
+				var tickets = allTickets.First(item => item.Item1 == project).Item2;
 				var lvi = new ListViewItem(new[] {
 					project.Name,
 					tickets.Any() ?
@@ -523,57 +894,44 @@ namespace Peygir.Presentation.Forms {
 
 			UpdateControlsEnabledProperty();
 
-			openTicketsToolStripStatusLabel.Text = "Open Tickets: " + projects.Sum(p => p.GetTickets().Count(t => t.State.IsOpen()));
-			totalTicketsToolStripStatusLabel.Text = "Total Tickets: " + projects.Sum(p => p.GetTickets().Length);
+			var summaryTickets = allTickets.SelectMany(item => item.Item2).ToArray();
+			mProjectTicketCount = new TicketCount(
+				summaryTickets.Count(t => t.State.IsOpen()),
+				summaryTickets.Length);
+
+			UpdateStatusbar();
 		}
 
 		private void AddProject() {
-			using (var form = new ProjectDetailsForm()) {
-				var project = new Project(mContext);
-				form.ProjectDetailsUserControl.ShowProject(project);
+			using (var form = new ProjectDetailsForm(mContext, null)) {
+				if (form.ShowDialog() != DialogResult.OK) return;
+				var project = form.RetrieveProject();
 
-				Again:
-				if (form.ShowDialog() == DialogResult.OK) {
-					// Check name.
-					if (string.IsNullOrWhiteSpace(form.ProjectDetailsUserControl.ProjectName)) {
-						MessageBox.Show(
-							Resources.String_TheProjectNameCannotBeBlank,
-							Resources.String_Error,
-							MessageBoxButtons.OK,
-							MessageBoxIcon.Error,
-							MessageBoxDefaultButton.Button1,
-							FormUtil.GetMessageBoxOptions(this));
-						goto Again;
+				// Add.
+				project.Add(mContext);
+
+				// Flush.
+				mContext.Flush();
+
+				// Show projects.
+				ShowProjects();
+
+				// Select new project.
+				projectsListView.SelectedItems.Clear();
+				foreach (ListViewItem item in projectsListView.Items) {
+					var p = (Project)item.Tag;
+					if (p.ID == project.ID) {
+						item.Selected = true;
+						break;
 					}
-
-					form.ProjectDetailsUserControl.RetrieveProject(project);
-
-					// Add.
-					project.Add(mContext);
-
-					// Flush.
-					mContext.Flush();
-
-					// Show projects.
-					ShowProjects();
-
-					// Select new project.
-					projectsListView.SelectedItems.Clear();
-					foreach (ListViewItem item in projectsListView.Items) {
-						Project p = (Project)item.Tag;
-						if (p.ID == project.ID) {
-							item.Selected = true;
-							break;
-						}
-					}
-
-					UpdateControlsEnabledProperty();
-
-					// Show edit project form.
-					EditProject();
-
-					projectsListView.Focus();
 				}
+
+				UpdateControlsEnabledProperty();
+
+				// Show edit project form.
+				EditProject();
+
+				projectsListView.Focus();
 			}
 		}
 
@@ -584,11 +942,13 @@ namespace Peygir.Presentation.Forms {
 				if (!mForms.TryGetValue(item.ID, out form)) {
 					form = new ProjectForm(this, mContext, item);
 					mForms[item.ID] = form;
-					form.ActivateTicketTab();
+					if (ticketTab) form.ActivateTicketTab();
+					else form.ActivateProjectTab();
 					form.Show();
 				}
 				else {
-					form.ActivateTicketTab();
+					if (ticketTab) form.ActivateTicketTab();
+					else form.ActivateProjectTab();
 					form.Activate();
 				}
 			}
@@ -621,63 +981,327 @@ namespace Peygir.Presentation.Forms {
 			ShowProjects();
 		}
 
-		private void ShowHelp() {
-			try {
-				string helpPath = string.Format(Settings.Default.HelpPath, Application.StartupPath);
-				Process.Start(helpPath);
+		private void ResetProjectFilters() {
+			mResettingProjectFilters = true;
+			projectNameTextBox.Text = string.Empty;
+			FormUtil.SetOrDefault(projectTicketAssignedToComboBox);
+			FormUtil.SetOrDefault(projectTicketReportersComboBox);
+			FormUtil.SetOrDefault(projectTicketPriorityComboBox);
+			FormUtil.SetOrDefault(projectTicketSeverityComboBox);
+			FormUtil.SetOrDefault(projectTicketStateComboBox);
+			FormUtil.SetOrDefault(projectTicketTypeComboBox);
+			mProjectModifyFilter = null;
+			projectModifiedTextBox.Text = string.Empty;
+			mProjectCreateFilter = null;
+			projectCreatedTextBox.Text = string.Empty;
+			mResettingProjectFilters = false;
+		}
+		#endregion
+
+		#region Tickets
+		private void TicketBatch<TValue>(Action<Ticket, TValue, bool> ticketFunc, TValue value) {
+			for (int i = 0, end = ticketsListView.SelectedItems.Count; i < end; i++) {
+				var ticket = (Ticket)ticketsListView.SelectedItems[i].Tag;
+				ticketFunc(ticket, value, true);
 			}
-			catch (Exception exception) {
-				MessageBox.Show(
-					exception.Message,
-					Resources.String_Error,
-					MessageBoxButtons.OK,
-					MessageBoxIcon.Error,
-					MessageBoxDefaultButton.Button1,
-					FormUtil.GetMessageBoxOptions(this));
+
+			// Flush.
+			mContext.Flush();
+
+			UpdateTicketOrProject();
+		}
+
+		private void TicketSingle(Ticket ticket, bool batch, Func<Ticket, Ticket> changes) {
+			bool applied = ticket.UpdateAndGenerateHistoryRecord(mContext, TicketChangeFormatter.Default, changes);
+
+			if (!applied || batch) return;
+
+			// Flush.
+			mContext.Flush();
+
+			UpdateTicketOrProject();
+		}
+
+		private void SetTicketState(TicketState state) {
+			TicketBatch(SetTicketState, state);
+		}
+
+		private void SetTicketState(Ticket ticket, TicketState state, bool batch = false) {
+			TicketSingle(ticket, batch, t => {
+				t.State = state;
+				return t;
+			});
+		}
+
+		private void SetTicketPriority(TicketPriority priority) {
+			TicketBatch(SetTicketPriority, priority);
+		}
+
+		private void SetTicketPriority(Ticket ticket, TicketPriority priority, bool batch = false) {
+			TicketSingle(ticket, batch, t => {
+				t.Priority = priority;
+				return t;
+			});
+		}
+
+		private void SetTicketSeverity(TicketSeverity severity) {
+			TicketBatch(SetTicketSeverity, severity);
+		}
+
+		private void SetTicketSeverity(Ticket ticket, TicketSeverity severity, bool batch = false) {
+			TicketSingle(ticket, batch, t => {
+				t.Severity = severity;
+				return t;
+			});
+		}
+
+		private void SetTicketType(TicketType type) {
+			TicketBatch(SetTicketType, type);
+		}
+
+		private void SetTicketType(Ticket ticket, TicketType type, bool batch = false) {
+			TicketSingle(ticket, batch, t => {
+				t.Type = type;
+				return t;
+			});
+		}
+
+		private void ShowTickets() {
+			if (mResettingTicketFilters) return;
+
+			// Save selected tickets.
+			var selectedTickets = new List<int>();
+			foreach (ListViewItem item in ticketsListView.SelectedItems) {
+				var ticket = (Ticket)item.Tag;
+				selectedTickets.Add(ticket.ID);
+			}
+
+			string summaryFilter = ticketSummaryTextBox.Text;
+			string reporterFilter = ticketTicketReportersComboBox.SelectedText;
+			string assignedFilter = ticketTicketAssignedToComboBox.SelectedText;
+			var stateFilter = FormUtil.CastBox<MetaTicketState>(ticketTicketStateComboBox);
+			var severityFilter = FormUtil.CastBox<TicketSeverity>(ticketTicketSeverityComboBox);
+			var priorityFilter = FormUtil.CastBox<TicketPriority>(ticketTicketPriorityComboBox);
+			var typeFilter = FormUtil.CastBox<TicketType>(ticketTicketTypeComboBox);
+
+			Ticket[] tickets = Project.GetProjects(mContext).
+				SelectMany(p => p.GetTickets(mContext)).
+				ToArray();
+
+			tickets = tickets.Where(t => {
+				bool satisfiesSummaryFilter = FormUtil.FilterContains(t.Summary, summaryFilter);
+				bool satisfiesReporterFilter = FormUtil.FilterMatch(t.ReportedBy, reporterFilter);
+				bool satisfiesAssignedFilter = FormUtil.FilterMatch(t.AssignedTo, assignedFilter);
+				bool satisfiesStateFilter = stateFilter == null || stateFilter.Value.AppliesTo(t.State);
+				bool satisfiesSeverityFilter = FormUtil.FilterEnum(t.Severity, severityFilter);
+				bool satisfiesPriorityFilter = FormUtil.FilterEnum(t.Priority, priorityFilter);
+				bool satisfiesTypeFilter = FormUtil.FilterEnum(t.Type, typeFilter);
+				bool satisfiesCreatedFilter = FormUtil.FilterContains(t.CreateTimestamp, mTicketCreateFilter);
+				bool satisfiesModifiedFilter = FormUtil.FilterContains(t.ModifyTimestamp, mTicketModifyFilter);
+
+				return
+					satisfiesSummaryFilter &&
+					satisfiesReporterFilter &&
+					satisfiesAssignedFilter &&
+					satisfiesStateFilter &&
+					satisfiesSeverityFilter &&
+					satisfiesPriorityFilter &&
+					satisfiesTypeFilter &&
+					satisfiesCreatedFilter &&
+					satisfiesModifiedFilter;
+			}).ToArray();
+
+			// Cache milestones.
+			var milestoneNames = new Dictionary<int, string>();
+			var projectNames = new Dictionary<int, string>();
+			Milestone[] milestones = Milestone.GetMilestones(mContext);
+			foreach (Milestone milestone in milestones) {
+				milestoneNames[milestone.ID] = milestone.Name;
+				projectNames[milestone.ID] = milestone.GetProject(mContext).Name;
+			}
+
+			var formatter = FormUtil.GetFormatter();
+			ticketsListView.BeginUpdate();
+			ticketsListView.Items.Clear();
+			foreach (var ticket in tickets) {
+				string ticketPriority = TicketChangeFormatter.Default.TranslateTicketPriority(ticket.Priority);
+				string ticketType = TicketChangeFormatter.Default.TranslateTicketType(ticket.Type);
+				string ticketSeverity = TicketChangeFormatter.Default.TranslateTicketSeverity(ticket.Severity);
+				string ticketState = TicketChangeFormatter.Default.TranslateTicketState(ticket.State);
+
+				var lvi = new ListViewItem() {
+					Text = projectNames[ticket.MilestoneID],
+					Tag = ticket,
+				};
+
+				lvi.SubItems.Add(milestoneNames[ticket.MilestoneID]);
+				lvi.SubItems.Add(ticket.Summary);
+				lvi.SubItems.Add(ticketPriority);
+				lvi.SubItems.Add(ticketType);
+				lvi.SubItems.Add(ticketSeverity);
+				lvi.SubItems.Add(ticketState);
+				lvi.SubItems.Add(formatter.Format(ticket.ModifyTimestamp));
+
+				ticketsListView.Items.Add(lvi);
+			}
+
+			ticketsListView.EndUpdate();
+			ticketsListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+
+			// Reselect tickets.
+			foreach (ListViewItem item in ticketsListView.Items) {
+				var ticket = (Ticket)item.Tag;
+				if (selectedTickets.Contains(ticket.ID)) {
+					item.Selected = true;
+				}
+			}
+
+			UpdateControlsEnabledProperty();
+
+			mTicketTicketCount = new TicketCount(
+				tickets.Count(t => t.State.IsOpen()),
+				tickets.Length);
+
+			UpdateStatusbar();
+		}
+
+		private void ResetTicketFilters() {
+			mResettingTicketFilters = true;
+			ticketSummaryTextBox.Text = string.Empty;
+			FormUtil.SetOrDefault(ticketTicketAssignedToComboBox);
+			FormUtil.SetOrDefault(ticketTicketReportersComboBox);
+			FormUtil.SetOrDefault(ticketTicketPriorityComboBox);
+			FormUtil.SetOrDefault(ticketTicketSeverityComboBox);
+			FormUtil.SetOrDefault(ticketTicketStateComboBox);
+			FormUtil.SetOrDefault(ticketTicketTypeComboBox);
+			mTicketModifyFilter = null;
+			ticketModifiedTextBox.Text = string.Empty;
+			mTicketCreateFilter = null;
+			ticketCreatedTextBox.Text = string.Empty;
+			mResettingTicketFilters = false;
+		}
+
+		private void AddTicket() {
+			using (var form = new TicketDetailsForm(mContext, FormUtil.GetFontContext(), FormUtil.GetFormatter(), null, null)) {
+				if (form.ShowDialog() != DialogResult.OK) return;
+				Ticket ticket = form.RetrieveTicket();
+
+				// Add.
+				ticket.Add(mContext);
+
+				// Flush.
+				mContext.Flush();
+
+				// Create ticket history entry.
+				TicketHistory ticketHistory = ticket.NewHistory(Resources.String_TicketCreated);
+				ticketHistory.Add(mContext);
+
+				// Show tickets.
+				ShowTickets();
+
+				// Select new ticket.
+				ticketsListView.SelectedItems.Clear();
+				foreach (ListViewItem item in ticketsListView.Items) {
+					Ticket t = (Ticket)item.Tag;
+					if (t.ID == ticket.ID) {
+						item.Selected = true;
+						item.EnsureVisible();
+						break;
+					}
+				}
+
+				UpdateControlsEnabledProperty();
+
+				ticketsListView.Focus();
+
+				UpdateTicketOrProject();
 			}
 		}
 
-		private void ShowAbout() {
-			using (var form = new AboutForm()) {
+		private void ShowTicket() {
+			if (ticketsListView.SelectedItems.Count != 1) {
+				return;
+			}
+
+			var ticket = (Ticket)ticketsListView.SelectedItems[0].Tag;
+			Project project = ticket.GetMilestone(mContext).GetProject(mContext);
+			using (var form = new TicketDetailsForm(mContext, FormUtil.GetFontContext(), FormUtil.GetFormatter(), project, ticket)) {
+				form.ReadOnly = true;
 				form.ShowDialog();
 			}
 		}
 
-		private void ResetFilters() {
-			mResettingFilters = true;
-			projectTextBox.Text = string.Empty;
-			FormUtil.SetOrDefault(assignedToComboBox);
-			FormUtil.SetOrDefault(reportersComboBox);
-			FormUtil.SetOrDefault(ticketPriorityComboBox);
-			FormUtil.SetOrDefault(ticketSeverityComboBox);
-			FormUtil.SetOrDefault(ticketStateComboBox);
-			FormUtil.SetOrDefault(ticketTypeComboBox);
-			mModifyFilter = null;
-			modifiedTextBox.Text = string.Empty;
-			mCreateFilter = null;
-			createdTextBox.Text = string.Empty;
-			mResettingFilters = false;
-		}
+		private void EditTicket() {
+			if (ticketsListView.SelectedItems.Count != 1) {
+				return;
+			}
 
-		internal void CloseProjectForm(ProjectForm form) {
-			ProjectForm query;
-			if (mForms.TryGetValue(form.Project.ID, out query)) {
-				mForms.Remove(form.Project.ID);
+			var ticket = (Ticket)ticketsListView.SelectedItems[0].Tag;
+			Project project = ticket.GetMilestone(mContext).GetProject(mContext);
+			using (var form = new TicketDetailsForm(mContext, FormUtil.GetFontContext(), FormUtil.GetFormatter(), project, ticket)) {
+				if (form.ShowDialog() != DialogResult.OK) return;
+
+				ticket.UpdateAndGenerateHistoryRecord(mContext, TicketChangeFormatter.Default, t => {
+					return form.RetrieveTicket(t);
+				});
+
+				// Flush.
+				mContext.Flush();
+
+				UpdateTicketOrProject();
 			}
 		}
 
-		internal void UpdateTicketOrProject() {
-			// Update our UI elements for assigned/reported, can't populate this in ShowProjects because that would cause nightmares
-			FormUtil.UpdateUserBoxWithSelectedItem(reportersComboBox, Ticket.GetReporters(mContext));
-			FormUtil.UpdateUserBoxWithSelectedItem(assignedToComboBox, Ticket.GetAssignees(mContext));
-
-			// Any child should require updated filters
-			foreach (var form in mForms.ToArray()) {
-				form.Value.UpdateTicket();
+		private void ShowTicketHistory() {
+			if (ticketsListView.SelectedItems.Count != 1) {
+				return;
 			}
 
-			ShowProjects();
+			var ticket = (Ticket)ticketsListView.SelectedItems[0].Tag;
+			using (TicketHistoryForm form = new TicketHistoryForm(mContext, ticket)) {
+				form.ShowDialog();
+			}
 		}
+
+		private void ShowAttachments() {
+			if (ticketsListView.SelectedItems.Count != 1) {
+				return;
+			}
+
+			var ticket = (Ticket)ticketsListView.SelectedItems[0].Tag;
+			using (var form = new AttachmentsForm(mContext, ticket)) {
+				form.ShowDialog();
+			}
+		}
+
+		private void DeleteTicket() {
+			if (ticketsListView.SelectedItems.Count == 0) return;
+
+			DialogResult result = MessageBox.Show(
+				Resources.String_AreYouSureYouWantToDeleteSelectedTickets,
+				Resources.String_DeleteTickets,
+				MessageBoxButtons.YesNo,
+				MessageBoxIcon.Question,
+				MessageBoxDefaultButton.Button1,
+				FormUtil.GetMessageBoxOptions(this));
+
+			if (result != DialogResult.Yes) {
+				return;
+			}
+
+			// Delete tickets.
+			for (int i = 0; i < ticketsListView.SelectedItems.Count; i++) {
+				var ticket = (Ticket)ticketsListView.SelectedItems[i].Tag;
+				ticket.Delete(mContext);
+			}
+
+			// Flush.
+			mContext.Flush();
+
+			UpdateTicketOrProject();
+		}
+		#endregion
+
 		#endregion
 	}
 }

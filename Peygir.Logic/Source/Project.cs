@@ -120,13 +120,14 @@ namespace Peygir.Logic {
 			return new Milestone(db, ID);
 		}
 
-		public Ticket[] GetTickets() {
+		public Ticket[] GetTickets(IDatabaseProvider db) {
+			if (db == null) throw new ArgumentNullException(nameof(db));
 			if (ID == InvalidID) {
 				string message = Resources.String_CurrentObjectDoesNotExistInTheDatabase;
 				throw new InvalidOperationException(message);
 			}
 
-			TicketsTableAdapter tableAdapter = new TicketsTableAdapter();
+			TicketsTableAdapter tableAdapter = db.DB.TicketsTableAdapter;;
 
 			PeygirDatabaseDataSet.TicketsDataTable rows = tableAdapter.GetDataByProjectID(ID);
 
