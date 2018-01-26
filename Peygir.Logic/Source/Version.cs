@@ -79,6 +79,17 @@ namespace Peygir.Logic {
 			}
 		}
 
+		public static Version Get(IDatabaseProvider db) {
+			VersionTableAdapter tableAdapter = db.DB.VersionTableAdapter;
+			var tableData = tableAdapter.GetData();
+
+			// This should never be the case outside of manual tampering
+			// In which case, there's not really a suitable way to recover
+			if (tableData.Count != 1) throw new ManualTamperingException(Resources.String_VersionManualTampering);
+
+			return new Version(tableData[0]);
+		}
+
 		private static void ExecuteQuery(VersionTableAdapter tableAdapter, string query) {
 			using (var cmd = tableAdapter.Connection.CreateCommand()) {
 				cmd.CommandType = CommandType.Text;

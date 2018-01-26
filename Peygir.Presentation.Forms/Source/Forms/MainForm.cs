@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -506,10 +507,12 @@ namespace Peygir.Presentation.Forms {
 			switch (Settings.Default.Language) {
 				case "en":
 					englishToolStripMenuItem.Checked = true;
+					databaseToolStripStatusLabel.TextAlign = ContentAlignment.MiddleLeft;
 					break;
 
 				case "fa":
 					persianToolStripMenuItem.Checked = true;
+					databaseToolStripStatusLabel.TextAlign = ContentAlignment.MiddleRight;
 					break;
 			}
 		}
@@ -571,9 +574,17 @@ namespace Peygir.Presentation.Forms {
 				ticketsTabPage.Enabled = Project.GetProjects(mContext).Any();
 			}
 
-			databaseToolStripStatusLabel.Text = string.Format(
-				Resources.String_DatabaseX,
-				mContext.DB?.CurrentDatabasePath ?? "N/A");
+			dbVersionToolStripStatusLabel.Text = string.Format(
+				Resources.String_DbVersionX,
+				hasDatabase ?
+					Logic.Version.Get(mContext).ID :
+					0);
+
+			databaseToolStripStatusLabel.Text = hasDatabase ?
+				string.Format(Resources.String_DatabaseXY,
+					Path.GetFileName(mContext.DB?.CurrentDatabasePath),
+					mContext.DB?.CurrentDatabasePath) :
+				Resources.String_NoDatabase;
 		}
 
 		private void NewDatabase() {
@@ -781,8 +792,13 @@ namespace Peygir.Presentation.Forms {
 		}
 
 		private void UpdateStatusbar(TicketCount count) {
-			openTicketsToolStripStatusLabel.Text = $"Open Tickets: {count.Open}";
-			totalTicketsToolStripStatusLabel.Text = $"Total Tickets: {count.Total}";
+			openTicketsToolStripStatusLabel.Text = string.Format(
+				Resources.String_OpenTicketsX,
+				count.Open);
+
+			totalTicketsToolStripStatusLabel.Text = string.Format(
+				Resources.String_TotalTicketsX,
+				count.Total);
 		}
 
 		#region Projects

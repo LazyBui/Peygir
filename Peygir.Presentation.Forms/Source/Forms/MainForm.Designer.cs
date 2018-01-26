@@ -79,14 +79,19 @@
 			this.englishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.persianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-			this.databaseToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+			this.dbVersionToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.openTicketsToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.totalTicketsToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+			this.databaseToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
 			this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
 			this.mainTabControl = new System.Windows.Forms.TabControl();
 			this.projectsTabPage = new System.Windows.Forms.TabPage();
+			this.projectProjectStateComboBox = new System.Windows.Forms.ComboBox();
+			this.label19 = new System.Windows.Forms.Label();
 			this.ticketsTabPage = new System.Windows.Forms.TabPage();
+			this.label20 = new System.Windows.Forms.Label();
+			this.ticketProjectStateComboBox = new System.Windows.Forms.ComboBox();
 			this.showTicketAttachmentsButton = new System.Windows.Forms.Button();
 			this.showTicketHistoryButton = new System.Windows.Forms.Button();
 			this.resetTicketFilterButton = new System.Windows.Forms.Button();
@@ -155,10 +160,6 @@
 			this.ticketTicketTypeComboBox = new System.Windows.Forms.ComboBox();
 			this.label13 = new System.Windows.Forms.Label();
 			this.label14 = new System.Windows.Forms.Label();
-			this.label19 = new System.Windows.Forms.Label();
-			this.projectProjectStateComboBox = new System.Windows.Forms.ComboBox();
-			this.ticketProjectStateComboBox = new System.Windows.Forms.ComboBox();
-			this.label20 = new System.Windows.Forms.Label();
 			this.projectContextMenu.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
 			this.statusStrip1.SuspendLayout();
@@ -577,21 +578,22 @@
 			// statusStrip1
 			// 
 			this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.databaseToolStripStatusLabel,
+            this.dbVersionToolStripStatusLabel,
             this.openTicketsToolStripStatusLabel,
-            this.totalTicketsToolStripStatusLabel});
+            this.totalTicketsToolStripStatusLabel,
+            this.databaseToolStripStatusLabel});
 			resources.ApplyResources(this.statusStrip1, "statusStrip1");
 			this.statusStrip1.Name = "statusStrip1";
 			// 
-			// databaseToolStripStatusLabel
+			// dbVersionToolStripStatusLabel
 			// 
-			this.databaseToolStripStatusLabel.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+			this.dbVersionToolStripStatusLabel.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
             | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
             | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
-			this.databaseToolStripStatusLabel.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
-			this.databaseToolStripStatusLabel.Margin = new System.Windows.Forms.Padding(0, 4, 3, 0);
-			this.databaseToolStripStatusLabel.Name = "databaseToolStripStatusLabel";
-			resources.ApplyResources(this.databaseToolStripStatusLabel, "databaseToolStripStatusLabel");
+			this.dbVersionToolStripStatusLabel.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
+			this.dbVersionToolStripStatusLabel.Margin = new System.Windows.Forms.Padding(0, 4, 3, 0);
+			this.dbVersionToolStripStatusLabel.Name = "dbVersionToolStripStatusLabel";
+			resources.ApplyResources(this.dbVersionToolStripStatusLabel, "dbVersionToolStripStatusLabel");
 			// 
 			// openTicketsToolStripStatusLabel
 			// 
@@ -612,6 +614,18 @@
 			this.totalTicketsToolStripStatusLabel.Margin = new System.Windows.Forms.Padding(0, 4, 3, 0);
 			this.totalTicketsToolStripStatusLabel.Name = "totalTicketsToolStripStatusLabel";
 			resources.ApplyResources(this.totalTicketsToolStripStatusLabel, "totalTicketsToolStripStatusLabel");
+			// 
+			// databaseToolStripStatusLabel
+			// 
+			this.databaseToolStripStatusLabel.AutoToolTip = true;
+			this.databaseToolStripStatusLabel.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+			this.databaseToolStripStatusLabel.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
+			this.databaseToolStripStatusLabel.Margin = new System.Windows.Forms.Padding(0, 4, 3, 0);
+			this.databaseToolStripStatusLabel.Name = "databaseToolStripStatusLabel";
+			resources.ApplyResources(this.databaseToolStripStatusLabel, "databaseToolStripStatusLabel");
+			this.databaseToolStripStatusLabel.Spring = true;
 			// 
 			// openFileDialog
 			// 
@@ -664,6 +678,23 @@
 			this.projectsTabPage.Name = "projectsTabPage";
 			this.projectsTabPage.UseVisualStyleBackColor = true;
 			// 
+			// projectProjectStateComboBox
+			// 
+			this.projectProjectStateComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.projectProjectStateComboBox.FormattingEnabled = true;
+			this.projectProjectStateComboBox.Items.AddRange(new object[] {
+            resources.GetString("projectProjectStateComboBox.Items"),
+            resources.GetString("projectProjectStateComboBox.Items1"),
+            resources.GetString("projectProjectStateComboBox.Items2")});
+			resources.ApplyResources(this.projectProjectStateComboBox, "projectProjectStateComboBox");
+			this.projectProjectStateComboBox.Name = "projectProjectStateComboBox";
+			this.projectProjectStateComboBox.SelectedIndexChanged += new System.EventHandler(this.projectProjectStateComboBox_SelectedIndexChanged);
+			// 
+			// label19
+			// 
+			resources.ApplyResources(this.label19, "label19");
+			this.label19.Name = "label19";
+			// 
 			// ticketsTabPage
 			// 
 			this.ticketsTabPage.Controls.Add(this.label20);
@@ -699,6 +730,23 @@
 			resources.ApplyResources(this.ticketsTabPage, "ticketsTabPage");
 			this.ticketsTabPage.Name = "ticketsTabPage";
 			this.ticketsTabPage.UseVisualStyleBackColor = true;
+			// 
+			// label20
+			// 
+			resources.ApplyResources(this.label20, "label20");
+			this.label20.Name = "label20";
+			// 
+			// ticketProjectStateComboBox
+			// 
+			this.ticketProjectStateComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.ticketProjectStateComboBox.FormattingEnabled = true;
+			this.ticketProjectStateComboBox.Items.AddRange(new object[] {
+            resources.GetString("ticketProjectStateComboBox.Items"),
+            resources.GetString("ticketProjectStateComboBox.Items1"),
+            resources.GetString("ticketProjectStateComboBox.Items2")});
+			resources.ApplyResources(this.ticketProjectStateComboBox, "ticketProjectStateComboBox");
+			this.ticketProjectStateComboBox.Name = "ticketProjectStateComboBox";
+			this.ticketProjectStateComboBox.SelectedIndexChanged += new System.EventHandler(this.ticketProjectStateComboBox_SelectedIndexChanged);
 			// 
 			// showTicketAttachmentsButton
 			// 
@@ -1208,40 +1256,6 @@
 			resources.ApplyResources(this.label14, "label14");
 			this.label14.Name = "label14";
 			// 
-			// label19
-			// 
-			resources.ApplyResources(this.label19, "label19");
-			this.label19.Name = "label19";
-			// 
-			// projectProjectStateComboBox
-			// 
-			this.projectProjectStateComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.projectProjectStateComboBox.FormattingEnabled = true;
-			this.projectProjectStateComboBox.Items.AddRange(new object[] {
-            resources.GetString("projectProjectStateComboBox.Items"),
-            resources.GetString("projectProjectStateComboBox.Items1"),
-            resources.GetString("projectProjectStateComboBox.Items2")});
-			resources.ApplyResources(this.projectProjectStateComboBox, "projectProjectStateComboBox");
-			this.projectProjectStateComboBox.Name = "projectProjectStateComboBox";
-			this.projectProjectStateComboBox.SelectedIndexChanged += new System.EventHandler(this.projectProjectStateComboBox_SelectedIndexChanged);
-			// 
-			// ticketProjectStateComboBox
-			// 
-			this.ticketProjectStateComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.ticketProjectStateComboBox.FormattingEnabled = true;
-			this.ticketProjectStateComboBox.Items.AddRange(new object[] {
-            resources.GetString("ticketProjectStateComboBox.Items"),
-            resources.GetString("ticketProjectStateComboBox.Items1"),
-            resources.GetString("ticketProjectStateComboBox.Items2")});
-			resources.ApplyResources(this.ticketProjectStateComboBox, "ticketProjectStateComboBox");
-			this.ticketProjectStateComboBox.Name = "ticketProjectStateComboBox";
-			this.ticketProjectStateComboBox.SelectedIndexChanged += new System.EventHandler(this.ticketProjectStateComboBox_SelectedIndexChanged);
-			// 
-			// label20
-			// 
-			resources.ApplyResources(this.label20, "label20");
-			this.label20.Name = "label20";
-			// 
 			// MainForm
 			// 
 			resources.ApplyResources(this, "$this");
@@ -1403,5 +1417,6 @@
 		private System.Windows.Forms.Label label19;
 		private System.Windows.Forms.Label label20;
 		private System.Windows.Forms.ComboBox ticketProjectStateComboBox;
+		private System.Windows.Forms.ToolStripStatusLabel dbVersionToolStripStatusLabel;
 	}
 }

@@ -159,8 +159,11 @@
   <data name="String_Critical" xml:space="preserve">
     <value>بحرانی</value>
   </data>
-  <data name="String_DatabaseX" xml:space="preserve">
-    <value>پایگاه‌داده: {0}</value>
+  <data name="String_DatabaseXY" xml:space="preserve">
+    <value>پایگاه‌داده: {1}</value>
+  </data>
+  <data name="String_DbVersionX" xml:space="preserve">
+    <value>DB Version: {0}</value>
   </data>
   <data name="String_Defect" xml:space="preserve">
     <value>نقص</value>
@@ -213,8 +216,14 @@
   <data name="String_New" xml:space="preserve">
     <value>جدید</value>
   </data>
+  <data name="String_NoDatabase" xml:space="preserve">
+    <value>پایگاه‌داده: -</value>
+  </data>
   <data name="String_Normal" xml:space="preserve">
     <value>عادی</value>
+  </data>
+  <data name="String_OpenTicketsX" xml:space="preserve">
+    <value>Open Tickets: {0}</value>
   </data>
   <data name="String_PleaseAddAMilestoneBeforeAddingATicket" xml:space="preserve">
     <value>لطفا قبل از افزودن آگهی، یک نقطه عطف ایجاد نمایید.</value>
@@ -269,6 +278,9 @@
   </data>
   <data name="String_TicketCreated" xml:space="preserve">
     <value>* آگهی ایجاد گردید.</value>
+  </data>
+  <data name="String_TotalTicketsX" xml:space="preserve">
+    <value>Total Tickets: {0}</value>
   </data>
   <data name="String_Trivial" xml:space="preserve">
     <value>ناچیز</value>

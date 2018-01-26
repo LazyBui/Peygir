@@ -367,11 +367,20 @@ namespace Peygir.Presentation.Forms.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Database: {0}.
+        ///   Looks up a localized string similar to Database: {0} ({1}).
         /// </summary>
-        internal static string String_DatabaseX {
+        internal static string String_DatabaseXY {
             get {
-                return ResourceManager.GetString("String_DatabaseX", resourceCulture);
+                return ResourceManager.GetString("String_DatabaseXY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DB Version: {0}.
+        /// </summary>
+        internal static string String_DbVersionX {
+            get {
+                return ResourceManager.GetString("String_DbVersionX", resourceCulture);
             }
         }
         
@@ -529,11 +538,29 @@ namespace Peygir.Presentation.Forms.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Database: N/A.
+        /// </summary>
+        internal static string String_NoDatabase {
+            get {
+                return ResourceManager.GetString("String_NoDatabase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Normal.
         /// </summary>
         internal static string String_Normal {
             get {
                 return ResourceManager.GetString("String_Normal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open Tickets: {0}.
+        /// </summary>
+        internal static string String_OpenTicketsX {
+            get {
+                return ResourceManager.GetString("String_OpenTicketsX", resourceCulture);
             }
         }
         
@@ -696,6 +723,15 @@ namespace Peygir.Presentation.Forms.Properties {
         internal static string String_TicketCreated {
             get {
                 return ResourceManager.GetString("String_TicketCreated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total Tickets: {0}.
+        /// </summary>
+        internal static string String_TotalTicketsX {
+            get {
+                return ResourceManager.GetString("String_TotalTicketsX", resourceCulture);
             }
         }
         
