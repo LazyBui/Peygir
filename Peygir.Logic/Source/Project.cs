@@ -62,6 +62,11 @@ namespace Peygir.Logic {
 			set { displayOrder = value; }
 		}
 
+		public ProjectState State {
+			get { return state; }
+			set { state = value; }
+		}
+
 		public Project(IDatabaseProvider db) {
 			if (db == null) throw new ArgumentNullException(nameof(db));
 			name = string.Empty;
@@ -77,12 +82,14 @@ namespace Peygir.Logic {
 			else {
 				displayOrder = 1;
 			}
+
+			state = ProjectState.Active;
 		}
 
 		protected override void AddPrivate(Database db) {
 			ProjectsTableAdapter tableAdapter = db.ProjectsTableAdapter;
 
-			tableAdapter.Insert(name, description, displayOrder);
+			tableAdapter.Insert(name, description, displayOrder, (int)state);
 
 			// Find ID.
 			ID = tableAdapter.GetID(name, description, displayOrder).Value;
@@ -91,7 +98,7 @@ namespace Peygir.Logic {
 		protected override void UpdatePrivate(Database db) {
 			ProjectsTableAdapter tableAdapter = db.ProjectsTableAdapter;
 
-			tableAdapter.UpdateByID(name, description, displayOrder, ID);
+			tableAdapter.UpdateByID(name, description, displayOrder, (int)state, ID);
 		}
 
 		protected override void DeletePrivate(Database db) {
@@ -155,10 +162,12 @@ namespace Peygir.Logic {
 			name = row.Name;
 			description = row.Description;
 			displayOrder = row.DisplayOrder;
+			state = (ProjectState)row.State;
 		}
 
 		private string name;
 		private string description;
 		private int displayOrder;
+		private ProjectState state;
 	}
 }

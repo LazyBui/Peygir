@@ -31,6 +31,7 @@ namespace Peygir.Presentation.Forms {
 			project.Name = projectDetailsUserControl.ProjectName;
 			project.DisplayOrder = projectDetailsUserControl.DisplayOrder;
 			project.Description = projectDetailsUserControl.Description;
+			project.State = projectDetailsUserControl.State;
 			return project;
 		}
 

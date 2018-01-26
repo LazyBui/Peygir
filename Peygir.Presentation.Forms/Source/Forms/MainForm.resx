@@ -175,7 +175,7 @@
     <value>606, 218</value>
   </data>
   <data name="projectsListView.TabIndex" type="System.Int32, mscorlib">
-    <value>27</value>
+    <value>24</value>
   </data>
   <data name="&gt;&gt;projectsListView.Name" xml:space="preserve">
     <value>projectsListView</value>
@@ -187,7 +187,7 @@
     <value>projectsTabPage</value>
   </data>
   <data name="&gt;&gt;projectsListView.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="addProjectToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>107, 22</value>
@@ -241,7 +241,7 @@
     <value>projectsTabPage</value>
   </data>
   <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="resetProjectFilterButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>537, 87</value>
@@ -250,7 +250,7 @@
     <value>75, 23</value>
   </data>
   <data name="resetProjectFilterButton.TabIndex" type="System.Int32, mscorlib">
-    <value>28</value>
+    <value>23</value>
   </data>
   <data name="resetProjectFilterButton.Text" xml:space="preserve">
     <value>Reset</value>
@@ -265,7 +265,7 @@
     <value>projectsTabPage</value>
   </data>
   <data name="&gt;&gt;resetProjectFilterButton.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>11</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -295,7 +295,7 @@
     <value>projectsTabPage</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>13</value>
   </data>
   <data name="editTicketsButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -313,7 +313,7 @@
     <value>83, 23</value>
   </data>
   <data name="editTicketsButton.TabIndex" type="System.Int32, mscorlib">
-    <value>25</value>
+    <value>27</value>
   </data>
   <data name="editTicketsButton.Text" xml:space="preserve">
     <value>Ti&amp;ckets...</value>
@@ -331,7 +331,7 @@
     <value>projectsTabPage</value>
   </data>
   <data name="&gt;&gt;editTicketsButton.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="projectCreatedButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>211, 33</value>
@@ -340,7 +340,7 @@
     <value>21, 21</value>
   </data>
   <data name="projectCreatedButton.TabIndex" type="System.Int32, mscorlib">
-    <value>29</value>
+    <value>9</value>
   </data>
   <data name="&gt;&gt;projectCreatedButton.Name" xml:space="preserve">
     <value>projectCreatedButton</value>
@@ -352,7 +352,7 @@
     <value>projectsTabPage</value>
   </data>
   <data name="&gt;&gt;projectCreatedButton.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>16</value>
   </data>
   <data name="deleteProjectButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -367,7 +367,7 @@
     <value>83, 23</value>
   </data>
   <data name="deleteProjectButton.TabIndex" type="System.Int32, mscorlib">
-    <value>26</value>
+    <value>28</value>
   </data>
   <data name="deleteProjectButton.Text" xml:space="preserve">
     <value>&amp;Delete...</value>
@@ -385,7 +385,7 @@
     <value>projectsTabPage</value>
   </data>
   <data name="&gt;&gt;deleteProjectButton.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="projectModifiedButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>211, 60</value>
@@ -394,7 +394,7 @@
     <value>21, 21</value>
   </data>
   <data name="projectModifiedButton.TabIndex" type="System.Int32, mscorlib">
-    <value>30</value>
+    <value>16</value>
   </data>
   <data name="&gt;&gt;projectModifiedButton.Name" xml:space="preserve">
     <value>projectModifiedButton</value>
@@ -406,7 +406,7 @@
     <value>projectsTabPage</value>
   </data>
   <data name="&gt;&gt;projectModifiedButton.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>19</value>
   </data>
   <data name="editProjectButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -421,7 +421,7 @@
     <value>83, 23</value>
   </data>
   <data name="editProjectButton.TabIndex" type="System.Int32, mscorlib">
-    <value>24</value>
+    <value>26</value>
   </data>
   <data name="editProjectButton.Text" xml:space="preserve">
     <value>&amp;Edit...</value>
@@ -439,7 +439,7 @@
     <value>projectsTabPage</value>
   </data>
   <data name="&gt;&gt;editProjectButton.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="projectModifiedTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>60, 60</value>
@@ -448,7 +448,7 @@
     <value>145, 21</value>
   </data>
   <data name="projectModifiedTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>31</value>
+    <value>15</value>
   </data>
   <data name="&gt;&gt;projectModifiedTextBox.Name" xml:space="preserve">
     <value>projectModifiedTextBox</value>
@@ -460,7 +460,7 @@
     <value>projectsTabPage</value>
   </data>
   <data name="&gt;&gt;projectModifiedTextBox.ZOrder" xml:space="preserve">
-    <value>20</value>
+    <value>22</value>
   </data>
   <data name="addProjectButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -475,7 +475,7 @@
     <value>83, 23</value>
   </data>
   <data name="addProjectButton.TabIndex" type="System.Int32, mscorlib">
-    <value>23</value>
+    <value>25</value>
   </data>
   <data name="addProjectButton.Text" xml:space="preserve">
     <value>&amp;Add...</value>
@@ -493,7 +493,7 @@
     <value>projectsTabPage</value>
   </data>
   <data name="&gt;&gt;addProjectButton.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="projectCreatedTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>60, 33</value>
@@ -502,7 +502,7 @@
     <value>145, 21</value>
   </data>
   <data name="projectCreatedTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>32</value>
+    <value>8</value>
   </data>
   <data name="&gt;&gt;projectCreatedTextBox.Name" xml:space="preserve">
     <value>projectCreatedTextBox</value>
@@ -514,7 +514,7 @@
     <value>projectsTabPage</value>
   </data>
   <data name="&gt;&gt;projectCreatedTextBox.ZOrder" xml:space="preserve">
-    <value>23</value>
+    <value>25</value>
   </data>
   <data name="label9.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -544,7 +544,7 @@
     <value>projectsTabPage</value>
   </data>
   <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
-    <value>25</value>
+    <value>27</value>
   </data>
   <data name="projectNameTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>60, 6</value>
@@ -553,7 +553,7 @@
     <value>172, 21</value>
   </data>
   <data name="projectNameTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>33</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;projectNameTextBox.Name" xml:space="preserve">
     <value>projectNameTextBox</value>
@@ -565,7 +565,7 @@
     <value>projectsTabPage</value>
   </data>
   <data name="&gt;&gt;projectNameTextBox.ZOrder" xml:space="preserve">
-    <value>24</value>
+    <value>26</value>
   </data>
   <data name="label8.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -595,7 +595,7 @@
     <value>projectsTabPage</value>
   </data>
   <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
-    <value>22</value>
+    <value>24</value>
   </data>
   <data name="projectTicketStateComboBox.Items" xml:space="preserve">
     <value />
@@ -643,7 +643,7 @@
     <value>projectsTabPage</value>
   </data>
   <data name="&gt;&gt;projectTicketStateComboBox.ZOrder" xml:space="preserve">
-    <value>21</value>
+    <value>23</value>
   </data>
   <data name="projectTicketReportersComboBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>309, 60</value>
@@ -652,7 +652,7 @@
     <value>106, 21</value>
   </data>
   <data name="projectTicketReportersComboBox.TabIndex" type="System.Int32, mscorlib">
-    <value>34</value>
+    <value>18</value>
   </data>
   <data name="&gt;&gt;projectTicketReportersComboBox.Name" xml:space="preserve">
     <value>projectTicketReportersComboBox</value>
@@ -664,7 +664,7 @@
     <value>projectsTabPage</value>
   </data>
   <data name="&gt;&gt;projectTicketReportersComboBox.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>21</value>
   </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -694,7 +694,7 @@
     <value>projectsTabPage</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="projectTicketAssignedToComboBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>309, 33</value>
@@ -703,7 +703,7 @@
     <value>106, 21</value>
   </data>
   <data name="projectTicketAssignedToComboBox.TabIndex" type="System.Int32, mscorlib">
-    <value>35</value>
+    <value>11</value>
   </data>
   <data name="&gt;&gt;projectTicketAssignedToComboBox.Name" xml:space="preserve">
     <value>projectTicketAssignedToComboBox</value>
@@ -715,7 +715,7 @@
     <value>projectsTabPage</value>
   </data>
   <data name="&gt;&gt;projectTicketAssignedToComboBox.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>20</value>
   </data>
   <data name="projectTicketPriorityComboBox.Items" xml:space="preserve">
     <value />
@@ -754,7 +754,7 @@
     <value>projectsTabPage</value>
   </data>
   <data name="&gt;&gt;projectTicketPriorityComboBox.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>18</value>
   </data>
   <data name="label7.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -784,7 +784,7 @@
     <value>projectsTabPage</value>
   </data>
   <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>17</value>
   </data>
   <data name="label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -814,7 +814,7 @@
     <value>projectsTabPage</value>
   </data>
   <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>15</value>
   </data>
   <data name="label6.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -844,7 +844,7 @@
     <value>projectsTabPage</value>
   </data>
   <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>14</value>
   </data>
   <data name="projectTicketSeverityComboBox.Items" xml:space="preserve">
     <value />
@@ -886,7 +886,7 @@
     <value>projectsTabPage</value>
   </data>
   <data name="&gt;&gt;projectTicketSeverityComboBox.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>12</value>
   </data>
   <data name="projectTicketTypeComboBox.Items" xml:space="preserve">
     <value />
@@ -919,7 +919,7 @@
     <value>projectsTabPage</value>
   </data>
   <data name="&gt;&gt;projectTicketTypeComboBox.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
   </data>
   <data name="label4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -949,7 +949,7 @@
     <value>projectsTabPage</value>
   </data>
   <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -1146,6 +1146,30 @@
   <data name="saveFileDialog.Title" xml:space="preserve">
     <value>Save</value>
   </data>
+  <data name="&gt;&gt;projectProjectStateComboBox.Name" xml:space="preserve">
+    <value>projectProjectStateComboBox</value>
+  </data>
+  <data name="&gt;&gt;projectProjectStateComboBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;projectProjectStateComboBox.Parent" xml:space="preserve">
+    <value>projectsTabPage</value>
+  </data>
+  <data name="&gt;&gt;projectProjectStateComboBox.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;label19.Name" xml:space="preserve">
+    <value>label19</value>
+  </data>
+  <data name="&gt;&gt;label19.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label19.Parent" xml:space="preserve">
+    <value>projectsTabPage</value>
+  </data>
+  <data name="&gt;&gt;label19.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="projectsTabPage.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
   </data>
@@ -1173,6 +1197,63 @@
   <data name="&gt;&gt;projectsTabPage.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="label20.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label20.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 90</value>
+  </data>
+  <data name="label20.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 13</value>
+  </data>
+  <data name="label20.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="label20.Text" xml:space="preserve">
+    <value>Project State:</value>
+  </data>
+  <data name="&gt;&gt;label20.Name" xml:space="preserve">
+    <value>label20</value>
+  </data>
+  <data name="&gt;&gt;label20.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label20.Parent" xml:space="preserve">
+    <value>ticketsTabPage</value>
+  </data>
+  <data name="&gt;&gt;label20.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="ticketProjectStateComboBox.Items" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ticketProjectStateComboBox.Items1" xml:space="preserve">
+    <value>Inactive</value>
+  </data>
+  <data name="ticketProjectStateComboBox.Items2" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="ticketProjectStateComboBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>83, 87</value>
+  </data>
+  <data name="ticketProjectStateComboBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 21</value>
+  </data>
+  <data name="ticketProjectStateComboBox.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="&gt;&gt;ticketProjectStateComboBox.Name" xml:space="preserve">
+    <value>ticketProjectStateComboBox</value>
+  </data>
+  <data name="&gt;&gt;ticketProjectStateComboBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ticketProjectStateComboBox.Parent" xml:space="preserve">
+    <value>ticketsTabPage</value>
+  </data>
+  <data name="&gt;&gt;ticketProjectStateComboBox.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="showTicketAttachmentsButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
@@ -1189,7 +1270,7 @@
     <value>110, 23</value>
   </data>
   <data name="showTicketAttachmentsButton.TabIndex" type="System.Int32, mscorlib">
-    <value>42</value>
+    <value>30</value>
   </data>
   <data name="showTicketAttachmentsButton.Text" xml:space="preserve">
     <value>A&amp;ttachments...</value>
@@ -1207,7 +1288,7 @@
     <value>ticketsTabPage</value>
   </data>
   <data name="&gt;&gt;showTicketAttachmentsButton.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="showTicketHistoryButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -1222,7 +1303,7 @@
     <value>83, 23</value>
   </data>
   <data name="showTicketHistoryButton.TabIndex" type="System.Int32, mscorlib">
-    <value>40</value>
+    <value>28</value>
   </data>
   <data name="showTicketHistoryButton.Text" xml:space="preserve">
     <value>&amp;History...</value>
@@ -1240,7 +1321,7 @@
     <value>ticketsTabPage</value>
   </data>
   <data name="&gt;&gt;showTicketHistoryButton.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="resetTicketFilterButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1252,7 +1333,7 @@
     <value>75, 23</value>
   </data>
   <data name="resetTicketFilterButton.TabIndex" type="System.Int32, mscorlib">
-    <value>54</value>
+    <value>23</value>
   </data>
   <data name="resetTicketFilterButton.Text" xml:space="preserve">
     <value>Reset</value>
@@ -1267,7 +1348,7 @@
     <value>ticketsTabPage</value>
   </data>
   <data name="&gt;&gt;resetTicketFilterButton.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="deleteTicketButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -1282,7 +1363,7 @@
     <value>83, 23</value>
   </data>
   <data name="deleteTicketButton.TabIndex" type="System.Int32, mscorlib">
-    <value>41</value>
+    <value>29</value>
   </data>
   <data name="deleteTicketButton.Text" xml:space="preserve">
     <value>&amp;Delete...</value>
@@ -1300,7 +1381,7 @@
     <value>ticketsTabPage</value>
   </data>
   <data name="&gt;&gt;deleteTicketButton.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="ticketsListView.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -1351,7 +1432,7 @@
     <value>606, 218</value>
   </data>
   <data name="ticketsListView.TabIndex" type="System.Int32, mscorlib">
-    <value>37</value>
+    <value>24</value>
   </data>
   <data name="&gt;&gt;ticketsListView.Name" xml:space="preserve">
     <value>ticketsListView</value>
@@ -1363,7 +1444,7 @@
     <value>ticketsTabPage</value>
   </data>
   <data name="&gt;&gt;ticketsListView.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="editTicketButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -1378,7 +1459,7 @@
     <value>83, 23</value>
   </data>
   <data name="editTicketButton.TabIndex" type="System.Int32, mscorlib">
-    <value>39</value>
+    <value>27</value>
   </data>
   <data name="editTicketButton.Text" xml:space="preserve">
     <value>&amp;Edit...</value>
@@ -1396,7 +1477,7 @@
     <value>ticketsTabPage</value>
   </data>
   <data name="&gt;&gt;editTicketButton.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="ticketCreatedButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1408,7 +1489,7 @@
     <value>21, 21</value>
   </data>
   <data name="ticketCreatedButton.TabIndex" type="System.Int32, mscorlib">
-    <value>43</value>
+    <value>9</value>
   </data>
   <data name="&gt;&gt;ticketCreatedButton.Name" xml:space="preserve">
     <value>ticketCreatedButton</value>
@@ -1420,7 +1501,7 @@
     <value>ticketsTabPage</value>
   </data>
   <data name="&gt;&gt;ticketCreatedButton.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="showTicketButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -1435,7 +1516,7 @@
     <value>83, 23</value>
   </data>
   <data name="showTicketButton.TabIndex" type="System.Int32, mscorlib">
-    <value>38</value>
+    <value>26</value>
   </data>
   <data name="showTicketButton.Text" xml:space="preserve">
     <value>&amp;Show...</value>
@@ -1453,7 +1534,7 @@
     <value>ticketsTabPage</value>
   </data>
   <data name="&gt;&gt;showTicketButton.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="ticketSummaryTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>60, 6</value>
@@ -1462,7 +1543,7 @@
     <value>172, 21</value>
   </data>
   <data name="ticketSummaryTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>57</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;ticketSummaryTextBox.Name" xml:space="preserve">
     <value>ticketSummaryTextBox</value>
@@ -1474,7 +1555,7 @@
     <value>ticketsTabPage</value>
   </data>
   <data name="&gt;&gt;ticketSummaryTextBox.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
   </data>
   <data name="addTicketButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -1489,7 +1570,7 @@
     <value>83, 23</value>
   </data>
   <data name="addTicketButton.TabIndex" type="System.Int32, mscorlib">
-    <value>37</value>
+    <value>25</value>
   </data>
   <data name="addTicketButton.Text" xml:space="preserve">
     <value>&amp;Add...</value>
@@ -1507,7 +1588,7 @@
     <value>ticketsTabPage</value>
   </data>
   <data name="&gt;&gt;addTicketButton.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>11</value>
   </data>
   <data name="ticketModifiedButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1519,7 +1600,7 @@
     <value>21, 21</value>
   </data>
   <data name="ticketModifiedButton.TabIndex" type="System.Int32, mscorlib">
-    <value>49</value>
+    <value>16</value>
   </data>
   <data name="&gt;&gt;ticketModifiedButton.Name" xml:space="preserve">
     <value>ticketModifiedButton</value>
@@ -1531,7 +1612,7 @@
     <value>ticketsTabPage</value>
   </data>
   <data name="&gt;&gt;ticketModifiedButton.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>12</value>
   </data>
   <data name="ticketTicketStateComboBox.Items" xml:space="preserve">
     <value />
@@ -1567,7 +1648,7 @@
     <value>106, 21</value>
   </data>
   <data name="ticketTicketStateComboBox.TabIndex" type="System.Int32, mscorlib">
-    <value>41</value>
+    <value>6</value>
   </data>
   <data name="&gt;&gt;ticketTicketStateComboBox.Name" xml:space="preserve">
     <value>ticketTicketStateComboBox</value>
@@ -1579,7 +1660,7 @@
     <value>ticketsTabPage</value>
   </data>
   <data name="&gt;&gt;ticketTicketStateComboBox.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>13</value>
   </data>
   <data name="ticketModifiedTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>60, 60</value>
@@ -1588,7 +1669,7 @@
     <value>145, 21</value>
   </data>
   <data name="ticketModifiedTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>55</value>
+    <value>15</value>
   </data>
   <data name="&gt;&gt;ticketModifiedTextBox.Name" xml:space="preserve">
     <value>ticketModifiedTextBox</value>
@@ -1600,7 +1681,7 @@
     <value>ticketsTabPage</value>
   </data>
   <data name="&gt;&gt;ticketModifiedTextBox.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>14</value>
   </data>
   <data name="label18.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1615,7 +1696,7 @@
     <value>68, 13</value>
   </data>
   <data name="label18.TabIndex" type="System.Int32, mscorlib">
-    <value>40</value>
+    <value>5</value>
   </data>
   <data name="label18.Text" xml:space="preserve">
     <value>Ticket State:</value>
@@ -1630,7 +1711,7 @@
     <value>ticketsTabPage</value>
   </data>
   <data name="&gt;&gt;label18.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>15</value>
   </data>
   <data name="ticketCreatedTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>60, 33</value>
@@ -1639,7 +1720,7 @@
     <value>145, 21</value>
   </data>
   <data name="ticketCreatedTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>56</value>
+    <value>8</value>
   </data>
   <data name="&gt;&gt;ticketCreatedTextBox.Name" xml:space="preserve">
     <value>ticketCreatedTextBox</value>
@@ -1651,7 +1732,7 @@
     <value>ticketsTabPage</value>
   </data>
   <data name="&gt;&gt;ticketCreatedTextBox.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>16</value>
   </data>
   <data name="label17.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1666,7 +1747,7 @@
     <value>55, 13</value>
   </data>
   <data name="label17.TabIndex" type="System.Int32, mscorlib">
-    <value>37</value>
+    <value>1</value>
   </data>
   <data name="label17.Text" xml:space="preserve">
     <value>Summary:</value>
@@ -1681,7 +1762,7 @@
     <value>ticketsTabPage</value>
   </data>
   <data name="&gt;&gt;label17.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>17</value>
   </data>
   <data name="label10.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1696,7 +1777,7 @@
     <value>51, 13</value>
   </data>
   <data name="label10.TabIndex" type="System.Int32, mscorlib">
-    <value>48</value>
+    <value>14</value>
   </data>
   <data name="label10.Text" xml:space="preserve">
     <value>Modified:</value>
@@ -1711,7 +1792,7 @@
     <value>ticketsTabPage</value>
   </data>
   <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>18</value>
   </data>
   <data name="ticketTicketPriorityComboBox.Items" xml:space="preserve">
     <value />
@@ -1738,7 +1819,7 @@
     <value>106, 21</value>
   </data>
   <data name="ticketTicketPriorityComboBox.TabIndex" type="System.Int32, mscorlib">
-    <value>47</value>
+    <value>13</value>
   </data>
   <data name="&gt;&gt;ticketTicketPriorityComboBox.Name" xml:space="preserve">
     <value>ticketTicketPriorityComboBox</value>
@@ -1750,7 +1831,7 @@
     <value>ticketsTabPage</value>
   </data>
   <data name="&gt;&gt;ticketTicketPriorityComboBox.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>19</value>
   </data>
   <data name="label11.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1765,7 +1846,7 @@
     <value>50, 13</value>
   </data>
   <data name="label11.TabIndex" type="System.Int32, mscorlib">
-    <value>42</value>
+    <value>7</value>
   </data>
   <data name="label11.Text" xml:space="preserve">
     <value>Created:</value>
@@ -1780,7 +1861,7 @@
     <value>ticketsTabPage</value>
   </data>
   <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>20</value>
   </data>
   <data name="label16.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1795,7 +1876,7 @@
     <value>76, 13</value>
   </data>
   <data name="label16.TabIndex" type="System.Int32, mscorlib">
-    <value>46</value>
+    <value>12</value>
   </data>
   <data name="label16.Text" xml:space="preserve">
     <value>Ticket Priority:</value>
@@ -1810,7 +1891,7 @@
     <value>ticketsTabPage</value>
   </data>
   <data name="&gt;&gt;label16.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>21</value>
   </data>
   <data name="ticketTicketReportersComboBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>309, 60</value>
@@ -1819,7 +1900,7 @@
     <value>106, 21</value>
   </data>
   <data name="ticketTicketReportersComboBox.TabIndex" type="System.Int32, mscorlib">
-    <value>51</value>
+    <value>18</value>
   </data>
   <data name="&gt;&gt;ticketTicketReportersComboBox.Name" xml:space="preserve">
     <value>ticketTicketReportersComboBox</value>
@@ -1831,7 +1912,7 @@
     <value>ticketsTabPage</value>
   </data>
   <data name="&gt;&gt;ticketTicketReportersComboBox.ZOrder" xml:space="preserve">
-    <value>20</value>
+    <value>22</value>
   </data>
   <data name="ticketTicketSeverityComboBox.Items" xml:space="preserve">
     <value />
@@ -1861,7 +1942,7 @@
     <value>106, 21</value>
   </data>
   <data name="ticketTicketSeverityComboBox.TabIndex" type="System.Int32, mscorlib">
-    <value>53</value>
+    <value>20</value>
   </data>
   <data name="&gt;&gt;ticketTicketSeverityComboBox.Name" xml:space="preserve">
     <value>ticketTicketSeverityComboBox</value>
@@ -1873,7 +1954,7 @@
     <value>ticketsTabPage</value>
   </data>
   <data name="&gt;&gt;ticketTicketSeverityComboBox.ZOrder" xml:space="preserve">
-    <value>21</value>
+    <value>23</value>
   </data>
   <data name="ticketTicketAssignedToComboBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>309, 33</value>
@@ -1882,7 +1963,7 @@
     <value>106, 21</value>
   </data>
   <data name="ticketTicketAssignedToComboBox.TabIndex" type="System.Int32, mscorlib">
-    <value>45</value>
+    <value>11</value>
   </data>
   <data name="&gt;&gt;ticketTicketAssignedToComboBox.Name" xml:space="preserve">
     <value>ticketTicketAssignedToComboBox</value>
@@ -1894,7 +1975,7 @@
     <value>ticketsTabPage</value>
   </data>
   <data name="&gt;&gt;ticketTicketAssignedToComboBox.ZOrder" xml:space="preserve">
-    <value>22</value>
+    <value>24</value>
   </data>
   <data name="label15.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1909,7 +1990,7 @@
     <value>82, 13</value>
   </data>
   <data name="label15.TabIndex" type="System.Int32, mscorlib">
-    <value>52</value>
+    <value>19</value>
   </data>
   <data name="label15.Text" xml:space="preserve">
     <value>Ticket Severity:</value>
@@ -1924,7 +2005,7 @@
     <value>ticketsTabPage</value>
   </data>
   <data name="&gt;&gt;label15.ZOrder" xml:space="preserve">
-    <value>23</value>
+    <value>25</value>
   </data>
   <data name="label12.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1939,7 +2020,7 @@
     <value>69, 13</value>
   </data>
   <data name="label12.TabIndex" type="System.Int32, mscorlib">
-    <value>44</value>
+    <value>10</value>
   </data>
   <data name="label12.Text" xml:space="preserve">
     <value>Assigned To:</value>
@@ -1954,7 +2035,7 @@
     <value>ticketsTabPage</value>
   </data>
   <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
-    <value>24</value>
+    <value>26</value>
   </data>
   <data name="ticketTicketTypeComboBox.Items" xml:space="preserve">
     <value />
@@ -1975,7 +2056,7 @@
     <value>106, 21</value>
   </data>
   <data name="ticketTicketTypeComboBox.TabIndex" type="System.Int32, mscorlib">
-    <value>39</value>
+    <value>4</value>
   </data>
   <data name="&gt;&gt;ticketTicketTypeComboBox.Name" xml:space="preserve">
     <value>ticketTicketTypeComboBox</value>
@@ -1987,7 +2068,7 @@
     <value>ticketsTabPage</value>
   </data>
   <data name="&gt;&gt;ticketTicketTypeComboBox.ZOrder" xml:space="preserve">
-    <value>25</value>
+    <value>27</value>
   </data>
   <data name="label13.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2002,7 +2083,7 @@
     <value>54, 13</value>
   </data>
   <data name="label13.TabIndex" type="System.Int32, mscorlib">
-    <value>50</value>
+    <value>17</value>
   </data>
   <data name="label13.Text" xml:space="preserve">
     <value>Reporter:</value>
@@ -2017,7 +2098,7 @@
     <value>ticketsTabPage</value>
   </data>
   <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
-    <value>26</value>
+    <value>28</value>
   </data>
   <data name="label14.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2032,7 +2113,7 @@
     <value>66, 13</value>
   </data>
   <data name="label14.TabIndex" type="System.Int32, mscorlib">
-    <value>38</value>
+    <value>3</value>
   </data>
   <data name="label14.Text" xml:space="preserve">
     <value>Ticket Type:</value>
@@ -2047,7 +2128,7 @@
     <value>ticketsTabPage</value>
   </data>
   <data name="&gt;&gt;label14.ZOrder" xml:space="preserve">
-    <value>27</value>
+    <value>29</value>
   </data>
   <data name="ticketsTabPage.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
@@ -2279,6 +2360,63 @@
   </data>
   <data name="taskToolStripMenuItem.Text" xml:space="preserve">
     <value>Task</value>
+  </data>
+  <data name="label19.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label19.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 90</value>
+  </data>
+  <data name="label19.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 13</value>
+  </data>
+  <data name="label19.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="label19.Text" xml:space="preserve">
+    <value>Project State:</value>
+  </data>
+  <data name="&gt;&gt;label19.Name" xml:space="preserve">
+    <value>label19</value>
+  </data>
+  <data name="&gt;&gt;label19.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label19.Parent" xml:space="preserve">
+    <value>projectsTabPage</value>
+  </data>
+  <data name="&gt;&gt;label19.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="projectProjectStateComboBox.Items" xml:space="preserve">
+    <value />
+  </data>
+  <data name="projectProjectStateComboBox.Items1" xml:space="preserve">
+    <value>Inactive</value>
+  </data>
+  <data name="projectProjectStateComboBox.Items2" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="projectProjectStateComboBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>83, 87</value>
+  </data>
+  <data name="projectProjectStateComboBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 21</value>
+  </data>
+  <data name="projectProjectStateComboBox.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="&gt;&gt;projectProjectStateComboBox.Name" xml:space="preserve">
+    <value>projectProjectStateComboBox</value>
+  </data>
+  <data name="&gt;&gt;projectProjectStateComboBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;projectProjectStateComboBox.Parent" xml:space="preserve">
+    <value>projectsTabPage</value>
+  </data>
+  <data name="&gt;&gt;projectProjectStateComboBox.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -2547,6 +2685,12 @@
   <data name="&gt;&gt;columnHeader12.Type" xml:space="preserve">
     <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;columnHeader13.Name" xml:space="preserve">
+    <value>columnHeader13</value>
+  </data>
+  <data name="&gt;&gt;columnHeader13.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;addTicketToolStripMenuItem.Name" xml:space="preserve">
     <value>addTicketToolStripMenuItem</value>
   </data>
@@ -2732,12 +2876,6 @@
   </data>
   <data name="&gt;&gt;taskToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;columnHeader13.Name" xml:space="preserve">
-    <value>columnHeader13</value>
-  </data>
-  <data name="&gt;&gt;columnHeader13.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>

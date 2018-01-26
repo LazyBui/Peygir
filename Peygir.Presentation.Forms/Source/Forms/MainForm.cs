@@ -374,6 +374,10 @@ namespace Peygir.Presentation.Forms {
 			ShowProjects();
 		}
 
+		private void projectProjectStateComboBox_SelectedIndexChanged(object sender, EventArgs e) {
+			ShowProjects();
+		}
+
 		private void projectCreatedTextBox_KeyDown(object sender, KeyEventArgs e) {
 			TextBoxUtil.TextBoxKeyDown(sender, e);
 		}
@@ -446,6 +450,10 @@ namespace Peygir.Presentation.Forms {
 		}
 
 		private void ticketTicketAssignedToComboBox_SelectedIndexChanged(object sender, EventArgs e) {
+			ShowTickets();
+		}
+
+		private void ticketProjectStateComboBox_SelectedIndexChanged(object sender, EventArgs e) {
 			ShowTickets();
 		}
 
@@ -798,6 +806,7 @@ namespace Peygir.Presentation.Forms {
 			var severityFilter = FormUtil.CastBox<TicketSeverity>(projectTicketSeverityComboBox);
 			var priorityFilter = FormUtil.CastBox<TicketPriority>(projectTicketPriorityComboBox);
 			var typeFilter = FormUtil.CastBox<TicketType>(projectTicketTypeComboBox);
+			var activeFilter = FormUtil.CastBox<ProjectState>(projectProjectStateComboBox);
 
 			if (string.IsNullOrEmpty(reporterFilter)) reporterFilter = null;
 			if (string.IsNullOrEmpty(assignedFilter)) assignedFilter = null;
@@ -806,9 +815,9 @@ namespace Peygir.Presentation.Forms {
 				projects.Select(p => Tuple.Create(p, p.GetTickets(mContext))));
 
 			projects = projects.Where(p => {
-				bool satisfiesNameFilter = FormUtil.FilterContains(p.Name, nameFilter);
-				if (!satisfiesNameFilter)
-					return false;
+				bool satisfiesNameFilter = FormUtil.SatisfiesFilterContains(p.Name, nameFilter);
+				if (!satisfiesNameFilter) return false;
+				if (!FormUtil.SatisfiesFilterEnum(p.State, activeFilter)) return false;
 
 				var tickets = allTickets.First(item => item.Item1 == p).Item2;
 				if (!tickets.Any()) {
@@ -826,18 +835,18 @@ namespace Peygir.Presentation.Forms {
 					}.Any(v => v != null);
 				}
 
-				bool satisfiesCreatedFilter = FormUtil.FilterContains(tickets.Min(t => t.CreateTimestamp), mProjectCreateFilter);
-				bool satisfiesModifiedFilter = FormUtil.FilterContains(tickets.Max(t => t.ModifyTimestamp), mProjectModifyFilter);
+				bool satisfiesCreatedFilter = FormUtil.SatisfiesFilterContains(tickets.Min(t => t.CreateTimestamp), mProjectCreateFilter);
+				bool satisfiesModifiedFilter = FormUtil.SatisfiesFilterContains(tickets.Max(t => t.ModifyTimestamp), mProjectModifyFilter);
 				if (!(satisfiesCreatedFilter && satisfiesModifiedFilter))
 					return false;
 
 				return tickets.Any(t => {
-					bool satisfiesReporterFilter = FormUtil.FilterMatch(t.ReportedBy, reporterFilter);
-					bool satisfiesAssignedFilter = FormUtil.FilterMatch(t.AssignedTo, assignedFilter);
+					bool satisfiesReporterFilter = FormUtil.SatisfiesFilterMatch(t.ReportedBy, reporterFilter);
+					bool satisfiesAssignedFilter = FormUtil.SatisfiesFilterMatch(t.AssignedTo, assignedFilter);
 					bool satisfiesStateFilter = stateFilter == null || stateFilter.Value.AppliesTo(t.State);
-					bool satisfiesSeverityFilter = FormUtil.FilterEnum(t.Severity, severityFilter);
-					bool satisfiesPriorityFilter = FormUtil.FilterEnum(t.Priority, priorityFilter);
-					bool satisfiesTypeFilter = FormUtil.FilterEnum(t.Type, typeFilter);
+					bool satisfiesSeverityFilter = FormUtil.SatisfiesFilterEnum(t.Severity, severityFilter);
+					bool satisfiesPriorityFilter = FormUtil.SatisfiesFilterEnum(t.Priority, priorityFilter);
+					bool satisfiesTypeFilter = FormUtil.SatisfiesFilterEnum(t.Type, typeFilter);
 
 					return
 						satisfiesReporterFilter &&
@@ -990,6 +999,7 @@ namespace Peygir.Presentation.Forms {
 			FormUtil.SetOrDefault(projectTicketSeverityComboBox);
 			FormUtil.SetOrDefault(projectTicketStateComboBox);
 			FormUtil.SetOrDefault(projectTicketTypeComboBox);
+			FormUtil.SetOrDefault(projectProjectStateComboBox);
 			mProjectModifyFilter = null;
 			projectModifiedTextBox.Text = string.Empty;
 			mProjectCreateFilter = null;
@@ -1083,21 +1093,23 @@ namespace Peygir.Presentation.Forms {
 			var severityFilter = FormUtil.CastBox<TicketSeverity>(ticketTicketSeverityComboBox);
 			var priorityFilter = FormUtil.CastBox<TicketPriority>(ticketTicketPriorityComboBox);
 			var typeFilter = FormUtil.CastBox<TicketType>(ticketTicketTypeComboBox);
+			var activeFilter = FormUtil.CastBox<ProjectState>(ticketProjectStateComboBox);
 
 			Ticket[] tickets = Project.GetProjects(mContext).
+				Where(p => FormUtil.SatisfiesFilterEnum(p.State, activeFilter)).
 				SelectMany(p => p.GetTickets(mContext)).
 				ToArray();
 
 			tickets = tickets.Where(t => {
-				bool satisfiesSummaryFilter = FormUtil.FilterContains(t.Summary, summaryFilter);
-				bool satisfiesReporterFilter = FormUtil.FilterMatch(t.ReportedBy, reporterFilter);
-				bool satisfiesAssignedFilter = FormUtil.FilterMatch(t.AssignedTo, assignedFilter);
+				bool satisfiesSummaryFilter = FormUtil.SatisfiesFilterContains(t.Summary, summaryFilter);
+				bool satisfiesReporterFilter = FormUtil.SatisfiesFilterMatch(t.ReportedBy, reporterFilter);
+				bool satisfiesAssignedFilter = FormUtil.SatisfiesFilterMatch(t.AssignedTo, assignedFilter);
 				bool satisfiesStateFilter = stateFilter == null || stateFilter.Value.AppliesTo(t.State);
-				bool satisfiesSeverityFilter = FormUtil.FilterEnum(t.Severity, severityFilter);
-				bool satisfiesPriorityFilter = FormUtil.FilterEnum(t.Priority, priorityFilter);
-				bool satisfiesTypeFilter = FormUtil.FilterEnum(t.Type, typeFilter);
-				bool satisfiesCreatedFilter = FormUtil.FilterContains(t.CreateTimestamp, mTicketCreateFilter);
-				bool satisfiesModifiedFilter = FormUtil.FilterContains(t.ModifyTimestamp, mTicketModifyFilter);
+				bool satisfiesSeverityFilter = FormUtil.SatisfiesFilterEnum(t.Severity, severityFilter);
+				bool satisfiesPriorityFilter = FormUtil.SatisfiesFilterEnum(t.Priority, priorityFilter);
+				bool satisfiesTypeFilter = FormUtil.SatisfiesFilterEnum(t.Type, typeFilter);
+				bool satisfiesCreatedFilter = FormUtil.SatisfiesFilterContains(t.CreateTimestamp, mTicketCreateFilter);
+				bool satisfiesModifiedFilter = FormUtil.SatisfiesFilterContains(t.ModifyTimestamp, mTicketModifyFilter);
 
 				return
 					satisfiesSummaryFilter &&
@@ -1174,6 +1186,7 @@ namespace Peygir.Presentation.Forms {
 			FormUtil.SetOrDefault(ticketTicketSeverityComboBox);
 			FormUtil.SetOrDefault(ticketTicketStateComboBox);
 			FormUtil.SetOrDefault(ticketTicketTypeComboBox);
+			FormUtil.SetOrDefault(ticketProjectStateComboBox);
 			mTicketModifyFilter = null;
 			ticketModifiedTextBox.Text = string.Empty;
 			mTicketCreateFilter = null;

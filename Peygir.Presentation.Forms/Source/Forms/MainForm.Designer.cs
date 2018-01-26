@@ -99,6 +99,7 @@
 			this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.ticketContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.addTicketToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.showTicketToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -154,7 +155,10 @@
 			this.ticketTicketTypeComboBox = new System.Windows.Forms.ComboBox();
 			this.label13 = new System.Windows.Forms.Label();
 			this.label14 = new System.Windows.Forms.Label();
-			this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.label19 = new System.Windows.Forms.Label();
+			this.projectProjectStateComboBox = new System.Windows.Forms.ComboBox();
+			this.ticketProjectStateComboBox = new System.Windows.Forms.ComboBox();
+			this.label20 = new System.Windows.Forms.Label();
 			this.projectContextMenu.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
 			this.statusStrip1.SuspendLayout();
@@ -628,6 +632,8 @@
 			// 
 			// projectsTabPage
 			// 
+			this.projectsTabPage.Controls.Add(this.projectProjectStateComboBox);
+			this.projectsTabPage.Controls.Add(this.label19);
 			this.projectsTabPage.Controls.Add(this.editTicketsButton);
 			this.projectsTabPage.Controls.Add(this.label2);
 			this.projectsTabPage.Controls.Add(this.deleteProjectButton);
@@ -660,6 +666,8 @@
 			// 
 			// ticketsTabPage
 			// 
+			this.ticketsTabPage.Controls.Add(this.label20);
+			this.ticketsTabPage.Controls.Add(this.ticketProjectStateComboBox);
 			this.ticketsTabPage.Controls.Add(this.showTicketAttachmentsButton);
 			this.ticketsTabPage.Controls.Add(this.showTicketHistoryButton);
 			this.ticketsTabPage.Controls.Add(this.resetTicketFilterButton);
@@ -773,6 +781,10 @@
 			// columnHeader12
 			// 
 			resources.ApplyResources(this.columnHeader12, "columnHeader12");
+			// 
+			// columnHeader13
+			// 
+			resources.ApplyResources(this.columnHeader13, "columnHeader13");
 			// 
 			// ticketContextMenu
 			// 
@@ -1196,9 +1208,39 @@
 			resources.ApplyResources(this.label14, "label14");
 			this.label14.Name = "label14";
 			// 
-			// columnHeader13
+			// label19
 			// 
-			resources.ApplyResources(this.columnHeader13, "columnHeader13");
+			resources.ApplyResources(this.label19, "label19");
+			this.label19.Name = "label19";
+			// 
+			// projectProjectStateComboBox
+			// 
+			this.projectProjectStateComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.projectProjectStateComboBox.FormattingEnabled = true;
+			this.projectProjectStateComboBox.Items.AddRange(new object[] {
+            resources.GetString("projectProjectStateComboBox.Items"),
+            resources.GetString("projectProjectStateComboBox.Items1"),
+            resources.GetString("projectProjectStateComboBox.Items2")});
+			resources.ApplyResources(this.projectProjectStateComboBox, "projectProjectStateComboBox");
+			this.projectProjectStateComboBox.Name = "projectProjectStateComboBox";
+			this.projectProjectStateComboBox.SelectedIndexChanged += new System.EventHandler(this.projectProjectStateComboBox_SelectedIndexChanged);
+			// 
+			// ticketProjectStateComboBox
+			// 
+			this.ticketProjectStateComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.ticketProjectStateComboBox.FormattingEnabled = true;
+			this.ticketProjectStateComboBox.Items.AddRange(new object[] {
+            resources.GetString("ticketProjectStateComboBox.Items"),
+            resources.GetString("ticketProjectStateComboBox.Items1"),
+            resources.GetString("ticketProjectStateComboBox.Items2")});
+			resources.ApplyResources(this.ticketProjectStateComboBox, "ticketProjectStateComboBox");
+			this.ticketProjectStateComboBox.Name = "ticketProjectStateComboBox";
+			this.ticketProjectStateComboBox.SelectedIndexChanged += new System.EventHandler(this.ticketProjectStateComboBox_SelectedIndexChanged);
+			// 
+			// label20
+			// 
+			resources.ApplyResources(this.label20, "label20");
+			this.label20.Name = "label20";
 			// 
 			// MainForm
 			// 
@@ -1357,5 +1399,9 @@
 		private System.Windows.Forms.ToolStripMenuItem featureRequestToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem taskToolStripMenuItem;
 		private System.Windows.Forms.ColumnHeader columnHeader13;
+		private System.Windows.Forms.ComboBox projectProjectStateComboBox;
+		private System.Windows.Forms.Label label19;
+		private System.Windows.Forms.Label label20;
+		private System.Windows.Forms.ComboBox ticketProjectStateComboBox;
 	}
 }

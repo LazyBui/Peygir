@@ -1253,6 +1253,8 @@ namespace Peygir.Data {
             
             private global::System.Data.DataColumn columnDisplayOrder;
             
+            private global::System.Data.DataColumn columnState;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ProjectsDataTable() {
@@ -1320,6 +1322,14 @@ namespace Peygir.Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn StateColumn {
+                get {
+                    return this.columnState;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1355,13 +1365,14 @@ namespace Peygir.Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ProjectsRow AddProjectsRow(string Name, string Description, int DisplayOrder) {
+            public ProjectsRow AddProjectsRow(string Name, string Description, int DisplayOrder, int State) {
                 ProjectsRow rowProjectsRow = ((ProjectsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         Name,
                         Description,
-                        DisplayOrder};
+                        DisplayOrder,
+                        State};
                 rowProjectsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowProjectsRow);
                 return rowProjectsRow;
@@ -1395,6 +1406,7 @@ namespace Peygir.Data {
                 this.columnName = base.Columns["Name"];
                 this.columnDescription = base.Columns["Description"];
                 this.columnDisplayOrder = base.Columns["DisplayOrder"];
+                this.columnState = base.Columns["State"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1408,6 +1420,8 @@ namespace Peygir.Data {
                 base.Columns.Add(this.columnDescription);
                 this.columnDisplayOrder = new global::System.Data.DataColumn("DisplayOrder", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDisplayOrder);
+                this.columnState = new global::System.Data.DataColumn("State", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnState);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnID.AutoIncrement = true;
@@ -3771,6 +3785,22 @@ namespace Peygir.Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int State {
+                get {
+                    try {
+                        return ((int)(this[this.tableProjects.StateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'State\' in table \'Projects\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableProjects.StateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsNameNull() {
                 return this.IsNull(this.tableProjects.NameColumn);
             }
@@ -3803,6 +3833,18 @@ namespace Peygir.Data {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetDisplayOrderNull() {
                 this[this.tableProjects.DisplayOrderColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsStateNull() {
+                return this.IsNull(this.tableProjects.StateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetStateNull() {
+                this[this.tableProjects.StateColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6024,14 +6066,17 @@ namespace Peygir.Data.PeygirDatabaseDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("Name", "Name");
             tableMapping.ColumnMappings.Add("Description", "Description");
             tableMapping.ColumnMappings.Add("DisplayOrder", "DisplayOrder");
+            tableMapping.ColumnMappings.Add("State", "State");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.InsertCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO `Projects` (`Name`, `Description`, `DisplayOrder`) VALUES (?, ?, ?)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO `Projects` (`Name`, `Description`, `DisplayOrder`, `State`) VALUES (?" +
+                ", ?, ?, ?)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Name", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Name", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Description", global::System.Data.OleDb.OleDbType.LongVarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Description", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("DisplayOrder", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "DisplayOrder", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("State", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "State", global::System.Data.DataRowVersion.Current, false, null));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6047,7 +6092,7 @@ namespace Peygir.Data.PeygirDatabaseDataSetTableAdapters {
             this._commandCollection = new global::System.Data.OleDb.OleDbCommand[6];
             this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID, Name, Description, DisplayOrder FROM Projects";
+            this._commandCollection[0].CommandText = "SELECT ID, Name, Description, DisplayOrder, State FROM Projects";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[1].Connection = this.Connection;
@@ -6056,7 +6101,7 @@ namespace Peygir.Data.PeygirDatabaseDataSetTableAdapters {
             this._commandCollection[1].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ID", global::System.Data.DataRowVersion.Original, false, null));
             this._commandCollection[2] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "SELECT Description, DisplayOrder, ID, Name FROM Projects WHERE (ID = ?)";
+            this._commandCollection[2].CommandText = "SELECT Description, DisplayOrder, ID, Name, State FROM Projects WHERE (ID = ?)";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ID", global::System.Data.DataRowVersion.Current, false, null));
             this._commandCollection[3] = new global::System.Data.OleDb.OleDbCommand();
@@ -6073,11 +6118,13 @@ namespace Peygir.Data.PeygirDatabaseDataSetTableAdapters {
             this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[5] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[5].Connection = this.Connection;
-            this._commandCollection[5].CommandText = "UPDATE Projects SET Name = ?, Description = ?, DisplayOrder = ?\r\nWHERE ID = ?";
+            this._commandCollection[5].CommandText = "UPDATE Projects SET Name = ?, Description = ?, DisplayOrder = ?, State = ?\r\nWHERE" +
+                " ID = ?";
             this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[5].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Name", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Name", global::System.Data.DataRowVersion.Current, false, null));
             this._commandCollection[5].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Description", global::System.Data.OleDb.OleDbType.WChar, 1024, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Description", global::System.Data.DataRowVersion.Current, false, null));
             this._commandCollection[5].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("DisplayOrder", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "DisplayOrder", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("State", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "State", global::System.Data.DataRowVersion.Current, false, null));
             this._commandCollection[5].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_ID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ID", global::System.Data.DataRowVersion.Original, false, null));
         }
         
@@ -6164,7 +6211,7 @@ namespace Peygir.Data.PeygirDatabaseDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string Name, string Description, global::System.Nullable<int> DisplayOrder) {
+        public virtual int Insert(string Name, string Description, global::System.Nullable<int> DisplayOrder, int State) {
             if ((Name == null)) {
                 this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -6183,6 +6230,7 @@ namespace Peygir.Data.PeygirDatabaseDataSetTableAdapters {
             else {
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
+            this.Adapter.InsertCommand.Parameters[3].Value = ((int)(State));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -6301,7 +6349,7 @@ namespace Peygir.Data.PeygirDatabaseDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
-        public virtual int UpdateByID(string Name, string Description, global::System.Nullable<int> DisplayOrder, int Original_ID) {
+        public virtual int UpdateByID(string Name, string Description, global::System.Nullable<int> DisplayOrder, int State, int Original_ID) {
             global::System.Data.OleDb.OleDbCommand command = this.CommandCollection[5];
             if ((Name == null)) {
                 command.Parameters[0].Value = global::System.DBNull.Value;
@@ -6321,7 +6369,8 @@ namespace Peygir.Data.PeygirDatabaseDataSetTableAdapters {
             else {
                 command.Parameters[2].Value = global::System.DBNull.Value;
             }
-            command.Parameters[3].Value = ((int)(Original_ID));
+            command.Parameters[3].Value = ((int)(State));
+            command.Parameters[4].Value = ((int)(Original_ID));
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -6505,7 +6554,7 @@ namespace Peygir.Data.PeygirDatabaseDataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.OleDb.OleDbCommand[9];
+            this._commandCollection = new global::System.Data.OleDb.OleDbCommand[8];
             this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT ID, MilestoneID, TicketNumber, Summary, ReportedBy, Type, Severity, State," +
@@ -6560,9 +6609,9 @@ namespace Peygir.Data.PeygirDatabaseDataSetTableAdapters {
             this._commandCollection[6].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Param1", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "", global::System.Data.DataRowVersion.Current, false, null));
             this._commandCollection[7] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[7].Connection = this.Connection;
-            this._commandCollection[7].CommandText = "INSERT INTO `Tickets` (`MilestoneID`, `TicketNumber`, `Summary`, `ReportedBy`, `T" +
-                "ype`, `Severity`, `State`, `AssignedTo`, `Priority`, `Description`, `CreateTimes" +
-                "tamp`, `ModifyTimestamp`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            this._commandCollection[7].CommandText = "UPDATE Tickets SET MilestoneID = ?, TicketNumber = ?, Summary = ?, ReportedBy = ?" +
+                ", Type = ?, Severity = ?, State = ?, AssignedTo = ?, Priority = ?, Description =" +
+                " ?, ModifyTimestamp = ?\r\nWHERE ID = ?";
             this._commandCollection[7].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[7].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("MilestoneID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "MilestoneID", global::System.Data.DataRowVersion.Current, false, null));
             this._commandCollection[7].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("TicketNumber", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TicketNumber", global::System.Data.DataRowVersion.Current, false, null));
@@ -6574,26 +6623,8 @@ namespace Peygir.Data.PeygirDatabaseDataSetTableAdapters {
             this._commandCollection[7].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("AssignedTo", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "AssignedTo", global::System.Data.DataRowVersion.Current, false, null));
             this._commandCollection[7].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Priority", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Priority", global::System.Data.DataRowVersion.Current, false, null));
             this._commandCollection[7].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Description", global::System.Data.OleDb.OleDbType.WChar, 1024, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Description", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[7].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("CreateTimestamp", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "CreateTimestamp", global::System.Data.DataRowVersion.Current, false, null));
             this._commandCollection[7].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ModifyTimestamp", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ModifyTimestamp", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[8] = new global::System.Data.OleDb.OleDbCommand();
-            this._commandCollection[8].Connection = this.Connection;
-            this._commandCollection[8].CommandText = "UPDATE Tickets SET MilestoneID = ?, TicketNumber = ?, Summary = ?, ReportedBy = ?" +
-                ", Type = ?, Severity = ?, State = ?, AssignedTo = ?, Priority = ?, Description =" +
-                " ?, ModifyTimestamp = ?\r\nWHERE ID = ?";
-            this._commandCollection[8].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[8].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("MilestoneID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "MilestoneID", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[8].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("TicketNumber", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TicketNumber", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[8].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Summary", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Summary", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[8].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ReportedBy", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ReportedBy", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[8].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Type", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Type", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[8].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Severity", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Severity", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[8].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("State", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "State", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[8].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("AssignedTo", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "AssignedTo", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[8].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Priority", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Priority", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[8].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Description", global::System.Data.OleDb.OleDbType.WChar, 1024, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Description", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[8].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ModifyTimestamp", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ModifyTimestamp", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[8].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_ID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ID", global::System.Data.DataRowVersion.Original, false, null));
+            this._commandCollection[7].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_ID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ID", global::System.Data.DataRowVersion.Original, false, null));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6750,6 +6781,89 @@ namespace Peygir.Data.PeygirDatabaseDataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(global::System.Nullable<int> MilestoneID, global::System.Nullable<int> TicketNumber, string Summary, string ReportedBy, global::System.Nullable<int> Type, global::System.Nullable<int> Severity, global::System.Nullable<int> State, string AssignedTo, global::System.Nullable<int> Priority, string Description, System.DateTime CreateTimestamp, System.DateTime ModifyTimestamp) {
+            if ((MilestoneID.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[0].Value = ((int)(MilestoneID.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            if ((TicketNumber.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((int)(TicketNumber.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((Summary == null)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(Summary));
+            }
+            if ((ReportedBy == null)) {
+                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(ReportedBy));
+            }
+            if ((Type.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((int)(Type.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            if ((Severity.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[5].Value = ((int)(Severity.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            if ((State.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[6].Value = ((int)(State.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            if ((AssignedTo == null)) {
+                this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(AssignedTo));
+            }
+            if ((Priority.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[8].Value = ((int)(Priority.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            if ((Description == null)) {
+                this.Adapter.InsertCommand.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[9].Value = ((string)(Description));
+            }
+            this.Adapter.InsertCommand.Parameters[10].Value = ((System.DateTime)(CreateTimestamp));
+            this.Adapter.InsertCommand.Parameters[11].Value = ((System.DateTime)(ModifyTimestamp));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, false)]
         public virtual int DeleteByID(int ID) {
             global::System.Data.OleDb.OleDbCommand command = this.CommandCollection[1];
@@ -6896,94 +7010,9 @@ namespace Peygir.Data.PeygirDatabaseDataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
-        public virtual int Insert(global::System.Nullable<int> MilestoneID, global::System.Nullable<int> TicketNumber, string Summary, string ReportedBy, global::System.Nullable<int> Type, global::System.Nullable<int> Severity, global::System.Nullable<int> State, string AssignedTo, global::System.Nullable<int> Priority, string Description, System.DateTime CreateTimestamp, System.DateTime ModifyTimestamp) {
-            global::System.Data.OleDb.OleDbCommand command = this.CommandCollection[7];
-            if ((MilestoneID.HasValue == true)) {
-                command.Parameters[0].Value = ((int)(MilestoneID.Value));
-            }
-            else {
-                command.Parameters[0].Value = global::System.DBNull.Value;
-            }
-            if ((TicketNumber.HasValue == true)) {
-                command.Parameters[1].Value = ((int)(TicketNumber.Value));
-            }
-            else {
-                command.Parameters[1].Value = global::System.DBNull.Value;
-            }
-            if ((Summary == null)) {
-                command.Parameters[2].Value = global::System.DBNull.Value;
-            }
-            else {
-                command.Parameters[2].Value = ((string)(Summary));
-            }
-            if ((ReportedBy == null)) {
-                command.Parameters[3].Value = global::System.DBNull.Value;
-            }
-            else {
-                command.Parameters[3].Value = ((string)(ReportedBy));
-            }
-            if ((Type.HasValue == true)) {
-                command.Parameters[4].Value = ((int)(Type.Value));
-            }
-            else {
-                command.Parameters[4].Value = global::System.DBNull.Value;
-            }
-            if ((Severity.HasValue == true)) {
-                command.Parameters[5].Value = ((int)(Severity.Value));
-            }
-            else {
-                command.Parameters[5].Value = global::System.DBNull.Value;
-            }
-            if ((State.HasValue == true)) {
-                command.Parameters[6].Value = ((int)(State.Value));
-            }
-            else {
-                command.Parameters[6].Value = global::System.DBNull.Value;
-            }
-            if ((AssignedTo == null)) {
-                command.Parameters[7].Value = global::System.DBNull.Value;
-            }
-            else {
-                command.Parameters[7].Value = ((string)(AssignedTo));
-            }
-            if ((Priority.HasValue == true)) {
-                command.Parameters[8].Value = ((int)(Priority.Value));
-            }
-            else {
-                command.Parameters[8].Value = global::System.DBNull.Value;
-            }
-            if ((Description == null)) {
-                command.Parameters[9].Value = global::System.DBNull.Value;
-            }
-            else {
-                command.Parameters[9].Value = ((string)(Description));
-            }
-            command.Parameters[10].Value = ((System.DateTime)(CreateTimestamp));
-            command.Parameters[11].Value = ((System.DateTime)(ModifyTimestamp));
-            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
-            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                command.Connection.Open();
-            }
-            int returnValue;
-            try {
-                returnValue = command.ExecuteNonQuery();
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    command.Connection.Close();
-                }
-            }
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
         public virtual int UpdateByID(global::System.Nullable<int> MilestoneID, global::System.Nullable<int> TicketNumber, string Summary, string ReportedBy, global::System.Nullable<int> Type, global::System.Nullable<int> Severity, global::System.Nullable<int> State, string AssignedTo, global::System.Nullable<int> Priority, string Description, System.DateTime ModifyTimestamp, int Original_ID) {
-            global::System.Data.OleDb.OleDbCommand command = this.CommandCollection[8];
+            global::System.Data.OleDb.OleDbCommand command = this.CommandCollection[7];
             if ((MilestoneID.HasValue == true)) {
                 command.Parameters[0].Value = ((int)(MilestoneID.Value));
             }

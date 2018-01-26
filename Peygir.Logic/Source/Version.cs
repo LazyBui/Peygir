@@ -27,7 +27,7 @@ namespace Peygir.Logic {
 			throw new InvalidOperationException();
 		}
 
-		private const int CurrentVersion = 1;
+		private const int CurrentVersion = 2;
 		public static void UpdateIfAppropriate(Database db) {
 			VersionTableAdapter tableAdapter = db.VersionTableAdapter;
 			attempt: {
@@ -59,6 +59,9 @@ namespace Peygir.Logic {
 							// These are specified in terms of current -> next
 							// So if I'm looking to update to version 2, I should be putting my query in case 1
 							case 1:
+								ExecuteQuery(tableAdapter, "ALTER TABLE `Projects` ADD State INT NULL");
+								ExecuteQuery(tableAdapter, "UPDATE `Projects` SET State = 1");
+								ExecuteQuery(tableAdapter, "ALTER TABLE `Projects` ALTER COLUMN State INT NOT NULL");
 								break;
 						}
 						current++;

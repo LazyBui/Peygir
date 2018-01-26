@@ -68,25 +68,25 @@ namespace Peygir.Presentation.Forms {
 
 		private static readonly StringComparison sComparison = StringComparison.InvariantCultureIgnoreCase;
 
-		public static bool FilterContains(string input, string filter) {
+		public static bool SatisfiesFilterContains(string input, string filter) {
 			return
 				string.IsNullOrEmpty(filter) ||
 				input.IndexOf(filter, sComparison) >= 0;
 		}
 
-		public static bool FilterContains(DateTime input, DateRange filter) {
+		public static bool SatisfiesFilterContains(DateTime input, DateRange filter) {
 			return
 				filter == null ||
 				filter.Contains(input);
 		}
 
-		public static bool FilterMatch(string input, string filter) {
+		public static bool SatisfiesFilterMatch(string input, string filter) {
 			return
 				string.IsNullOrEmpty(filter) ||
 				string.Compare(input, filter, sComparison) == 0;
 		}
 
-		public static bool FilterEnum<TValue>(TValue input, TValue? filter) where TValue : struct {
+		public static bool SatisfiesFilterEnum<TValue>(TValue input, TValue? filter) where TValue : struct {
 			return
 				filter == null ||
 				input.Equals(filter.Value);

@@ -41,10 +41,7 @@
 			// projectDetailsUserControl
 			// 
 			resources.ApplyResources(this.projectDetailsUserControl, "projectDetailsUserControl");
-			this.projectDetailsUserControl.Description = "";
-			this.projectDetailsUserControl.DisplayOrder = 0;
 			this.projectDetailsUserControl.Name = "projectDetailsUserControl";
-			this.projectDetailsUserControl.ProjectName = "";
 			this.projectDetailsUserControl.ReadOnly = false;
 			// 
 			// okButton

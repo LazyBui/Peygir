@@ -655,16 +655,16 @@ namespace Peygir.Presentation.Forms {
 			Ticket[] tickets = Project.GetTickets(mContext);
 
 			tickets = tickets.Where(t => {
-				bool satisfiesSummaryFilter = FormUtil.FilterContains(t.Summary, summaryFilter);
-				bool satisfiesReporterFilter = FormUtil.FilterMatch(t.ReportedBy, reporterFilter);
-				bool satisfiesAssignedFilter = FormUtil.FilterMatch(t.AssignedTo, assignedFilter);
-				bool satisfiesMilestoneFilter = FormUtil.FilterMatch(t.GetMilestone(mContext).Name, milestoneFilter);
+				bool satisfiesSummaryFilter = FormUtil.SatisfiesFilterContains(t.Summary, summaryFilter);
+				bool satisfiesReporterFilter = FormUtil.SatisfiesFilterMatch(t.ReportedBy, reporterFilter);
+				bool satisfiesAssignedFilter = FormUtil.SatisfiesFilterMatch(t.AssignedTo, assignedFilter);
+				bool satisfiesMilestoneFilter = FormUtil.SatisfiesFilterMatch(t.GetMilestone(mContext).Name, milestoneFilter);
 				bool satisfiesStateFilter = stateFilter == null || stateFilter.Value.AppliesTo(t.State);
-				bool satisfiesSeverityFilter = FormUtil.FilterEnum(t.Severity, severityFilter);
-				bool satisfiesPriorityFilter = FormUtil.FilterEnum(t.Priority, priorityFilter);
-				bool satisfiesTypeFilter = FormUtil.FilterEnum(t.Type, typeFilter);
-				bool satisfiesCreatedFilter = FormUtil.FilterContains(t.CreateTimestamp, mTicketCreateFilter);
-				bool satisfiesModifiedFilter = FormUtil.FilterContains(t.ModifyTimestamp, mTicketModifyFilter);
+				bool satisfiesSeverityFilter = FormUtil.SatisfiesFilterEnum(t.Severity, severityFilter);
+				bool satisfiesPriorityFilter = FormUtil.SatisfiesFilterEnum(t.Priority, priorityFilter);
+				bool satisfiesTypeFilter = FormUtil.SatisfiesFilterEnum(t.Type, typeFilter);
+				bool satisfiesCreatedFilter = FormUtil.SatisfiesFilterContains(t.CreateTimestamp, mTicketCreateFilter);
+				bool satisfiesModifiedFilter = FormUtil.SatisfiesFilterContains(t.ModifyTimestamp, mTicketModifyFilter);
 
 				return
 					satisfiesSummaryFilter &&

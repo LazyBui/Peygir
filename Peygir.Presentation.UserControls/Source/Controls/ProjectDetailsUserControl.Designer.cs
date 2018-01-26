@@ -30,6 +30,9 @@
 			this.label2 = new System.Windows.Forms.Label();
 			this.nameTextBox = new System.Windows.Forms.TextBox();
 			this.label1 = new System.Windows.Forms.Label();
+			this.label4 = new System.Windows.Forms.Label();
+			this.activeRadioButton = new System.Windows.Forms.RadioButton();
+			this.inactiveRadioButton = new System.Windows.Forms.RadioButton();
 			((System.ComponentModel.ISupportInitialize)(this.displayOrderNumericUpDown)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -71,10 +74,32 @@
 			resources.ApplyResources(this.label1, "label1");
 			this.label1.Name = "label1";
 			// 
+			// label4
+			// 
+			resources.ApplyResources(this.label4, "label4");
+			this.label4.Name = "label4";
+			// 
+			// activeRadioButton
+			// 
+			resources.ApplyResources(this.activeRadioButton, "activeRadioButton");
+			this.activeRadioButton.Checked = true;
+			this.activeRadioButton.Name = "activeRadioButton";
+			this.activeRadioButton.TabStop = true;
+			this.activeRadioButton.UseVisualStyleBackColor = true;
+			// 
+			// inactiveRadioButton
+			// 
+			resources.ApplyResources(this.inactiveRadioButton, "inactiveRadioButton");
+			this.inactiveRadioButton.Name = "inactiveRadioButton";
+			this.inactiveRadioButton.UseVisualStyleBackColor = true;
+			// 
 			// ProjectDetailsUserControl
 			// 
 			resources.ApplyResources(this, "$this");
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.Controls.Add(this.inactiveRadioButton);
+			this.Controls.Add(this.activeRadioButton);
+			this.Controls.Add(this.label4);
 			this.Controls.Add(this.descriptionTextBox);
 			this.Controls.Add(this.label3);
 			this.Controls.Add(this.displayOrderNumericUpDown);
@@ -96,5 +121,8 @@
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.TextBox nameTextBox;
 		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.Label label4;
+		private System.Windows.Forms.RadioButton activeRadioButton;
+		private System.Windows.Forms.RadioButton inactiveRadioButton;
 	}
 }
