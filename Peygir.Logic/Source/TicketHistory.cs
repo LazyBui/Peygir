@@ -100,7 +100,7 @@ namespace Peygir.Logic {
 			tableAdapter.Insert(ticketID, timestamp, changes, comment);
 
 			// Find ID.
-			ID = tableAdapter.GetID(ticketID, timestamp, changes, comment).Value;
+			ID = tableAdapter.Connection.GetInsertedIdentity();
 		}
 
 		protected override void UpdatePrivate(Database db) {

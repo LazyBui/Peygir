@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Source\Attachment.cs" />
     <Compile Include="Source\Framework\BackwardCompatibilityException.cs" />
+    <Compile Include="Source\Framework\OleDbConnectionExtensions.cs" />
     <Compile Include="Source\Framework\ManualTamperingException.cs" />
     <Compile Include="Source\Framework\IDatabaseProvider.cs" />
     <Compile Include="Source\Framework\Database.cs" />

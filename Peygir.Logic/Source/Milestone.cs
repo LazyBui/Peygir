@@ -117,7 +117,7 @@ namespace Peygir.Logic {
 			tableAdapter.Insert(projectID, name, description, (int)state, displayOrder);
 
 			// Find ID.
-			ID = tableAdapter.GetID(projectID, name, description, (int)state, displayOrder).Value;
+			ID = tableAdapter.Connection.GetInsertedIdentity();
 		}
 
 		protected override void UpdatePrivate(Database db) {

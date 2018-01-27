@@ -121,7 +121,7 @@ namespace Peygir.Logic {
 			tableAdapter.Insert(ticketID, name, size, contents);
 
 			// Find ID.
-			ID = tableAdapter.GetID(ticketID, name, size).Value;
+			ID = tableAdapter.Connection.GetInsertedIdentity();
 		}
 
 		protected override void UpdatePrivate(Database db) {

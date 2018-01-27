@@ -92,7 +92,7 @@ namespace Peygir.Logic {
 			tableAdapter.Insert(name, description, displayOrder, (int)state);
 
 			// Find ID.
-			ID = tableAdapter.GetID(name, description, displayOrder).Value;
+			ID = tableAdapter.Connection.GetInsertedIdentity();
 		}
 
 		protected override void UpdatePrivate(Database db) {

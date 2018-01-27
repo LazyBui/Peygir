@@ -312,17 +312,7 @@ namespace Peygir.Logic {
 				modifyTimestamp);
 
 			// Find ID.
-			ID = tableAdapter.GetID(
-				milestoneID,
-				ticketNumber,
-				summary,
-				reportedBy,
-				(int)type,
-				(int)severity,
-				(int)state,
-				assignedTo,
-				(int)priority,
-				description).Value;
+			ID = tableAdapter.Connection.GetInsertedIdentity();
 		}
 
 		protected override void UpdatePrivate(Database db) {
