@@ -160,6 +160,8 @@ namespace Peygir.Presentation.Forms {
 			editProjectToolStripMenuItem.Enabled = selectedProjectsCount > 0;
 			editTicketsToolStripMenuItem.Enabled = selectedProjectsCount > 0;
 			deleteProjectToolStripMenuItem.Enabled = selectedProjectsCount > 0;
+			stateInactiveToolStripMenuItem.Enabled = selectedProjectsCount > 0;
+			stateActiveToolStripMenuItem.Enabled = selectedProjectsCount > 0;
 		}
 
 		private void addProjectToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -176,6 +178,14 @@ namespace Peygir.Presentation.Forms {
 
 		private void deleteProjectToolStripMenuItem_Click(object sender, EventArgs e) {
 			DeleteProject();
+		}
+
+		private void stateInactiveToolStripMenuItem_Click(object sender, EventArgs e) {
+			SetProjectState(ProjectState.Inactive);
+		}
+
+		private void stateActiveToolStripMenuItem_Click(object sender, EventArgs e) {
+			SetProjectState(ProjectState.Active);
 		}
 		#endregion
 		#endregion
@@ -804,6 +814,40 @@ namespace Peygir.Presentation.Forms {
 		}
 
 		#region Projects
+		private void ProjectBatch<TValue>(Action<Project, TValue, bool> projectFunc, TValue value) {
+			for (int i = 0, end = projectsListView.SelectedItems.Count; i < end; i++) {
+				var project = (Project)projectsListView.SelectedItems[i].Tag;
+				projectFunc(project, value, true);
+			}
+
+			// Flush.
+			mContext.Flush();
+
+			ShowProjects();
+		}
+
+		private void ProjectSingle(Project project, bool batch, Func<Project, Project> changes) {
+			project = changes(project);
+			project.Update(mContext);
+			if (batch) return;
+
+			// Flush.
+			mContext.Flush();
+
+			ShowProjects();
+		}
+
+		private void SetProjectState(ProjectState state) {
+			ProjectBatch(SetProjectState, state);
+		}
+
+		private void SetProjectState(Project project, ProjectState state, bool batch = false) {
+			ProjectSingle(project, batch, t => {
+				t.State = state;
+				return t;
+			});
+		}
+
 		private void ShowProjects() {
 			if (mResettingProjectFilters)
 				return;

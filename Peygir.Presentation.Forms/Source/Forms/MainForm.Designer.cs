@@ -160,6 +160,9 @@
 			this.ticketTicketTypeComboBox = new System.Windows.Forms.ComboBox();
 			this.label13 = new System.Windows.Forms.Label();
 			this.label14 = new System.Windows.Forms.Label();
+			this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+			this.stateActiveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.stateInactiveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.projectContextMenu.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
 			this.statusStrip1.SuspendLayout();
@@ -215,7 +218,10 @@
             this.addProjectToolStripMenuItem,
             this.editProjectToolStripMenuItem,
             this.editTicketsToolStripMenuItem,
-            this.deleteProjectToolStripMenuItem});
+            this.deleteProjectToolStripMenuItem,
+            this.toolStripSeparator5,
+            this.stateActiveToolStripMenuItem,
+            this.stateInactiveToolStripMenuItem});
 			this.projectContextMenu.Name = "projectContextMenu";
 			this.projectContextMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
 			resources.ApplyResources(this.projectContextMenu, "projectContextMenu");
@@ -1256,6 +1262,25 @@
 			resources.ApplyResources(this.label14, "label14");
 			this.label14.Name = "label14";
 			// 
+			// toolStripSeparator5
+			// 
+			this.toolStripSeparator5.Name = "toolStripSeparator5";
+			resources.ApplyResources(this.toolStripSeparator5, "toolStripSeparator5");
+			// 
+			// stateActiveToolStripMenuItem
+			// 
+			this.stateActiveToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_OK;
+			this.stateActiveToolStripMenuItem.Name = "stateActiveToolStripMenuItem";
+			resources.ApplyResources(this.stateActiveToolStripMenuItem, "stateActiveToolStripMenuItem");
+			this.stateActiveToolStripMenuItem.Click += new System.EventHandler(this.stateActiveToolStripMenuItem_Click);
+			// 
+			// stateInactiveToolStripMenuItem
+			// 
+			this.stateInactiveToolStripMenuItem.Image = global::Peygir.Presentation.Forms.Properties.Resources.Image_Cancel;
+			this.stateInactiveToolStripMenuItem.Name = "stateInactiveToolStripMenuItem";
+			resources.ApplyResources(this.stateInactiveToolStripMenuItem, "stateInactiveToolStripMenuItem");
+			this.stateInactiveToolStripMenuItem.Click += new System.EventHandler(this.stateInactiveToolStripMenuItem_Click);
+			// 
 			// MainForm
 			// 
 			resources.ApplyResources(this, "$this");
@@ -1418,5 +1443,8 @@
 		private System.Windows.Forms.Label label20;
 		private System.Windows.Forms.ComboBox ticketProjectStateComboBox;
 		private System.Windows.Forms.ToolStripStatusLabel dbVersionToolStripStatusLabel;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+		private System.Windows.Forms.ToolStripMenuItem stateActiveToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem stateInactiveToolStripMenuItem;
 	}
 }
