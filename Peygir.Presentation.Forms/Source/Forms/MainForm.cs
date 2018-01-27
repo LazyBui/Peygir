@@ -684,7 +684,9 @@ namespace Peygir.Presentation.Forms {
 		}
 
 		private void CloseDatabase() {
-			mContext.Close();
+			if (mContext.HasDatabase) {
+				mContext.Close();
+			}
 			mContext = FormContext.Default;
 			ResetProjectFilters();
 			ResetTicketFilters();
