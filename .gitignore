@@ -4,3 +4,4 @@ obj/
 packages/
 Setup/Output/
 *.csproj.user
+*.ldb
