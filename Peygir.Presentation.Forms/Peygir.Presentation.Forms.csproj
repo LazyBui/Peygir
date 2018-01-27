@@ -66,6 +66,7 @@
     <Compile Include="Source\Forms\DateRangeForm.designer.cs">
       <DependentUpon>DateRangeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Source\ClippingToolStripRenderer.cs" />
     <Compile Include="Source\TicketChangeFormatter.cs" />
     <Compile Include="Source\FormUtil.cs" />
     <Compile Include="Source\Forms\MainForm.cs">

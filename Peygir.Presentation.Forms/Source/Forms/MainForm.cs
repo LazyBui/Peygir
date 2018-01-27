@@ -40,6 +40,7 @@ namespace Peygir.Presentation.Forms {
 		
 		public MainForm() {
 			InitializeComponent();
+			statusStrip1.Renderer = new ClippingToolStripRenderer();
 
 			ShowCurrentLanguage();
 
