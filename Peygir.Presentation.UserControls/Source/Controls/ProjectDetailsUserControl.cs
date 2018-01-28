@@ -5,12 +5,11 @@ using Peygir.Logic;
 
 namespace Peygir.Presentation.UserControls {
 	public partial class ProjectDetailsUserControl : UserControl {
-		private bool readOnly;
+		private ReadOnlyContext mReadOnlyContext = ReadOnlyContext.Writable;
 
 		public bool ReadOnly {
-			get { return readOnly; }
 			set {
-				readOnly = value;
+				mReadOnlyContext = ReadOnlyContext.From(value);
 				UpdateReadOnlyState();
 			}
 		}
@@ -45,8 +44,6 @@ namespace Peygir.Presentation.UserControls {
 
 		public ProjectDetailsUserControl() {
 			InitializeComponent();
-
-			ReadOnly = false;
 		}
 
 		public void ShowProject(Project project) {
@@ -70,11 +67,13 @@ namespace Peygir.Presentation.UserControls {
 		}
 
 		private void UpdateReadOnlyState() {
-			nameTextBox.ReadOnly = readOnly;
-			displayOrderNumericUpDown.ReadOnly = readOnly;
-			descriptionTextBox.ReadOnly = readOnly;
-			activeRadioButton.Enabled = !readOnly;
-			inactiveRadioButton.Enabled = !readOnly;
+			mReadOnlyContext.ApplyTo(new Control[] {
+				nameTextBox,
+				displayOrderNumericUpDown,
+				descriptionTextBox,
+				activeRadioButton,
+				inactiveRadioButton,
+			});
 		}
 
 		private void nameTextBox_KeyDown(object sender, KeyEventArgs e) {

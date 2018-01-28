@@ -9,7 +9,7 @@ using Peygir.Presentation.UserControls;
 
 namespace Peygir.Presentation.Forms {
 	public partial class TicketDetailsForm : Form {
-		private bool readOnly;
+		private ReadOnlyContext mReadOnlyContext = ReadOnlyContext.Writable;
 		private FontContext mFontContext;
 		private FormContext mContext;
 		private DateTimeFormatter mFormatter;
@@ -17,9 +17,8 @@ namespace Peygir.Presentation.Forms {
 		private Ticket mTicket;
 
 		public bool ReadOnly {
-			get { return readOnly; }
 			set {
-				readOnly = value;
+				mReadOnlyContext = ReadOnlyContext.From(value);
 				UpdateReadOnlyState();
 			}
 		}
@@ -53,8 +52,6 @@ namespace Peygir.Presentation.Forms {
 					mProject.GetMilestones(context) :
 					new Milestone[0]);
 			InitializeTicketControls();
-
-			ReadOnly = false;
 		}
 
 		private void SetTitle() {
@@ -178,16 +175,24 @@ namespace Peygir.Presentation.Forms {
 		}
 
 		private void UpdateReadOnlyState() {
-			projectComboBox.Enabled = !readOnly && projectComboBox.Items.Count > 1;
-			milestoneComboBox.Enabled = !readOnly && milestoneComboBox.Items.Count > 0;
-			summaryTextBox.ReadOnly = readOnly;
-			reportedByComboBox.Enabled = !readOnly;
-			typeComboBox.Enabled = !readOnly;
-			severityComboBox.Enabled = !readOnly;
-			stateComboBox.Enabled = !readOnly;
-			assignedToComboBox.Enabled = !readOnly;
-			priorityComboBox.Enabled = !readOnly;
-			descriptionTextBox.ReadOnly = readOnly;
+			projectComboBox.Enabled =
+				mReadOnlyContext.Enabled &&
+				projectComboBox.Items.Count > 1;
+
+			milestoneComboBox.Enabled =
+				mReadOnlyContext.Enabled &&
+				milestoneComboBox.Items.Count > 0;
+
+			mReadOnlyContext.ApplyTo(new Control[] {
+				summaryTextBox,
+				reportedByComboBox,
+				typeComboBox,
+				severityComboBox,
+				stateComboBox,
+				assignedToComboBox,
+				priorityComboBox,
+				descriptionTextBox,
+			});
 		}
 
 		private void projectComboBox_SelectedIndexChanged(object sender, EventArgs e) {

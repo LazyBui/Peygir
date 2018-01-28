@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Source\ReadOnlyContext.cs" />
     <Compile Include="Source\FormContext.cs" />
     <Compile Include="Source\Controls\ProjectDetailsUserControl.cs">
       <SubType>UserControl</SubType>

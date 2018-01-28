@@ -8,15 +8,14 @@ using Peygir.Presentation.UserControls;
 
 namespace Peygir.Presentation.Forms {
 	public partial class MilestoneDetailsForm : Form {
-		private bool readOnly;
+		private ReadOnlyContext mReadOnlyContext = ReadOnlyContext.Writable;
 		private FormContext mContext;
 		private Milestone mMilestone;
 		private Project mProject;
 
 		public bool ReadOnly {
-			get { return readOnly; }
 			set {
-				readOnly = value;
+				mReadOnlyContext = ReadOnlyContext.From(value);
 				UpdateReadOnlyState();
 			}
 		}
@@ -32,8 +31,6 @@ namespace Peygir.Presentation.Forms {
 			InitializeComponent();
 
 			InitializeMilestoneControls();
-
-			ReadOnly = false;
 		}
 
 		private void InitializeMilestoneControls() {
@@ -64,10 +61,12 @@ namespace Peygir.Presentation.Forms {
 		}
 
 		private void UpdateReadOnlyState() {
-			nameTextBox.ReadOnly = readOnly;
-			stateComboBox.Enabled = !readOnly;
-			displayOrderNumericUpDown.ReadOnly = readOnly;
-			descriptionTextBox.ReadOnly = readOnly;
+			mReadOnlyContext.ApplyTo(new Control[] {
+				nameTextBox,
+				stateComboBox,
+				displayOrderNumericUpDown,
+				descriptionTextBox,
+			});
 		}
 
 		private void nameTextBox_KeyDown(object sender, KeyEventArgs e) {
