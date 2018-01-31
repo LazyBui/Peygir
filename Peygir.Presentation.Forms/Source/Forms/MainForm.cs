@@ -966,7 +966,11 @@ namespace Peygir.Presentation.Forms {
 
 			UpdateControlsEnabledProperty();
 
-			var summaryTickets = allTickets.SelectMany(item => item.Item2).ToArray();
+			var summaryTickets = allTickets.
+				Where(t => projects.Contains(t.Item1)).
+				SelectMany(item => item.Item2).
+				ToArray();
+
 			mProjectTicketCount = new TicketCount(
 				summaryTickets.Count(t => t.State.IsOpen()),
 				summaryTickets.Length);
