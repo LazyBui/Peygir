@@ -5,7 +5,7 @@ using Peygir.Data.PeygirDatabaseDataSetTableAdapters;
 using Peygir.Logic.Properties;
 
 namespace Peygir.Logic {
-	public class TicketHistory : DBObject {
+	public class TicketHistory : DBObject, IEquatable<TicketHistory> {
 		public static TicketHistory[] GetTicketsHistory(IDatabaseProvider db) {
 			if (db == null) throw new ArgumentNullException(nameof(db));
 			TicketsHistoryTableAdapter tableAdapter = db.DB.TicketsHistoryTableAdapter;
@@ -120,6 +120,12 @@ namespace Peygir.Logic {
 		public Ticket GetTicket(IDatabaseProvider db) {
 			return Ticket.GetTicket(db, ticketID);
 		}
+
+		public override int GetHashCode() => base.GetHashCode();
+		public override bool Equals(object obj) => Equals(obj as TicketHistory);
+		public bool Equals(TicketHistory other) => DBObject.IsEqual(this, other);
+		public static bool operator==(TicketHistory lhs, TicketHistory rhs) => DBObject.IsEqual(lhs, rhs);
+		public static bool operator!=(TicketHistory lhs, TicketHistory rhs) => !DBObject.IsEqual(lhs, rhs);
 
 		internal TicketHistory(PeygirDatabaseDataSet.TicketsHistoryRow row) {
 			if (row == null) {

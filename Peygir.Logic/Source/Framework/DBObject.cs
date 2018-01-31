@@ -43,5 +43,16 @@ namespace Peygir.Logic {
 		protected DBObject() {
 			ID = InvalidID;
 		}
+
+		protected static bool IsEqual<TValue>(TValue left, TValue right) where TValue : DBObject {
+			if (object.ReferenceEquals(left, null) && object.ReferenceEquals(right, null)) return true;
+			if (object.ReferenceEquals(left, null)) return false;
+			if (object.ReferenceEquals(right, null)) return false;
+			return left.ID == right.ID;
+		}
+
+		public override int GetHashCode() {
+			return ID.GetHashCode();
+		}
 	}
 }

@@ -5,7 +5,7 @@ using Peygir.Data.PeygirDatabaseDataSetTableAdapters;
 using Peygir.Logic.Properties;
 
 namespace Peygir.Logic {
-	public class Project : DBObject {
+	public class Project : DBObject, IEquatable<Project> {
 		public static Project[] GetProjects(IDatabaseProvider db) {
 			if (db == null) throw new ArgumentNullException(nameof(db));
 			ProjectsTableAdapter tableAdapter = db.DB.ProjectsTableAdapter;
@@ -134,7 +134,7 @@ namespace Peygir.Logic {
 				throw new InvalidOperationException(message);
 			}
 
-			TicketsTableAdapter tableAdapter = db.DB.TicketsTableAdapter;;
+			TicketsTableAdapter tableAdapter = db.DB.TicketsTableAdapter;
 
 			PeygirDatabaseDataSet.TicketsDataTable rows = tableAdapter.GetDataByProjectID(ID);
 
@@ -149,9 +149,12 @@ namespace Peygir.Logic {
 			return tickets.ToArray();
 		}
 
-		public override string ToString() {
-			return name;
-		}
+		public override string ToString() => name;
+		public override int GetHashCode() => base.GetHashCode();
+		public override bool Equals(object obj) => Equals(obj as Project);
+		public bool Equals(Project other) => DBObject.IsEqual(this, other);
+		public static bool operator==(Project lhs, Project rhs) => DBObject.IsEqual(lhs, rhs);
+		public static bool operator!=(Project lhs, Project rhs) => !DBObject.IsEqual(lhs, rhs);
 
 		internal Project(PeygirDatabaseDataSet.ProjectsRow row) {
 			if (row == null) {

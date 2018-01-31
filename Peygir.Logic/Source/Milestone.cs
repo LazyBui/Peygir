@@ -5,7 +5,7 @@ using Peygir.Data.PeygirDatabaseDataSetTableAdapters;
 using Peygir.Logic.Properties;
 
 namespace Peygir.Logic {
-	public class Milestone : DBObject {
+	public class Milestone : DBObject, IEquatable<Milestone> {
 		public static Milestone[] GetMilestones(IDatabaseProvider db) {
 			if (db == null) throw new ArgumentNullException(nameof(db));
 			MilestonesTableAdapter tableAdapter = db.DB.MilestonesTableAdapter;
@@ -156,9 +156,12 @@ namespace Peygir.Logic {
 			return new Ticket(db, ProjectID, ID);
 		}
 
-		public override string ToString() {
-			return name;
-		}
+		public override string ToString() => name;
+		public override int GetHashCode() => base.GetHashCode();
+		public override bool Equals(object obj) => Equals(obj as Milestone);
+		public bool Equals(Milestone other) => DBObject.IsEqual(this, other);
+		public static bool operator==(Milestone lhs, Milestone rhs) => DBObject.IsEqual(lhs, rhs);
+		public static bool operator!=(Milestone lhs, Milestone rhs) => !DBObject.IsEqual(lhs, rhs);
 
 		internal Milestone(PeygirDatabaseDataSet.MilestonesRow row) {
 			if (row == null) {

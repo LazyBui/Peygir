@@ -5,7 +5,7 @@ using Peygir.Data.PeygirDatabaseDataSetTableAdapters;
 using Peygir.Logic.Properties;
 
 namespace Peygir.Logic {
-	public class Attachment : DBObject {
+	public class Attachment : DBObject, IEquatable<Attachment> {
 		public static Attachment[] GetAttachments(IDatabaseProvider db) {
 			if (db == null) throw new ArgumentNullException(nameof(db));
 			AttachmentsTableAdapter tableAdapter = db.DB.AttachmentsTableAdapter;
@@ -155,9 +155,12 @@ namespace Peygir.Logic {
 			return Ticket.GetTicket(db, ticketID);
 		}
 
-		public override string ToString() {
-			return name;
-		}
+		public override string ToString() => name;
+		public override int GetHashCode() => base.GetHashCode();
+		public override bool Equals(object obj) => Equals(obj as Attachment);
+		public bool Equals(Attachment other) => DBObject.IsEqual(this, other);
+		public static bool operator==(Attachment lhs, Attachment rhs) => DBObject.IsEqual(lhs, rhs);
+		public static bool operator!=(Attachment lhs, Attachment rhs) => !DBObject.IsEqual(lhs, rhs);
 
 		internal Attachment(PeygirDatabaseDataSet.AttachmentsRow row) {
 			if (row == null) {
