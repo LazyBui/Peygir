@@ -48,13 +48,13 @@
 			this.ticketsTabPage = new System.Windows.Forms.TabPage();
 			this.groupBox4 = new System.Windows.Forms.GroupBox();
 			this.ticketsListView = new System.Windows.Forms.ListView();
-			this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.ticketContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.addTicketToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.showTicketToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -116,6 +116,8 @@
 			this.editTicketButton = new System.Windows.Forms.Button();
 			this.showTicketButton = new System.Windows.Forms.Button();
 			this.addTicketButton = new System.Windows.Forms.Button();
+			this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.groupBox1.SuspendLayout();
 			this.tabControl.SuspendLayout();
 			this.projectInfoTabPage.SuspendLayout();
@@ -196,7 +198,9 @@
 			resources.ApplyResources(this.milestonesListView, "milestonesListView");
 			this.milestonesListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
-            this.columnHeader2});
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4});
 			this.milestonesListView.ContextMenuStrip = this.milestoneContextMenu;
 			this.milestonesListView.FullRowSelect = true;
 			this.milestonesListView.GridLines = true;
@@ -333,33 +337,25 @@
 			// 
 			// ticketsListView
 			// 
+			resources.ApplyResources(this.ticketsListView, "ticketsListView");
 			this.ticketsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader3,
-            this.columnHeader4,
             this.columnHeader5,
             this.columnHeader6,
             this.columnHeader7,
             this.columnHeader8,
-            this.columnHeader9});
+            this.columnHeader9,
+            this.columnHeader10,
+            this.columnHeader11});
 			this.ticketsListView.ContextMenuStrip = this.ticketContextMenu;
 			this.ticketsListView.FullRowSelect = true;
 			this.ticketsListView.GridLines = true;
 			this.ticketsListView.HideSelection = false;
-			resources.ApplyResources(this.ticketsListView, "ticketsListView");
 			this.ticketsListView.Name = "ticketsListView";
 			this.ticketsListView.UseCompatibleStateImageBehavior = false;
 			this.ticketsListView.View = System.Windows.Forms.View.Details;
 			this.ticketsListView.SelectedIndexChanged += new System.EventHandler(this.ticketsListView_SelectedIndexChanged);
 			this.ticketsListView.DoubleClick += new System.EventHandler(this.ticketsListView_DoubleClick);
 			this.ticketsListView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ticketsListView_KeyDown);
-			// 
-			// columnHeader3
-			// 
-			resources.ApplyResources(this.columnHeader3, "columnHeader3");
-			// 
-			// columnHeader4
-			// 
-			resources.ApplyResources(this.columnHeader4, "columnHeader4");
 			// 
 			// columnHeader5
 			// 
@@ -380,6 +376,14 @@
 			// columnHeader9
 			// 
 			resources.ApplyResources(this.columnHeader9, "columnHeader9");
+			// 
+			// columnHeader10
+			// 
+			resources.ApplyResources(this.columnHeader10, "columnHeader10");
+			// 
+			// columnHeader11
+			// 
+			resources.ApplyResources(this.columnHeader11, "columnHeader11");
 			// 
 			// ticketContextMenu
 			// 
@@ -847,6 +851,14 @@
 			this.addTicketButton.UseVisualStyleBackColor = true;
 			this.addTicketButton.Click += new System.EventHandler(this.addTicketButton_Click);
 			// 
+			// columnHeader3
+			// 
+			resources.ApplyResources(this.columnHeader3, "columnHeader3");
+			// 
+			// columnHeader4
+			// 
+			resources.ApplyResources(this.columnHeader4, "columnHeader4");
+			// 
 			// ProjectForm
 			// 
 			resources.ApplyResources(this, "$this");
@@ -958,12 +970,14 @@
 		private System.Windows.Forms.ColumnHeader columnHeader1;
 		private System.Windows.Forms.ColumnHeader columnHeader2;
 		private System.Windows.Forms.ListView ticketsListView;
-		private System.Windows.Forms.ColumnHeader columnHeader3;
-		private System.Windows.Forms.ColumnHeader columnHeader4;
 		private System.Windows.Forms.ColumnHeader columnHeader5;
 		private System.Windows.Forms.ColumnHeader columnHeader6;
 		private System.Windows.Forms.ColumnHeader columnHeader7;
 		private System.Windows.Forms.ColumnHeader columnHeader8;
 		private System.Windows.Forms.ColumnHeader columnHeader9;
+		private System.Windows.Forms.ColumnHeader columnHeader10;
+		private System.Windows.Forms.ColumnHeader columnHeader11;
+		private System.Windows.Forms.ColumnHeader columnHeader3;
+		private System.Windows.Forms.ColumnHeader columnHeader4;
 	}
 }

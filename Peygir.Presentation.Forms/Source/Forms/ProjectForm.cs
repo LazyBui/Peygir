@@ -424,12 +424,15 @@ namespace Peygir.Presentation.Forms {
 							break;
 					}
 
+					Ticket[] tickets = Ticket.GetTickets(mContext, milestone.ID);
 					var lvi = new ListViewItem() {
 						Text = milestone.Name,
 						Tag = milestone,
 					};
 
 					lvi.SubItems.Add(milestoneState);
+					lvi.SubItems.Add(tickets.Count(t => t.State.IsOpen()).ToString());
+					lvi.SubItems.Add(tickets.Length.ToString());
 					milestonesListView.Items.Add(lvi);
 				}
 				milestonesListView.EndUpdate();
