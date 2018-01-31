@@ -8,6 +8,9 @@ namespace Peygir.Presentation.UserControls {
 		private ReadOnlyContext mReadOnlyContext = ReadOnlyContext.Writable;
 
 		public bool ReadOnly {
+			get {
+				return mReadOnlyContext.ReadOnly;
+			}
 			set {
 				mReadOnlyContext = ReadOnlyContext.From(value);
 				UpdateReadOnlyState();
