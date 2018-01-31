@@ -163,7 +163,7 @@ namespace Peygir.Presentation.Forms {
 			}
 
 			ticket.MilestoneID = milestone.ID;
-			ticket.Summary = summaryTextBox.Text;
+			ticket.Summary = summaryTextBox.Text.Trim();
 			ticket.ReportedBy = reportedByComboBox.Text.Substring(0, Math.Min(255, reportedByComboBox.Text.Length)); // Max 255 characters.
 			ticket.Type = (TicketType)typeComboBox.SelectedIndex;
 			ticket.Severity = (TicketSeverity)severityComboBox.SelectedIndex;

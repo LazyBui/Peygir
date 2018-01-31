@@ -20,7 +20,7 @@ namespace Peygir.Presentation.UserControls {
 		[ReadOnly(true)]
 		[Browsable(false)]
 		public string ProjectName {
-			get { return nameTextBox.Text; }
+			get { return nameTextBox.Text.Trim(); }
 		}
 
 		[ReadOnly(true)]

@@ -52,7 +52,7 @@ namespace Peygir.Presentation.Forms {
 				milestone = mProject.NewMilestone(mContext);
 			}
 
-			milestone.Name = nameTextBox.Text;
+			milestone.Name = nameTextBox.Text.Trim();
 			milestone.State = (MilestoneState)stateComboBox.SelectedIndex;
 			milestone.DisplayOrder = (int)displayOrderNumericUpDown.Value;
 			milestone.Description = descriptionTextBox.Text;
@@ -81,7 +81,7 @@ namespace Peygir.Presentation.Forms {
 			if (DialogResult != DialogResult.OK) return;
 	
 			var problems = new List<string>();
-			if (string.IsNullOrWhiteSpace(nameTextBox.Text)) problems.Add(Resources.String_TheMilestoneNameCannotBeBlank);
+			if (string.IsNullOrWhiteSpace(nameTextBox.Text.Trim())) problems.Add(Resources.String_TheMilestoneNameCannotBeBlank);
 			if (stateComboBox.SelectedIndex == -1) problems.Add(Resources.String_PleaseSpecifyMilestoneState);
 			if (!problems.Any()) return;
 
