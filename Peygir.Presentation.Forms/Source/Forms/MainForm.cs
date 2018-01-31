@@ -817,8 +817,8 @@ namespace Peygir.Presentation.Forms {
 		#region Projects
 		private void ProjectBatch<TValue>(Action<Project, TValue, bool> projectFunc, TValue value) {
 			for (int i = 0, end = projectsListView.SelectedItems.Count; i < end; i++) {
-				var project = (Project)projectsListView.SelectedItems[i].Tag;
-				projectFunc(project, value, true);
+				var tag = (Project)projectsListView.SelectedItems[i].Tag;
+				projectFunc(tag, value, true);
 			}
 
 			// Flush.
@@ -850,131 +850,117 @@ namespace Peygir.Presentation.Forms {
 		}
 
 		private void ShowProjects() {
-			if (mResettingProjectFilters)
+			if (mResettingProjectFilters) {
 				return;
-
-			// Save selected projects.
-			var selectedProjects = new List<int>();
-			foreach (ListViewItem item in projectsListView.SelectedItems) {
-				var project = (Project)item.Tag;
-				selectedProjects.Add(project.ID);
 			}
 
-			Project[] projects = Project.GetProjects(mContext.DB);
+			FormUtil.Reselect<Project>(projectsListView, () => {
+				Project[] projects = Project.GetProjects(mContext.DB);
 
-			string nameFilter = projectNameTextBox.Text;
-			var reporterFilter = (string)projectTicketReportersComboBox.SelectedItem;
-			var assignedFilter = (string)projectTicketAssignedToComboBox.SelectedItem;
-			var stateFilter = FormUtil.CastBox<MetaTicketState>(projectTicketStateComboBox);
-			var severityFilter = FormUtil.CastBox<TicketSeverity>(projectTicketSeverityComboBox);
-			var priorityFilter = FormUtil.CastBox<TicketPriority>(projectTicketPriorityComboBox);
-			var typeFilter = FormUtil.CastBox<TicketType>(projectTicketTypeComboBox);
-			var activeFilter = FormUtil.CastBox<ProjectState>(projectProjectStateComboBox);
+				string nameFilter = projectNameTextBox.Text;
+				var reporterFilter = (string)projectTicketReportersComboBox.SelectedItem;
+				var assignedFilter = (string)projectTicketAssignedToComboBox.SelectedItem;
+				var stateFilter = FormUtil.CastBoxToEnum<MetaTicketState>(projectTicketStateComboBox);
+				var severityFilter = FormUtil.CastBoxToEnum<TicketSeverity>(projectTicketSeverityComboBox);
+				var priorityFilter = FormUtil.CastBoxToEnum<TicketPriority>(projectTicketPriorityComboBox);
+				var typeFilter = FormUtil.CastBoxToEnum<TicketType>(projectTicketTypeComboBox);
+				var activeFilter = FormUtil.CastBoxToEnum<ProjectState>(projectProjectStateComboBox);
 
-			if (string.IsNullOrEmpty(reporterFilter)) reporterFilter = null;
-			if (string.IsNullOrEmpty(assignedFilter)) assignedFilter = null;
+				if (string.IsNullOrEmpty(reporterFilter)) reporterFilter = null;
+				if (string.IsNullOrEmpty(assignedFilter)) assignedFilter = null;
 
-			var allTickets = new List<Tuple<Project, Ticket[]>>(
-				projects.Select(p => Tuple.Create(p, p.GetTickets(mContext))));
+				var allTickets = new List<Tuple<Project, Ticket[]>>(
+					projects.Select(p => Tuple.Create(p, p.GetTickets(mContext))));
 
-			projects = projects.Where(p => {
-				bool satisfiesNameFilter = FormUtil.SatisfiesFilterContains(p.Name, nameFilter);
-				if (!satisfiesNameFilter) return false;
-				if (!FormUtil.SatisfiesFilterEnum(p.State, activeFilter)) return false;
+				projects = projects.Where(p => {
+					bool satisfiesNameFilter = FormUtil.SatisfiesFilterContains(p.Name, nameFilter);
+					if (!satisfiesNameFilter) return false;
+					if (!FormUtil.SatisfiesFilterEnum(p.State, activeFilter)) return false;
 
-				var tickets = allTickets.First(item => item.Item1 == p).Item2;
-				if (!tickets.Any()) {
-					// If we have any filters specified, this project can't qualify with no tickets
-					// Since we're returning true if it qualifies and false if not, we need to check for the negative condition
-					return !new object[] {
-						reporterFilter,
-						assignedFilter,
-						stateFilter,
-						severityFilter,
-						priorityFilter,
-						typeFilter,
-						mProjectCreateFilter,
-						mProjectModifyFilter,
-					}.Any(v => v != null);
+					var tickets = allTickets.First(item => item.Item1 == p).Item2;
+					if (!tickets.Any()) {
+						// If we have any filters specified, this project can't qualify with no tickets
+						// Since we're returning true if it qualifies and false if not, we need to check for the negative condition
+						return !new object[] {
+							reporterFilter,
+							assignedFilter,
+							stateFilter,
+							severityFilter,
+							priorityFilter,
+							typeFilter,
+							mProjectCreateFilter,
+							mProjectModifyFilter,
+						}.Any(v => v != null);
+					}
+
+					bool satisfiesCreatedFilter = FormUtil.SatisfiesFilterContains(tickets.Min(t => t.CreateTimestamp), mProjectCreateFilter);
+					bool satisfiesModifiedFilter = FormUtil.SatisfiesFilterContains(tickets.Max(t => t.ModifyTimestamp), mProjectModifyFilter);
+					if (!(satisfiesCreatedFilter && satisfiesModifiedFilter))
+						return false;
+
+					return tickets.Any(t => {
+						bool satisfiesReporterFilter = FormUtil.SatisfiesFilterMatch(t.ReportedBy, reporterFilter);
+						bool satisfiesAssignedFilter = FormUtil.SatisfiesFilterMatch(t.AssignedTo, assignedFilter);
+						bool satisfiesStateFilter = stateFilter == null || stateFilter.Value.AppliesTo(t.State);
+						bool satisfiesSeverityFilter = FormUtil.SatisfiesFilterEnum(t.Severity, severityFilter);
+						bool satisfiesPriorityFilter = FormUtil.SatisfiesFilterEnum(t.Priority, priorityFilter);
+						bool satisfiesTypeFilter = FormUtil.SatisfiesFilterEnum(t.Type, typeFilter);
+
+						return
+							satisfiesReporterFilter &&
+							satisfiesAssignedFilter &&
+							satisfiesStateFilter &&
+							satisfiesSeverityFilter &&
+							satisfiesPriorityFilter &&
+							satisfiesTypeFilter;
+					});
+				}).ToArray();
+
+				var formatter = FormUtil.GetFormatter();
+
+				projectsListView.BeginUpdate();
+				projectsListView.Items.Clear();
+				foreach (var project in projects) {
+					var tickets = allTickets.First(item => item.Item1 == project).Item2;
+					var lvi = new ListViewItem(new[] {
+						project.Name,
+						tickets.Any() ?
+							formatter.Format(tickets.Min(t => t.CreateTimestamp)) :
+							string.Empty,
+						tickets.Any() ?
+							formatter.Format(tickets.Max(t => t.ModifyTimestamp)) :
+							string.Empty,
+						tickets.Count(t => t.State.IsOpen()).ToString(),
+						tickets.Count().ToString(),
+					}) {
+						Tag = project,
+					};
+
+					projectsListView.Items.Add(lvi);
 				}
 
-				bool satisfiesCreatedFilter = FormUtil.SatisfiesFilterContains(tickets.Min(t => t.CreateTimestamp), mProjectCreateFilter);
-				bool satisfiesModifiedFilter = FormUtil.SatisfiesFilterContains(tickets.Max(t => t.ModifyTimestamp), mProjectModifyFilter);
-				if (!(satisfiesCreatedFilter && satisfiesModifiedFilter))
-					return false;
+				const int ticketColumnSize = 65;
+				const int updateColumnSize = 105;
+				const int scrollbarSize = 20;
+				projectsListView.Columns[0].Width =
+					projectsListView.Width -
+					(ticketColumnSize * 2) -
+					(updateColumnSize * 2) -
+					scrollbarSize;
 
-				return tickets.Any(t => {
-					bool satisfiesReporterFilter = FormUtil.SatisfiesFilterMatch(t.ReportedBy, reporterFilter);
-					bool satisfiesAssignedFilter = FormUtil.SatisfiesFilterMatch(t.AssignedTo, assignedFilter);
-					bool satisfiesStateFilter = stateFilter == null || stateFilter.Value.AppliesTo(t.State);
-					bool satisfiesSeverityFilter = FormUtil.SatisfiesFilterEnum(t.Severity, severityFilter);
-					bool satisfiesPriorityFilter = FormUtil.SatisfiesFilterEnum(t.Priority, priorityFilter);
-					bool satisfiesTypeFilter = FormUtil.SatisfiesFilterEnum(t.Type, typeFilter);
+				projectsListView.EndUpdate();
 
-					return
-						satisfiesReporterFilter &&
-						satisfiesAssignedFilter &&
-						satisfiesStateFilter &&
-						satisfiesSeverityFilter &&
-						satisfiesPriorityFilter &&
-						satisfiesTypeFilter;
-				});
-			}).ToArray();
+				var summaryTickets = allTickets.
+					Where(t => projects.Contains(t.Item1)).
+					SelectMany(item => item.Item2).
+					ToArray();
 
-			var formatter = FormUtil.GetFormatter();
-
-			projectsListView.BeginUpdate();
-			projectsListView.Items.Clear();
-			foreach (var project in projects) {
-				var tickets = allTickets.First(item => item.Item1 == project).Item2;
-				var lvi = new ListViewItem(new[] {
-					project.Name,
-					tickets.Any() ?
-						formatter.Format(tickets.Min(t => t.CreateTimestamp)) :
-						string.Empty,
-					tickets.Any() ?
-						formatter.Format(tickets.Max(t => t.ModifyTimestamp)) :
-						string.Empty,
-					tickets.Count(t => t.State.IsOpen()).ToString(),
-					tickets.Count().ToString(),
-				}) {
-					Tag = project,
-				};
-
-				projectsListView.Items.Add(lvi);
-			}
-
-			const int ticketColumnSize = 65;
-			const int updateColumnSize = 105;
-			const int scrollbarSize = 20;
-			projectsListView.Columns[0].Width =
-				projectsListView.Width -
-				(ticketColumnSize * 2) -
-				(updateColumnSize * 2) -
-				scrollbarSize;
-
-			projectsListView.EndUpdate();
-
-			// Reselect projects.
-			foreach (ListViewItem item in projectsListView.Items) {
-				var project = (Project)item.Tag;
-				if (selectedProjects.Contains(project.ID)) {
-					item.Selected = true;
-					item.EnsureVisible();
-				}
-			}
+				mProjectTicketCount = new TicketCount(
+					summaryTickets.Count(t => t.State.IsOpen()),
+					summaryTickets.Length);
+			});
 
 			UpdateControlsEnabledProperty();
-
-			var summaryTickets = allTickets.
-				Where(t => projects.Contains(t.Item1)).
-				SelectMany(item => item.Item2).
-				ToArray();
-
-			mProjectTicketCount = new TicketCount(
-				summaryTickets.Count(t => t.State.IsOpen()),
-				summaryTickets.Length);
-
 			UpdateStatusbar();
 		}
 
@@ -992,15 +978,7 @@ namespace Peygir.Presentation.Forms {
 				// Show projects.
 				ShowProjects();
 
-				// Select new project.
-				projectsListView.SelectedItems.Clear();
-				foreach (ListViewItem item in projectsListView.Items) {
-					var p = (Project)item.Tag;
-					if (p.ID == project.ID) {
-						item.Selected = true;
-						break;
-					}
-				}
+				FormUtil.SelectNew(projectsListView, project);
 
 				UpdateControlsEnabledProperty();
 
@@ -1013,11 +991,11 @@ namespace Peygir.Presentation.Forms {
 
 		private void EditProject(bool ticketTab = false) {
 			for (int i = 0, end = projectsListView.SelectedItems.Count; i < end; i++) {
-				var item = (Project)projectsListView.SelectedItems[i].Tag;
+				var tag = (Project)projectsListView.SelectedItems[i].Tag;
 				ProjectForm form;
-				if (!mForms.TryGetValue(item.ID, out form)) {
-					form = new ProjectForm(this, mContext, item);
-					mForms[item.ID] = form;
+				if (!mForms.TryGetValue(tag.ID, out form)) {
+					form = new ProjectForm(this, mContext, tag);
+					mForms[tag.ID] = form;
 					if (ticketTab) form.ActivateTicketTab();
 					else form.ActivateProjectTab();
 					form.Show();
@@ -1044,11 +1022,7 @@ namespace Peygir.Presentation.Forms {
 				return;
 			}
 
-			// Delete projects.
-			for (int i = 0; i < projectsListView.SelectedItems.Count; i++) {
-				var project = (Project)projectsListView.SelectedItems[i].Tag;
-				project.Delete(mContext);
-			}
+			FormUtil.DeleteSelected<Project>(projectsListView, mContext);
 
 			// Flush.
 			mContext.Flush();
@@ -1078,8 +1052,8 @@ namespace Peygir.Presentation.Forms {
 		#region Tickets
 		private void TicketBatch<TValue>(Action<Ticket, TValue, bool> ticketFunc, TValue value) {
 			for (int i = 0, end = ticketsListView.SelectedItems.Count; i < end; i++) {
-				var ticket = (Ticket)ticketsListView.SelectedItems[i].Tag;
-				ticketFunc(ticket, value, true);
+				var tag = (Ticket)ticketsListView.SelectedItems[i].Tag;
+				ticketFunc(tag, value, true);
 			}
 
 			// Flush.
@@ -1144,103 +1118,91 @@ namespace Peygir.Presentation.Forms {
 		}
 
 		private void ShowTickets() {
-			if (mResettingTicketFilters) return;
-
-			// Save selected tickets.
-			var selectedTickets = new List<int>();
-			foreach (ListViewItem item in ticketsListView.SelectedItems) {
-				var ticket = (Ticket)item.Tag;
-				selectedTickets.Add(ticket.ID);
+			if (mResettingTicketFilters) {
+				return;
 			}
 
-			string summaryFilter = ticketSummaryTextBox.Text;
-			string reporterFilter = ticketTicketReportersComboBox.SelectedText;
-			string assignedFilter = ticketTicketAssignedToComboBox.SelectedText;
-			var stateFilter = FormUtil.CastBox<MetaTicketState>(ticketTicketStateComboBox);
-			var severityFilter = FormUtil.CastBox<TicketSeverity>(ticketTicketSeverityComboBox);
-			var priorityFilter = FormUtil.CastBox<TicketPriority>(ticketTicketPriorityComboBox);
-			var typeFilter = FormUtil.CastBox<TicketType>(ticketTicketTypeComboBox);
-			var activeFilter = FormUtil.CastBox<ProjectState>(ticketProjectStateComboBox);
+			FormUtil.Reselect<Ticket>(ticketsListView, () => {
+				string summaryFilter = ticketSummaryTextBox.Text;
+				string reporterFilter = ticketTicketReportersComboBox.SelectedText;
+				string assignedFilter = ticketTicketAssignedToComboBox.SelectedText;
+				var stateFilter = FormUtil.CastBoxToEnum<MetaTicketState>(ticketTicketStateComboBox);
+				var severityFilter = FormUtil.CastBoxToEnum<TicketSeverity>(ticketTicketSeverityComboBox);
+				var priorityFilter = FormUtil.CastBoxToEnum<TicketPriority>(ticketTicketPriorityComboBox);
+				var typeFilter = FormUtil.CastBoxToEnum<TicketType>(ticketTicketTypeComboBox);
+				var activeFilter = FormUtil.CastBoxToEnum<ProjectState>(ticketProjectStateComboBox);
 
-			Ticket[] tickets = Project.GetProjects(mContext).
-				Where(p => FormUtil.SatisfiesFilterEnum(p.State, activeFilter)).
-				SelectMany(p => p.GetTickets(mContext)).
-				ToArray();
+				Ticket[] tickets = Project.GetProjects(mContext).
+					Where(p => FormUtil.SatisfiesFilterEnum(p.State, activeFilter)).
+					SelectMany(p => p.GetTickets(mContext)).
+					ToArray();
 
-			tickets = tickets.Where(t => {
-				bool satisfiesSummaryFilter = FormUtil.SatisfiesFilterContains(t.Summary, summaryFilter);
-				bool satisfiesReporterFilter = FormUtil.SatisfiesFilterMatch(t.ReportedBy, reporterFilter);
-				bool satisfiesAssignedFilter = FormUtil.SatisfiesFilterMatch(t.AssignedTo, assignedFilter);
-				bool satisfiesStateFilter = stateFilter == null || stateFilter.Value.AppliesTo(t.State);
-				bool satisfiesSeverityFilter = FormUtil.SatisfiesFilterEnum(t.Severity, severityFilter);
-				bool satisfiesPriorityFilter = FormUtil.SatisfiesFilterEnum(t.Priority, priorityFilter);
-				bool satisfiesTypeFilter = FormUtil.SatisfiesFilterEnum(t.Type, typeFilter);
-				bool satisfiesCreatedFilter = FormUtil.SatisfiesFilterContains(t.CreateTimestamp, mTicketCreateFilter);
-				bool satisfiesModifiedFilter = FormUtil.SatisfiesFilterContains(t.ModifyTimestamp, mTicketModifyFilter);
+				tickets = tickets.Where(t => {
+					bool satisfiesSummaryFilter = FormUtil.SatisfiesFilterContains(t.Summary, summaryFilter);
+					bool satisfiesReporterFilter = FormUtil.SatisfiesFilterMatch(t.ReportedBy, reporterFilter);
+					bool satisfiesAssignedFilter = FormUtil.SatisfiesFilterMatch(t.AssignedTo, assignedFilter);
+					bool satisfiesStateFilter = stateFilter == null || stateFilter.Value.AppliesTo(t.State);
+					bool satisfiesSeverityFilter = FormUtil.SatisfiesFilterEnum(t.Severity, severityFilter);
+					bool satisfiesPriorityFilter = FormUtil.SatisfiesFilterEnum(t.Priority, priorityFilter);
+					bool satisfiesTypeFilter = FormUtil.SatisfiesFilterEnum(t.Type, typeFilter);
+					bool satisfiesCreatedFilter = FormUtil.SatisfiesFilterContains(t.CreateTimestamp, mTicketCreateFilter);
+					bool satisfiesModifiedFilter = FormUtil.SatisfiesFilterContains(t.ModifyTimestamp, mTicketModifyFilter);
 
-				return
-					satisfiesSummaryFilter &&
-					satisfiesReporterFilter &&
-					satisfiesAssignedFilter &&
-					satisfiesStateFilter &&
-					satisfiesSeverityFilter &&
-					satisfiesPriorityFilter &&
-					satisfiesTypeFilter &&
-					satisfiesCreatedFilter &&
-					satisfiesModifiedFilter;
-			}).ToArray();
+					return
+						satisfiesSummaryFilter &&
+						satisfiesReporterFilter &&
+						satisfiesAssignedFilter &&
+						satisfiesStateFilter &&
+						satisfiesSeverityFilter &&
+						satisfiesPriorityFilter &&
+						satisfiesTypeFilter &&
+						satisfiesCreatedFilter &&
+						satisfiesModifiedFilter;
+				}).ToArray();
 
-			// Cache milestones.
-			var milestoneNames = new Dictionary<int, string>();
-			var projectNames = new Dictionary<int, string>();
-			Milestone[] milestones = Milestone.GetMilestones(mContext);
-			foreach (Milestone milestone in milestones) {
-				milestoneNames[milestone.ID] = milestone.Name;
-				projectNames[milestone.ID] = milestone.GetProject(mContext).Name;
-			}
-
-			var formatter = FormUtil.GetFormatter();
-			ticketsListView.BeginUpdate();
-			ticketsListView.Items.Clear();
-			foreach (var ticket in tickets) {
-				string ticketPriority = TicketChangeFormatter.Default.TranslateTicketPriority(ticket.Priority);
-				string ticketType = TicketChangeFormatter.Default.TranslateTicketType(ticket.Type);
-				string ticketSeverity = TicketChangeFormatter.Default.TranslateTicketSeverity(ticket.Severity);
-				string ticketState = TicketChangeFormatter.Default.TranslateTicketState(ticket.State);
-
-				var lvi = new ListViewItem() {
-					Text = projectNames[ticket.MilestoneID],
-					Tag = ticket,
-				};
-
-				lvi.SubItems.Add(milestoneNames[ticket.MilestoneID]);
-				lvi.SubItems.Add(ticket.Summary);
-				lvi.SubItems.Add(ticketPriority);
-				lvi.SubItems.Add(ticketType);
-				lvi.SubItems.Add(ticketSeverity);
-				lvi.SubItems.Add(ticketState);
-				lvi.SubItems.Add(formatter.Format(ticket.ModifyTimestamp));
-
-				ticketsListView.Items.Add(lvi);
-			}
-
-			ticketsListView.EndUpdate();
-			ticketsListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
-
-			// Reselect tickets.
-			foreach (ListViewItem item in ticketsListView.Items) {
-				var ticket = (Ticket)item.Tag;
-				if (selectedTickets.Contains(ticket.ID)) {
-					item.Selected = true;
+				// Cache milestones.
+				var milestoneNames = new Dictionary<int, string>();
+				var projectNames = new Dictionary<int, string>();
+				Milestone[] milestones = Milestone.GetMilestones(mContext);
+				foreach (Milestone milestone in milestones) {
+					milestoneNames[milestone.ID] = milestone.Name;
+					projectNames[milestone.ID] = milestone.GetProject(mContext).Name;
 				}
-			}
+
+				var formatter = FormUtil.GetFormatter();
+				ticketsListView.BeginUpdate();
+				ticketsListView.Items.Clear();
+				foreach (var ticket in tickets) {
+					string ticketPriority = TicketChangeFormatter.Default.TranslateTicketPriority(ticket.Priority);
+					string ticketType = TicketChangeFormatter.Default.TranslateTicketType(ticket.Type);
+					string ticketSeverity = TicketChangeFormatter.Default.TranslateTicketSeverity(ticket.Severity);
+					string ticketState = TicketChangeFormatter.Default.TranslateTicketState(ticket.State);
+
+					var lvi = new ListViewItem() {
+						Text = projectNames[ticket.MilestoneID],
+						Tag = ticket,
+					};
+
+					lvi.SubItems.Add(milestoneNames[ticket.MilestoneID]);
+					lvi.SubItems.Add(ticket.Summary);
+					lvi.SubItems.Add(ticketPriority);
+					lvi.SubItems.Add(ticketType);
+					lvi.SubItems.Add(ticketSeverity);
+					lvi.SubItems.Add(ticketState);
+					lvi.SubItems.Add(formatter.Format(ticket.ModifyTimestamp));
+
+					ticketsListView.Items.Add(lvi);
+				}
+
+				ticketsListView.EndUpdate();
+				ticketsListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+
+				mTicketTicketCount = new TicketCount(
+					tickets.Count(t => t.State.IsOpen()),
+					tickets.Length);
+			});
 
 			UpdateControlsEnabledProperty();
-
-			mTicketTicketCount = new TicketCount(
-				tickets.Count(t => t.State.IsOpen()),
-				tickets.Length);
-
 			UpdateStatusbar();
 		}
 
@@ -1279,16 +1241,7 @@ namespace Peygir.Presentation.Forms {
 				// Show tickets.
 				ShowTickets();
 
-				// Select new ticket.
-				ticketsListView.SelectedItems.Clear();
-				foreach (ListViewItem item in ticketsListView.Items) {
-					Ticket t = (Ticket)item.Tag;
-					if (t.ID == ticket.ID) {
-						item.Selected = true;
-						item.EnsureVisible();
-						break;
-					}
-				}
+				FormUtil.SelectNew(ticketsListView, ticket);
 
 				UpdateControlsEnabledProperty();
 
@@ -1303,9 +1256,9 @@ namespace Peygir.Presentation.Forms {
 				return;
 			}
 
-			var ticket = (Ticket)ticketsListView.SelectedItems[0].Tag;
-			Project project = ticket.GetMilestone(mContext).GetProject(mContext);
-			using (var form = new TicketDetailsForm(mContext, FormUtil.GetFontContext(), FormUtil.GetFormatter(), project, ticket)) {
+			var tag = (Ticket)ticketsListView.SelectedItems[0].Tag;
+			Project project = tag.GetMilestone(mContext).GetProject(mContext);
+			using (var form = new TicketDetailsForm(mContext, FormUtil.GetFontContext(), FormUtil.GetFormatter(), project, tag)) {
 				form.ReadOnly = true;
 				form.ShowDialog();
 			}
@@ -1316,12 +1269,12 @@ namespace Peygir.Presentation.Forms {
 				return;
 			}
 
-			var ticket = (Ticket)ticketsListView.SelectedItems[0].Tag;
-			Project project = ticket.GetMilestone(mContext).GetProject(mContext);
-			using (var form = new TicketDetailsForm(mContext, FormUtil.GetFontContext(), FormUtil.GetFormatter(), project, ticket)) {
+			var tag = (Ticket)ticketsListView.SelectedItems[0].Tag;
+			Project project = tag.GetMilestone(mContext).GetProject(mContext);
+			using (var form = new TicketDetailsForm(mContext, FormUtil.GetFontContext(), FormUtil.GetFormatter(), project, tag)) {
 				if (form.ShowDialog() != DialogResult.OK) return;
 
-				ticket.UpdateAndGenerateHistoryRecord(mContext, TicketChangeFormatter.Default, t => {
+				tag.UpdateAndGenerateHistoryRecord(mContext, TicketChangeFormatter.Default, t => {
 					return form.RetrieveTicket(t);
 				});
 
@@ -1337,8 +1290,8 @@ namespace Peygir.Presentation.Forms {
 				return;
 			}
 
-			var ticket = (Ticket)ticketsListView.SelectedItems[0].Tag;
-			using (TicketHistoryForm form = new TicketHistoryForm(mContext, ticket)) {
+			var tag = (Ticket)ticketsListView.SelectedItems[0].Tag;
+			using (TicketHistoryForm form = new TicketHistoryForm(mContext, tag)) {
 				form.ShowDialog();
 			}
 		}
@@ -1348,8 +1301,8 @@ namespace Peygir.Presentation.Forms {
 				return;
 			}
 
-			var ticket = (Ticket)ticketsListView.SelectedItems[0].Tag;
-			using (var form = new AttachmentsForm(mContext, ticket)) {
+			var tag = (Ticket)ticketsListView.SelectedItems[0].Tag;
+			using (var form = new AttachmentsForm(mContext, tag)) {
 				form.ShowDialog();
 			}
 		}
@@ -1369,11 +1322,7 @@ namespace Peygir.Presentation.Forms {
 				return;
 			}
 
-			// Delete tickets.
-			for (int i = 0; i < ticketsListView.SelectedItems.Count; i++) {
-				var ticket = (Ticket)ticketsListView.SelectedItems[i].Tag;
-				ticket.Delete(mContext);
-			}
+			FormUtil.DeleteSelected<Ticket>(ticketsListView, mContext);
 
 			// Flush.
 			mContext.Flush();

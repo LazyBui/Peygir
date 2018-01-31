@@ -399,58 +399,44 @@ namespace Peygir.Presentation.Forms {
 
 		#region Milestone
 		private void ShowMilestones() {
-			// Save selected milestones.
-			var selectedMilestones = new List<int>();
-			foreach (ListViewItem item in milestonesListView.SelectedItems) {
-				var milestone = (Milestone)item.Tag;
-				selectedMilestones.Add(milestone.ID);
-			}
+			FormUtil.Reselect<Milestone>(milestonesListView, () => {
+				Milestone[] milestones = Project.GetMilestones(mContext);
 
-			Milestone[] milestones = Project.GetMilestones(mContext);
+				milestonesListView.BeginUpdate();
+				milestonesListView.Items.Clear();
+				foreach (var milestone in milestones) {
+					string milestoneState;
+					switch (milestone.State) {
+						case MilestoneState.Active:
+							milestoneState = Resources.String_Active;
+							break;
 
-			milestonesListView.BeginUpdate();
-			milestonesListView.Items.Clear();
-			foreach (var milestone in milestones) {
-				string milestoneState;
-				switch (milestone.State) {
-					case MilestoneState.Active:
-						milestoneState = Resources.String_Active;
-						break;
+						case MilestoneState.Completed:
+							milestoneState = Resources.String_Completed;
+							break;
 
-					case MilestoneState.Completed:
-						milestoneState = Resources.String_Completed;
-						break;
+						case MilestoneState.Cancelled:
+							milestoneState = Resources.String_Cancelled;
+							break;
 
-					case MilestoneState.Cancelled:
-						milestoneState = Resources.String_Cancelled;
-						break;
+						default:
+							milestoneState = string.Empty;
+							break;
+					}
 
-					default:
-						milestoneState = string.Empty;
-						break;
+					var lvi = new ListViewItem() {
+						Text = milestone.Name,
+						Tag = milestone,
+					};
+
+					lvi.SubItems.Add(milestoneState);
+					milestonesListView.Items.Add(lvi);
 				}
-
-				var lvi = new ListViewItem() {
-					Text = milestone.Name,
-					Tag = milestone,
-				};
-
-				lvi.SubItems.Add(milestoneState);
-				milestonesListView.Items.Add(lvi);
-			}
-			milestonesListView.EndUpdate();
-			milestonesListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
-
-			// Reselect milestones.
-			foreach (ListViewItem item in milestonesListView.Items) {
-				var milestone = (Milestone)item.Tag;
-				if (selectedMilestones.Contains(milestone.ID)) {
-					item.Selected = true;
-				}
-			}
+				milestonesListView.EndUpdate();
+				milestonesListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+			});
 
 			UpdateButtonsEnabledProperty();
-
 			ShowTickets();
 		}
 
@@ -468,16 +454,7 @@ namespace Peygir.Presentation.Forms {
 				// Show milestones.
 				ShowMilestones();
 
-				// Select new milestone.
-				milestonesListView.SelectedItems.Clear();
-				foreach (ListViewItem item in milestonesListView.Items) {
-					var m = (Milestone)item.Tag;
-					if (m.ID == milestone.ID) {
-						item.Selected = true;
-						item.EnsureVisible();
-						break;
-					}
-				}
+				FormUtil.SelectNew(milestonesListView, milestone);
 
 				PopulateTicketFilters();
 
@@ -492,8 +469,8 @@ namespace Peygir.Presentation.Forms {
 				return;
 			}
 
-			var milestone = (Milestone)milestonesListView.SelectedItems[0].Tag;
-			using (var form = new MilestoneDetailsForm(mContext, Project, milestone)) {
+			var tag = (Milestone)milestonesListView.SelectedItems[0].Tag;
+			using (var form = new MilestoneDetailsForm(mContext, Project, tag)) {
 				form.ReadOnly = true;
 				form.ShowDialog();
 			}
@@ -504,13 +481,13 @@ namespace Peygir.Presentation.Forms {
 				return;
 			}
 
-			var milestone = (Milestone)milestonesListView.SelectedItems[0].Tag;
-			using (var form = new MilestoneDetailsForm(mContext, Project, milestone)) {
+			var tag = (Milestone)milestonesListView.SelectedItems[0].Tag;
+			using (var form = new MilestoneDetailsForm(mContext, Project, tag)) {
 				if (form.ShowDialog() != DialogResult.OK) return;
-				milestone = form.RetrieveMilestone(milestone);
+				tag = form.RetrieveMilestone(tag);
 
 				// Update milestones.
-				milestone.Update(mContext);
+				tag.Update(mContext);
 
 				// Flush.
 				mContext.Flush();
@@ -540,11 +517,7 @@ namespace Peygir.Presentation.Forms {
 				return;
 			}
 
-			// Delete milestones.
-			for (int i = 0; i < milestonesListView.SelectedItems.Count; i++) {
-				var milestone = (Milestone)milestonesListView.SelectedItems[i].Tag;
-				milestone.Delete(mContext);
-			}
+			FormUtil.DeleteSelected<Milestone>(milestonesListView, mContext);
 
 			// Flush.
 			mContext.Flush();
@@ -562,8 +535,8 @@ namespace Peygir.Presentation.Forms {
 		#region Ticket
 		private void TicketBatch<TValue>(Action<Ticket, TValue, bool> ticketFunc, TValue value) {
 			for (int i = 0, end = ticketsListView.SelectedItems.Count; i < end; i++) {
-				var ticket = (Ticket)ticketsListView.SelectedItems[i].Tag;
-				ticketFunc(ticket, value, true);
+				var tag = (Ticket)ticketsListView.SelectedItems[i].Tag;
+				ticketFunc(tag, value, true);
 			}
 
 			// Flush.
@@ -634,90 +607,79 @@ namespace Peygir.Presentation.Forms {
 		}
 
 		private void ShowTickets() {
-			if (mResettingTicketFilters) return;
-
-			// Save selected tickets.
-			var selectedTickets = new List<int>();
-			foreach (ListViewItem item in ticketsListView.SelectedItems) {
-				var ticket = (Ticket)item.Tag;
-				selectedTickets.Add(ticket.ID);
+			if (mResettingTicketFilters) {
+				return;
 			}
 
-			string summaryFilter = ticketSummaryTextBox.Text;
-			var reporterFilter = (string)ticketReportersComboBox.SelectedItem;
-			var assignedFilter = (string)ticketAssignedToComboBox.SelectedItem;
-			string milestoneFilter = (string)ticketMilestoneComboBox.SelectedItem;
-			var stateFilter = FormUtil.CastBox<MetaTicketState>(ticketStateComboBox);
-			var severityFilter = FormUtil.CastBox<TicketSeverity>(ticketSeverityComboBox);
-			var priorityFilter = FormUtil.CastBox<TicketPriority>(ticketPriorityComboBox);
-			var typeFilter = FormUtil.CastBox<TicketType>(ticketTypeComboBox);
+			FormUtil.Reselect<Ticket>(ticketsListView, () => {
+				string summaryFilter = ticketSummaryTextBox.Text;
+				var reporterFilter = (string)ticketReportersComboBox.SelectedItem;
+				var assignedFilter = (string)ticketAssignedToComboBox.SelectedItem;
+				string milestoneFilter = (string)ticketMilestoneComboBox.SelectedItem;
+				var stateFilter = FormUtil.CastBoxToEnum<MetaTicketState>(ticketStateComboBox);
+				var severityFilter = FormUtil.CastBoxToEnum<TicketSeverity>(ticketSeverityComboBox);
+				var priorityFilter = FormUtil.CastBoxToEnum<TicketPriority>(ticketPriorityComboBox);
+				var typeFilter = FormUtil.CastBoxToEnum<TicketType>(ticketTypeComboBox);
 
-			Ticket[] tickets = Project.GetTickets(mContext);
+				Ticket[] tickets = Project.GetTickets(mContext);
 
-			tickets = tickets.Where(t => {
-				bool satisfiesSummaryFilter = FormUtil.SatisfiesFilterContains(t.Summary, summaryFilter);
-				bool satisfiesReporterFilter = FormUtil.SatisfiesFilterMatch(t.ReportedBy, reporterFilter);
-				bool satisfiesAssignedFilter = FormUtil.SatisfiesFilterMatch(t.AssignedTo, assignedFilter);
-				bool satisfiesMilestoneFilter = FormUtil.SatisfiesFilterMatch(t.GetMilestone(mContext).Name, milestoneFilter);
-				bool satisfiesStateFilter = stateFilter == null || stateFilter.Value.AppliesTo(t.State);
-				bool satisfiesSeverityFilter = FormUtil.SatisfiesFilterEnum(t.Severity, severityFilter);
-				bool satisfiesPriorityFilter = FormUtil.SatisfiesFilterEnum(t.Priority, priorityFilter);
-				bool satisfiesTypeFilter = FormUtil.SatisfiesFilterEnum(t.Type, typeFilter);
-				bool satisfiesCreatedFilter = FormUtil.SatisfiesFilterContains(t.CreateTimestamp, mTicketCreateFilter);
-				bool satisfiesModifiedFilter = FormUtil.SatisfiesFilterContains(t.ModifyTimestamp, mTicketModifyFilter);
+				tickets = tickets.Where(t => {
+					bool satisfiesSummaryFilter = FormUtil.SatisfiesFilterContains(t.Summary, summaryFilter);
+					bool satisfiesReporterFilter = FormUtil.SatisfiesFilterMatch(t.ReportedBy, reporterFilter);
+					bool satisfiesAssignedFilter = FormUtil.SatisfiesFilterMatch(t.AssignedTo, assignedFilter);
+					bool satisfiesMilestoneFilter = FormUtil.SatisfiesFilterMatch(t.GetMilestone(mContext).Name, milestoneFilter);
+					bool satisfiesStateFilter = stateFilter == null || stateFilter.Value.AppliesTo(t.State);
+					bool satisfiesSeverityFilter = FormUtil.SatisfiesFilterEnum(t.Severity, severityFilter);
+					bool satisfiesPriorityFilter = FormUtil.SatisfiesFilterEnum(t.Priority, priorityFilter);
+					bool satisfiesTypeFilter = FormUtil.SatisfiesFilterEnum(t.Type, typeFilter);
+					bool satisfiesCreatedFilter = FormUtil.SatisfiesFilterContains(t.CreateTimestamp, mTicketCreateFilter);
+					bool satisfiesModifiedFilter = FormUtil.SatisfiesFilterContains(t.ModifyTimestamp, mTicketModifyFilter);
 
-				return
-					satisfiesSummaryFilter &&
-					satisfiesReporterFilter &&
-					satisfiesAssignedFilter &&
-					satisfiesMilestoneFilter &&
-					satisfiesStateFilter &&
-					satisfiesSeverityFilter &&
-					satisfiesPriorityFilter &&
-					satisfiesTypeFilter &&
-					satisfiesCreatedFilter &&
-					satisfiesModifiedFilter;
-			}).ToArray();
+					return
+						satisfiesSummaryFilter &&
+						satisfiesReporterFilter &&
+						satisfiesAssignedFilter &&
+						satisfiesMilestoneFilter &&
+						satisfiesStateFilter &&
+						satisfiesSeverityFilter &&
+						satisfiesPriorityFilter &&
+						satisfiesTypeFilter &&
+						satisfiesCreatedFilter &&
+						satisfiesModifiedFilter;
+				}).ToArray();
 
-			// Cache milestones.
-			var milestoneNames = new Dictionary<int, string>();
-			Milestone[] milestones = Milestone.GetMilestones(mContext);
-			foreach (Milestone milestone in milestones) {
-				milestoneNames[milestone.ID] = milestone.Name;
-			}
-
-			ticketsListView.BeginUpdate();
-			ticketsListView.Items.Clear();
-			foreach (var ticket in tickets) {
-				string ticketPriority = TicketChangeFormatter.Default.TranslateTicketPriority(ticket.Priority);
-				string ticketType = TicketChangeFormatter.Default.TranslateTicketType(ticket.Type);
-				string ticketSeverity = TicketChangeFormatter.Default.TranslateTicketSeverity(ticket.Severity);
-				string ticketState = TicketChangeFormatter.Default.TranslateTicketState(ticket.State);
-
-				var lvi = new ListViewItem();
-
-				lvi.Text = $"{ticket.TicketNumber}";
-				lvi.SubItems.Add(ticket.Summary);
-				lvi.SubItems.Add(milestoneNames[ticket.MilestoneID]);
-				lvi.SubItems.Add(ticketPriority);
-				lvi.SubItems.Add(ticketType);
-				lvi.SubItems.Add(ticketSeverity);
-				lvi.SubItems.Add(ticketState);
-				lvi.Tag = ticket;
-
-				ticketsListView.Items.Add(lvi);
-			}
-
-			ticketsListView.EndUpdate();
-			ticketsListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
-
-			// Reselect tickets.
-			foreach (ListViewItem item in ticketsListView.Items) {
-				var ticket = (Ticket)item.Tag;
-				if (selectedTickets.Contains(ticket.ID)) {
-					item.Selected = true;
+				// Cache milestones.
+				var milestoneNames = new Dictionary<int, string>();
+				Milestone[] milestones = Milestone.GetMilestones(mContext);
+				foreach (Milestone milestone in milestones) {
+					milestoneNames[milestone.ID] = milestone.Name;
 				}
-			}
+
+				ticketsListView.BeginUpdate();
+				ticketsListView.Items.Clear();
+				foreach (var ticket in tickets) {
+					string ticketPriority = TicketChangeFormatter.Default.TranslateTicketPriority(ticket.Priority);
+					string ticketType = TicketChangeFormatter.Default.TranslateTicketType(ticket.Type);
+					string ticketSeverity = TicketChangeFormatter.Default.TranslateTicketSeverity(ticket.Severity);
+					string ticketState = TicketChangeFormatter.Default.TranslateTicketState(ticket.State);
+
+					var lvi = new ListViewItem();
+
+					lvi.Text = $"{ticket.TicketNumber}";
+					lvi.SubItems.Add(ticket.Summary);
+					lvi.SubItems.Add(milestoneNames[ticket.MilestoneID]);
+					lvi.SubItems.Add(ticketPriority);
+					lvi.SubItems.Add(ticketType);
+					lvi.SubItems.Add(ticketSeverity);
+					lvi.SubItems.Add(ticketState);
+					lvi.Tag = ticket;
+
+					ticketsListView.Items.Add(lvi);
+				}
+
+				ticketsListView.EndUpdate();
+				ticketsListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+			});
 
 			UpdateButtonsEnabledProperty();
 		}
@@ -753,16 +715,7 @@ namespace Peygir.Presentation.Forms {
 				// Show tickets.
 				ShowTickets();
 
-				// Select new ticket.
-				ticketsListView.SelectedItems.Clear();
-				foreach (ListViewItem item in ticketsListView.Items) {
-					var t = (Ticket)item.Tag;
-					if (t.ID == ticket.ID) {
-						item.Selected = true;
-						item.EnsureVisible();
-						break;
-					}
-				}
+				FormUtil.SelectNew(ticketsListView, ticket);
 
 				UpdateButtonsEnabledProperty();
 
@@ -777,8 +730,8 @@ namespace Peygir.Presentation.Forms {
 				return;
 			}
 
-			var ticket = (Ticket)ticketsListView.SelectedItems[0].Tag;
-			using (var form = new TicketDetailsForm(mContext, FormUtil.GetFontContext(), FormUtil.GetFormatter(), Project, ticket)) {
+			var tag = (Ticket)ticketsListView.SelectedItems[0].Tag;
+			using (var form = new TicketDetailsForm(mContext, FormUtil.GetFontContext(), FormUtil.GetFormatter(), Project, tag)) {
 				form.ReadOnly = true;
 				form.ShowDialog();
 			}
@@ -789,11 +742,11 @@ namespace Peygir.Presentation.Forms {
 				return;
 			}
 
-			var ticket = (Ticket)ticketsListView.SelectedItems[0].Tag;
-			using (var form = new TicketDetailsForm(mContext, FormUtil.GetFontContext(), FormUtil.GetFormatter(), Project, ticket)) {
+			var tag = (Ticket)ticketsListView.SelectedItems[0].Tag;
+			using (var form = new TicketDetailsForm(mContext, FormUtil.GetFontContext(), FormUtil.GetFormatter(), Project, tag)) {
 				if (form.ShowDialog() != DialogResult.OK) return;
 
-				ticket.UpdateAndGenerateHistoryRecord(mContext, TicketChangeFormatter.Default, t => {
+				tag.UpdateAndGenerateHistoryRecord(mContext, TicketChangeFormatter.Default, t => {
 					return form.RetrieveTicket(t);
 				});
 
@@ -812,8 +765,8 @@ namespace Peygir.Presentation.Forms {
 				return;
 			}
 
-			var ticket = (Ticket)ticketsListView.SelectedItems[0].Tag;
-			using (var form = new TicketHistoryForm(mContext, ticket)) {
+			var tag = (Ticket)ticketsListView.SelectedItems[0].Tag;
+			using (var form = new TicketHistoryForm(mContext, tag)) {
 				form.ShowDialog();
 			}
 		}
@@ -823,8 +776,8 @@ namespace Peygir.Presentation.Forms {
 				return;
 			}
 
-			var ticket = (Ticket)ticketsListView.SelectedItems[0].Tag;
-			using (var form = new AttachmentsForm(mContext, ticket)) {
+			var tag = (Ticket)ticketsListView.SelectedItems[0].Tag;
+			using (var form = new AttachmentsForm(mContext, tag)) {
 				form.ShowDialog();
 			}
 		}
@@ -844,11 +797,7 @@ namespace Peygir.Presentation.Forms {
 				return;
 			}
 
-			// Delete tickets.
-			for (int i = 0; i < ticketsListView.SelectedItems.Count; i++) {
-				var ticket = (Ticket)ticketsListView.SelectedItems[i].Tag;
-				ticket.Delete(mContext);
-			}
+			FormUtil.DeleteSelected<Ticket>(ticketsListView, mContext);
 
 			// Flush.
 			mContext.Flush();

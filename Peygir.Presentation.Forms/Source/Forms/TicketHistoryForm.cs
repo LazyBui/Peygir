@@ -50,12 +50,12 @@ namespace Peygir.Presentation.Forms {
 
 		private void ShowTicketHistoryDetails() {
 			if (ticketHistoryListView.SelectedItems.Count == 1) {
-				var history = (TicketHistory)ticketHistoryListView.SelectedItems[0].Tag;
+				var tag = (TicketHistory)ticketHistoryListView.SelectedItems[0].Tag;
 
 				var formatter = FormUtil.GetFormatter();
-				timestampTextBox.Text = formatter.Format(history.Timestamp);
-				changesTextBox.Text = history.Changes;
-				commentTextBox.Text = history.Comment;
+				timestampTextBox.Text = formatter.Format(tag.Timestamp);
+				changesTextBox.Text = tag.Changes;
+				commentTextBox.Text = tag.Comment;
 
 				groupBox.Enabled = true;
 			}

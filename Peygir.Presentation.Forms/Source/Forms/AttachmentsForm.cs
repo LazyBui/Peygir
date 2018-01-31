@@ -70,38 +70,25 @@ namespace Peygir.Presentation.Forms {
 		}
 
 		private void ShowAttachments() {
-			// Save selected attachments.
-			var selectedAttachments = new List<int>();
-			foreach (ListViewItem item in attachmentsListView.SelectedItems) {
-				var attachment = (Attachment)item.Tag;
-				selectedAttachments.Add(attachment.ID);
-			}
+			FormUtil.Reselect<Attachment>(attachmentsListView, () => {
+				Attachment[] attachments = mTicket.GetAttachmentsWithoutContents(mContext);
 
-			Attachment[] attachments = mTicket.GetAttachmentsWithoutContents(mContext);
+				attachmentsListView.BeginUpdate();
+				attachmentsListView.Items.Clear();
+				foreach (var attachment in attachments) {
+					var lvi = new ListViewItem() {
+						Text = attachment.Name,
+						Tag = attachment,
+					};
 
-			attachmentsListView.BeginUpdate();
-			attachmentsListView.Items.Clear();
-			foreach (var attachment in attachments) {
-				var lvi = new ListViewItem() {
-					Text = attachment.Name,
-					Tag = attachment,
-				};
+					lvi.SubItems.Add($"{attachment.Size}");
 
-				lvi.SubItems.Add($"{attachment.Size}");
-
-				attachmentsListView.Items.Add(lvi);
-			}
-
-			attachmentsListView.EndUpdate();
-			attachmentsListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
-
-			// Reselect attachments.
-			foreach (ListViewItem item in attachmentsListView.Items) {
-				var attachment = (Attachment)item.Tag;
-				if (selectedAttachments.Contains(attachment.ID)) {
-					item.Selected = true;
+					attachmentsListView.Items.Add(lvi);
 				}
-			}
+
+				attachmentsListView.EndUpdate();
+				attachmentsListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+			});
 
 			UpdateButtonsEnabledProperty();
 		}
@@ -125,16 +112,7 @@ namespace Peygir.Presentation.Forms {
 
 				ShowAttachments();
 
-				// Select new attachment.
-				attachmentsListView.SelectedItems.Clear();
-				foreach (ListViewItem item in attachmentsListView.Items) {
-					var a = (Attachment)item.Tag;
-					if (a.ID == attachment.ID) {
-						item.Selected = true;
-						item.EnsureVisible();
-						break;
-					}
-				}
+				FormUtil.SelectNew(attachmentsListView, attachment);
 			}
 			catch (Exception exception) {
 				MessageBox.Show(
@@ -152,13 +130,13 @@ namespace Peygir.Presentation.Forms {
 		private void SaveAttachment() {
 			if (attachmentsListView.SelectedItems.Count != 1) return;
 			try {
-				var attachmentWithoutContents = (Attachment)attachmentsListView.SelectedItems[0].Tag;
+				var tag = (Attachment)attachmentsListView.SelectedItems[0].Tag;
 
-				saveFileDialog.FileName = attachmentWithoutContents.Name;
+				saveFileDialog.FileName = tag.Name;
 				if (saveFileDialog.ShowDialog() != DialogResult.OK) return;
 
 				string fileName = saveFileDialog.FileName;
-				Attachment attachment = Attachment.GetAttachment(mContext, attachmentWithoutContents.ID);
+				Attachment attachment = Attachment.GetAttachment(mContext, tag.ID);
 
 				File.WriteAllBytes(fileName, attachment.GetContents());
 			}
@@ -188,11 +166,7 @@ namespace Peygir.Presentation.Forms {
 				return;
 			}
 
-			// Delete attachments.
-			for (int i = 0; i < attachmentsListView.SelectedItems.Count; i++) {
-				var attachment = (Attachment)attachmentsListView.SelectedItems[i].Tag;
-				attachment.Delete(mContext);
-			}
+			FormUtil.DeleteSelected<Attachment>(attachmentsListView, mContext);
 
 			// Flush.
 			mContext.Flush();

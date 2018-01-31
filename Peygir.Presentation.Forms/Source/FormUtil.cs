@@ -9,7 +9,7 @@ using Peygir.Presentation.UserControls;
 
 namespace Peygir.Presentation.Forms {
 	internal static class FormUtil {
-		public static TValue? CastBox<TValue>(ComboBox input) where TValue : struct {
+		public static TValue? CastBoxToEnum<TValue>(ComboBox input) where TValue : struct {
 			return input.SelectedIndex > 0 ?
 				(TValue?)(TValue)(object)(input.SelectedIndex - 1) :
 				null;
@@ -60,6 +60,42 @@ namespace Peygir.Presentation.Forms {
 				options = (MessageBoxOptions.RtlReading | MessageBoxOptions.RightAlign);
 			}
 			return options;
+		}
+
+		public static void Reselect<TValue>(ListView view, Action code) where TValue : IEquatable<TValue> {
+			var selected = new List<TValue>();
+			foreach (ListViewItem item in view.SelectedItems) {
+				var tag = (TValue)item.Tag;
+				selected.Add(tag);
+			}
+
+			code();
+
+			foreach (ListViewItem item in view.Items) {
+				var tag = (TValue)item.Tag;
+				if (selected.Contains(tag)) {
+					item.Selected = true;
+				}
+			}
+		}
+
+		public static void SelectNew<TValue>(ListView view, TValue value) where TValue : IEquatable<TValue> {
+			view.SelectedItems.Clear();
+			foreach (ListViewItem item in view.Items) {
+				var tag = (TValue)item.Tag;
+				if (tag.Equals(value)) {
+					item.Selected = true;
+					item.EnsureVisible();
+					break;
+				}
+			}
+		}
+
+		public static void DeleteSelected<TValue>(ListView view, IDatabaseProvider db) where TValue : DBObject {
+			for (int i = 0; i < view.SelectedItems.Count; i++) {
+				var tag = (DBObject)view.SelectedItems[i].Tag;
+				tag.Delete(db);
+			}
 		}
 
 		public static void FormatDateFilter(TextBox input, DateRange range) {
