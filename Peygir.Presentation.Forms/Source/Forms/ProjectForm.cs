@@ -38,8 +38,7 @@ namespace Peygir.Presentation.Forms {
 			ShowMilestones();
 			ShowTickets();
 			PopulateTicketFilters();
-
-			Text = "Project - " + project.Name;
+			UpdateTitlebar();
 		}
 
 		private void milestonesListView_SelectedIndexChanged(object sender, EventArgs e) {
@@ -362,6 +361,10 @@ namespace Peygir.Presentation.Forms {
 		#endregion
 
 		#region Utility functions
+		private void UpdateTitlebar() {
+			Text = "Project - " + Project.Name;
+		}
+
 		private void UpdateButtonsEnabledProperty() {
 			int selectedMilestonesCount = milestonesListView.SelectedItems.Count;
 			showMilestoneButton.Enabled = selectedMilestonesCount == 1;
@@ -391,9 +394,10 @@ namespace Peygir.Presentation.Forms {
 				// Flush.
 				mContext.Flush();
 
+				UpdateTitlebar();
 				ShowProjectDetails();
 
-				mMainForm.UpdateTicketOrProject();
+				mMainForm.UpdateProject();
 			}
 		}
 
@@ -502,6 +506,8 @@ namespace Peygir.Presentation.Forms {
 
 				// Tickets will have outdated naming potentially if we don't update the ticket display
 				ShowTickets();
+
+				mMainForm.UpdateMilestone();
 			}
 		}
 
@@ -532,6 +538,8 @@ namespace Peygir.Presentation.Forms {
 
 			// Tickets may change as the result of removing a milestone
 			ShowTickets();
+
+			mMainForm.UpdateTicket();
 		}
 		#endregion
 
@@ -808,7 +816,7 @@ namespace Peygir.Presentation.Forms {
 			// Show tickets.
 			ShowTickets();
 
-			mMainForm.UpdateTicketOrProject();
+			UpdateTicket(true);
 		}
 		#endregion
 
@@ -868,7 +876,7 @@ namespace Peygir.Presentation.Forms {
 			// Without this bool, this would end up in an infinite loop
 			// This is due to the fact that updating a ticket may add an assignee/reporter and all dialogs must be updated to account for it
 			if (privateCall)
-				mMainForm.UpdateTicketOrProject();
+				mMainForm.UpdateTicket();
 		}
 		#endregion
 	}

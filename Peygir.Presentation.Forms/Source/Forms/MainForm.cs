@@ -612,7 +612,7 @@ namespace Peygir.Presentation.Forms {
 				mContext = new FormContext(Database.CreateAndOpen(databasePath));
 
 				// This is required to clear out the assigned to/reporter combos
-				UpdateTicketOrProject();
+				UpdateTicket();
 			}
 			catch (Exception exception) {
 				MessageBox.Show(
@@ -642,7 +642,7 @@ namespace Peygir.Presentation.Forms {
 				mContext = new FormContext(Database.Open(databasePath));
 
 				// This is required to update the assigned to/reporter combos
-				UpdateTicketOrProject();
+				UpdateTicket();
 			}
 			catch (Exception exception) {
 				MessageBox.Show(
@@ -768,7 +768,12 @@ namespace Peygir.Presentation.Forms {
 			}
 		}
 
-		internal void UpdateTicketOrProject() {
+		internal void UpdateProject() {
+			ShowProjects();
+			ShowTickets();
+		}
+
+		internal void UpdateTicket() {
 			// Update our UI elements for assigned/reported, can't populate this in ShowProjects because that would cause nightmares
 
 			var reporters = Ticket.GetReporters(mContext);
@@ -795,6 +800,11 @@ namespace Peygir.Presentation.Forms {
 			}
 
 			ShowProjects();
+			ShowTickets();
+		}
+
+		internal void UpdateMilestone() {
+			// Milestones are listed under the ticket view
 			ShowTickets();
 		}
 
@@ -825,6 +835,7 @@ namespace Peygir.Presentation.Forms {
 			mContext.Flush();
 
 			ShowProjects();
+			ShowTickets();
 		}
 
 		private void ProjectSingle(Project project, bool batch, Func<Project, Project> changes) {
@@ -836,6 +847,7 @@ namespace Peygir.Presentation.Forms {
 			mContext.Flush();
 
 			ShowProjects();
+			ShowTickets();
 		}
 
 		private void SetProjectState(ProjectState state) {
@@ -1059,7 +1071,7 @@ namespace Peygir.Presentation.Forms {
 			// Flush.
 			mContext.Flush();
 
-			UpdateTicketOrProject();
+			UpdateTicket();
 		}
 
 		private void TicketSingle(Ticket ticket, bool batch, Func<Ticket, Ticket> changes) {
@@ -1070,7 +1082,7 @@ namespace Peygir.Presentation.Forms {
 			// Flush.
 			mContext.Flush();
 
-			UpdateTicketOrProject();
+			UpdateTicket();
 		}
 
 		private void SetTicketState(TicketState state) {
@@ -1247,7 +1259,7 @@ namespace Peygir.Presentation.Forms {
 
 				ticketsListView.Focus();
 
-				UpdateTicketOrProject();
+				UpdateTicket();
 			}
 		}
 
@@ -1281,7 +1293,7 @@ namespace Peygir.Presentation.Forms {
 				// Flush.
 				mContext.Flush();
 
-				UpdateTicketOrProject();
+				UpdateTicket();
 			}
 		}
 
@@ -1327,7 +1339,7 @@ namespace Peygir.Presentation.Forms {
 			// Flush.
 			mContext.Flush();
 
-			UpdateTicketOrProject();
+			UpdateTicket();
 		}
 		#endregion
 
